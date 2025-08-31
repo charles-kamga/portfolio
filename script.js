@@ -147,40 +147,60 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Gestion du thème
+  // Gestion du thème
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.querySelector('.theme-icon');
+  const themeText = document.querySelector('.theme-text');
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-  // Vérifier le thème sauvegardé ou la préférence système
-  const currentTheme = localStorage.getItem('theme') || 
-                      (prefersDarkScheme.matches ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  updateThemeIcon(currentTheme);
+  // Fonction pour appliquer le thème
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeUI(theme);
+  }
 
+  // Fonction pour mettre à jour l'interface du thème
+  function updateThemeUI(theme) {
+    if (theme === 'dark') {
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Mode clair';
+    } else {
+      themeIcon.textContent = '🌙';
+      themeText.textContent = 'Mode sombre';
+    }
+  }
+
+  // Vérifier le thème sauvegardé ou la préférence système
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = prefersDarkScheme.matches;
+    
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(systemPrefersDark ? 'dark' : 'light');
+    }
+  } 
+   
   // Basculer entre les thèmes
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
+    applyTheme(newTheme);
   }
 
-  // Mettre à jour l'icône du thème
-  function updateThemeIcon(theme) {
-    if (theme === 'dark') {
-      themeIcon.textContent = '☀️';
-      themeIcon.style.transform = 'rotate(0deg)';
-    } else {
-      themeIcon.textContent = '🌙';
-      themeIcon.style.transform = 'rotate(0deg)';
+  // Écouter les changements de préférence système
+  prefersDarkScheme.addListener((e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
     }
-  }
+  });
 
-  // Écouter le clic sur le bouton de thème
+  // Initialiser le thème
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
+    initTheme();
   }
 
   // Détection de la visibilité des sections pour les animations
