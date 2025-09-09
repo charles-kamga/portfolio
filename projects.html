@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projets | Charles Kamga</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
+  <meta name="description" content="Projets récents de Charles Kamga - Développeur Web.">
+  <meta name="author" content="Charles Kamga">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html">Charles Kamga</a>
+      </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="skills.html">Compétences</a></li>
+        <li><a href="projects.html">Projets</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projets récents</h2>
+      
+      <div class="project">
+        <h3>MeetLocal - Application de Visioconférence</h3>
+        <p>Une application web de visioconférence en temps réel avec partage d'écran et chat intégré.</p>
+        <div class="project-details">
+          <h4>Fonctionnalités :</h4>
+          <ul>
+            <li>Appels vidéo et audio en temps réel avec WebRTC</li>
+            <li>Système de salles de discussion avec Socket.IO</li>
+            <li>Partage d'écran intégré</li>
+            <li>Chat en temps réel</li>
+            <li>Interface utilisateur moderne et réactive</li>
+          </ul>
+          <h4>Technologies utilisées :</h4>
+          <div class="tech-stack">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">Socket.IO</span>
+            <span class="tech-tag">WebRTC</span>
+            <span class="tech-tag">HTML5/CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/darwinx-27/meetlocal" target="_blank" class="btn">Code source</a>
+            <a href="demo.html" class="btn">Voir la démo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Dictionnaire bilingue en C</h3>
+        <p>Programme avec table de hachage pour gérer les traductions entre langues locales.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Charles Kamga. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

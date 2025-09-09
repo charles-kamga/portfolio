@@ -4,154 +4,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu a');
   const logoLink = document.querySelector('.logo a');
-
-  // Fonction pour basculer le menu
-  function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-    
-    // Mise à jour de l'attribut aria-expanded
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-  }
-
-  // Fermer le menu lors du clic sur un lien
-  function closeMenu() {
-    menuToggle.classList.remove('active');
-    navMenu.classList.remove('active');
-    document.body.classList.remove('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-
-  // Événements
-  if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
-  }
-
-  // Fermer le menu lors du clic sur un lien ou le logo
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-  
-  if (logoLink) {
-    logoLink.addEventListener('click', closeMenu);
-  }
-
-  // Animation des barres de compétences
-  function setupSkillsAnimation() {
-    // Vérifier si IntersectionObserver est disponible
-    if (!('IntersectionObserver' in window)) {
-      // Fallback pour les navigateurs qui ne supportent pas IntersectionObserver
-      document.querySelectorAll('.skill-level').forEach(level => {
-        const width = level.textContent.trim();
-        level.style.width = width;
-      });
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const skillLevel = entry.target.querySelector('.skill-level');
-        if (!skillLevel) return;
-        
-        const width = skillLevel.getAttribute('data-width');
-        if (!width) return;
-        
-        if (entry.isIntersecting) {
-          // Entrée dans la zone visible : animation vers la largeur cible
-          skillLevel.style.transition = 'width 1.5s ease-in-out';
-          setTimeout(() => {
-            skillLevel.style.width = width;
-          }, 50);
-        } else {
-          // Sortie de la zone visible : retour à zéro
-          skillLevel.style.transition = 'width 0.5s ease-out';
-          skillLevel.style.width = '0';
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    // Initialiser chaque barre de compétence
-    document.querySelectorAll('.skill-bar').forEach(bar => {
-      const skillLevel = bar.querySelector('.skill-level');
-      if (skillLevel) {
-        const width = skillLevel.textContent.trim();
-        skillLevel.setAttribute('data-width', width);
-        skillLevel.style.width = '0';
-        observer.observe(bar);
-      }
-    });
-  }
-  
-  // Initialiser l'animation des compétences
-  setupSkillsAnimation();
-
-  // Fermer le menu lors du redimensionnement de la fenêtre
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    document.body.classList.add('resize-animation-stopper');
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      document.body.classList.remove('resize-animation-stopper');
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
-    }, 400);
-  });
-
-
-  // Fonction pour vérifier si un élément est visible à l'écran
-  function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
-    );
-  }
-
-  // Fonction pour gérer l'animation des sections
-  function handleScrollAnimation() {
-    const sections = document.querySelectorAll('.section');
-    
-    sections.forEach(section => {
-      if (isInViewport(section)) {
-        section.classList.add('visible');
-      }
-    });
-  }
-
-  // Écouteur d'événement pour le défilement
-  window.addEventListener('scroll', handleScrollAnimation);
-  
-  // Vérifier les sections visibles au chargement de la page
-  handleScrollAnimation();
-
-  // Animation fluide pour les liens de navigation
-  document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 20,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Gestion du thème
-  // Gestion du thème
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.querySelector('.theme-icon');
   const themeText = document.querySelector('.theme-text');
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // Fonction pour basculer le menu
+  function toggleMenu() {
+    if (!menuToggle) return;
+    menuToggle.classList.toggle('active');
+    navMenu?.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+    
+    // Mise à jour de l'attribut aria-expanded
+    if (menuToggle) {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+    }
+  }
+
+  // Fermer le menu lors du clic sur un lien
+  function closeMenu() {
+    if (!menuToggle) return;
+    menuToggle.classList.remove('active');
+    navMenu?.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
 
   // Fonction pour appliquer le thème
   function applyTheme(theme) {
@@ -162,12 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Fonction pour mettre à jour l'interface du thème
   function updateThemeUI(theme) {
-    if (theme === 'dark') {
-      themeIcon.textContent = '☀️';
-      themeText.textContent = 'Mode clair';
-    } else {
-      themeIcon.textContent = '🌙';
-      themeText.textContent = 'Mode sombre';
+    if (themeIcon) {
+      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+    if (themeText) {
+      themeText.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
     }
   }
 
@@ -181,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       applyTheme(systemPrefersDark ? 'dark' : 'light');
     }
-  } 
-   
+  }
+
   // Basculer entre les thèmes
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -190,21 +68,62 @@ document.addEventListener('DOMContentLoaded', function() {
     applyTheme(newTheme);
   }
 
-  // Écouter les changements de préférence système
-  prefersDarkScheme.addListener((e) => {
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
-
-  // Initialiser le thème
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-    initTheme();
+  // Événements du menu
+  if (menuToggle) {
+    menuToggle.addEventListener('click', toggleMenu);
   }
 
+  // Fermer le menu lors du clic sur un lien ou le logo
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  if (logoLink) {
+    logoLink.addEventListener('click', closeMenu);
+  }
+
+  // Gestion du thème
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+  
+  // Initialiser le thème
+  initTheme();
+
+  // Écouter les changements de préférence système (API moderne)
+  if (typeof prefersDarkScheme.addEventListener === 'function') {
+    prefersDarkScheme.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  } else if (typeof prefersDarkScheme.addListener === 'function') {
+    // Fallback pour anciens navigateurs
+    prefersDarkScheme.addListener((e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
+  // Initialiser l'animation des compétences
+  setupSkillsAnimation();
+
+  // Gestion du redimensionnement de la fenêtre
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.body.classList.remove('resize-animation-stopper');
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
+    }, 400);
+  });
+
   // Détection de la visibilité des sections pour les animations
-  const observer = new IntersectionObserver((entries) => {
+  const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
@@ -214,8 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
     threshold: 0.1
   });
 
+  // Observer les sections
   document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
+    sectionObserver.observe(section);
   });
 
   // Gestion du clic sur le bouton email
@@ -248,3 +168,74 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+/**
+ * Animation des barres de compétences
+ * Utilise IntersectionObserver pour animer la largeur des barres
+ * lorsque celles-ci entrent dans la zone visible de l'écran.
+ */
+function setupSkillsAnimation() {
+  // Fonction utilitaire pour récupérer la largeur d'une compétence
+  function getSkillWidth(element) {
+    const width = element.getAttribute('data-skill') || 
+                 element.textContent.trim() ||
+                 element.getAttribute('data-width');
+    return width && !width.includes('%') ? width + '%' : width;
+  }
+
+  // Vérifier si la page contient des compétences
+  const skillBars = document.querySelectorAll('.skill-bar');
+  if (!skillBars.length) return;
+
+  // Fallback pour les navigateurs sans IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    skillBars.forEach(bar => {
+      const level = bar.querySelector('.skill-level');
+      if (level) {
+        const width = getSkillWidth(level);
+        if (width) level.style.width = width;
+      }
+    });
+    return;
+  }
+
+  // Configuration de l'observateur
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const level = entry.target.querySelector('.skill-level');
+      if (!level) return;
+      
+      const width = level.getAttribute('data-width');
+      if (!width) return;
+      
+      if (entry.isIntersecting) {
+        if (!level.hasAttribute('data-animated')) {
+          level.setAttribute('data-animated', 'true');
+          level.style.transition = 'width 1.5s ease-in-out';
+          requestAnimationFrame(() => level.style.width = width);
+        }
+      } else if (entry.boundingClientRect.top > 0) {
+        level.removeAttribute('data-animated');
+        level.style.transition = 'width 0.5s ease-out';
+        level.style.width = '0%';
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Initialisation des barres de compétences
+  skillBars.forEach(bar => {
+    const level = bar.querySelector('.skill-level');
+    if (level) {
+      const width = getSkillWidth(level);
+      if (width) {
+        level.setAttribute('data-width', width);
+        level.style.width = '0%';
+        level.style.transition = 'none';
+        observer.observe(bar);
+      }
+    }
+  });
+}
