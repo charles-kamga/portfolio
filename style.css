@@ -593,19 +593,6 @@ h2 {
   background: rgba(0, 0, 0, 0.5);
 }
 
-
-@keyframes float {
-  0% {
-    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
-  }
-  50% {
-    border-radius: 50% 50% 60% 40% / 50% 40% 60% 50%;
-  }
-  100% {
-    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
-  }
-}
-
 .hero-content {
   position: relative;
   display: flex;
