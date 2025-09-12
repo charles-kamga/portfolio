@@ -26,25 +26,64 @@ html, body {
 /* App container */
 .app-container {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* footer visible */
-  padding-top: var(--nav-height, 80px); /* Espace pour la navbar fixe */
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
 }
 
-/* Reset du padding pour le contenu principal */
+/* Content wrapper */
+.content-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - var(--nav-height, 80px));
+  margin-top: var(--nav-height, 80px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  width: 300px;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-color);
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Main content */
 .main-content {
   flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--bg-color);
 }
 
 /* Ajustements pour les écrans mobiles */
 @media (max-width: 1024px) {
-  .app-container {
-    padding-top: var(--nav-height, 80px);
+  .content-wrapper {
+    flex-direction: column;
+    position: static;
+    height: auto;
+    margin-top: 0;
+    padding-top: 10px;
   }
   
-  /* Ajustement spécifique pour la page d'accueil */
-  .content-wrapper {
-    margin-top: 0;
+  .profile-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    box-shadow: none;
+    padding-top: 10px;
+  }
+  
+  .main-content {
+    height: auto;
+    overflow: visible;
   }
 }
 

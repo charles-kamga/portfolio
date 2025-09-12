@@ -1,72 +1,32 @@
 /* Home Page Specific Styles */
 
-/* Page Container */
-.contact-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100vh;
+/* Hero Section */
+.hero {
+  padding: 100px 0;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--bg-color);
-  z-index: 1;
-  overflow: hidden;
 }
 
-/* Content Wrapper */
-.content-wrapper {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  height: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* Profile Sidebar */
 .profile-sidebar {
-  position: relative;
-  padding: 2rem 1.25rem;
-  background: rgba(30, 30, 30, 0.9);
+  position: sticky;
+  top: 40px;
+  padding: 30px 20px;
+  background: rgba(30, 30, 30, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  height: 100%;
-  width: 350px;
-  min-width: 300px;
+  min-height: calc(100vh - 100px);
   max-height: 90vh;
+  width: 100%;
   overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* Style de la barre de défilement */
-.profile-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.profile-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 3px;
-}
-
-.profile-sidebar::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-}
-
-.profile-sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -94,7 +54,25 @@ h1 {
   }
 }
 
-/* Profile Picture */
+/* Style de la barre de défilement pour Chrome/Edge/Safari */
+.profile-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.profile-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.profile-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.profile-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 .profile-pic {
   position: relative;
   width: 200px;
@@ -107,16 +85,12 @@ h1 {
   background: url("../assets/images/ins_link_DBasbMSRM3T_3-1.jpg") no-repeat center/cover;
 }
 
-.profile-pic:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
 /* Navigation Sidebar */
 .nav-sidebar {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
   margin: 1px 0 -20px;
   padding: 10px 0;
 }
@@ -157,72 +131,116 @@ h1 {
 
 /* Main Content */
 .main-content {
-  flex: 1;
-  padding: 2rem;
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 90vh;
+  box-sizing: border-box;
   overflow-y: auto;
-  height: 100%;
-  max-height: 90vh;
-  transition: all 0.3s ease;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Pour Firefox */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin-top: -20px;
+    padding: 40px;
+  }
+  
+  .profile-sidebar {
+    height: auto;
+    min-height: 50vh;
+    max-height: 50vh;
+    margin-bottom: 20px;
+    padding: 40px;
+  }
+  
+  /* Ajustement pour les grands écrans */
+  @media (min-height: 900px) {
+    .profile-sidebar {
+      min-height: 40vh;
+      max-height: 40vh;
+    }
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .main-content h2 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+  
+  .main-content p {
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+}
+
+.main-content h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 2em;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.main-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.main-content p {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+/* Conteneur principal avec défilement */
+.main-content {
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  position: relative;
-}
-
-/* Style de la barre de défilement pour le contenu principal */
-.main-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.main-content::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 4px;
-}
-
-.main-content::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-.main-content::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Sections principales */
 .about-section {
   background-color: rgba(30, 30, 30, 0.281);
   padding: 25px 30px;
-  margin: 0 0 20px 0;
+  margin: 0;
   border-radius: 8px;
   backdrop-filter: blur(5px);
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .about-section h2 {
-  color: var(--primary-color);
+  align-items: center;
+  justify-content: center;
   margin: 0 0 20px 0;
-  font-size: 2em;
+  color: var(--primary-color);
   text-align: center;
   position: relative;
-  padding-bottom: 15px;
-}
-
-.about-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--primary-color);
-  border-radius: 2px;
+  padding: 15px 0;
 }
 
 .about-section h3 {
@@ -246,52 +264,62 @@ h1 {
 .about-section p {
   color: #ddd;
   line-height: 1.8;
-  margin: 10px 0 30px 0;
-  max-width: 100%;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Section des centres d'intérêt */
 .interests-section {
   background-color: transparent;
   padding: 0;
   margin: 40px 0;
   min-height: auto;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
-.interests {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Styles pour les éléments de la liste des centres d'intérêt */
 .interests-section li {
   position: relative;
   padding: 15px 15px 15px 60px;
-  margin: 0 0 15px 0;
-  transition: all 0.3s ease;
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 6px;
-  background: rgba(30, 30, 30, 0.5);
+  margin: 0 0 12px 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.interests-section li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-color: var(--primary-color);
+  background: rgba(40, 40, 40, 0.8);
 }
 
 .interests-section li i {
   position: absolute;
-  top: 15px;
   left: 15px;
-  width: 32px;
-  height: 32px;
-  background: rgba(76, 201, 240, 0.1);
+  top: 20px;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  background: rgba(76, 201, 240, 0.15);
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  color: var(--primary-color);
-  font-size: 1.1rem;
+  border-radius: 50%;
   transition: all 0.3s ease;
 }
 
@@ -306,8 +334,8 @@ h1 {
   color: #fff;
   font-size: 1.15rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
   margin-bottom: 8px;
+  letter-spacing: 0.3px;
 }
 
 .interests-section li p {
@@ -337,17 +365,35 @@ h1 {
   border-radius: 2px;
 }
 
-/* Section des centres d'intérêt - Styles spécifiques */
+/* Centres d'intérêt */
 .interests {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 0;
-  list-style: none;
+  flex: 1;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  padding: 5px;
+}
+
+.interests ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 100%;
+  padding-right: 5px;
+}
+
+.main-content {
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Style de la barre de défilement pour les centres d'intérêt */
@@ -369,14 +415,36 @@ h1 {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Responsive Design - Tablettes */
-@media (max-width: 992px) {
-  .interests {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
+/* Styles pour les éléments de la liste des centres d'intérêt */
+.interests li {
+  display: block;
+  background-color: rgba(44, 44, 44, 0.452);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+/* Styles pour le texte dans les éléments de la liste */
+.interests li span {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+}
+
+.interests li span p {
+  margin: 5px 0 0 0;
+  color: #ccc;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .interests li {
-    padding: 1.25rem;
+    text-align: left;
+    padding: 15px;
   }
   
   .interests-section li {
@@ -385,10 +453,58 @@ h1 {
   
   .interests-section li i {
     left: 10px;
-    top: 15px;
     font-size: 1.5rem;
     width: 35px;
     height: 35px;
+  }
+  
+  .interests li span {
+    padding: 10px 5px;
+  }
+  
+  .interests li span p {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    padding: 15px 30px 30px;
+  }
+  
+  .main-content {
+    padding: 40px;
+  }
+}
+
+/* Ajustements pour la version mobile */
+@media (max-width: 1024px) {
+  .app-container {
+    padding-top: 0 !important;
+  }
+  
+  .content-wrapper {
+    margin-top: 0;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .interests-section li i {
+    top: 15px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .main-content {
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .interests-section {
@@ -397,7 +513,7 @@ h1 {
   }
   
   .interests-section li {
-    padding: 15px 15px 15px 55px;
+    padding: 15px 15px 15px 60px;
     margin: 0 0 10px 0;
     width: 100%;
     box-sizing: border-box;
@@ -425,6 +541,28 @@ h1 {
     min-height: auto;
     max-height: none;
     padding: 25px 15px;
+    text-align: center;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .main-content {
+    padding: 10px;
+    min-height: auto;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
+    margin: 0 auto 15px;
+  }
+  
+  .profile-description {
+    font-size: 0.95em;
+    margin: 8px 0 12px;
   }
   
   .nav-sidebar {
@@ -468,43 +606,44 @@ h1 {
     margin: 10px auto 5px;
   }
   
-  .interests {
-    grid-template-columns: 1fr;
-  }
-  
   .interests li {
-    padding: 1.25rem;
+    flex-direction: column;
     text-align: center;
+    padding: 15px 10px;
+    margin: 5px 0;
   }
   
-  .interests li i {
-    font-size: 1.8rem;
+  .interests li span {
+    font-size: 1.1em;
+    margin: 0 0 8px 0;
+    padding: 0;
+  }
+  
+  .interests li p {
+    margin: 5px 0 0 0;
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+  
+  /* Ajustements pour les très petits écrans */
+  @media (max-width: 480px) {
+    .nav-sidebar a {
+      flex: 1 0 100%;
+      max-width: 100%;
+      padding: 10px;
+    }
+    
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .about-section h2,
+    .interests-section h3 {
+      font-size: 1.3em;
+    }
   }
 }
 
-@media (max-width: 480px) {
-  .nav-sidebar a {
-    flex: 1 0 100%;
-    max-width: 100%;
-    padding: 10px;
-  }
-  
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .about-section h2,
-  .interests-section h3 {
-    font-size: 1.3em;
-  }
-  
-  .profile-sidebar {
-    max-width: 100%;
-    padding: 10px;
-  }
-  
-  .interests li {
-    padding: 1rem;
-  }
-}
+
+
