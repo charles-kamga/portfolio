@@ -8,22 +8,24 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="description" content="Portfolio de Charles Kamga - Développeur Web, Étudiant ICT, passionné d'IA et de cybersécurité.">
   <meta name="author" content="Charles Kamga">
 </head>
 
-<body class="d-flex flex-column h-100">
-  <main>
+<body>
+  <div class="app-container">
     <div class="content-wrapper">
         <div class="profile-sidebar">
-          <h1>Charles Kamga</h1>
+          <h1 class="profile-name">Charles Kamga</h1>
           <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
           <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
           <nav class="nav-sidebar">
-            <a href="#about-section">À propos</a>
-            <a href="skills.html">Compétences</a>
-            <a href="projects.html">Projets</a>
-            <a href="contact.html">Contact</a>
+            <a href="#about-section"><i class="fas fa-user-tie"></i> À propos</a>
+            <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
+            <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
           </nav>
         </div>
         
@@ -40,22 +42,28 @@
             <h3>Centres d'intérêt</h3>
             <div class="interests">
               <ul>
-                <li><span>Amateur d'échecs 
+                <li><span><i class="fas fa-chess-knight"></i> Amateur d'échecs 
                   <p>Je joue aux echecs depuis mon plus jeune âge. Je me suis toujours dit qu'il est bon de toujours avoir un coup d'avance</p>
-                </span><img src="assets/icons/jeux_d_echecs.png" alt="Amateur d'échecs" class="interest-icon"></li>
-                <li><span>Cybersécurité
-                  <p>Aucun system n'est invaillible, mais c'est important de toutjours se sentir en sécurité</p>
-                </span><img src="assets/icons/secusecu.png" alt="Cybersécurité" class="interest-icon"></li>
-                <li><span>Intelligence artificielle
+                </span></li>
+                <li><span><i class="fas fa-shield-alt"></i> Cybersécurité
+                  <p>Aucun system n'est invaillable, mais c'est important de toutjours se sentir en sécurité</p>
+                </span></li>
+                <li><span><i class="fas fa-robot"></i> Intelligence artificielle
                   <p>L'impact de l'IA Dans le monde de l'informatique est ineluctable. Mieux vaut s'adapter et comprendre l'outil que de le renier</p>
-                </span><img src="assets/icons/intelligence-artificielle.png" alt="Intelligence artificielle" class="interest-icon"></li>
+                </span></li>
               </ul>
             </div>
           </section>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+  <footer>
+    <p>&copy; 2025 Charles Kamga. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/layout.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -12,15 +12,46 @@
 .profile-sidebar {
   position: sticky;
   top: 40px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 30px 20px;
+  background: rgba(30, 30, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  height: 90vh; /* Hauteur de 90% de la vue */
+  min-height: calc(100vh - 100px);
+  max-height: 90vh;
   width: 100%;
-  overflow-y: auto; /* Activation du défilement vertical */
-  scrollbar-width: thin; /* Pour Firefox */
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Pour Firefox */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-align: center;
+  color: #aff6ff;
+  text-shadow: 0 2px 10px rgba(51, 174, 190, 0.8);
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px var(--primary-color),
+      0 0 40px var(--primary-color);
+  }
+  to {
+    text-shadow: 
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px var(--primary-color),
+      0 0 50px var(--primary-color);
+  }
 }
 
 /* Style de la barre de défilement pour Chrome/Edge/Safari */
@@ -46,10 +77,17 @@
   position: relative;
   width: 200px;
   height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   margin: 0 auto 20px;
   border-radius: 8px;
   overflow: hidden;
   background: url("../assets/images/ins_link_DBasbMSRM3T_3-1.jpg") no-repeat center/cover;
+}
+
+.profile-pic:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Navigation Sidebar */
@@ -71,8 +109,21 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  gap: 12px;
   background: var(--bg-color-secondary);
   border: 1px solid var(--border-color);
+}
+
+.nav-sidebar a i {
+  width: 20px;
+  text-align: center;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.nav-sidebar a:hover i {
+  transform: scale(1.2);
+  color: var(--accent-color);
 }
 
 .nav-sidebar a:hover,
@@ -108,10 +159,18 @@
   
   .profile-sidebar {
     height: auto;
-    min-height:   70vh;
-    max-height: 70vh;
+    min-height: 50vh;
+    max-height: 50vh;
     margin-bottom: 20px;
     padding: 40px;
+  }
+  
+  /* Ajustement pour les grands écrans */
+  @media (min-height: 900px) {
+    .profile-sidebar {
+      min-height: 40vh;
+      max-height: 40vh;
+    }
   }
   
   .content-wrapper {
@@ -160,27 +219,32 @@
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 /* Sections principales */
 .about-section {
   background-color: rgba(30, 30, 30, 0.281);
-  padding: 12px;
-  margin: -10px;
-  margin-bottom: 10px;
+  padding: 25px 30px;
+  margin: 0;
   border-radius: 8px;
   backdrop-filter: blur(5px);
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .about-section h2 {
   align-items: center;
   justify-content: center;
-  margin-top: 0;
+  margin: 0 0 20px 0;
   color: var(--primary-color);
+  text-align: center;
+  position: relative;
+  padding: 15px 0;
 }
 
 .about-section h3 {
@@ -204,28 +268,86 @@
 .about-section p {
   color: #ddd;
   line-height: 1.8;
-  margin-bottom: 0;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .interests-section {
-  background-color: rgba(37, 37, 37, 0.274);
-  padding: 12px;
-  margin: -10px;
-  margin-top: 10px;
-  border-radius: 8px;
+  background-color: transparent;
+  padding: 0;
+  margin: 40px 0;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.interests-section li {
+  position: relative;
+  padding: 15px 15px 15px 60px;
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  margin: 0 0 12px 0;
+  transition: all 0.3s ease;
   backdrop-filter: blur(5px);
-  min-height: 50vh;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
   display: flex;
   flex-direction: column;
 }
 
-.interests-section img.interest-icon {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-left: 15px;
-  border-radius: 8px;
-  padding: 10px;
+.interests-section li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-color: var(--primary-color);
+  background: rgba(40, 40, 40, 0.8);
+}
+
+.interests-section li i {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  background: rgba(76, 201, 240, 0.15);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.interests-section li:hover i {
+  transform: scale(1.1);
+  color: var(--accent-color);
+  background: rgba(76, 201, 240, 0.2);
+}
+
+.interests-section li span {
+  display: block;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.interests-section li p {
+  color: #d1d1d1;
+  margin: 10px 0 0;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .interests-section h3 {
@@ -251,7 +373,7 @@
 .interests {
   flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  padding: 5px;
 }
 
 .interests ul {
@@ -260,34 +382,57 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
   max-height: 100%;
+  padding-right: 5px;
 }
 
-.interests li {
-  display: flex;
-  align-items: center;
-  background-color: rgba(44, 44, 44, 0.452);
-  border-radius: 8px;
-  padding: 12px 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.342);
-  gap: 15px;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.interests li img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.interests li span {
+.main-content {
+  padding: 0 20px 20px 20px;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Style de la barre de défilement pour les centres d'intérêt */
+.interests::-webkit-scrollbar {
+  width: 6px;
+}
+
+.interests::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.interests::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.interests::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Styles pour les éléments de la liste des centres d'intérêt */
+.interests li {
+  display: block;
+  background-color: rgba(44, 44, 44, 0.452);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+/* Styles pour le texte dans les éléments de la liste */
+.interests li span {
+  display: block;
+  padding: 15px 20px;
   color: #fff;
 }
 
@@ -302,13 +447,27 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .interests li {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
+    text-align: left;
+    padding: 15px;
   }
   
-  .interests li img {
-    margin-bottom: 15px;
+  .interests-section li {
+    padding: 15px 15px 15px 55px;
+  }
+  
+  .interests-section li i {
+    left: 10px;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+  }
+  
+  .interests li span {
+    padding: 10px 5px;
+  }
+  
+  .interests li span p {
+    font-size: 0.85rem;
   }
 }
 @media (max-width: 1024px) {
@@ -326,8 +485,50 @@
 @media (max-width: 768px) {
   .content-wrapper {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 10px 15px 20px;
+    gap: 15px;
+    padding: 10px 0 15px;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .interests-section li i {
+    top: 15px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .main-content {
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .interests-section {
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .interests-section li {
+    padding: 15px 15px 15px 60px;
+    margin: 0 0 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .about-section {
+    padding: 15px;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .about-section h2 {
+    font-size: 1.5rem;
+    padding: 10px 0;
+    margin-bottom: 15px;
   }
   
   .profile-sidebar {
@@ -335,9 +536,13 @@
     top: 0;
     width: 100%;
     margin: 0 0 20px 0;
-    height: auto;
-    padding: 20px 15px;
+    min-height: auto;
+    max-height: none;
+    padding: 25px 15px;
     text-align: center;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   
   .main-content {
@@ -346,9 +551,11 @@
   }
   
   .profile-pic {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 10px;
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
+    margin: 0 auto 15px;
   }
   
   .profile-description {
@@ -437,14 +644,4 @@
 }
 
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+
