@@ -52,36 +52,80 @@
         <div class="social-section">
           <h2>Mes Réseaux Sociaux</h2>
           <div class="social-links">
-            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/charles_c_kamga/" class="social-link" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-instagram"></i>
               <span>Instagram</span>
             </a>
-            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/charles-kamga/" class="social-link" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-linkedin"></i>
               <span>LinkedIn</span>
             </a>
-<a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://fr.fiverr.com/charleskamga" class="social-link" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-hand-holding-usd"></i>
               <span>Fiverr</span>
+            </a>
+            <a href="https://www.facebook.com/charles.kamga.980" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
             </a>
             <a href="tel:+237654175725" class="social-link">
               <i class="fas fa-phone"></i>
               <span>+237 654 175 725</span>
             </a>
-            <a href="mailto:charleskamgapr@gmail.com" class="social-link">
-              <i class="fas fa-envelope"></i>
-              <span>Email</span>
-            </a>
+          </div>
+        </div>
+        
+        <!-- Section Contact Form -->
+        <div class="contact-form-section">
+          <button id="toggle-form-btn" class="contact-button">
+            <i class="fas fa-envelope"></i> Envoyer un mail
+          </button>
+          
+          <!-- Formulaire de contact Formspree -->
+          <form id="contact-form" action="https://formspree.io/f/mjkezgnb" method="POST" style="display: none;">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Votre nom" required>
+              </div>
+              
+              <div class="form-group">
+                <input type="email" name="_replyto" placeholder="Votre email" required>
+              </div>
+              
+              <div class="form-group">
+                <input type="text" name="subject" placeholder="Objet" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <textarea name="message" placeholder="Votre message" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Envoyer
+            </button>
+            
+            <div id="form-status" class="form-status"></div>
+          </form>
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
   </main>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init("gNbjGhGq7Zhpu3ZAK");
+  </script>
 
   <script src="js/theme.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/check-navbar.js"></script>
   <script src="js/layout.js"></script>
-  <script src="script.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/copy-phone.js"></script>
 </body>
 </html>
