@@ -390,6 +390,13 @@ h1 {
     width: 35px;
     height: 35px;
   }
+}
+  
+  .main-content {
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
   
   .interests-section {
     margin: 20px 0;
@@ -397,7 +404,7 @@ h1 {
   }
   
   .interests-section li {
-    padding: 15px 15px 15px 55px;
+    padding: 15px 15px 15px 60px;
     margin: 0 0 10px 0;
     width: 100%;
     box-sizing: border-box;
@@ -482,6 +489,7 @@ h1 {
   }
 }
 
+/* Ajustements pour les très petits écrans */
 @media (max-width: 480px) {
   .nav-sidebar a {
     flex: 1 0 100%;
@@ -504,7 +512,10 @@ h1 {
     padding: 10px;
   }
   
+  .interests {
+    grid-template-columns: 1fr;
+  }
+  
   .interests li {
     padding: 1rem;
   }
-}
