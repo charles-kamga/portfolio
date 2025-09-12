@@ -16,114 +16,53 @@
 </head>
 
 <body>
-  <main class="contact-container">
+  <div class="app-container">
     <div class="content-wrapper">
-      <aside class="profile-sidebar">
-        <h1 class="profile-name">Charles Kamga</h1>
-        <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
-        <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
-        <nav class="nav-sidebar">
-          <a href="#about-section" class="active"><i class="fas fa-user-tie"></i> À propos</a>
-          <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
-          <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
-          <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-        </nav>
-      </aside>
-      
-      <section class="main-content">
-        <article class="about-section" id="about-section">
-          <h2>Salut ! Je suis Charles Kamga</h2>
-          <h3>À propos de moi :</h3>
-          <p>
-            Étudiant en informatique passionné par le développement web et la cybersécurité. J'explore la programmation en C, Python et JavaScript, et j'utilise Linux comme environnement privilégié pour apprendre et expérimenter. Curieux et persévérant, je m'intéresse aussi aux outils d'intelligence artificielle et aux systèmes sécurisés. Mon objectif : renforcer mes compétences pour construire une carrière tournée vers l'innovation et la protection des systèmes numériques.
-          </p>
-        </article>
+        <div class="profile-sidebar">
+          <h1 class="profile-name">Charles Kamga</h1>
+          <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
+          <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
+          <nav class="nav-sidebar">
+            <a href="#about-section"><i class="fas fa-user-tie"></i> À propos</a>
+            <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
+            <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+          </nav>
+        </div>
         
-        <article class="interests-section">
-          <h3>Centres d'intérêt</h3>
-          <ul class="interests">
-            <li>
-              <i class="fas fa-chess-knight"></i>
-              <div>
-                <h4>Amateur d'échecs</h4>
-                <p>Je joue aux échecs depuis mon plus jeune âge. Je me suis toujours dit qu'il est bon de toujours avoir un coup d'avance.</p>
-              </div>
-            </li>
-            <li>
-              <i class="fas fa-shield-alt"></i>
-              <div>
-                <h4>Cybersécurité</h4>
-                <p>Aucun système n'est inviolable, mais c'est important de toujours se sentir en sécurité.</p>
-              </div>
-            </li>
-            <li>
-              <i class="fas fa-robot"></i>
-              <div>
-                <h4>Intelligence Artificielle</h4>
-                <p>L'impact de l'IA dans le monde de l'informatique est inéluctable. Mieux vaut s'adapter et comprendre l'outil que de le renier.</p>
-              </div>
-            </li>
-          </ul>
-        </article>
-      </section>
-    </div>
-  </main>
-  <footer>
-    <p>&copy; 2025 Charles Kamga. Tous droits réservés.</p>
-  </footer>
-
-  <!-- Contact Button -->
-  <button id="contactBtn" class="contact-btn">
-    <i class="fas fa-envelope"></i> Me contacter
-  </button>
-
-  <!-- Contact Modal -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Contactez-moi</h2>
-        <span class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <form id="contactModalForm" class="contact-form">
-          <div class="form-group">
-            <label for="modalName">Nom complet *</label>
-            <input type="text" id="modalName" name="name" required>
-            <span class="error-message"></span>
-          </div>
+        <div class="main-content">
+          <section class="about-section">
+            <h2>Salut ! Je suis Charles Kamga</h2>
+            <h3>À propos de moi : </h3>
+            <p>
+              Étudiant en informatique passionné par le développement web et la cybersécurité. J’explore la programmation en C, Python et JavaScript, et j’utilise Linux comme environnement privilégié pour apprendre et expérimenter. Curieux et persévérant, je m’intéresse aussi aux outils d’intelligence artificielle et aux systèmes sécurisés. Mon objectif : renforcer mes compétences pour construire une carrière tournée vers l’innovation et la protection des systèmes numériques.
+            </p>
+          </section>
           
-          <div class="form-group">
-            <label for="modalEmail">Email *</label>
-            <input type="email" id="modalEmail" name="email" required>
-            <span class="error-message"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="modalSubject">Objet *</label>
-            <input type="text" id="modalSubject" name="subject" required>
-            <span class="error-message"></span>
-          </div>
-          
-          <div class="form-group">
-            <label for="modalMessage">Message *</label>
-            <textarea id="modalMessage" name="message" rows="5" required></textarea>
-            <span class="error-message"></span>
-          </div>
-          
-          <button type="submit" class="submit-btn">
-            <span class="btn-text">Envoyer</span>
-            <div class="spinner"></div>
-          </button>
-        </form>
+          <section class="interests-section">
+            <h3>Centres d'intérêt</h3>
+            <div class="interests">
+              <ul>
+                <li><span><i class="fas fa-chess-knight"></i> Amateur d'échecs 
+                  <p>Je joue aux echecs depuis mon plus jeune âge. Je me suis toujours dit qu'il est bon de toujours avoir un coup d'avance</p>
+                </span></li>
+                <li><span><i class="fas fa-shield-alt"></i> Cybersécurité
+                  <p>Aucun system n'est invaillable, mais c'est important de toutjours se sentir en sécurité</p>
+                </span></li>
+                <li><span><i class="fas fa-robot"></i> Intelligence artificielle
+                  <p>L'impact de l'IA Dans le monde de l'informatique est ineluctable. Mieux vaut s'adapter et comprendre l'outil que de le renier</p>
+                </span></li>
+              </ul>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
 
+
   <script src="js/theme.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/check-navbar.js"></script>
   <script src="js/layout.js"></script>
-  <script src="js/contact-modal.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
