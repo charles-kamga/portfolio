@@ -6,14 +6,16 @@
   <title>Projets | Charles Kamga</title>
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
   <meta name="description" content="Projets récents de Charles Kamga - Développeur Web.">
   <meta name="author" content="Charles Kamga">
 </head>
 
 <body>
-  <nav>
+  <header class="navbar">
     <div class="nav-container">
       <div class="logo">
         <a href="index.html">Charles Kamga</a>
@@ -24,31 +26,49 @@
         <span class="menu-icon"></span>
       </button>
       <ul id="nav-menu" class="nav-menu">
-        <li><a href="index.html#about"><i class="fas fa-user-tie"></i> À propos</a></li>
-        <li><a href="skills.html"><i class="fas fa-code"></i> Compétences</a></li>
-        <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="index.html#about" class="nav-link"><i class="fas fa-user-tie"></i> À propos</a></li>
+        <li><a href="skills.html" class="nav-link"><i class="fas fa-code"></i> Compétences</a></li>
+        <li><a href="projects.html" class="nav-link active"><i class="fas fa-project-diagram"></i> Projets</a></li>
+        <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </div>
-  </nav>
+  </header>
 
   <section id="projects" class="section">
-    <div class="container">
-      <h2>Projets récents</h2>
-      
+    <div class="projects-header">
+      <h2>Mes Projets</h2>
+      <p>Découvrez une sélection de mes projets récents et des technologies que j'ai utilisées pour les réaliser.</p>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- Projet 1 -->
       <div class="project">
+        <div class="project-gallery">
+          <div class="main-image">
+            <img src="assets/projects/meetlocal/PageDaceuil.png" alt="Page d'accueil de MeetLocal" class="active">
+          </div>
+          <div class="thumbnail-container">
+            <img src="assets/projects/meetlocal/PageDaceuil.png" alt="Page d'accueil" class="thumbnail active">
+            <img src="assets/projects/meetlocal/InterfacePrincipaleDeReunion.png" alt="Interface de réunion" class="thumbnail">
+            <img src="assets/projects/meetlocal/PartageDEcrant.png" alt="Partage d'écran" class="thumbnail">
+            <img src="assets/projects/meetlocal/ChatInstantanné.png" alt="Chat instantané" class="thumbnail">
+            <img src="assets/projects/meetlocal/Particiants.png" alt="Liste des participants" class="thumbnail">
+            <img src="assets/projects/meetlocal/CreationDeSalle.png" alt="Création de salle" class="thumbnail">
+          </div>
+        </div>
         <h3>MeetLocal - Application de Visioconférence</h3>
-        <p>Une application web de visioconférence en temps réel avec partage d'écran et chat intégré.</p>
         <div class="project-details">
-          <h4>Fonctionnalités :</h4>
+          <p>Une application web de visioconférence en temps réel avec partage d'écran et chat intégré, conçue pour des réunions fluides et interactives.</p>
+          
+          <h4>Fonctionnalités principales</h4>
           <ul>
             <li>Appels vidéo et audio en temps réel avec WebRTC</li>
-            <li>Système de salles de discussion avec Socket.IO</li>
-            <li>Partage d'écran intégré</li>
-            <li>Chat en temps réel</li>
-            <li>Interface utilisateur moderne et réactive</li>
+            <li>Système de salles de discussion sécurisées</li>
+            <li>Partage d'écran haute qualité</li>
+            <li>Chat en temps réel avec notifications</li>
+            <li>Interface utilisateur intuitive et réactive</li>
           </ul>
-          <h4>Technologies utilisées :</h4>
+          
           <div class="tech-stack">
             <span class="tech-tag">Node.js</span>
             <span class="tech-tag">Express</span>
@@ -57,17 +77,146 @@
             <span class="tech-tag">HTML5/CSS3</span>
             <span class="tech-tag">JavaScript</span>
           </div>
+          
           <div class="project-links">
-            <a href="https://github.com/darwinx-27/meetlocal" target="_blank" class="btn">Code source</a>
-            <a href="demo.html" class="btn">Voir la démo</a>
+            <a href="https://github.com/darwinx-27/meetlocal" target="_blank" class="btn">
+              <i class="fab fa-github"></i> Code source
+            </a>
+            <a href="demo.html" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> Voir la démo
+            </a>
           </div>
         </div>
       </div>
 
+      <!-- Projet 2 -->
       <div class="project">
-        <h3>Dictionnaire bilingue en C</h3>
-        <p>Programme avec table de hachage pour gérer les traductions entre langues locales.</p>
+        <div class="project-gallery">
+          <div class="main-image">
+            <img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Interface du dictionnaire" class="active">
+          </div>
+          <div class="thumbnail-container">
+            <img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Interface principale" class="thumbnail active">
+            <img src="assets/projects/Dictionnaire/dictionnaire2.png" alt="Recherche de mot" class="thumbnail">
+            <img src="assets/projects/Dictionnaire/dictionnaire3.png" alt="Résultats de recherche" class="thumbnail">
+            <img src="assets/projects/Dictionnaire/dictionnaire4.png" alt="Affichage des définitions" class="thumbnail">
+            <img src="assets/projects/Dictionnaire/dictionnaire5.png" alt="Gestion des entrées" class="thumbnail">
+            <img src="assets/projects/Dictionnaire/dictionnaire6.png" alt="Options avancées" class="thumbnail">
+            <img src="assets/projects/Dictionnaire/dictionnaire7.jpg" alt="Aperçu global" class="thumbnail">
+          </div>
+        </div>
+        <h3>Dictionnaire Bilingue en C</h3>
+        <div class="project-details">
+          <p>Application en ligne de commande implémentant un dictionnaire bilingue avec une table de hachage pour des recherches rapides et efficaces.</p>
+          
+          <h4>Fonctionnalités principales</h4>
+          <ul>
+            <li>Recherche et traduction de mots</li>
+            <li>Gestion des entrées multiples</li>
+            <li>Interface en ligne de commande intuitive</li>
+            <li>Gestion des collisions avec chaînage</li>
+            <li>Chargement/sauvegarde des données</li>
+          </ul>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">Structures de données</span>
+            <span class="tech-tag">Algorithmes</span>
+            <span class="tech-tag">Makefile</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="https://github.com/darwinx-27/dictionnaire-c" target="_blank" class="btn">
+              <i class="fab fa-github"></i> Code source
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- Projet 3 -->
+      <div class="project">
+        <div class="project-gallery">
+          <div class="main-image">
+            <img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Aperçu du Portfolio" class="active">
+          </div>
+          <div class="thumbnail-container">
+            <img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Aperçu du Portfolio" class="thumbnail active">
+          </div>
+        </div>
+        <h3>Portfolio Personnel</h3>
+        <div class="project-details">
+          <p>Mon portfolio personnel présentant mes compétences, projets et expériences professionnelles avec un design moderne et réactif.</p>
+          
+          <h4>Caractéristiques</h4>
+          <ul>
+            <li>Design responsive et moderne</li>
+            <li>Mode sombre/clair</li>
+            <li>Navigation fluide</li>
+            <li>Optimisé pour le référencement</li>
+            <li>Chargement rapide</li>
+          </ul>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive Design</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="https://github.com/darwinx-27/portfolio" target="_blank" class="btn">
+              <i class="fab fa-github"></i> Code source
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Projet 4 - Gestion de Bibliothèque -->
+      <div class="project">
+        <div class="project-gallery">
+          <div class="main-image">
+            <img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Tableau de bord de la bibliothèque" class="active">
+          </div>
+          <div class="thumbnail-container">
+            <img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Tableau de bord" class="thumbnail active">
+            <img src="assets/projects/Biliotheque/bibliotheque2.png" alt="Liste des livres" class="thumbnail">
+            <img src="assets/projects/Biliotheque/bibliotheque3.png" alt="Gestion des emprunts" class="thumbnail">
+          </div>
+        </div>
+        <h3>Système de Gestion de Bibliothèque</h3>
+        <div class="project-details">
+          <p>Application web complète pour la gestion d'une bibliothèque avec interface d'administration et espace utilisateur.</p>
+          
+          <h4>Fonctionnalités principales</h4>
+          <ul>
+            <li>Gestion complète des ouvrages (CRUD)</li>
+            <li>Recherche multicritères avancée</li>
+            <li>Système d'authentification utilisateur</li>
+            <li>Gestion des emprunts et retours</li>
+            <li>Tableau de bord administratif</li>
+            <li>Upload et gestion des couvertures de livres</li>
+          </ul>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML5/CSS3</span>
+            <span class="tech-tag">Architecture MVC</span>
+            <span class="tech-tag">jQuery</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="#" class="btn" target="_blank">
+              <i class="fas fa-code"></i> Code source
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> Voir la démo
+            </a>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </section>
 
@@ -76,6 +225,51 @@
   </footer>
 
   <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/check-navbar.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    // Gestion de la galerie d'images
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sélectionner toutes les galeries de projets
+      const projectGalleries = document.querySelectorAll('.project-gallery');
+      
+      // Pour chaque galerie
+      projectGalleries.forEach(gallery => {
+        const mainImage = gallery.querySelector('.main-image img');
+        const thumbnails = gallery.querySelectorAll('.thumbnail');
+        
+        // Si on a des miniatures et une image principale
+        if (mainImage && thumbnails.length > 0) {
+          // Afficher la première image par défaut
+          const firstThumbnail = thumbnails[0];
+          mainImage.src = firstThumbnail.src;
+          mainImage.alt = firstThumbnail.alt;
+          firstThumbnail.classList.add('active');
+          
+          // Ajouter un gestionnaire d'événements pour chaque miniature
+          thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+              // Mettre à jour l'image principale
+              mainImage.src = this.src;
+              mainImage.alt = this.alt;
+              
+              // Mettre à jour la classe active
+              thumbnails.forEach(t => t.classList.remove('active'));
+              this.classList.add('active');
+              
+              // Faire défiler la miniature au centre si nécessaire
+              this.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+              });
+            });
+          });
+        }
+      });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,19 +1,45 @@
-/* Navigation Styles */
+/* =========================
+   Navigation Styles
+   ========================= */
 
-/* Style de base de la barre de navigation */
+:root {
+  --nav-transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  --nav-bg: rgba(15, 23, 42, 0.98);
+  --nav-text: #e2e8f0;
+  --nav-hover: rgba(74, 108, 187, 0.2);
+  --nav-active: var(--primary-color);
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --nav-height: 80px;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  box-shadow: var(--nav-shadow);
+  padding: 0;
+  margin: 0;
+}
+
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2rem;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
   position: relative;
-  z-index: 1000;
 }
 
-/* Style du logo */
+/* Logo */
 .logo a {
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -24,6 +50,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 0.5rem 0;
 }
 
 .logo a:hover {
@@ -31,78 +58,70 @@
   transform: translateY(-2px);
 }
 
-/* Style du menu de navigation */
+/* Navigation Menu */
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
-.nav-menu li a {
-  color: var(--text-color);
+.nav-link {
+  color: var(--nav-text);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  padding: 0.5rem 0.8rem;
-  position: relative;
-  transition: all 0.3s ease;
-  opacity: 0.9;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  transition: var(--nav-transition);
   display: flex;
   align-items: center;
   gap: 8px;
-  border-radius: 6px;
+  position: relative;
+  opacity: 0.9;
 }
 
-.nav-menu li a i {
+.nav-link i {
   font-size: 1.1rem;
   width: 20px;
   text-align: center;
   transition: transform 0.2s ease;
 }
 
-.nav-menu li a:hover i,
-.nav-menu li a:focus i {
-  transform: translateY(-1px);
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: var(--primary-color);
+  background-color: var(--nav-hover);
+  opacity: 1;
 }
 
-.nav-menu li a::after {
+.nav-link:hover i,
+.nav-link:focus i {
+  transform: translateY(-2px);
+}
+
+/* Active Link Indicator */
+.nav-link::after {
   content: '';
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: 0;
-  left: 0;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: var(--primary-color);
   transition: width 0.3s ease;
 }
 
-.nav-menu li a:hover,
-.nav-menu li a:focus,
-.nav-menu li a.active {
-  color: var(--primary-color);
-  opacity: 1;
+.nav-link.active::after {
+  width: 60%;
 }
 
-.nav-menu li a:hover::after,
-.nav-menu li a:focus::after,
-.nav-menu li a.active::after {
-  width: 100%;
-}
-
-/* Variables pour les transitions et couleurs */
-:root {
-  --nav-transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
-  --nav-bg: rgba(15, 23, 42, 0.98);
-  --nav-text: #e2e8f0;
-  --nav-hover: rgba(74, 108, 187, 0.2);
-  --nav-active: #4a6cbb;
-  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Style du bouton menu mobile */
-.navbar .menu-toggle {
+/* Mobile Menu Toggle */
+.menu-toggle {
   display: none;
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -122,31 +141,31 @@
   -webkit-backdrop-filter: blur(10px);
 }
 
-.navbar .menu-toggle:hover,
-.navbar .menu-toggle:focus {
+.menu-toggle:hover,
+.menu-toggle:focus {
   background-color: rgba(255, 255, 255, 0.1);
   outline: 2px solid var(--nav-active);
   outline-offset: 2px;
 }
 
-.navbar .menu-toggle:active {
+.menu-toggle:active {
   transform: scale(0.95);
 }
 
-.navbar .menu-icon {
+.menu-icon {
   display: block;
-  width: 25px;
+  width: 24px;
   height: 2px;
   background-color: var(--nav-text);
   position: absolute;
-  left: 8px;
+  left: 10px;
   transition: var(--nav-transition);
   transform-origin: center;
 }
 
-.navbar .menu-icon:nth-child(1) { top: 14px; }
-.navbar .menu-icon:nth-child(2) { 
-  top: 19px;
+.menu-icon:nth-child(1) { top: 14px; }
+.menu-icon:nth-child(2) { 
+  top: 21px;
   opacity: 1; 
 }
 .navbar .menu-icon:nth-child(3) { top: 24px; }
@@ -212,23 +231,34 @@
     justify-content: center;
   }
 
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--nav-bg);
+    box-shadow: var(--nav-shadow);
+  }
+
   .navbar .nav-menu {
     position: fixed;
     top: 80px;
     left: 0;
     right: 0;
-    height: calc(100vh - 80px);
+    bottom: 0;
     background: rgba(15, 23, 42, 0.98);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     transition: transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.3s ease;
-    transform: translateY(-20px);
+    transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
     box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-    z-index: 998;
+    z-index: 999;
+    margin: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -238,6 +268,11 @@
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+  
+  /* Ajustement du contenu principal pour mobile */
+  .app-container {
+    padding-top: 80px; /* Hauteur de la navbar */
   }
 
   .navbar .nav-menu li {

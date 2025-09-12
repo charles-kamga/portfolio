@@ -31,11 +31,32 @@ html, body {
 }
 
 /* Header */
-body {
+body.navbar-visible {
   padding-top: 80px; /* Espace pour le header fixe */
 }
 
-header {
+/* Reset du padding pour mobile */
+@media (max-width: 1024px) {
+  body {
+    padding-top: 0 !important;
+  }
+  
+  body.navbar-visible {
+    padding-top: 0 !important;
+  }
+  
+  /* Ajustement du conteneur principal pour mobile */
+  .app-container {
+    padding-top: 80px; /* Hauteur de la navbar */
+  }
+  
+  /* Ajustement spécifique pour la page d'accueil */
+  .content-wrapper {
+    margin-top: 0;
+  }
+}
+
+header, .navbar {
   background-color: var(--header-bg);
   padding: 1rem 0;
   position: fixed;
