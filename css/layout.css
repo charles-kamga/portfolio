@@ -28,26 +28,18 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* footer visible */
+  padding-top: var(--nav-height, 80px); /* Espace pour la navbar fixe */
 }
 
-/* Header */
-body.navbar-visible {
-  padding-top: 80px; /* Espace pour le header fixe */
+/* Reset du padding pour le contenu principal */
+.main-content {
+  flex: 1;
 }
 
-/* Reset du padding pour mobile */
+/* Ajustements pour les écrans mobiles */
 @media (max-width: 1024px) {
-  body {
-    padding-top: 0 !important;
-  }
-  
-  body.navbar-visible {
-    padding-top: 0 !important;
-  }
-  
-  /* Ajustement du conteneur principal pour mobile */
   .app-container {
-    padding-top: 80px; /* Hauteur de la navbar */
+    padding-top: var(--nav-height, 80px);
   }
   
   /* Ajustement spécifique pour la page d'accueil */
