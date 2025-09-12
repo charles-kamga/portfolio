@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <header class="navbar">
+  <!-- <header class="navbar">
     <div class="nav-container">
       <div class="logo">
         <a href="index.html">Charles Kamga</a>
@@ -31,102 +31,80 @@
         <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </div>
-  </header>
+  </header> -->
 
   <main class="contact-container">
-    <div class="contact-header">
-      <h1>Contactez-moi</h1>
-      <p>Disponible pour des opportunités de collaboration et échanges professionnels</p>
-    </div>
-    
-    <div class="contact-content">
-      <div class="contact-info">
-        <div class="contact-card">
-          <h3><i class="fas fa-envelope"></i> Contact direct</h3>
-          <div class="contact-methods">
-            <a href="mailto:charleskamgapr@gmail.com" target="_blank" class="contact-item" aria-label="Envoyer un email">
-              <i class="fas fa-envelope"></i>
-              <span>charleskamgapr@gmail.com</span>
-            </a>
-            
-            <a href="https://wa.me/237654175725?text=Bonjour%20Charles%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio" 
-               target="_blank" 
-               class="contact-item" 
-               aria-label="Me contacter sur WhatsApp">
-              <i class="fab fa-whatsapp"></i>
-              <span>+237 654 175 725</span>
-            </a>
-            
-            <a href="https://wa.me/237656834958?text=Bonjour%20Charles%2C%20je%20vous%20contacte%20depuis%20votre%20portfolio" 
-               target="_blank" 
-               class="contact-item" 
-               aria-label="Me contacter sur WhatsApp (second numéro)">
-              <i class="fab fa-whatsapp"></i>
-              <span>+237 656 834 958</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="contact-card">
-          <h3><i class="fas fa-map-marker-alt"></i> Localisation</h3>
-          <p class="location-text">
-            <i class="fas fa-location-dot"></i>
-            <span>Yaoundé, Cameroun</span>
-          </p>
-          <div class="map-container">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.487272107325!2d11.50272297494764!3d3.848426048123292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf7a0c9ed3f3%3A0x1e241033e8e07837!2sYaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2sus!4v1712345678901" 
-              width="100%" 
-              height="200" 
-              style="border:0; border-radius: 8px;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Carte de localisation">
-            </iframe>
-          </div>
-        </div>
-      </div>
+    <div class="content-wrapper">
+      <aside class="profile-sidebar">
+        <h1 class="profile-name">Charles Kamga</h1>
+        <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
+        <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
+        <nav class="nav-sidebar">
+          <a href="index.html#about"><i class="fas fa-user-tie"></i> À propos</a>
+          <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
+          <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
+          <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+      </aside>
       
-      <div class="contact-card contact-form-container">
-        <h3><i class="fas fa-paper-plane"></i> Envoyer un message</h3>
-        <form id="contactForm" class="contact-form">
-          <div class="form-group">
-            <label for="name">Nom complet</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Envoyer le message
-          </button>
-        </form>
-      </div>
+      <section class="main-content">
+        <!-- Contenu principal ici -->
+      </section>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Charles Kamga. Tous droits réservés.</p>
-  </footer>
+  <!-- Contact Button -->
+  <button id="contactBtn" class="contact-btn">
+    <i class="fas fa-envelope"></i> Me contacter
+  </button>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Contactez-moi</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="contactModalForm" class="contact-form">
+        <div class="form-group">
+          <label for="modalName">Nom complet *</label>
+          <input type="text" id="modalName" name="name" required>
+          <span class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="modalEmail">Email *</label>
+          <input type="email" id="modalEmail" name="email" required>
+          <span class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="modalSubject">Objet *</label>
+          <input type="text" id="modalSubject" name="subject" required>
+          <span class="error-message"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="modalMessage">Message *</label>
+          <textarea id="modalMessage" name="message" rows="5" required></textarea>
+          <span class="error-message"></span>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">Envoyer</span>
+          <div class="spinner"></div>
+        </button>
+      </form>
+      </div> <!-- End of modal-body -->
+    </div>
+  </div>
 
   <script src="js/theme.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/check-navbar.js"></script>
   <script src="js/layout.js"></script>
+  <script src="js/contact-modal.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
