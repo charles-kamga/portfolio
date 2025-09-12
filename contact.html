@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="description" content="Contactez Charles Kamga - Développeur Web.">
   <meta name="author" content="Charles Kamga">
 </head>
@@ -35,76 +36,52 @@
 
   <main class="contact-container">
     <div class="content-wrapper">
-      <aside class="profile-sidebar">
+      <div class="profile-sidebar">
         <h1 class="profile-name">Charles Kamga</h1>
         <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
         <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
         <nav class="nav-sidebar">
-          <a href="index.html#about"><i class="fas fa-user-tie"></i> À propos</a>
+          <a href="index.html"><i class="fas fa-user-tie"></i> À propos</a>
           <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
           <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
-          <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+          <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
-      </aside>
+      </div>
       
-      <section class="main-content">
-        <!-- Contenu principal ici -->
-      </section>
+      <div class="main-content">
+        <div class="social-section">
+          <h2>Mes Réseaux Sociaux</h2>
+          <div class="social-links">
+            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+<a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-hand-holding-usd"></i>
+              <span>Fiverr</span>
+            </a>
+            <a href="tel:+237654175725" class="social-link">
+              <i class="fas fa-phone"></i>
+              <span>+237 654 175 725</span>
+            </a>
+            <a href="mailto:charleskamgapr@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
-
-  <!-- Contact Button -->
-  <button id="contactBtn" class="contact-btn">
-    <i class="fas fa-envelope"></i> Me contacter
-  </button>
-
-  <!-- Contact Modal -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Contactez-moi</h2>
-        <span class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <form id="contactModalForm" class="contact-form">
-        <div class="form-group">
-          <label for="modalName">Nom complet *</label>
-          <input type="text" id="modalName" name="name" required>
-          <span class="error-message"></span>
-        </div>
-        
-        <div class="form-group">
-          <label for="modalEmail">Email *</label>
-          <input type="email" id="modalEmail" name="email" required>
-          <span class="error-message"></span>
-        </div>
-        
-        <div class="form-group">
-          <label for="modalSubject">Objet *</label>
-          <input type="text" id="modalSubject" name="subject" required>
-          <span class="error-message"></span>
-        </div>
-        
-        <div class="form-group">
-          <label for="modalMessage">Message *</label>
-          <textarea id="modalMessage" name="message" rows="5" required></textarea>
-          <span class="error-message"></span>
-        </div>
-        
-        <button type="submit" class="submit-btn">
-          <span class="btn-text">Envoyer</span>
-          <div class="spinner"></div>
-        </button>
-      </form>
-      </div> <!-- End of modal-body -->
-    </div>
-  </div>
 
   <script src="js/theme.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/check-navbar.js"></script>
   <script src="js/layout.js"></script>
-  <script src="js/contact-modal.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
