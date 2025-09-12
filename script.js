@@ -1,13 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
   // Gestion du menu mobile
   const menuToggle = document.getElementById('menu-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-menu a');
   const logoLink = document.querySelector('.logo a');
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = document.querySelector('.theme-icon');
-  const themeText = document.querySelector('.theme-text');
-  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
   // Fonction pour basculer le menu
   function toggleMenu() {
@@ -32,42 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.setAttribute('aria-expanded', 'false');
   }
 
-  // Fonction pour appliquer le thème
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    updateThemeUI(theme);
-  }
-
-  // Fonction pour mettre à jour l'interface du thème
-  function updateThemeUI(theme) {
-    if (themeIcon) {
-      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-    if (themeText) {
-      themeText.textContent = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
-    }
-  }
-
-  // Vérifier le thème sauvegardé ou la préférence système
-  function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = prefersDarkScheme.matches;
-    
-    if (savedTheme) {
-      applyTheme(savedTheme);
-    } else {
-      applyTheme(systemPrefersDark ? 'dark' : 'light');
-    }
-  }
-
-  // Basculer entre les thèmes
-  function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-  }
-
   // Événements du menu
   if (menuToggle) {
     menuToggle.addEventListener('click', toggleMenu);
@@ -80,30 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (logoLink) {
     logoLink.addEventListener('click', closeMenu);
-  }
-
-  // Gestion du thème
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
-  
-  // Initialiser le thème
-  initTheme();
-
-  // Écouter les changements de préférence système (API moderne)
-  if (typeof prefersDarkScheme.addEventListener === 'function') {
-    prefersDarkScheme.addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-  } else if (typeof prefersDarkScheme.addListener === 'function') {
-    // Fallback pour anciens navigateurs
-    prefersDarkScheme.addListener((e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
   }
 
   // Initialiser l'animation des compétences
@@ -137,105 +73,132 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.section').forEach(section => {
     sectionObserver.observe(section);
   });
+//   let resizeTimer;
+//   window.addEventListener('resize', () => {
+//     document.body.classList.add('resize-animation-stopper');
+//     clearTimeout(resizeTimer);
+//     resizeTimer = setTimeout(() => {
+//       document.body.classList.remove('resize-animation-stopper');
+//       if (window.innerWidth > 768) {
+//         closeMenu();
+//       }
+//     }, 400);
+//   });
 
-  // Gestion du clic sur le bouton email
-  document.getElementById('emailButton')?.addEventListener('click', function() {
-    window.location.href = 'mailto:charleskamgapr@gmail.com';
-    return false;
-  });
+//   // Détection de la visibilité des sections pour les animations
+//   const sectionObserver = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         entry.target.classList.add('visible');
+//       }
+//     });
+//   }, {
+//     threshold: 0.1
+//   });
 
-  // Navigation fluide
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      // Ne pas intercepter les liens externes ou les liens mailto/tel
-      if (this.getAttribute('href').startsWith('http') || 
-          this.getAttribute('href').startsWith('mailto:') || 
-          this.getAttribute('href').startsWith('tel:')) {
-        return;
-      }
+//   // Observer les sections
+//   document.querySelectorAll('.section').forEach(section => {
+//     sectionObserver.observe(section);
+//   });
+
+//   // Gestion du clic sur le bouton email
+//   document.getElementById('emailButton')?.addEventListener('click', function() {
+//     window.location.href = 'mailto:charleskamgapr@gmail.com';
+//     return false;
+//   });
+
+//   // Navigation fluide
+//   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//       // Ne pas intercepter les liens externes ou les liens mailto/tel
+//       if (this.getAttribute('href').startsWith('http') || 
+//           this.getAttribute('href').startsWith('mailto:') || 
+//           this.getAttribute('href').startsWith('tel:')) {
+//         return;
+//       }
       
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+//       e.preventDefault();
+//       const targetId = this.getAttribute('href');
+//       if (targetId === '#') return;
       
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 70,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
+//       const targetElement = document.querySelector(targetId);
+//       if (targetElement) {
+//         window.scrollTo({
+//           top: targetElement.offsetTop - 70,
+//           behavior: 'smooth'
+//         });
+//       }
+//     });
+//   });
+// });
 
-/**
- * Animation des barres de compétences
- * Utilise IntersectionObserver pour animer la largeur des barres
- * lorsque celles-ci entrent dans la zone visible de l'écran.
- */
-function setupSkillsAnimation() {
-  // Fonction utilitaire pour récupérer la largeur d'une compétence
-  function getSkillWidth(element) {
-    const width = element.getAttribute('data-skill') || 
-                 element.textContent.trim() ||
-                 element.getAttribute('data-width');
-    return width && !width.includes('%') ? width + '%' : width;
-  }
+// /**
+//  * Animation des barres de compétences
+//  * Utilise IntersectionObserver pour animer la largeur des barres
+//  * lorsque celles-ci entrent dans la zone visible de l'écran.
+//  */
+// function setupSkillsAnimation() {
+//   // Fonction utilitaire pour récupérer la largeur d'une compétence
+//   function getSkillWidth(element) {
+//     const width = element.getAttribute('data-skill') || 
+//                  element.textContent.trim() ||
+//                  element.getAttribute('data-width');
+//     return width && !width.includes('%') ? width + '%' : width;
+//   }
 
-  // Vérifier si la page contient des compétences
-  const skillBars = document.querySelectorAll('.skill-bar');
-  if (!skillBars.length) return;
+//   // Vérifier si la page contient des compétences
+//   const skillBars = document.querySelectorAll('.skill-bar');
+//   if (!skillBars.length) return;
 
-  // Fallback pour les navigateurs sans IntersectionObserver
-  if (!('IntersectionObserver' in window)) {
-    skillBars.forEach(bar => {
-      const level = bar.querySelector('.skill-level');
-      if (level) {
-        const width = getSkillWidth(level);
-        if (width) level.style.width = width;
-      }
-    });
-    return;
-  }
+//   // Fallback pour les navigateurs sans IntersectionObserver
+//   if (!('IntersectionObserver' in window)) {
+//     skillBars.forEach(bar => {
+//       const level = bar.querySelector('.skill-level');
+//       if (level) {
+//         const width = getSkillWidth(level);
+//         if (width) level.style.width = width;
+//       }
+//     });
+//     return;
+//   }
 
-  // Configuration de l'observateur
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const level = entry.target.querySelector('.skill-level');
-      if (!level) return;
+//   // Configuration de l'observateur
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//       const level = entry.target.querySelector('.skill-level');
+//       if (!level) return;
       
-      const width = level.getAttribute('data-width');
-      if (!width) return;
+//       const width = level.getAttribute('data-width');
+//       if (!width) return;
       
-      if (entry.isIntersecting) {
-        if (!level.hasAttribute('data-animated')) {
-          level.setAttribute('data-animated', 'true');
-          level.style.transition = 'width 1.5s ease-in-out';
-          requestAnimationFrame(() => level.style.width = width);
-        }
-      } else if (entry.boundingClientRect.top > 0) {
-        level.removeAttribute('data-animated');
-        level.style.transition = 'width 0.5s ease-out';
-        level.style.width = '0%';
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-  });
+//       if (entry.isIntersecting) {
+//         if (!level.hasAttribute('data-animated')) {
+//           level.setAttribute('data-animated', 'true');
+//           level.style.transition = 'width 1.5s ease-in-out';
+//           requestAnimationFrame(() => level.style.width = width);
+//         }
+//       } else if (entry.boundingClientRect.top > 0) {
+//         level.removeAttribute('data-animated');
+//         level.style.transition = 'width 0.5s ease-out';
+//         level.style.width = '0%';
+//       }
+//     });
+//   }, {
+//     threshold: 0.2,
+//     rootMargin: '0px 0px -50px 0px'
+//   });
 
-  // Initialisation des barres de compétences
-  skillBars.forEach(bar => {
-    const level = bar.querySelector('.skill-level');
-    if (level) {
-      const width = getSkillWidth(level);
-      if (width) {
-        level.setAttribute('data-width', width);
-        level.style.width = '0%';
-        level.style.transition = 'none';
-        observer.observe(bar);
-      }
-    }
-  });
-}
+//   // Initialisation des barres de compétences
+//   skillBars.forEach(bar => {
+//     const level = bar.querySelector('.skill-level');
+//     if (level) {
+//       const width = getSkillWidth(level);
+//       if (width) {
+//         level.setAttribute('data-width', width);
+//         level.style.width = '0%';
+//         level.style.transition = 'none';
+//         observer.observe(bar);
+//       }
+//     }
+//   });
+// }
