@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mes Certifications | Charles Kamga</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/certifications.css" />
+  <link rel="stylesheet" href="css/loaders.css" />
+  <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Mes certifications professionnelles - Développeur Web, Étudiant ICT, passionné d'IA et de cybersécurité.">
+  <meta name="author" content="Charles Kamga">
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --text-color: #e2e8f0;
+      --primary-color: #4cc9f0;
+      --card-bg: rgba(30, 41, 59, 0.7);
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(76, 201, 240, 0.1);
+      border: 1px solid rgba(76, 201, 240, 0.3);
+      color: var(--primary-color);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .back-button:hover {
+      background: rgba(76, 201, 240, 0.2);
+      transform: translateX(-3px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="skills.html" class="back-button">
+    <i class="fas fa-arrow-left"></i>
+    <span>Retour aux compétences</span>
+  </a>
+  
+  <main class="certifications-container">
+    <div class="content-wrapper">
+      <section class="certifications-section">
+        <h1><i class="fas fa-certificate"></i> Mes Certifications</h1>
+          
+          <div class="certifications-grid">
+            <!-- Certification 1 -->
+            <div class="certification-card">
+              <div class="certification-header">
+                <div class="platform-logo">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Google Drive</h3>
+                <span class="issuer">Google Cloud via Coursera</span>
+              </div>
+              <div class="certification-body">
+                <div class="certificate-image">
+                  <img data-src="assets/certifications/certif1.png" alt="Google Drive Certification">
+                  <div class="skeleton-loader"></div>
+                </div>
+                <div class="certificate-details">
+                  <p class="date"><i class="far fa-calendar-alt"></i> Date d'obtention : 20 Avril 2025</p>
+                  <p class="skills"><i class="fas fa-tags"></i> Compétences : Gestion de fichiers, Collaboration, Organisation, Google Workspace, Partage de documents</p>
+                  <a href="assets/certifications/certif1.pdf" class="view-certificate" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le certificat PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Certification 2 -->
+            <div class="certification-card">
+              <div class="certification-header">
+                <div class="platform-logo">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3>Work Smarter, Not Harder</h3>
+                <span class="issuer">University of California, Irvine via Coursera</span>
+              </div>
+              <div class="certification-body">
+                <div class="certificate-image">
+                  <img data-src="assets/certifications/certif2.png" alt="Time Management Certification">
+                  <div class="skeleton-loader"></div>
+                </div>
+                <div class="certificate-details">
+                  <p class="date"><i class="far fa-calendar-alt"></i> Date d'obtention : 19 Avril 2025</p>
+                  <p class="skills"><i class="fas fa-tags"></i> Compétences : Gestion du temps, Productivité, Planification stratégique, Gestion des priorités, Gestion de crise</p>
+                  <a href="assets/certifications/certif2.pdf" class="view-certificate" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le certificat PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Certification 3 -->
+            <div class="certification-card">
+              <div class="certification-header">
+                <div class="platform-logo">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h3>Speaking and Presenting</h3>
+                <span class="issuer">University of Michigan via Coursera</span>
+              </div>
+              <div class="certification-body">
+                <div class="certificate-image">
+                  <img data-src="assets/certifications/certif3.png" alt="Speaking and Presenting Certification">
+                  <div class="skeleton-loader"></div>
+                </div>
+                <div class="certificate-details">
+                  <p class="date"><i class="far fa-calendar-alt"></i> Date d'obtention : 19 Avril 2025</p>
+                  <p class="skills"><i class="fas fa-tags"></i> Compétences : Prise de parole en public, Communication, Présentation, Techniques de conversation, Établissement de relations</p>
+                  <a href="assets/certifications/certif3.pdf" class="view-certificate" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le certificat PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Certification 4 -->
+            <div class="certification-card">
+              <div class="certification-header">
+                <div class="platform-logo">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>IoT Wireless & Cloud Computing</h3>
+                <span class="issuer">Yonsei University via Coursera</span>
+              </div>
+              <div class="certification-body">
+                <div class="certificate-image">
+                  <img data-src="assets/certifications/certif4.png" alt="IoT & Cloud Computing Certification">
+                  <div class="skeleton-loader"></div>
+                </div>
+                <div class="certificate-details">
+                  <p class="date"><i class="far fa-calendar-alt"></i> Date d'obtention : 25 Mai 2025</p>
+                  <p class="skills"><i class="fas fa-tags"></i> Compétences : IoT, Cloud Computing, Réseaux sans fil, AWS, Protocoles réseau, Télécommunications, Données en temps réel</p>
+                  <a href="assets/certifications/certif4.pdf" class="view-certificate" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le certificat PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/image-loader.js" defer></script>
+  <script>
+    // Mise à jour de l'année du copyright
+    document.addEventListener('DOMContentLoaded', function() {
+      const yearElements = document.querySelectorAll('[data-year]');
+      const currentYear = new Date().getFullYear();
+      yearElements.forEach(el => {
+        el.textContent = currentYear;
+      });
+    });
+  </script>
+</body>
+</html>

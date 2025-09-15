@@ -1,5 +1,60 @@
 /* Skills Page - Modern Style */
 
+/* Styles pour le conteneur d'en-tête */
+.skills-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* Style pour le bouton de certifications */
+.certifications-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(76, 201, 240, 0.1);
+  color: var(--primary-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(76, 201, 240, 0.3);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.certifications-button:hover {
+  background: rgba(76, 201, 240, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: var(--primary-color);
+}
+
+.certifications-button i {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .certifications-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
 /* Styles de base pour les compétences */
 .skill {
   position: relative;
