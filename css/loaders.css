@@ -1,0 +1,154 @@
+/* Loaders for Images */
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.image-container img.loaded {
+  opacity: 1;
+}
+
+/* Skeleton Loader */
+.skeleton-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.6) 0%,
+    rgba(44, 55, 75, 0.8) 50%,
+    rgba(30, 41, 59, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Blur Hash Placeholder */
+.blur-hash-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  transform: scale(1.1);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.image-container img.loaded + .blur-hash-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Specific for certification images */
+.certificate-image {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.certificate-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1e293b;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.certificate-image img.loaded {
+  opacity: 1;
+}
+
+/* Profile image loader */
+.profile-pic {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
+  overflow: hidden;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.profile-pic img.loaded {
+  opacity: 1;
+}
+
+/* Project thumbnails */
+.project-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project-thumbnail img.loaded {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+}

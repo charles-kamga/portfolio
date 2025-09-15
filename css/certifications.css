@@ -1,0 +1,352 @@
+/* Certifications Page - Minimalist Style */
+
+:root {
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --primary-color: #4cc9f0;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  padding: 0;
+  margin: 0;
+}
+
+.certifications-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+  min-height: 100vh;
+}
+
+.certifications-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.certifications-section h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin: 0 0 2.5rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.certifications-section h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.certifications-section h1 i {
+  margin-right: 15px;
+  font-size: 2.2rem;
+  vertical-align: middle;
+}
+
+/* Grid Layout */
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.8rem;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 10px;
+}
+
+.certification-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border-color: rgba(76, 201, 240, 0.3);
+}
+
+.certification-header {
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.platform-logo {
+  width: 50px;
+  height: 50px;
+  background: rgba(76, 201, 240, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.certification-header h3 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0 0.3rem;
+  color: #fff;
+}
+
+.issuer {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.certification-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-image {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  aspect-ratio: 16/9;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certificate-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.certification-card:hover .certificate-image img {
+  transform: scale(1.03);
+}
+
+.certificate-details {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.certificate-details p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.certificate-details i {
+  color: var(--primary-color);
+  width: 16px;
+  text-align: center;
+}
+
+.view-certificate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  background: rgba(76, 201, 240, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(76, 201, 240, 0.2);
+  font-size: 0.9rem;
+}
+
+.view-certificate:hover {
+  background: rgba(76, 201, 240, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .certifications-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .certifications-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .certifications-container {
+    padding: 50px 15px 30px;
+  }
+  
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .certifications-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .certification-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .certifications-container {
+    padding: 40px 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .certifications-section h2 {
+    font-size: 2rem;
+  }
+  
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .certification-card {
+    max-width: 100%;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.certification-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  animation-delay: calc(var(--index) * 0.1s);
+}
+
+/* Style pour les badges de plateforme */
+.platform-badge {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  background: rgba(76, 201, 240, 0.1);
+  color: var(--primary-color);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(76, 201, 240, 0.3);
+}
+
+/* Style pour les icônes de réseau social */
+.social-proof {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-proof a {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.social-proof a:hover {
+  color: var(--primary-color);
+}
+
+/* Style pour la pagination (si nécessaire) */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 1rem 0;
+}
+
+.pagination a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pagination a:hover, .pagination a.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Style pour les étiquettes de compétences */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skill-tag {
+  background: rgba(76, 201, 240, 0.1);
+  color: var(--primary-color);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(76, 201, 240, 0.2);
+}

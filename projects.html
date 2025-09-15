@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/loaders.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="assets/images/les-iles-cook.png" type="image/png">
   <meta name="description" content="Projets récents de Charles Kamga - Développeur Web.">
@@ -39,7 +40,10 @@
       <div class="project slide-left">
         <div class="project-gallery">
           <div class="main-image">
-            <img src="assets/projects/meetlocal/PageDaceuil.png" alt="Page d'accueil de MeetLocal" class="active">
+            <div class="project-thumbnail">
+              <img data-src="assets/projects/meetlocal/PageDaceuil.png" alt="Page d'accueil de MeetLocal">
+              <div class="skeleton-loader"></div>
+            </div>
           </div>
           <div class="thumbnail-container">
             <img src="assets/projects/meetlocal/PageDaceuil.png" alt="Page d'accueil" class="thumbnail active">
@@ -84,7 +88,10 @@
       <div class="project slide-right">
         <div class="project-gallery">
           <div class="main-image">
-            <img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Interface du dictionnaire" class="active">
+            <div class="project-thumbnail">
+              <img data-src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Accueil du dictionnaire">
+              <div class="skeleton-loader"></div>
+            </div>
           </div>
           <div class="thumbnail-container">
             <img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Interface principale" class="thumbnail active">
@@ -127,7 +134,10 @@
       <div class="project">
         <div class="project-gallery">
           <div class="main-image">
-            <img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Aperçu du Portfolio" class="active">
+            <div class="project-thumbnail">
+              <img data-src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Aperçu du Portfolio">
+              <div class="skeleton-loader"></div>
+            </div>
           </div>
           <div class="thumbnail-container">
             <img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Aperçu du Portfolio" class="thumbnail active">
@@ -165,7 +175,10 @@
       <div class="project slide-right">
         <div class="project-gallery">
           <div class="main-image">
-            <img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Tableau de bord de la bibliothèque" class="active">
+            <div class="project-thumbnail">
+              <img data-src="assets/projects/Biliotheque/bibliotheque1.png" alt="Accueil de la bibliothèque">
+              <div class="skeleton-loader"></div>
+            </div>
           </div>
           <div class="thumbnail-container">
             <img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Tableau de bord" class="thumbnail active">
@@ -208,7 +221,10 @@
       <div class="project slide-left">
         <div class="project-gallery">
           <div class="main-image">
-            <img src="assets/projects/Charly_vitr/charly_vitr1.png" alt="Aperçu de Charly Vitr" class="active">
+            <div class="project-thumbnail">
+              <img data-src="assets/projects/Charly_vitr/charly_vitr1.png" alt="Accueil de Charly Vitr">
+              <div class="skeleton-loader"></div>
+            </div>
           </div>
           <div class="thumbnail-container">
             <img src="assets/projects/Charly_vitr/charly_vitr1.png" alt="Aperçu 1" class="thumbnail active">
@@ -258,48 +274,7 @@
   <script src="js/nav.js"></script>
   <script src="js/check-navbar.js"></script>
   <script src="js/layout.js"></script>
-  <script>
-    // Gestion de la galerie d'images
-    document.addEventListener('DOMContentLoaded', function() {
-      // Sélectionner toutes les galeries de projets
-      const projectGalleries = document.querySelectorAll('.project-gallery');
-      
-      // Pour chaque galerie
-      projectGalleries.forEach(gallery => {
-        const mainImage = gallery.querySelector('.main-image img');
-        const thumbnails = gallery.querySelectorAll('.thumbnail');
-        
-        // Si on a des miniatures et une image principale
-        if (mainImage && thumbnails.length > 0) {
-          // Afficher la première image par défaut
-          const firstThumbnail = thumbnails[0];
-          mainImage.src = firstThumbnail.src;
-          mainImage.alt = firstThumbnail.alt;
-          firstThumbnail.classList.add('active');
-          
-          // Ajouter un gestionnaire d'événements pour chaque miniature
-          thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-              // Mettre à jour l'image principale
-              mainImage.src = this.src;
-              mainImage.alt = this.alt;
-              
-              // Mettre à jour la classe active
-              thumbnails.forEach(t => t.classList.remove('active'));
-              this.classList.add('active');
-              
-              // Faire défiler la miniature au centre si nécessaire
-              this.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
-              });
-            });
-          });
-        }
-      });
-    });
-  </script>
-  <script src="script.js"></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/image-loader.js" defer></script>
 </body>
 </html>
