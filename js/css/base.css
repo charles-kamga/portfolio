@@ -47,9 +47,13 @@ body {
   color: var(--text-color);
   background-color: var(--bg-color);
   transition: all 0.3s ease;
-  overflow-x: hidden;
   padding-top: var(--navbar-height);
   scroll-padding-top: calc(var(--navbar-height) + 1rem);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 html {

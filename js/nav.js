@@ -1,108 +1,74 @@
-// Gestion du menu de navigation et du défilement
-class NavigationManager {
+// Nouvelle implémentation de la navigation mobile
+class MobileNavigation {
   constructor() {
-    this.menuToggle = document.getElementById('menu-toggle');
-    this.navMenu = document.getElementById('nav-menu');
-    this.navLinks = document.querySelectorAll('.nav-link');
-    this.header = document.querySelector('header');
-    this.lastScrollTop = 0;
-    this.scrolling = false;
-    this.resizeTimeout = null;
+    this.navBar = document.createElement('nav');
+    this.navBar.className = 'mobile-nav';
+    this.navItems = [
+      { icon: 'fas fa-home', text: 'Accueil', href: 'index.html' },
+      { icon: 'fas fa-code', text: 'Compétences', href: 'skills.html' },
+      { icon: 'fas fa-project-diagram', text: 'Projets', href: 'projects.html' },
+      { icon: 'fas fa-envelope', text: 'Contact', href: 'contact.html' }
+    ];
     
     this.init();
   }
   
   init() {
-    this.setupMobileMenu();
-    this.setupSmoothScroll();
-    this.setupScrollEvents();
-    this.setupResizeHandler();
+    this.createNavigation();
+    this.setupEventListeners();
     this.highlightActiveLink();
   }
   
-  setupMobileMenu() {
-    if (!this.menuToggle) return;
+  createNavigation() {
+    // Création de la barre de navigation
+    const navContent = document.createElement('div');
+    navContent.className = 'mobile-nav__content';
     
-    this.menuToggle.addEventListener('click', () => this.toggleMobileMenu());
-    
-    // Fermer le menu au clic sur un lien
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', () => this.closeMobileMenu());
+    // Ajout des éléments de navigation
+    this.navItems.forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.className = 'mobile-nav__link';
+      link.innerHTML = `
+        <i class="${item.icon}"></i>
+        <span class="mobile-nav__text">${item.text}</span>
+      `;
+      navContent.appendChild(link);
     });
+    
+    this.navBar.appendChild(navContent);
+    document.body.appendChild(this.navBar);
   }
   
-  toggleMobileMenu() {
-    const isExpanded = this.menuToggle.getAttribute('aria-expanded') === 'true' || false;
-    this.menuToggle.setAttribute('aria-expanded', !isExpanded);
-    this.navMenu.classList.toggle('active');
-    document.body.classList.toggle('nav-open');
-  }
-  
-  closeMobileMenu() {
-    if (window.innerWidth <= 768) {
-      this.menuToggle.setAttribute('aria-expanded', 'false');
-      this.navMenu.classList.remove('active');
-      document.body.classList.remove('nav-open');
-    }
-  }
-  
-  setupSmoothScroll() {
-    // Désactivé temporairement pour le débogage
-    // Laisser le défilement natif du navigateur gérer les ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        const targetId = anchor.getAttribute('href');
-        if (targetId === '#') return;
+  setupEventListeners() {
+    // Ajout d'un effet de rétroaction au toucher
+    const links = this.navBar.querySelectorAll('.mobile-nav__link');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Animation de clic
+        const circle = document.createElement('span');
+        circle.className = 'ripple';
+        link.appendChild(circle);
         
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // Laisser le navigateur gérer le défilement
-          // e.preventDefault();
-          // this.scrollToElement(targetElement);
-        }
+        // Supprimer l'effet après l'animation
+        setTimeout(() => circle.remove(), 500);
       });
     });
   }
   
-  scrollToElement() {
-    // Désactivé
-  }
-  
-  setupScrollEvents() {
-    // Désactivé temporairement
-    // Laisser le défilement natif du navigateur
-  }
-  
-  handleScroll() {
-    // Conserver uniquement le suivi de la position de défilement
-    // pour la mise en surbrillance des liens
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    this.highlightActiveLink();
-  }
-  
   highlightActiveLink() {
-    const scrollPosition = window.scrollY + 100;
+    const sections = document.querySelectorAll('section[id]');
+    const links = this.navBar.querySelectorAll('.mobile-nav__link');
     
-    document.querySelectorAll('section').forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
+    window.addEventListener('scroll', () => {
+      let current = '';
       
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        this.navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-        });
-      }
-    });
-  }
-  
-  setupResizeHandler() {
-    window.addEventListener('resize', () => {
-      clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = setTimeout(() => {
-        if (window.innerWidth > 768) {
-          this.closeMobileMenu();
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          current = section.getAttribute('id');
         }
       }, 250);
     });
@@ -111,5 +77,21 @@ class NavigationManager {
 
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
-  new NavigationManager();
+  // Ancienne initialisation commentée
+  // new NavigationManager();
+  
+  // Nouvelle initialisation de la navigation mobile
+  if (window.innerWidth <= 768) {
+    new MobileNavigation();
+  }
+  
+  // Gestion du redimensionnement pour activer/désactiver la navigation mobile
+  window.addEventListener('resize', () => {
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (window.innerWidth <= 768 && !mobileNav) {
+      new MobileNavigation();
+    } else if (window.innerWidth > 768 && mobileNav) {
+      mobileNav.remove();
+    }
+  });
 });
