@@ -29,6 +29,16 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 1024px) {
+  .profile-sidebar {
+    overflow-y: visible !important;
+    max-height: none !important;
+    min-height: auto !important;
+    position: relative;
+    top: 0;
+  }
+}
+
 h1 {
   margin-bottom: 20px;
   font-size: 2em;
@@ -145,10 +155,7 @@ h1 {
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-content {
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    max-height: 100vh;
+    width: 90%;
     margin-top: -20px;
     padding: 40px;
   }
@@ -211,13 +218,13 @@ h1 {
 }
 
 /* Conteneur principal avec défilement */
-.main-content {
+/* .main-content {
   overflow-y: auto;
   padding: 20px;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-}
+} */
 
 /* Sections principales */
 .about-section {
@@ -454,8 +461,8 @@ h1 {
   .interests-section li i {
     left: 10px;
     font-size: 1.5rem;
-    width: 35px;
-    height: 35px;
+    width: 100px;
+    height: 100px;
   }
   
   .interests li span {
@@ -485,12 +492,10 @@ h1 {
   }
   
   .content-wrapper {
-    margin-top: 0;
     grid-template-columns: 1fr;
     gap: 15px;
-    padding: 0;
+    padding: 5px;
     width: 100%;
-    margin: 0;
   }
   
   .interests-section li i {
@@ -502,18 +507,18 @@ h1 {
   }
   
   .main-content {
-    padding: 0 15px;
+    padding: 10px;
     width: 100%;
     box-sizing: border-box;
   }
   
   .interests-section {
-    margin: 20px 0;
+    margin: 20px;
     width: 100%;
   }
   
   .interests-section li {
-    padding: 15px 15px 15px 60px;
+    padding: 15px;
     margin: 0 0 10px 0;
     width: 100%;
     box-sizing: border-box;
@@ -540,11 +545,13 @@ h1 {
     margin: 0 0 20px 0;
     min-height: auto;
     max-height: none;
+    height: auto !important;
     padding: 25px 15px;
     text-align: center;
     border-radius: 0;
     border-left: none;
     border-right: none;
+    overflow: visible !important;
   }
   
   .main-content {

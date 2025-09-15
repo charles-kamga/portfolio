@@ -14,6 +14,8 @@
   <meta name="description" content="Portfolio de Charles Kamga - Développeur Web, Étudiant ICT, passionné d'IA et de cybersécurité.">
   <meta name="author" content="Charles Kamga">
   <script src="js/skills-animation.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/theme.js" defer></script>
 </head>
 
 <body>
@@ -46,37 +48,37 @@
     <div class="skills-categories">
       <div class="skill-category">
        <h3>Développement Web</h3>
-       <div class="skill">
-         <div class="skill-header">
-           <i class="devicon-html5-plain colored icon"></i>
-           <span>HTML5</span>
-           <span class="skill-percent">85%</span>
-         </div>
-         <div class="skill-bar">
-           <div class="skill-level" style="width: 85%"></div>
-         </div>
-       </div>
-       <div class="skill">
-         <div class="skill-header">
-           <i class="devicon-css3-plain colored icon"></i>
-           <span>CSS3</span>
-           <span class="skill-percent">80%</span>
-         </div>
-         <div class="skill-bar">
-           <div class="skill-level" style="width: 80%"></div>
-         </div>
-       </div>
-       <div class="skill">
-         <div class="skill-header">
-           <i class="devicon-javascript-plain colored icon"></i>
-           <span>JavaScript (ES6+)</span>
-           <span class="skill-percent">70%</span>
-         </div>
-         <div class="skill-bar">
-           <div class="skill-level" style="width: 70%"></div>
-         </div>
-       </div>
-       <div class="skill">
+       <div class="skill" data-description="Création de structures sémantiques, intégration de contenu multimédia, formulaires avancés, accessibilité (ARIA), microdonnées.">
+        <div class="skill-header">
+          <i class="devicon-html5-plain colored icon"></i>
+          <span>HTML5</span>
+          <span class="skill-percent">85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 85%"></div>
+        </div>
+      </div>
+       <div class="skill" data-description="Mise en page avec Flexbox et Grid, animations CSS, variables CSS, responsive design, préprocesseurs (Sass/SCSS).">
+        <div class="skill-header">
+          <i class="devicon-css3-plain colored icon"></i>
+          <span>CSS3</span>
+          <span class="skill-percent">80%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 80%"></div>
+        </div>
+      </div>
+       <div class="skill" data-description="Programmation orientée objet, manipulation du DOM, requêtes API asynchrones (fetch/async/await), ES6+ features (destructuring, spread, etc.).">
+        <div class="skill-header">
+          <i class="devicon-javascript-plain colored icon"></i>
+          <span>JavaScript (ES6+)</span>
+          <span class="skill-percent">70%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level" style="width: 70%"></div>
+        </div>
+      </div>
+       <div class="skill" data-description="Design adaptatif, media queries, approche mobile-first, tests sur différents appareils, performances mobiles.">
          <div class="skill-header">
            <i class="fas fa-mobile-alt icon"></i>
            <span>Responsive Design</span>
@@ -86,7 +88,7 @@
            <div class="skill-level" style="width: 75%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Création d'API RESTful, gestion des routes, middleware, intégration avec des bases de données, authentification (JWT, OAuth).">
          <div class="skill-header">
            <i class="devicon-nodejs-plain colored icon"></i>
            <span>Node.js & Express</span>
@@ -96,7 +98,7 @@
            <div class="skill-level" style="width: 65%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Communication en temps réel, gestion des événements, rooms et namespaces, intégration avec Express, gestion des erreurs.">
          <div class="skill-header">
            <i class="fas fa-comments icon"></i>
            <span>Socket.IO</span>
@@ -106,7 +108,7 @@
            <div class="skill-level" style="width: 60%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Communication peer-to-peer, streaming audio/vidéo, partage d'écran, gestion des connexions, STUN/TURN servers.">
          <div class="skill-header">
            <i class="fas fa-video icon"></i>
            <span>WebRTC</span>
@@ -120,7 +122,7 @@
 
      <div class="skill-category">
        <h3>Programmation & Scripting</h3>
-       <div class="skill">
+       <div class="skill" data-description="Scripting, automatisation, traitement de données, frameworks web (Flask, Django), manipulation de fichiers, expressions régulières.">
          <div class="skill-header">
            <i class="devicon-python-plain colored icon"></i>
            <span>Python</span>
@@ -130,7 +132,7 @@
            <div class="skill-level" style="width: 65%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Programmation système, gestion de la mémoire, algorithmes de bas niveau, structures de données, débogage avec GDB.">
          <div class="skill-header">
            <i class="devicon-c-plain colored icon"></i>
            <span>Programmation C</span>
@@ -140,7 +142,7 @@
            <div class="skill-level" style="width: 60%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Automatisation de tâches, scripts shell, gestion des processus, expressions régulières, pipelines, gestion des permissions.">
          <div class="skill-header">
            <i class="devicon-bash-plain colored icon"></i>
            <span>Bash / Scripts Linux</span>
@@ -150,7 +152,7 @@
            <div class="skill-level" style="width: 45%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Listes chaînées, arbres, graphes, tables de hachage, piles, files, complexité algorithmique, optimisation des performances.">
          <div class="skill-header">
            <i class="fas fa-database icon"></i>
            <span>Structures de données</span>
@@ -160,7 +162,7 @@
            <div class="skill-level" style="width: 70%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Algorithmes de tri et de recherche, programmation dynamique, diviser pour régner, algorithmes gloutons, parcours de graphes.">
          <div class="skill-header">
            <i class="fas fa-project-diagram icon"></i>
            <span>Algorithmes</span>
@@ -174,7 +176,7 @@
 
      <div class="skill-category">
        <h3>Bases de données & Backend</h3>
-       <div class="skill">
+       <div class="skill" data-description="Développement côté serveur, architecture MVC, intégration avec bases de données, sécurisation des applications, gestion des sessions.">
          <div class="skill-header">
            <i class="devicon-php-plain colored icon"></i>
            <span>PHP</span>
@@ -184,7 +186,7 @@
            <div class="skill-level" style="width: 60%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Modélisation de bases de données, requêtes SQL complexes, indexation, optimisation des performances, procédures stockées.">
          <div class="skill-header">
            <i class="devicon-mysql-plain colored icon"></i>
            <span>MySQL</span>
@@ -198,7 +200,37 @@
 
      <div class="skill-category">
        <h3>Systèmes & Outils</h3>
-       <div class="skill">
+       <div class="skill" data-description="Administration système, gestion des utilisateurs, permissions, processus, services, dépôts de paquets, configuration réseau.">
+         <div class="skill-header">
+           <i class="devicon-linux-plain colored icon"></i>
+           <span>Linux / Unix</span>
+           <span class="skill-percent">70%</span>
+         </div>
+         <div class="skill-bar">
+           <div class="skill-level" style="width: 70%"></div>
+         </div>
+       </div>
+       <div class="skill" data-description="Gestion de versions, branches, fusions, résolution de conflits, workflows (Git Flow, GitHub Flow), plates-formes (GitHub, GitLab, Bitbucket).">
+         <div class="skill-header">
+           <i class="devicon-git-plain colored icon"></i>
+           <span>Git</span>
+           <span class="skill-percent">75%</span>
+         </div>
+         <div class="skill-bar">
+           <div class="skill-level" style="width: 75%"></div>
+         </div>
+       </div>
+       <div class="skill" data-description="Bash/Zsh, outils en ligne de commande (grep, awk, sed, jq), scripts shell, automatisation, pipelines, redirections.">
+         <div class="skill-header">
+           <i class="fas fa-terminal icon"></i>
+           <span>Ligne de commande</span>
+           <span class="skill-percent">80%</span>
+         </div>
+         <div class="skill-bar">
+           <div class="skill-level" style="width: 80%"></div>
+         </div>
+       </div>
+       <div class="skill" data-description="Gestion de projets, création de Makefiles, compilation de programmes, gestion des dépendances, optimisation des performances.">
          <div class="skill-header">
            <i class="fas fa-tasks icon"></i>
            <span>Makefile</span>
@@ -208,30 +240,20 @@
            <div class="skill-level" style="width: 50%"></div>
          </div>
        </div>
-       <div class="skill">
-         <div class="skill-header">
-           <i class="devicon-linux-plain colored icon"></i>
-           <span>Linux (Ubuntu, Arch)</span>
-           <span class="skill-percent">80%</span>
-         </div>
-         <div class="skill-bar">
-           <div class="skill-level" style="width: 80%"></div>
-         </div>
-       </div>
-       <div class="skill">
+       <div class="skill" data-description="Gestion de versions, collaboration en équipe, dépôts distants, workflows avancés, intégration continue.">
          <div class="skill-header">
            <div class="icon-group">
-             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="icon" alt="Git">
-             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="icon" alt="GitHub">
+             <i class="devicon-git-plain colored icon"></i>
+             <i class="devicon-github-original colored icon"></i>
            </div>
            <span>Git & GitHub</span>
-           <span class="skill-percent">55%</span>
+           <span class="skill-percent">75%</span>
          </div>
          <div class="skill-bar">
-           <div class="skill-level" style="width: 55%"></div>
+           <div class="skill-level" style="width: 75%"></div>
          </div>
        </div>
-       <div class="skill">
+       <div class="skill" data-description="Outils IA (ChatGPT, DeepSeek), intégration avec des applications, automatisation de tâches, analyse de données, génération de contenu.">
          <div class="skill-header">
            <div class="icon-group">
              <img src="assets/icons/intelligence-artificielle.png" class="icon custom-icon" alt="IA">
