@@ -2,6 +2,119 @@
    Navigation Styles
    ========================= */
 
+/* Animation pour le header */
+.header-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-visible {
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Amélioration de la réactivité du header */
+.navbar {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, background-color;
+}
+
+/* Animation du lien actif */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  transform: translateY(-1px);
+}
+
+.nav-link.active::after {
+  width: 70%;
+  background-color: var(--primary-color);
+}
+
+/* Amélioration du menu mobile */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    flex-direction: column;
+    padding: 1.5rem 0;
+    gap: 0.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    width: 90%;
+    justify-content: center;
+    margin: 0.25rem auto;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+  }
+}
+
+/* Amélioration du focus pour l'accessibilité */
+.nav-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  background-color: var(--nav-hover);
+  color: var(--primary-color);
+}
+
+/* Animation de transition pour les pages */
+.main-content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Amélioration du défilement fluide */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+}
+
+/* Optimisation pour les appareils tactiles */
+@media (hover: none) {
+  .nav-link:hover {
+    background-color: transparent;
+  }
+  
+  .nav-link:active {
+    background-color: var(--nav-hover);
+  }
+}
+
    :root {
     --nav-transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     --nav-bg: rgba(15, 23, 42, 0.98);
@@ -211,6 +324,101 @@
   }
   
   /* Style du menu mobile */
+/* ========================
+   Barre de navigation mobile
+   ======================== */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+  display: none; /* Caché par défaut, affiché uniquement sur mobile */
+}
+
+.mobile-nav__content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.mobile-nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.7rem;
+  padding: 8px 5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  max-width: 20%;
+}
+
+.mobile-nav__link i {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav__text {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link.active {
+  color: #4fc3f7;
+  transform: translateY(-3px);
+}
+
+.mobile-nav__link.active i {
+  color: #4fc3f7;
+  transform: scale(1.1);
+}
+
+/* Animation ripple au clic */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(79, 195, 247, 0.3);
+  width: 10px;
+  height: 10px;
+  animation: ripple 0.6s linear;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+/* Afficher la barre uniquement sur mobile */
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: block;
+  }
+  
+  /* Ajustement du padding en bas pour éviter que le contenu ne soit caché par la barre */
+  body {
+    padding-bottom: 70px;
+  }
+}
+
   @media (max-width: 1024px) {
     .nav-container {
       padding: 0 1.5rem;

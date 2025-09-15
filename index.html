@@ -13,6 +13,45 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta name="description" content="Portfolio de Charles Kamga - Développeur Web, Étudiant ICT, passionné d'IA et de cybersécurité.">
   <meta name="author" content="Charles Kamga">
+  <style>
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: rgba(30, 30, 30, 0.9);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: #4fc3f7;
+      transform: translateY(-3px);
+    }
+    
+    @media (min-width: 769px) {
+      .back-to-top {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -23,7 +62,6 @@
           <div class="profile-pic" aria-label="Photo de profil de Charles Kamga"></div>
           <p class="profile-description">Développeur Web | Étudiant ICT | Passionné d'IA & Sécurité</p>
           <nav class="nav-sidebar">
-            <a href="#about-section"><i class="fas fa-user-tie"></i> À propos</a>
             <a href="skills.html"><i class="fas fa-code"></i> Compétences</a>
             <a href="projects.html"><i class="fas fa-project-diagram"></i> Projets</a>
             <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
@@ -60,9 +98,32 @@
     </div>
   </div>
 
+  <button class="back-to-top" aria-label="Retour en haut de la page">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-  <script src="js/theme.js"></script>
+  <script src="js/theme.js" defer></script>
   <script src="js/layout.js"></script>
+  <script src="js/nav.js" defer></script>
   <script src="script.js"></script>
+  <script>
+    // Bouton de retour en haut
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>

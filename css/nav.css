@@ -324,6 +324,101 @@ html {
   }
   
   /* Style du menu mobile */
+/* ========================
+   Barre de navigation mobile
+   ======================== */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+  display: none; /* Caché par défaut, affiché uniquement sur mobile */
+}
+
+.mobile-nav__content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.mobile-nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.7rem;
+  padding: 8px 5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  max-width: 20%;
+}
+
+.mobile-nav__link i {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav__text {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link.active {
+  color: #4fc3f7;
+  transform: translateY(-3px);
+}
+
+.mobile-nav__link.active i {
+  color: #4fc3f7;
+  transform: scale(1.1);
+}
+
+/* Animation ripple au clic */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(79, 195, 247, 0.3);
+  width: 10px;
+  height: 10px;
+  animation: ripple 0.6s linear;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+/* Afficher la barre uniquement sur mobile */
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: block;
+  }
+  
+  /* Ajustement du padding en bas pour éviter que le contenu ne soit caché par la barre */
+  body {
+    padding-bottom: 70px;
+  }
+}
+
   @media (max-width: 1024px) {
     .nav-container {
       padding: 0 1.5rem;
