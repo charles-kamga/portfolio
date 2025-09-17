@@ -1,8 +1,14 @@
-// Gestion du thème clair/sombre
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.querySelector('.theme-icon');
-const themeText = document.querySelector('.theme-text');
+// Gestion du thème clair/sombre (robuste à l'injection tardive du bouton)
+let themeToggle;
+let themeIcon;
+let themeText;
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function updateRefs() {
+  themeToggle = document.getElementById('theme-toggle');
+  themeIcon = document.querySelector('.theme-icon');
+  themeText = document.querySelector('.theme-text');
+}
 
 // Fonction pour appliquer le thème
 function applyTheme(theme) {
@@ -13,6 +19,10 @@ function applyTheme(theme) {
 
 // Fonction pour mettre à jour l'interface du thème
 function updateThemeUI(theme) {
+  if (!themeIcon || !themeText) {
+    // Re-récupère les refs si elles n'existent pas encore (injection tardive)
+    updateRefs();
+  }
   if (themeIcon) {
     themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
   }
@@ -42,9 +52,23 @@ function toggleTheme() {
 
 // Initialisation du thème au chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
-  // Gestion du thème
+  // Met à jour les références et attache l'événement si présent
+  updateRefs();
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
+  } else {
+    // Observe l'apparition du bouton si injecté dynamiquement
+    const observer = new MutationObserver(() => {
+      updateRefs();
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body || document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
   }
   
   // Initialiser le thème

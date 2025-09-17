@@ -457,9 +457,9 @@ textarea.form-control {
 }
 
 .social-link i {
-  font-size: 1.8rem;
-  margin-right: 1rem;
-  width: 2rem;
+  font-size: 1.4rem;
+  margin-right: 0.75rem;
+  width: 1.5rem;
   text-align: center;
   color: var(--primary-color);
   transition: transform 0.3s ease;
@@ -471,7 +471,7 @@ textarea.form-control {
 }
 
 .social-link span {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
