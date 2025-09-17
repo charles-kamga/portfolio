@@ -82,17 +82,38 @@
 
 /* Light theme overrides */
 :root[data-theme="light"] {
-  /* Palette claire douce (évite le blanc pur) */
-  --bg-color: #edf2f7;            /* gris-bleu très clair */
-  --bg-color-secondary: #f7f9fc;  /* off-white bleuté */
-  --text-color: #0f172a;          /* texte sombre lisible */
-  --header-bg: rgba(255, 255, 255, 0.85);
-  --card-bg: #f8fafc;             /* quasi-blanc mais adouci */
-  --card-shadow: 0 4px 15px rgba(17, 24, 39, 0.06);
-  --border-color: #d9e2ec;        /* bordure douce */
-  --section-bg: #f7fafc;          /* très léger bleu-gris */
-  --footer-bg: #e6ecf5;          /* bandeau discret */
-  --footer-text: #334155;        /* texte footer plus foncé */
+  /* Palette claire avec hiérarchie visuelle renforcée */
+  --bg-color: #f5f7fb;             /* fond principal légèrement bleuté */
+  --bg-color-secondary: #f0f4f9;   /* fond secondaire (ex: barre latérale) */
+  --text-color: #1a202c;           /* texte principal */
+  --text-secondary: #4a5568;       /* texte secondaire (paragraphes, labels) */
+  
+  /* Cartes et conteneurs */
+  --card-bg: #ffffff;              /* fond des cartes */
+  --card-border: #e2e8f0;          /* bordure des cartes */
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); /* ombre subtile */
+  --card-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* effet de survol */
+  
+  /* Sections */
+  --section-bg: #f0f4f9;          /* fond des sections principales */
+  --section-bg-alt: #e6edf7;      /* fond alternatif pour varier les sections */
+  
+  /* Pied de page */
+  --footer-bg: #e2e8f0;           /* fond du pied de page */
+  --footer-text: #2d3748;         /* texte du pied de page */
+  
+  /* Éléments interactifs */
+  --primary-color: #2563eb;       /* couleur primaire (liens, boutons) */
+  --primary-hover: #1d4ed8;       /* survol des éléments primaires */
+  
+  /* Compétences */
+  --skill-bg: #e2e8f0;            /* fond des barres de compétences */
+  --skill-level: #3b82f6;         /* niveau de compétence */
+  --skill-category-bg: #e9edf5;   /* fond des catégories de compétences */
+  
+  /* Bordures */
+  --border-color: #d1d9e6;        /* bordure générale */
+  --border-light: #e2e8f0;        /* bordure légère */
 }
 
 * {
@@ -106,7 +127,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
-  transition: background-color 250ms ease, color 250ms ease;
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
   padding-top: var(--navbar-height);
   scroll-padding-top: calc(var(--navbar-height) + 1rem);
   margin: 0;
@@ -114,6 +135,75 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Styles pour les conteneurs principaux */
+.main-content,
+.section-content {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.main-content:hover,
+.section-content:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* Cartes */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* En-têtes de section */
+.section-header {
+  background-color: var(--bg-color-secondary);
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.5rem;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Pieds de section */
+.section-footer {
+  background-color: var(--bg-color-secondary);
+  border-top: 1px solid var(--border-light);
+  padding: 1rem 1.5rem;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Bordures et séparateurs */
+hr, .divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 1.5rem 0;
+}
+
+/* Style pour les éléments de formulaire */
+input, textarea, select {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  outline: none;
 }
 
 html {
