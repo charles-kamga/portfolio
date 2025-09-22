@@ -1,4 +1,79 @@
-/* Certifications Page - Minimalist Style */
+/* Certifications Page - Minimalist Style with Slide Animations */
+
+/* Style du bouton de retour */
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(76, 201, 240, 0.1);
+  color: var(--primary-color);
+  border: 1px solid rgba(76, 201, 240, 0.3);
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background: rgba(76, 201, 240, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+.back-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-button i {
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+  transform: translateX(-3px);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 :root {
   --bg-color: #0f172a;
@@ -43,6 +118,9 @@ body {
   text-align: center;
   position: relative;
   padding-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out 0.2s forwards;
 }
 
 .certifications-section h1::after {
@@ -78,20 +156,67 @@ body {
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
   backdrop-filter: blur(10px);
+  opacity: 0;
+  will-change: transform, opacity;
 }
 
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.8rem;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 10px;
+}
+
+/* Animation des cartes avec décalage et direction alternée */
+.certification-card {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.certification-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Délai d'animation pour chaque carte avec alternance gauche/droite */
+.certification-card:nth-child(odd) {
+  transform: translateX(-50px);
+}
+
+.certification-card:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.certification-card.visible:nth-child(odd) {
+  animation: slideInLeft 0.6s forwards;
+}
+
+.certification-card.visible:nth-child(even) {
+  animation: slideInRight 0.6s forwards;
+}
+
+/* Délais pour les animations */
+.certification-card:nth-child(1) { animation-delay: 0.1s; }
+.certification-card:nth-child(2) { animation-delay: 0.2s; }
+.certification-card:nth-child(3) { animation-delay: 0.3s; }
+.certification-card:nth-child(4) { animation-delay: 0.4s; }
+
 .certification-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-  border-color: rgba(76, 201, 240, 0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(76, 201, 240, 0.15);
+  border-color: rgba(76, 201, 240, 0.5);
+  z-index: 2;
 }
 
 .certification-header {
@@ -111,6 +236,19 @@ body {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   color: var(--primary-color);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.certification-card.visible .platform-logo {
+  animation: slideInLeft 0.6s 0.2s forwards;
+}
+
+.platform-logo:hover {
+  transform: translateX(0) scale(1.1);
+  background: rgba(76, 201, 240, 0.2);
 }
 
 .certification-header h3 {
@@ -138,13 +276,31 @@ body {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.15, 1);
   aspect-ratio: 16/9;
-  background: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.certificate-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(76, 201, 240, 0.1) 0%, rgba(76, 201, 240, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.certification-card:hover .certificate-image::before {
+  opacity: 1;
 }
 
 .certificate-image img {
@@ -187,12 +343,41 @@ body {
   text-decoration: none;
   margin-top: 1rem;
   font-weight: 500;
-  transition: all 0.2s ease;
-  padding: 0.5rem 1rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 0.6rem 1.2rem;
   background: rgba(76, 201, 240, 0.1);
-  border-radius: 6px;
+  border-radius: 50px;
   border: 1px solid rgba(76, 201, 240, 0.2);
   font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.certification-card.visible .view-certificate {
+  animation: slideUp 0.5s 0.4s forwards;
+}
+
+.view-certificate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, 
+    rgba(76, 201, 240, 0.2) 0%, 
+    rgba(76, 201, 240, 0.1) 100%);
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  border-radius: 50px;
+}
+
+.view-certificate:hover::before {
+  transform: translateX(0);
 }
 
 .view-certificate:hover {
@@ -264,7 +449,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.98);
   }
   to {
     opacity: 1;
