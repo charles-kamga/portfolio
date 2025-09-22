@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-charles-kamga",
+  "version": "1.0.0",
+  "description": "Portfolio de Charles Kamga - Développeur Web",
+  "scripts": {
+    "generate:certifications": "node scripts/generate-certifications.js && node scripts/format-html.js",
+    "watch:certifications": "nodemon --watch assets/certifications/data --exec npm run generate:certifications"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prettier": "^3.6.2"
+  }
+}
