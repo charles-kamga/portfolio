@@ -221,9 +221,10 @@
   padding: 7rem 1.5rem 4rem;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
 
 .skills-header {
