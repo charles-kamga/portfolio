@@ -534,6 +534,35 @@
   to { width: var(--skill-level, '100%'); }
 }
 
+/* Section Langues */
+.language-category {
+  margin-top: auto; /* Pousse la section vers le bas */
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.language-category .skill {
+  margin-bottom: 1rem;
+}
+
+.language-category .skill-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.language-category .icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.language-category .skill-percent {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .skills-container {
