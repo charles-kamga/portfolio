@@ -60,6 +60,9 @@ body {
   gap: var(--gap);
   max-width: 1200px;
   width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Card Styles */
@@ -128,7 +131,7 @@ body {
 
 .skills-card {
   grid-column: span 1;
-  grid-row: span 2;
+  /* grid-row: span 2; Removed to reduce height */
 }
 
 .projects-link-card {
@@ -142,7 +145,8 @@ body {
 }
 
 .contact-card {
-  grid-column: span 2;
+  grid-column: span 3;
+  /* Extended to fill the row */
 }
 
 /* Typography & Content */
@@ -355,18 +359,21 @@ p {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 900px) {
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
-  .profile-card {
-    grid-column: span 2;
-  }
-
-  .skills-card {
-    grid-row: span 1;
-    grid-column: span 1;
+  .card {
+    padding: 20px;
   }
 }
 
@@ -389,4 +396,209 @@ p {
   .mini-form {
     flex-direction: column;
   }
+}
+
+/* Improved Skills Card */
+.skills-mini-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.skill-pill {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.skill-pill:hover {
+  background: rgba(0, 242, 255, 0.1);
+  border-color: var(--accent-primary);
+  color: var(--accent-main);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 242, 255, 0.2);
+}
+
+.skill-pill.count {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #000;
+}
+
+/* Improved Certs Card */
+.certs-badge-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.cert-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 2px solid var(--accent-secondary);
+  transition: background 0.3s;
+}
+
+.cert-item-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cert-item-row i {
+  color: var(--accent-secondary);
+  font-size: 0.9rem;
+}
+
+.cert-item-row span {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-indicator {
+  margin-top: auto;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.status-indicator .dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #00ff88;
+}
+/* Contact Card Side-by-Side Layout */
+.contact-card {
+  flex-direction: row !important; /* Override default column */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.contact-content-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 50%;
+}
+
+.skills-mini-grid.contact-grid {
+  justify-content: flex-end; /* Align icons to right */
+  margin-top: 0;
+}
+
+/* --- NEW LAYOUT OVERRIDES --- */
+
+/* 1. Grid Adjustment: Profile Left (2x2), Stack & Projects Right (Stack top, Projects bottom) */
+
+.about-card {
+  display: none !important; /* Hide about card if still present or prevent issues */
+}
+
+/* Make Skills Card (Stack) bigger and occupy top right */
+.skills-card {
+  grid-column: span 2 !important;
+  grid-row: span 1 !important; /* Takes 1 row */
+}
+
+/* Make Projects Card bigger and occupy bottom right (below Stack) */
+.projects-link-card {
+  grid-column: span 2 !important; /* Was 1 */
+}
+
+/* Ensure Profile stays 2x2 on the left */
+.profile-card {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* 2. Profile Interests Style */
+.interests-container {
+  margin-top: 25px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.interests-container h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--accent-primary);
+}
+
+.interests-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interests-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.interests-list li i {
+  color: var(--accent-secondary);
+  font-size: 0.9rem;
+}
+
+/* 3. Contact Card Icons - Bigger & Fill Space */
+.skills-mini-grid.contact-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Bigger gap */
+  justify-content: space-between; /* Fill width */
+}
+
+.skills-mini-grid.contact-grid .skill-pill {
+  width: auto; /* Let it grow */
+  flex-grow: 1; /* Fill space */
+  height: 60px; /* Taller */
+  font-size: 1.8rem; /* Bigger icon */
+  min-width: 60px; /* Restore min width */
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Adjust contact right container width */
+.contact-content-right {
+  max-width: 60%; /* Give more space for icons */
+  flex-grow: 1;
 }

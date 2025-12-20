@@ -14,7 +14,7 @@
     rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
   <!-- Styles -->
@@ -41,40 +41,33 @@
         <h2>Développeur Web & Passionné d'IA</h2>
         <p>Je conçois des expériences numériques modernes et sécurisées. Étudiant en ICT, explorateur de la
           cybersécurité.</p>
-        <div class="social-links">
-          <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="mailto:charleskamgapr@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <div class="interests-container">
+          <h3>Centres d'intérêt</h3>
+          <ul class="interests-list">
+            <li><i class="fas fa-chess-knight"></i> Jouer aux échecs</li>
+            <li><i class="fas fa-music"></i> Suivre la musique</li>
+            <li><i class="fas fa-pen-nib"></i> J'aime écrire</li>
+          </ul>
         </div>
       </div>
     </article>
 
-    <!-- About Card -->
-    <article class="card about-card" style="--delay: 0.2s">
+    <!-- Stack Card (Moved to top right) -->
+    <a href="skills.html" class="card skills-card" style="--delay: 0.2s">
       <div class="card-header">
-        <i class="fas fa-user-astronaut"></i>
-        <h3>À propos</h3>
+        <i class="fas fa-microchip"></i>
+        <h3>Stack</h3>
       </div>
-      <p>Curieux et persévérant, je navigue entre le développement C/Python/JS et l'administration système Linux. Mon
-        but ? Comprendre et sécuriser le monde numérique de demain.</p>
-    </article>
-
-    <!-- Skills Link Card (Replaces static skills) -->
-    <a href="skills.html" class="card skills-card" style="--delay: 0.3s">
-      <div class="card-header">
-        <i class="fas fa-code"></i>
-        <h3>Stack Technique</h3>
-      </div>
-      <div class="skills-preview">
-        <div class="skill-icon"><i class="devicon-python-plain"></i></div>
-        <div class="skill-icon"><i class="devicon-javascript-plain"></i></div>
-        <div class="skill-icon"><i class="devicon-react-original"></i></div>
-        <div class="skill-icon"><i class="devicon-linux-plain"></i></div>
-        <div class="skill-count">+12 autres</div>
-      </div>
-      <div class="card-footer">
-        <span>Voir tout l'arsenal</span>
-        <i class="fas fa-arrow-right"></i>
+      <div class="skills-mini-grid">
+        <div class="skill-pill"><i class="devicon-python-plain"></i></div>
+        <div class="skill-pill"><i class="devicon-javascript-plain"></i></div>
+        <div class="skill-pill"><i class="devicon-react-original"></i></div>
+        <div class="skill-pill"><i class="devicon-html5-plain"></i></div>
+        <div class="skill-pill"><i class="devicon-css3-plain"></i></div>
+        <div class="skill-pill"><i class="devicon-linux-plain"></i></div>
+        <div class="skill-pill"><i class="devicon-git-plain"></i></div>
+        <div class="skill-pill"><i class="fas fa-shield-alt"></i></div>
+        <div class="skill-pill count">+5</div>
       </div>
     </a>
 
@@ -93,24 +86,52 @@
     <!-- Certifications Link Card -->
     <a href="certifications.html" class="card certs-link-card" style="--delay: 0.5s">
       <div class="card-header">
-        <i class="fas fa-certificate"></i>
-        <h3>Certifications</h3>
+        <i class="fas fa-award"></i>
+        <h3>Certifs</h3>
       </div>
-      <ul class="certs-list-preview">
-        <li><i class="fas fa-check-circle"></i> Digital Marketing</li>
-        <li><i class="fas fa-check-circle"></i> Cloud Computing</li>
-        <li><i class="fas fa-check-circle"></i> Python Intro</li>
-      </ul>
+      <div class="certs-badge-container">
+        <div class="cert-item-row">
+          <i class="fas fa-check-circle"></i>
+          <span>Digital Marketing & E-commerce</span>
+        </div>
+        <div class="cert-item-row">
+          <i class="fas fa-check-circle"></i>
+          <span>Google Cloud Fundamentals</span>
+        </div>
+        <div class="cert-item-row">
+          <i class="fas fa-check-circle"></i>
+          <span>Python Essentials 1 & 2</span>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span class="dot"></span> Vérifié
+      </div>
     </a>
 
     <!-- Contact Link Card (Replaces simple contact) -->
     <a href="contact.html" class="card contact-card" style="--delay: 0.6s">
-      <div class="card-content center-content">
-        <div class="icon-box large">
+      <div class="contact-content-left">
+        <div class="card-header">
           <i class="fas fa-paper-plane"></i>
+          <h3>Me Contacter</h3>
         </div>
-        <h3>Me Contacter</h3>
-        <p>Un projet ? Discutons-en.</p>
+        <p class="networking-quote">
+          "Seul on va plus vite, <br>ensemble on va plus loin."
+        </p>
+        <div class="card-footer">
+          <span>Démarrer un projet</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+      <div class="contact-content-right">
+        <div class="skills-mini-grid contact-grid">
+          <div class="skill-pill"><i class="fab fa-linkedin-in"></i></div>
+          <div class="skill-pill"><i class="fa-brands fa-x-twitter"></i></div>
+          <div class="skill-pill"><i class="fab fa-github"></i></div>
+          <div class="skill-pill"><i class="fab fa-instagram"></i></div>
+          <div class="skill-pill"><i class="fas fa-envelope"></i></div>
+          <div class="skill-pill"><i class="fab fa-facebook-f"></i></div>
+        </div>
       </div>
     </a>
 

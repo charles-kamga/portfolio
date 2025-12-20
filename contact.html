@@ -14,18 +14,66 @@
     rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Shared Header/Nav Style */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .back-nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0 5px;
+    }
+
+    .back-nav h1 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin: 0;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: var(--bg-card-hover);
+      transform: translateX(-5px);
+    }
+
+    /* Contact Content Styles */
     .contact-page-grid {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       gap: 25px;
-      max-width: 1200px;
       width: 100%;
-      margin-top: 20px;
     }
 
     .contact-info-card {
@@ -41,7 +89,8 @@
 
     .info-header h2 {
       font-family: var(--font-heading);
-      font-size: 2rem;
+      font-size: 1.5rem;
+      /* Smaller h2 since h1 is now top */
       margin-bottom: 10px;
       color: var(--text-main);
     }
@@ -207,37 +256,43 @@
       box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
     }
 
-    .back-nav {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 20px;
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .back-btn:hover {
-      color: var(--accent-primary);
-    }
-
+    /* Mobile / Responsiveness */
     @media (max-width: 900px) {
       .contact-page-grid {
         grid-template-columns: 1fr;
+        /* Stack columns */
       }
 
       .form-grid {
         grid-template-columns: 1fr;
+        /* Stack form inputs */
       }
 
       .form-group.full-width {
         grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .back-nav {
+        flex-direction: row;
+        gap: 15px;
+      }
+
+      .back-nav h1 {
+        font-size: 1.4rem;
+        text-align: right;
+      }
+
+      .back-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+
+      .contact-form-card,
+      .contact-info-card {
+        padding: 20px;
+        /* Reduce padding on mobile */
       }
     }
   </style>
@@ -246,78 +301,85 @@
 <body>
   <div class="background-mesh"></div>
 
-  <nav class="back-nav">
-    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour au Dashboard</a>
-  </nav>
+  <div class="page-wrapper">
+    <nav class="back-nav">
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+      <h1>Me Contacter</h1>
+    </nav>
 
-  <main class="contact-page-grid">
+    <main class="contact-page-grid">
 
-    <!-- Contact Info & Socials -->
-    <section class="contact-info-card">
-      <div class="info-header">
-        <h2>Me contacter ?</h2>
-        <p>Disponible pour échanger, que ce soit pour un projet professionnel ou simplement discuter. Je réponds généralement sous 24h.</p>
-      </div>
-
-      <div class="contact-methods">
-        <a href="mailto:charleskamgapr@gmail.com" class="method-item">
-          <div class="method-icon"><i class="fas fa-envelope"></i></div>
-          <div class="method-text">
-            <h3>Email</h3>
-            <span>charleskamgapr@gmail.com</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="social-grid">
-        <a href="https://linkedin.com/in/charles-kamga" target="_blank" class="social-btn">
-          <i class="fab fa-linkedin-in"></i>
-          <span>LinkedIn</span>
-        </a>
-        <a href="https://x.com/CharlesK8376" target="_blank" class="social-btn">
-          <i class="fab fa-x-twitter"></i>
-          <span>X (Twitter)</span>
-        </a>
-        <a href="https://facebook.com/charles.kamga.980" target="_blank" class="social-btn">
-          <i class="fab fa-facebook-f"></i>
-          <span>Facebook</span>
-        </a>
-        <a href="https://instagram.com/charles_c_kamga" target="_blank" class="social-btn">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Detailed Form -->
-    <section class="contact-form-card">
-      <form id="detailed-contact-form">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Nom complet</label>
-            <input type="text" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="john@example.com" required>
-          </div>
-          <div class="form-group full-width">
-            <label>Sujet</label>
-            <input type="text" placeholder="Brève description..." required>
-          </div>
-          <div class="form-group full-width">
-            <label>Message détaillé</label>
-            <textarea rows="6" placeholder="Parlez-moi de votre vision..." required></textarea>
-          </div>
+      <!-- Contact Info & Socials -->
+      <section class="contact-info-card">
+        <div class="info-header">
+          <h2>Me contacter ?</h2>
+          <p>N'hésitez pas à m'envoyer un message via le formulaire ou sur mes réseaux.</p>
         </div>
-        <button type="submit" class="submit-btn">
-          <span>Envoyer la demande</span>
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </form>
-    </section>
 
-  </main>
+        <div class="contact-methods">
+          <a href="mailto:charleskamgapr@gmail.com" class="method-item">
+            <div class="method-icon"><i class="fas fa-envelope"></i></div>
+            <div class="method-text">
+              <h3>Email</h3>
+              <span>charleskamgapr@gmail.com</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="social-grid">
+          <a href="https://github.com" target="_blank" class="social-btn">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social-btn">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://x.com/CharlesK8376" target="_blank" class="social-btn">
+            <i class="fa-brands fa-x-twitter"></i>
+            <span>X (Twitter)</span>
+          </a>
+          <a href="https://facebook.com/charles.kamga.980" target="_blank" class="social-btn">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://instagram.com/charles_c_kamga" target="_blank" class="social-btn">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Detailed Form -->
+      <section class="contact-form-card">
+        <form id="detailed-contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nom complet</label>
+              <input type="text" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group full-width">
+              <label>Sujet</label>
+              <input type="text" placeholder="Brève description..." required>
+            </div>
+            <div class="form-group full-width">
+              <label>Message détaillé</label>
+              <textarea rows="6" placeholder="Parlez-moi de votre vision..." required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span>Envoyer la demande</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </section>
+
+    </main>
+  </div>
 
   <script src="js/bento.js"></script>
   <script>
