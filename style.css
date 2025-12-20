@@ -156,7 +156,6 @@ h1 {
   font-weight: 700;
   margin-bottom: 0.5rem;
   background: linear-gradient(to right, #fff, #a0a0a0);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
