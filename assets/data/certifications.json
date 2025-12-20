@@ -1,0 +1,96 @@
+[
+    {
+        "id": "1",
+        "title": "Introduction to Cybersecurity Tools & Cyberattacks",
+        "issuer": "IBM",
+        "date": "Oct 8, 2025",
+        "skills": [
+            "Cyberattacks",
+            "Leadership and Management"
+        ],
+        "image": "Introduction to Cybersecurity Tools & Cyberattacks.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/5HBIUROU02DJ"
+    },
+    {
+        "id": "2",
+        "title": "Introduction to Cybersecurity Essentials",
+        "issuer": "IBM",
+        "date": "Nov 7, 2025",
+        "skills": [
+            "System Security",
+            "Cyberattacks",
+            "Cryptography",
+            "Security Engineering",
+            "Network Security"
+        ],
+        "image": "Introduction to Cybersecurity Essentials.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/U06XXN8LJ2S7"
+    },
+    {
+        "id": "3",
+        "title": "Operating Systems: Overview, Administration, and Security",
+        "issuer": "IBM",
+        "date": "Oct 8, 2025",
+        "skills": [
+            "Linux",
+            "Cloud Computing",
+            "Operating Systems",
+            "System Security"
+        ],
+        "image": "Operating Systems: Overview, Administration, and Security.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/D2SMPSCH222J"
+    },
+    {
+        "id": "4",
+        "title": "Introduction to Cybersecurity Careers",
+        "issuer": "IBM",
+        "date": "Sep 20, 2025",
+        "skills": [
+            "Information Technology",
+            "Technical Support and Services",
+            "Cyber Security Policies",
+            "Security Awareness"
+        ],
+        "image": "Introduction to Cybersecurity Careers.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/39BR5RMPT2LY"
+    },
+    {
+        "id": "5",
+        "title": "Work Smarter, Not Harder: Time Management for Personal & Professional Productivity",
+        "issuer": "University of California, Irvine",
+        "date": "Apr 19, 2025",
+        "skills": [
+            "Overcoming Obstacles",
+            "Time Management",
+            "Planning"
+        ],
+        "image": "Work Smarter, Not Harder: Time Management for Personal & Professional Productivity.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/XVX67K5SO095"
+    },
+    {
+        "id": "6",
+        "title": "Google Drive",
+        "issuer": "Google Cloud",
+        "date": "Apr 20, 2025",
+        "skills": [
+            "Collaborative Software",
+            "Google Workspace",
+            "Cloud Storage"
+        ],
+        "image": "Google Drive.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/L71TA96AXQD4"
+    },
+    {
+        "id": "7",
+        "title": "IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies",
+        "issuer": "Yonsei University",
+        "date": "May 25, 2025",
+        "skills": [
+            "Telecommunications",
+            "Network Architecture",
+            "Hardware Architecture"
+        ],
+        "image": "IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/QH4JCLEFWJYA"
+    }
+]
