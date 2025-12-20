@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   element.textContent.trim();
     return width && !width.includes("%") ? width + "%" : width;
   }
-
+  
   // Préparer les barres : toujours à 0% au départ
   skillBars.forEach(bar => {
     const level = bar.querySelector(".skill-level");

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Configuration de l'Intersection Observer
   const observerOptions = {
     threshold: 0.1,
@@ -21,17 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Éléments à animer
   const animatedElements = document.querySelectorAll('.animate-on-scroll');
-  
+
   // Observer chaque élément
   animatedElements.forEach((element, index) => {
-    // Ajouter un délai progressif basé sur l'index
-    element.style.transitionDelay = `${index * 0.1}s`;
+    // Ajouter un délai progressif basé sur l'index (ralenti pour effet premium)
+    element.style.transitionDelay = `${index * 0.3}s`; // Augmenté de 0.1s à 0.3s
+    element.style.transitionDuration = '1.2s'; // Durée de transition plus longue
     observer.observe(element);
   });
 
   // Animation du bouton de retour en haut
   const backToTopButton = document.querySelector('.back-to-top');
-  
+
   if (backToTopButton) {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backToTopButton.classList.remove('visible');
       }
     });
-    
+
     backToTopButton.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({
