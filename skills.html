@@ -20,13 +20,61 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Shared Header/Nav Style based on projects.html */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .back-nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0 5px;
+    }
+
+    .back-nav h1 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin: 0;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: var(--bg-card-hover);
+      transform: translateX(-5px);
+    }
+
+    /* Page Content Styles */
     .skills-page-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 25px;
-      max-width: 1200px;
       width: 100%;
-      margin-top: 20px;
     }
 
     .skill-category-card {
@@ -151,39 +199,47 @@
       color: var(--text-main);
     }
 
-    .page-intro {
-      text-align: center;
-      margin-bottom: 40px;
-      max-width: 800px;
-    }
-
-    .page-intro h1 {
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      margin-bottom: 15px;
-      background: linear-gradient(to right, #fff, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .back-nav {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 20px;
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .page-description {
       color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      margin-bottom: 25px;
+      text-align: center;
+      max-width: 600px;
     }
 
-    .back-btn:hover {
-      color: var(--accent-primary);
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .back-nav {
+        flex-direction: column-reverse;
+        /* Stack with Back button below title on very small screens? No, usually Title top. */
+        /* Wait, user wants like Projects. Projects uses row. */
+        flex-direction: row;
+        gap: 15px;
+      }
+
+      .back-nav h1 {
+        font-size: 1.4rem;
+        text-align: right;
+        /* Align right to balance back button */
+      }
+
+      .back-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+
+      .skills-page-grid {
+        grid-template-columns: 1fr;
+        /* Full width on mobile */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .back-nav h1 {
+        display: none;
+        /* Hide title on super small screens if needed, or keep. */
+        /* Actually projects.html keeps it. */
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -191,182 +247,184 @@
 <body>
   <div class="background-mesh"></div>
 
-  <nav class="back-nav">
-    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour au Dashboard</a>
-  </nav>
+  <div class="page-wrapper">
+    <nav class="back-nav">
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
+      <h1>Arsenal Technique</h1>
+    </nav>
 
-  <div class="page-intro">
-    <h1>Arsenal Technique</h1>
-    <p>Une vue détaillée de mes compétences techniques, outils et savoir-être professionnel.</p>
+    <p class="page-description">
+      Une vue détaillée de mes compétences techniques, outils et savoir-être professionnel.
+    </p>
+
+    <main class="skills-page-grid">
+
+      <!-- Frontend -->
+      <article class="skill-category-card">
+        <div class="cat-header">
+          <div class="cat-icon"><i class="fas fa-laptop-code"></i></div>
+          <h2 class="cat-title">Frontend Development</h2>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-javascript-plain"></i> JavaScript (ES6+)</span>
+              <span class="skill-level-text">Avancé</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-react-original"></i> React / React Native</span>
+              <span class="skill-level-text">Intermédiaire</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-html5-plain"></i> HTML5 & CSS3</span>
+              <span class="skill-level-text">Expert</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-tailwindcss-plain"></i> Tailwind CSS</span>
+              <span class="skill-level-text">Avancé</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Backend & Systems -->
+      <article class="skill-category-card">
+        <div class="cat-header">
+          <div class="cat-icon"><i class="fas fa-server"></i></div>
+          <h2 class="cat-title">Backend & Systems</h2>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-python-plain"></i> Python</span>
+              <span class="skill-level-text">Avancé</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-c-plain"></i> C Language</span>
+              <span class="skill-level-text">Intermédiaire</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-nodejs-plain"></i> Node.js</span>
+              <span class="skill-level-text">Intermédiaire</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-mysql-plain"></i> SQL / Databases</span>
+              <span class="skill-level-text">Intermédiaire</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- DevOps & Security -->
+      <article class="skill-category-card">
+        <div class="cat-header">
+          <div class="cat-icon"><i class="fas fa-shield-alt"></i></div>
+          <h2 class="cat-title">DevOps & Secu</h2>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-linux-plain"></i> Linux Admin</span>
+              <span class="skill-level-text">Avancé</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-git-plain"></i> Git & GitHub</span>
+              <span class="skill-level-text">Avancé</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="devicon-docker-plain"></i> Docker</span>
+              <span class="skill-level-text">Basique</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info">
+              <span class="skill-name"><i class="fas fa-lock"></i> Network Security</span>
+              <span class="skill-level-text">Intermédiaire</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 65%"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Soft Skills -->
+      <article class="skill-category-card">
+        <div class="cat-header">
+          <div class="cat-icon"><i class="fas fa-users"></i></div>
+          <h2 class="cat-title">Soft Skills</h2>
+        </div>
+        <div class="soft-skills-grid">
+          <div class="soft-skill-item">
+            <div class="soft-icon"><i class="fas fa-brain"></i></div>
+            <span>Problem Solving</span>
+          </div>
+          <div class="soft-skill-item">
+            <div class="soft-icon"><i class="fas fa-comments"></i></div>
+            <span>Communication</span>
+          </div>
+          <div class="soft-skill-item">
+            <div class="soft-icon"><i class="fas fa-clock"></i></div>
+            <span>Gestion du temps</span>
+          </div>
+          <div class="soft-skill-item">
+            <div class="soft-icon"><i class="fas fa-lightbulb"></i></div>
+            <span>Créativité</span>
+          </div>
+        </div>
+      </article>
+
+    </main>
   </div>
-
-  <main class="skills-page-grid">
-
-    <!-- Frontend -->
-    <article class="skill-category-card">
-      <div class="cat-header">
-        <div class="cat-icon"><i class="fas fa-laptop-code"></i></div>
-        <h2 class="cat-title">Frontend Development</h2>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-javascript-plain"></i> JavaScript (ES6+)</span>
-            <span class="skill-level-text">Avancé</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-react-original"></i> React / React Native</span>
-            <span class="skill-level-text">Intermédiaire</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 75%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-html5-plain"></i> HTML5 & CSS3</span>
-            <span class="skill-level-text">Expert</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 95%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-tailwindcss-plain"></i> Tailwind CSS</span>
-            <span class="skill-level-text">Avancé</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 85%"></div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Backend & Systems -->
-    <article class="skill-category-card">
-      <div class="cat-header">
-        <div class="cat-icon"><i class="fas fa-server"></i></div>
-        <h2 class="cat-title">Backend & Systems</h2>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-python-plain"></i> Python</span>
-            <span class="skill-level-text">Avancé</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-c-plain"></i> C Language</span>
-            <span class="skill-level-text">Intermédiaire</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 70%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-nodejs-plain"></i> Node.js</span>
-            <span class="skill-level-text">Intermédiaire</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 75%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-mysql-plain"></i> SQL / Databases</span>
-            <span class="skill-level-text">Intermédiaire</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 70%"></div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- DevOps & Security -->
-    <article class="skill-category-card">
-      <div class="cat-header">
-        <div class="cat-icon"><i class="fas fa-shield-alt"></i></div>
-        <h2 class="cat-title">DevOps & Secu</h2>
-      </div>
-      <div class="skill-list">
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-linux-plain"></i> Linux Admin</span>
-            <span class="skill-level-text">Avancé</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-git-plain"></i> Git & GitHub</span>
-            <span class="skill-level-text">Avancé</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="devicon-docker-plain"></i> Docker</span>
-            <span class="skill-level-text">Basique</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 50%"></div>
-          </div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-info">
-            <span class="skill-name"><i class="fas fa-lock"></i> Network Security</span>
-            <span class="skill-level-text">Intermédiaire</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 65%"></div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Soft Skills -->
-    <article class="skill-category-card">
-      <div class="cat-header">
-        <div class="cat-icon"><i class="fas fa-users"></i></div>
-        <h2 class="cat-title">Soft Skills</h2>
-      </div>
-      <div class="soft-skills-grid">
-        <div class="soft-skill-item">
-          <div class="soft-icon"><i class="fas fa-brain"></i></div>
-          <span>Problem Solving</span>
-        </div>
-        <div class="soft-skill-item">
-          <div class="soft-icon"><i class="fas fa-comments"></i></div>
-          <span>Communication</span>
-        </div>
-        <div class="soft-skill-item">
-          <div class="soft-icon"><i class="fas fa-clock"></i></div>
-          <span>Gestion du temps</span>
-        </div>
-        <div class="soft-skill-item">
-          <div class="soft-icon"><i class="fas fa-lightbulb"></i></div>
-          <span>Créativité</span>
-        </div>
-      </div>
-    </article>
-
-  </main>
 
   <script src="js/bento.js"></script>
   <script>
