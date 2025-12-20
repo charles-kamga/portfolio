@@ -658,3 +658,24 @@ p {
     justify-content: center; /* Center icons on mobile */
   }
 }
+
+@media (max-width: 900px) {
+  /* Disable Hover Animations on Mobile */
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: var(--bg-card); /* Reset background or keep subtle, but removing shifting is key */
+    border-color: var(--border-color);
+  }
+
+  /* Disable Glow Effect */
+  .card:hover::after {
+    opacity: 0 !important;
+  }
+  
+  /* Reset Skill Pill hover */
+  .skill-pill:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
