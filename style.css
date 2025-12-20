@@ -602,3 +602,13 @@ p {
   max-width: 60%; /* Give more space for icons */
   flex-grow: 1;
 }
+
+.networking-quote {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 15px 0;
+  border-left: 2px solid var(--accent-primary);
+  padding-left: 10px;
+  max-width: 200px;
+}
