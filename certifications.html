@@ -4,102 +4,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certifications | Charles Kamga</title>
+  <title>Mes Certifications | Charles Kamga</title>
 
-  <!-- Fonts -->
+  <!-- Shared Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Styles -->
+  <!-- Main Style -->
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* Specific overrides for certifications page */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1400px;
-      width: 100%;
-      margin-top: 20px;
+    /* Specific styles for Certs Page (could be moved to style.css if needed, kept here for simplicity/cleanup) */
+    .certifications-container {
+      max-width: 1600px;
+      /* Increased from 1200px */
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
-    .cert-card {
-      grid-column: span 1;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .cert-image {
-      width: 100%;
-      height: 180px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      background: #fff;
-      /* Some cert images might have transparent bg */
+    .certifications-section h1 {
+      text-align: center;
+      margin-bottom: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 15px;
     }
 
-    .cert-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 10px;
-      transition: transform 0.5s;
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /* Force 4 columns */
+      gap: 25px;
     }
 
-    .cert-card:hover .cert-image img {
-      transform: scale(1.05);
+    /* Responsive Breakpoints */
+    @media (max-width: 1400px) {
+      .certifications-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
-    .cert-meta {
+    @media (max-width: 1000px) {
+      .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .certifications-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .certification-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 25px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      flex-direction: column;
+    }
+
+    .certification-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-primary);
+    }
+
+    .certification-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 15px;
+    }
+
+    .certification-header h3 {
+      font-size: 1.1rem;
+      margin: 10px 0 5px 0;
+      color: var(--text-main);
+    }
+
+    .platform-logo i {
+      font-size: 1.5rem;
+      color: var(--accent-primary);
     }
 
     .issuer {
-      color: var(--accent-primary);
-      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
-    .back-nav {
+    .certificate-image {
       width: 100%;
-      max-width: 1400px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #000;
     }
 
-    .back-btn {
+    .certificate-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* Ensure full cert is seen */
+    }
+
+    .certificate-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .skill-tag {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--accent-secondary);
+      border: 1px solid rgba(112, 0, 255, 0.2);
+    }
+
+    .view-certificate {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--accent-primary);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .view-certificate:hover {
+      opacity: 0.8;
+    }
+
+    .view-certificate.secondary {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Back Nav */
+    .back-nav {
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 20px;
-      background: var(--bg-card);
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
-      border-radius: 50px;
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
       transition: all 0.3s;
     }
 
     .back-btn:hover {
-      background: var(--bg-card-hover);
-      transform: translateX(-5px);
+      background: var(--accent-primary);
+      color: #000;
     }
   </style>
 </head>
@@ -107,179 +201,22 @@
 <body>
   <div class="background-mesh"></div>
 
-  <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-    <nav class="back-nav">
-      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
-      <h1>Certifications</h1>
-    </nav>
+  <main class="certifications-container">
+    <div class="back-nav">
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+      <h1>Mes Certifications</h1>
+    </div>
 
-    <main class="certs-grid bento-grid" style="display: grid;">
+    <section class="certifications-section">
+      <!-- Grid Container populated by JS -->
+      <div class="certifications-grid">
+        <!-- JS INJECTS CARDS HERE -->
+        <p style="text-align:center; width:100%; color: var(--text-muted);">Chargement...</p>
+      </div>
+    </section>
+  </main>
 
-      <!-- Digital Marketing -->
-      <article class="card cert-card" style="--delay: 0.1s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/17_Digital_Marketing_Principles.png" alt="Digital Marketing">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Digital Marketing Institute</span>
-          <span>Dec 2025</span>
-        </div>
-        <h3>Digital Marketing Principles</h3>
-        <a href="./assets/certifications/pdf/17_Digital_Marketing_Principles.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Leadership -->
-      <article class="card cert-card" style="--delay: 0.15s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/16_Leadership_Skills_Development.png" alt="Leadership">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Leadership Academy</span>
-          <span>Nov 2025</span>
-        </div>
-        <h3>Leadership Skills</h3>
-        <a href="./assets/certifications/pdf/16_Leadership_Skills_Development.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Cloud Computing -->
-      <article class="card cert-card" style="--delay: 0.2s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/15_Cloud_Computing_Fundamentals.png" alt="Cloud Computing">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Cloud Security Alliance</span>
-          <span>Nov 2025</span>
-        </div>
-        <h3>Cloud Computing Fundamentals</h3>
-        <a href="./assets/certifications/pdf/15_Cloud_Computing_Fundamentals.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Data Analysis -->
-      <article class="card cert-card" style="--delay: 0.25s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/14_Data_Analysis_Essentials.png" alt="Data Analysis">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Data Science Council</span>
-          <span>Oct 2025</span>
-        </div>
-        <h3>Data Analysis Essentials</h3>
-        <a href="./assets/certifications/pdf/14_Data_Analysis_Essentials.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Python -->
-      <article class="card cert-card" style="--delay: 0.3s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/13_Python_Programming_Intro.png" alt="Python">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Python Institute</span>
-          <span>Oct 2025</span>
-        </div>
-        <h3>Python Programming Intro</h3>
-        <a href="./assets/certifications/pdf/13_Python_Programming_Intro.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Web Dev -->
-      <article class="card cert-card" style="--delay: 0.35s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/12_Web_Development_Fundamentals.png" alt="Web Dev">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Coursera</span>
-          <span>Sep 2025</span>
-        </div>
-        <h3>Web Development Fundamentals</h3>
-        <a href="./assets/certifications/pdf/12_Web_Development_Fundamentals.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Project Management -->
-      <article class="card cert-card" style="--delay: 0.4s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/11_Project_Management_Basics.png" alt="PM">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">PMI</span>
-          <span>Sep 2025</span>
-        </div>
-        <h3>Project Management Basics</h3>
-        <a href="./assets/certifications/pdf/11_Project_Management_Basics.pdf" target="_blank" class="mini-form"
-          style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Data Literacy -->
-      <article class="card cert-card" style="--delay: 0.45s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/10_Data_Literacy_European_Universities.png" alt="Data Literacy">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">European University</span>
-          <span>Aug 2025</span>
-        </div>
-        <h3>Data Literacy</h3>
-        <a href="./assets/certifications/pdf/10_Data_Literacy_European_Universities.pdf" target="_blank"
-          class="mini-form" style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- IoT -->
-      <article class="card cert-card" style="--delay: 0.5s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/08_IoT_Wireless_Cloud_Computing_Yonsei.png" alt="IoT">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">Yonsei University</span>
-          <span>Jul 2025</span>
-        </div>
-        <h3>IoT Wireless Cloud</h3>
-        <a href="./assets/certifications/pdf/08_IoT_Wireless_Cloud_Computing_Yonsei.pdf" target="_blank"
-          class="mini-form" style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-      <!-- Cybersecurity -->
-      <article class="card cert-card" style="--delay: 0.55s">
-        <div class="cert-image">
-          <img src="./assets/certifications/images/01_Introduction_to_Cybersecurity_Careers_IBM.png"
-            alt="Cybersecurity">
-        </div>
-        <div class="cert-meta">
-          <span class="issuer">IBM</span>
-          <span>Apr 2025</span>
-        </div>
-        <h3>Intro to Cybersecurity</h3>
-        <a href="./assets/certifications/pdf/01_Introduction_to_Cybersecurity_Careers_IBM.pdf" target="_blank"
-          class="mini-form" style="text-decoration: none; margin-top: auto;">
-          <button style="width: 100%;">Voir PDF <i class="fas fa-file-pdf"></i></button>
-        </a>
-      </article>
-
-    </main>
-  </div>
-
-  <script src="js/bento.js"></script>
+  <script src="js/certifications.js"></script>
 </body>
 
 </html>
