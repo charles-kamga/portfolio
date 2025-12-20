@@ -631,6 +631,23 @@ p {
   flex-grow: 1;
 }
 
+.contact-card .card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding-top: 15px;
+}
+
+.contact-card .card-footer:hover {
+  gap: 15px;
+  color: #fff;
+}
+
 .networking-quote {
   font-style: italic;
   color: var(--text-muted);
