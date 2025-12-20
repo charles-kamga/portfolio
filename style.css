@@ -612,3 +612,49 @@ p {
   padding-left: 10px;
   max-width: 200px;
 }
+
+/* --- MOBILE FIXES (Resetting Desktop Overrides) --- */
+
+* {
+  -webkit-tap-highlight-color: transparent; /* Fix "darkening" tap effect on mobile */
+}
+
+@media (max-width: 900px) {
+  /* Force single column stack on mobile */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reset all cards to full width */
+  .profile-card,
+  .skills-card,
+  .projects-link-card,
+  .certs-link-card,
+  .contact-card,
+  .about-card {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  /* Contact Card Mobile: Stack vertically */
+  .contact-card {
+    flex-direction: column !important;
+    gap: 20px;
+    padding: 25px !important;
+  }
+
+  .contact-content-left {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .contact-content-right {
+    max-width: 100%;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .skills-mini-grid.contact-grid {
+    justify-content: center; /* Center icons on mobile */
+  }
+}
