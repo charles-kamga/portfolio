@@ -11,7 +11,7 @@ const certifications = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
 // Générer le HTML pour une certification
 function generateCertificationHTML(cert) {
-  const skillsHTML = cert.skills.map(skill => 
+  const skillsHTML = cert.skills.map(skill =>
     `<span class="skill-tag">${skill}</span>`
   ).join('\n');
 
@@ -112,8 +112,7 @@ function generateHTML() {
     </div>
   </main>
 
-  <script src="./js/theme-button.js"></script>
-  <script src="./js/theme.js"></script>
+
   <script src="./js/certifications.js"></script>
 </body>
 </html>`;

@@ -59,27 +59,34 @@
         but ? Comprendre et sécuriser le monde numérique de demain.</p>
     </article>
 
-    <!-- Skills Link Card (Replaces static skills) -->
-    <a href="skills.html" class="card skills-card" style="--delay: 0.3s">
+    <!-- Location/Map Card (Visual filler) -->
+    <article class="card location-card" style="--delay: 0.3s">
+      <div class="map-visual">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Basé en France</span>
+      </div>
+    </article>
+
+    <!-- Skills Card -->
+    <article class="card skills-card" style="--delay: 0.4s">
       <div class="card-header">
         <i class="fas fa-code"></i>
         <h3>Stack Technique</h3>
       </div>
-      <div class="skills-preview">
-        <div class="skill-icon"><i class="devicon-python-plain"></i></div>
-        <div class="skill-icon"><i class="devicon-javascript-plain"></i></div>
-        <div class="skill-icon"><i class="devicon-react-original"></i></div>
-        <div class="skill-icon"><i class="devicon-linux-plain"></i></div>
-        <div class="skill-count">+12 autres</div>
+      <div class="skills-grid">
+        <div class="skill-item"><i class="devicon-python-plain"></i> <span>Python</span></div>
+        <div class="skill-item"><i class="devicon-javascript-plain"></i> <span>JS</span></div>
+        <div class="skill-item"><i class="devicon-html5-plain"></i> <span>HTML5</span></div>
+        <div class="skill-item"><i class="devicon-css3-plain"></i> <span>CSS3</span></div>
+        <div class="skill-item"><i class="devicon-c-plain"></i> <span>C</span></div>
+        <div class="skill-item"><i class="devicon-linux-plain"></i> <span>Linux</span></div>
+        <div class="skill-item"><i class="devicon-git-plain"></i> <span>Git</span></div>
+        <div class="skill-item"><i class="fas fa-shield-alt"></i> <span>Secu</span></div>
       </div>
-      <div class="card-footer">
-        <span>Voir tout l'arsenal</span>
-        <i class="fas fa-arrow-right"></i>
-      </div>
-    </a>
+    </article>
 
     <!-- Projects Link Card -->
-    <a href="projects.html" class="card projects-link-card" style="--delay: 0.4s">
+    <a href="projects.html" class="card projects-link-card" style="--delay: 0.5s">
       <div class="card-content">
         <div class="icon-box">
           <i class="fas fa-project-diagram"></i>
@@ -91,29 +98,31 @@
     </a>
 
     <!-- Certifications Link Card -->
-    <a href="certifications.html" class="card certs-link-card" style="--delay: 0.5s">
-      <div class="card-header">
-        <i class="fas fa-certificate"></i>
-        <h3>Certifications</h3>
-      </div>
-      <ul class="certs-list-preview">
-        <li><i class="fas fa-check-circle"></i> Digital Marketing</li>
-        <li><i class="fas fa-check-circle"></i> Cloud Computing</li>
-        <li><i class="fas fa-check-circle"></i> Python Intro</li>
-      </ul>
-    </a>
-
-    <!-- Contact Link Card (Replaces simple contact) -->
-    <a href="contact.html" class="card contact-card" style="--delay: 0.6s">
-      <div class="card-content center-content">
-        <div class="icon-box large">
-          <i class="fas fa-paper-plane"></i>
+    <a href="certifications.html" class="card certs-link-card" style="--delay: 0.6s">
+      <div class="card-content">
+        <div class="icon-box">
+          <i class="fas fa-certificate"></i>
         </div>
-        <h3>Me Contacter</h3>
-        <p>Un projet ? Discutons-en.</p>
+        <h3>Certifications</h3>
+        <p>Mes diplômes et badges.</p>
+        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
       </div>
     </a>
 
+    <!-- Contact Card -->
+    <article class="card contact-card" style="--delay: 0.7s">
+      <div class="card-header">
+        <i class="fas fa-paper-plane"></i>
+        <h3>Me Contacter</h3>
+      </div>
+      <form id="contact-form" class="mini-form">
+        <input type="email" placeholder="Votre email" required>
+        <textarea placeholder="Un petit message ?" rows="2" required></textarea>
+        <button type="submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </article>
+
+    <!-- Theme/Mode Toggle (Hidden but ready if needed, currently enforced dark) -->
   </main>
 
   <script src="js/bento.js"></script>

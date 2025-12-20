@@ -57,14 +57,15 @@ h1 {
 
 @keyframes glow {
   from {
-    text-shadow: 
+    text-shadow:
       0 0 5px #fff,
       0 0 10px #fff,
       0 0 20px var(--primary-color),
       0 0 40px var(--primary-color);
   }
+
   to {
-    text-shadow: 
+    text-shadow:
       0 0 10px #fff,
       0 0 20px #fff,
       0 0 30px var(--primary-color),
@@ -157,7 +158,8 @@ h1 {
   height: 90vh;
   box-sizing: border-box;
   overflow-y: auto;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Pour Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  /* Pour Firefox */
 }
 
 /* Responsive Design */
@@ -171,7 +173,7 @@ h1 {
     max-height: none;
     overflow: visible;
   }
-  
+
   .profile-sidebar {
     height: auto;
     min-height: 50vh;
@@ -179,7 +181,7 @@ h1 {
     margin-bottom: 20px;
     padding: 40px;
   }
-  
+
   /* Ajustement pour les grands écrans */
   @media (min-height: 900px) {
     .profile-sidebar {
@@ -187,17 +189,17 @@ h1 {
       max-height: 40vh;
     }
   }
-  
+
   .content-wrapper {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .main-content h2 {
     font-size: 1.6em;
     margin-bottom: 15px;
   }
-  
+
   .main-content p {
     margin: 10px 0;
     line-height: 1.5;
@@ -441,40 +443,7 @@ h1 {
 }
 
 /* Styles pour le thème clair */
-[data-theme="light"] .interests-section h3,
-[data-theme="light"] .interests h3 {
-  color: #2c3e50;
-}
 
-[data-theme="light"] .interests-section li {
-  background: rgba(240, 240, 240, 0.9);
-  border: 1px solid #e0e0e0;
-}
-
-[data-theme="light"] .interests-section li span,
-[data-theme="light"] .interests-section li p {
-  color: #333;
-}
-
-[data-theme="light"] .interests-section li:hover {
-  background: rgba(230, 230, 230, 0.95);
-  border-color: #4cc9f0;
-}
-
-[data-theme="light"] .interests li {
-  background-color: rgba(240, 240, 240, 0.9);
-  border: 1px solid #e0e0e0;
-}
-
-[data-theme="light"] .interests li span,
-[data-theme="light"] .interests li p {
-  color: #333;
-}
-
-[data-theme="light"] .interests li:hover {
-  background: rgba(230, 230, 230, 0.95);
-  border-color: #4cc9f0;
-}
 
 /* Style de la barre de défilement pour les centres d'intérêt */
 .interests::-webkit-scrollbar {
@@ -526,33 +495,34 @@ h1 {
     text-align: left;
     padding: 15px;
   }
-  
+
   .interests-section li {
     padding: 15px 15px 15px 55px;
   }
-  
+
   .interests-section li i {
     left: 10px;
     font-size: 1.5rem;
     width: 100px;
     height: 100px;
   }
-  
+
   .interests li span {
     padding: 10px 5px;
   }
-  
+
   .interests li span p {
     font-size: 0.85rem;
   }
 }
+
 @media (max-width: 1024px) {
   .content-wrapper {
     grid-template-columns: 300px 1fr;
     gap: 30px;
     padding: 15px 30px 30px;
   }
-  
+
   .main-content {
     padding: 40px;
   }
@@ -563,14 +533,14 @@ h1 {
   .app-container {
     padding-top: 0 !important;
   }
-  
+
   .content-wrapper {
     grid-template-columns: 1fr;
     gap: 15px;
     padding: 5px;
     width: 100%;
   }
-  
+
   .interests-section li i {
     top: 15px;
     left: 15px;
@@ -578,25 +548,25 @@ h1 {
     height: 32px;
     font-size: 1.1rem;
   }
-  
+
   .main-content {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .interests-section {
     margin: 20px;
     width: 100%;
   }
-  
+
   .interests-section li {
     padding: 15px;
     margin: 0 0 10px 0;
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .about-section {
     padding: 15px;
     margin: 0;
@@ -604,13 +574,13 @@ h1 {
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .about-section h2 {
     font-size: 1.5rem;
     padding: 10px 0;
     margin-bottom: 15px;
   }
-  
+
   .profile-sidebar {
     position: relative;
     top: 0;
@@ -625,12 +595,12 @@ h1 {
     /* Conserver les bordures pour que le radius soit visible */
     overflow: visible !important;
   }
-  
+
   .main-content {
     padding: 10px;
     min-height: auto;
   }
-  
+
   .profile-pic {
     width: 150px;
     height: 150px;
@@ -638,12 +608,12 @@ h1 {
     min-height: 150px;
     margin: 0 auto 15px;
   }
-  
+
   .profile-description {
     font-size: 0.95em;
     margin: 8px 0 12px;
   }
-  
+
   .nav-sidebar {
     flex-direction: row;
     flex-wrap: wrap;
@@ -651,7 +621,7 @@ h1 {
     gap: 8px;
     margin-top: 15px;
   }
-  
+
   .nav-sidebar a {
     padding: 8px 12px;
     font-size: 0.9em;
@@ -660,50 +630,50 @@ h1 {
     text-align: center;
     max-width: 160px;
   }
-  
+
   .about-section,
   .interests-section {
     padding: 15px;
     margin: 0 0 20px 0;
     min-height: auto;
   }
-  
+
   .about-section h2,
   .interests-section h3 {
     font-size: 1.4em;
     margin-bottom: 15px;
   }
-  
+
   .about-section p {
     font-size: 0.95em;
     line-height: 1.6;
   }
-  
+
   .interests-section img.interest-icon {
     width: 50px;
     height: 50px;
     margin: 10px auto 5px;
   }
-  
+
   .interests li {
     flex-direction: column;
     text-align: center;
     padding: 15px 10px;
     margin: 5px 0;
   }
-  
+
   .interests li span {
     font-size: 1.1em;
     margin: 0 0 8px 0;
     padding: 0;
   }
-  
+
   .interests li p {
     margin: 5px 0 0 0;
     font-size: 0.85em;
     line-height: 1.5;
   }
-  
+
   /* Ajustements pour les très petits écrans */
   @media (max-width: 480px) {
     .nav-sidebar a {
@@ -711,18 +681,15 @@ h1 {
       max-width: 100%;
       padding: 10px;
     }
-    
+
     .profile-pic {
       width: 100px;
       height: 100px;
     }
-    
+
     .about-section h2,
     .interests-section h3 {
       font-size: 1.3em;
     }
   }
 }
-
-
-
