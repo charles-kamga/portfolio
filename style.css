@@ -679,3 +679,11 @@ p {
     box-shadow: none !important;
   }
 }
+
+@media (max-width: 900px) {
+  /* Disable Entrance Animations on Mobile to prevent flash/bugs on load/back */
+  .card {
+    animation: none !important;
+    transition: none !important; /* Also kill transitions to be super safe */
+  }
+}
