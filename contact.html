@@ -44,6 +44,10 @@
       color: var(--text-main);
       margin: 0;
       background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      /* Restored */
+      background-clip: text;
+      /* Standard property */
       -webkit-text-fill-color: transparent;
     }
 
@@ -363,15 +367,15 @@
             </div>
             <div class="form-group full-width">
               <label>Sujet</label>
-              <input type="text" placeholder="Brève description..." required>
+              <input type="text" placeholder="De quoi voulez-vous parler ?" required>
             </div>
             <div class="form-group full-width">
               <label>Message détaillé</label>
-              <textarea rows="6" placeholder="Parlez-moi de votre vision..." required></textarea>
+              <textarea rows="6" placeholder="Entrez votre message ici..." required></textarea>
             </div>
           </div>
           <button type="submit" class="submit-btn">
-            <span>Envoyer la demande</span>
+            <span>Envoyer le mail</span>
             <i class="fas fa-paper-plane"></i>
           </button>
         </form>

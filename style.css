@@ -156,6 +156,10 @@ h1 {
   font-weight: 700;
   margin-bottom: 0.5rem;
   background: linear-gradient(to right, #fff, #a0a0a0);
+  -webkit-background-clip: text;
+  /* Restored */
+  background-clip: text;
+  /* Standard property */
   -webkit-text-fill-color: transparent;
 }
 
@@ -191,8 +195,8 @@ p {
 }
 
 .profile-image {
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--border-color);
@@ -493,9 +497,11 @@ p {
   border-radius: 50%;
   box-shadow: 0 0 5px #00ff88;
 }
+
 /* Contact Card Side-by-Side Layout */
 .contact-card {
-  flex-direction: row !important; /* Override default column */
+  flex-direction: row !important;
+  /* Override default column */
   justify-content: space-between;
   align-items: center;
 }
@@ -515,7 +521,8 @@ p {
 }
 
 .skills-mini-grid.contact-grid {
-  justify-content: flex-end; /* Align icons to right */
+  justify-content: flex-end;
+  /* Align icons to right */
   margin-top: 0;
 }
 
@@ -524,18 +531,21 @@ p {
 /* 1. Grid Adjustment: Profile Left (2x2), Stack & Projects Right (Stack top, Projects bottom) */
 
 .about-card {
-  display: none !important; /* Hide about card if still present or prevent issues */
+  display: none !important;
+  /* Hide about card if still present or prevent issues */
 }
 
 /* Make Skills Card (Stack) bigger and occupy top right */
 .skills-card {
   grid-column: span 2 !important;
-  grid-row: span 1 !important; /* Takes 1 row */
+  grid-row: span 1 !important;
+  /* Takes 1 row */
 }
 
 /* Make Projects Card bigger and occupy bottom right (below Stack) */
 .projects-link-card {
-  grid-column: span 2 !important; /* Was 1 */
+  grid-column: span 2 !important;
+  /* Was 1 */
 }
 
 /* Ensure Profile stays 2x2 on the left */
@@ -560,8 +570,11 @@ p {
 .interests-list {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  /* Horizontal alignment */
+  flex-wrap: wrap;
+  gap: 15px;
+  /* Increased gap for row */
 }
 
 .interests-list li {
@@ -582,23 +595,31 @@ p {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px; /* Bigger gap */
-  justify-content: space-between; /* Fill width */
+  gap: 15px;
+  /* Bigger gap */
+  justify-content: space-between;
+  /* Fill width */
 }
 
 .skills-mini-grid.contact-grid .skill-pill {
-  width: auto; /* Let it grow */
-  flex-grow: 1; /* Fill space */
-  height: 60px; /* Taller */
-  font-size: 1.8rem; /* Bigger icon */
-  min-width: 60px; /* Restore min width */
+  width: auto;
+  /* Let it grow */
+  flex-grow: 1;
+  /* Fill space */
+  height: 60px;
+  /* Taller */
+  font-size: 1.8rem;
+  /* Bigger icon */
+  min-width: 60px;
+  /* Restore min width */
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
 }
 
 /* Adjust contact right container width */
 .contact-content-right {
-  max-width: 60%; /* Give more space for icons */
+  max-width: 60%;
+  /* Give more space for icons */
   flex-grow: 1;
 }
 
@@ -615,10 +636,12 @@ p {
 /* --- MOBILE FIXES (Resetting Desktop Overrides) --- */
 
 * {
-  -webkit-tap-highlight-color: transparent; /* Fix "darkening" tap effect on mobile */
+  -webkit-tap-highlight-color: transparent;
+  /* Fix "darkening" tap effect on mobile */
 }
 
 @media (max-width: 900px) {
+
   /* Force single column stack on mobile */
   .bento-grid {
     grid-template-columns: 1fr !important;
@@ -654,16 +677,19 @@ p {
   }
 
   .skills-mini-grid.contact-grid {
-    justify-content: center; /* Center icons on mobile */
+    justify-content: center;
+    /* Center icons on mobile */
   }
 }
 
 @media (max-width: 900px) {
+
   /* Disable Hover Animations on Mobile */
   .card:hover {
     transform: none !important;
     box-shadow: none !important;
-    background: var(--bg-card); /* Reset background or keep subtle, but removing shifting is key */
+    background: var(--bg-card);
+    /* Reset background or keep subtle, but removing shifting is key */
     border-color: var(--border-color);
   }
 
@@ -671,7 +697,7 @@ p {
   .card:hover::after {
     opacity: 0 !important;
   }
-  
+
   /* Reset Skill Pill hover */
   .skill-pill:hover {
     transform: none !important;
@@ -680,9 +706,29 @@ p {
 }
 
 @media (max-width: 900px) {
+
   /* Disable Entrance Animations on Mobile to prevent flash/bugs on load/back */
   .card {
     animation: none !important;
-    transition: none !important; /* Also kill transitions to be super safe */
+    transition: none !important;
+    /* Also kill transitions to be super safe */
   }
+}
+
+/* Updated Profile Layout */
+.profile-title-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-title-block h1 {
+  font-size: 1.8rem;
+  /* Smaller to fit side-by-side */
+  margin-bottom: 2px;
+}
+
+.profile-title-block h2 {
+  font-size: 0.9rem;
+  margin-bottom: 0;
 }
