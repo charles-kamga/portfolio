@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://charleskamga.onrender.com/sitemap.xml
+Sitemap: https://charleskamga.me/sitemap.xml
