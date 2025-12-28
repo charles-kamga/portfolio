@@ -92,5 +92,23 @@
         ],
         "image": "IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies.png",
         "url": "https://www.coursera.org/account/accomplishments/verify/QH4JCLEFWJYA"
+    },
+    {
+        "id": "8",
+        "title": "Computer Networks and Network Security",
+        "issuer": "IBM",
+        "date": "Dec 27, 2025",
+        "skills": [
+            "Wireless Networks",
+            "Network Planning And Design",
+            "Information Systems Security",
+            "Intrusion Detection and Prevention",
+            "Networking Hardware",
+            "Network Infrastructure",
+            "Network Security",
+            "General Networking"
+        ],
+        "image": "Computer Networks and Network Security.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/HVCN6U3PB5CA"
     }
 ]
