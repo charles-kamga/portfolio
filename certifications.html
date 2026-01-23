@@ -200,24 +200,49 @@
 </head>
 
 <body>
-  <div class="background-mesh"></div>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">CK.</div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+          <li class="nav-item"><a href="projects.html"><i class="fas fa-project-diagram"></i> <span>Projets</span></a>
+          </li>
+          <li class="nav-item"><a href="skills.html"><i class="fas fa-bolt"></i> <span>Arsenal</span></a></li>
+          <li class="nav-item active"><a href="certifications.html"><i class="fas fa-award"></i>
+              <span>Certifs</span></a></li>
+          <li class="nav-item"><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </aside>
 
-  <main class="certifications-container">
-    <div class="back-nav">
-      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
-      <h1>Mes Certifications</h1>
-    </div>
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="welcome-text">
+          <h1>Mes Certifications</h1>
+          <p>Diplômes et badges vérifiés.</p>
+        </div>
+      </header>
 
-    <section class="certifications-section">
-      <!-- Grid Container populated by JS -->
-      <div class="certifications-grid">
-        <!-- JS INJECTS CARDS HERE -->
-        <p style="text-align:center; width:100%; color: var(--text-muted);">Chargement...</p>
+      <div class="dashboard-grid">
+        <div class="widget" style="grid-column: span 12;">
+
+          <section class="certifications-section">
+            <!-- Grid Container populated by JS -->
+            <div class="certifications-grid">
+              <!-- JS INJECTS CARDS HERE -->
+              <p style="text-align:center; width:100%; color: var(--text-muted);">Chargement...</p>
+            </div>
+          </section>
+          </section>
+        </div>
       </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
+  <script src="js/bento.js"></script>
   <script src="js/certifications.js"></script>
 </body>
-
 </html>

@@ -46,9 +46,7 @@
       margin: 0;
       background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
       -webkit-background-clip: text;
-      /* Restored */
       background-clip: text;
-      /* Standard property */
       -webkit-text-fill-color: transparent;
     }
 
@@ -303,85 +301,105 @@
 </head>
 
 <body>
-  <div class="background-mesh"></div>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">CK.</div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+          <li class="nav-item"><a href="projects.html"><i class="fas fa-project-diagram"></i> <span>Projets</span></a>
+          </li>
+          <li class="nav-item"><a href="skills.html"><i class="fas fa-bolt"></i> <span>Arsenal</span></a></li>
+          <li class="nav-item"><a href="certifications.html"><i class="fas fa-award"></i> <span>Certifs</span></a></li>
+          <li class="nav-item active"><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
 
-  <div class="page-wrapper">
-    <nav class="back-nav">
-      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour</a>
-      <h1>Me Contacter</h1>
-    </nav>
-
-    <main class="contact-page-grid">
-
-      <!-- Contact Info & Socials -->
-      <section class="contact-info-card">
-        <div class="info-header">
-          <h2>Me contacter ?</h2>
-          <p>N'hésitez pas à m'envoyer un message via le formulaire ou sur mes réseaux.</p>
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="welcome-text">
+          <h1>Me Contacter</h1>
+          <p>Discutons de votre prochain projet.</p>
         </div>
+      </header>
 
-        <div class="contact-methods">
-          <a href="mailto:charleskamgapr@gmail.com" class="method-item">
-            <div class="method-icon"><i class="fas fa-envelope"></i></div>
-            <div class="method-text">
-              <h3>Email</h3>
-              <span>charleskamgapr@gmail.com</span>
+      <div class="dashboard-grid">
+        <div class="widget" style="grid-column: span 12;">
+
+          <!-- Contact Info & Socials -->
+          <section class="contact-info-card">
+            <div class="info-header">
+              <h2>Me contacter ?</h2>
+              <p>N'hésitez pas à m'envoyer un message via le formulaire ou sur mes réseaux.</p>
             </div>
-          </a>
+
+            <div class="contact-methods">
+              <a href="mailto:charleskamgapr@gmail.com" class="method-item">
+                <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                <div class="method-text">
+                  <h3>Email</h3>
+                  <span>charleskamgapr@gmail.com</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="social-grid">
+              <a href="https://github.com/charles-kamga" target="_blank" class="social-btn">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="social-btn">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://x.com/CharlesK8376" target="_blank" class="social-btn">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>X (Twitter)</span>
+              </a>
+              <a href="https://facebook.com/charles.kamga.980" target="_blank" class="social-btn">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+              </a>
+              <a href="https://instagram.com/charles_c_kamga" target="_blank" class="social-btn">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Detailed Form -->
+          <section class="contact-form-card">
+            <form id="detailed-contact-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Nom complet</label>
+                  <input type="text" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group full-width">
+                  <label>Sujet</label>
+                  <input type="text" name="subject" placeholder="De quoi voulez-vous parler ?" required>
+                </div>
+                <div class="form-group full-width">
+                  <label>Message détaillé</label>
+                  <textarea name="message" rows="6" placeholder="Entrez votre message ici..." required></textarea>
+                </div>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span>Envoyer le mail</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </section>
         </div>
-
-        <div class="social-grid">
-          <a href="https://github.com" target="_blank" class="social-btn">
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-          <a href="https://linkedin.com" target="_blank" class="social-btn">
-            <i class="fab fa-linkedin-in"></i>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://x.com/CharlesK8376" target="_blank" class="social-btn">
-            <i class="fa-brands fa-x-twitter"></i>
-            <span>X (Twitter)</span>
-          </a>
-          <a href="https://facebook.com/charles.kamga.980" target="_blank" class="social-btn">
-            <i class="fab fa-facebook-f"></i>
-            <span>Facebook</span>
-          </a>
-          <a href="https://instagram.com/charles_c_kamga" target="_blank" class="social-btn">
-            <i class="fab fa-instagram"></i>
-            <span>Instagram</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Detailed Form -->
-      <section class="contact-form-card">
-        <form id="detailed-contact-form">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Nom complet</label>
-              <input type="text" name="name" placeholder="John Doe" required>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="john@example.com" required>
-            </div>
-            <div class="form-group full-width">
-              <label>Sujet</label>
-              <input type="text" name="subject" placeholder="De quoi voulez-vous parler ?" required>
-            </div>
-            <div class="form-group full-width">
-              <label>Message détaillé</label>
-              <textarea name="message" rows="6" placeholder="Entrez votre message ici..." required></textarea>
-            </div>
-          </div>
-          <button type="submit" class="submit-btn">
-            <span>Envoyer le mail</span>
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
-      </section>
-
+      </div>
     </main>
   </div>
 
