@@ -68,127 +68,154 @@
 
 
 <body>
-  <div class="background-mesh"></div>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">CK.</div>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item active"><a href="#accueil"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+          <li class="nav-item"><a href="projects.html"><i class="fas fa-project-diagram"></i> <span>Projets</span></a>
+          </li>
+          <li class="nav-item"><a href="skills.html"><i class="fas fa-bolt"></i> <span>Arsenal</span></a></li>
+          <li class="nav-item"><a href="certifications.html"><i class="fas fa-award"></i> <span>Certifs</span></a></li>
+          <li class="nav-item"><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer"
+        style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color);">
+        <div class="status-badge">
+          <span class="pulse"></span> Online
+        </div>
+      </div>
+    </aside>
 
-  <main class="bento-grid">
-    <!-- Profile Card (Hero) -->
-    <article class="card profile-card" style="--delay: 0.1s">
-      <div class="card-content">
-        <div class="profile-header">
-          <div class="profile-image">
-            <img src="assets/images/ins_link_DBasbMSRM3T_3-1.jpg" alt="Charles Kamga">
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div class="welcome-text">
+          <h1>Charles' Workspace</h1>
+          <p>Bienvenue sur mon interface de développement.</p>
+        </div>
+        <div class="header-actions">
+          <a href="contact.html" class="btn primary" style="padding: 10px 20px; font-size: 0.9rem;">Start Project</a>
+        </div>
+      </header>
+
+      <div class="dashboard-grid">
+        <!-- Hero Widget -->
+        <div class="widget hero-widget"
+          style="grid-column: span 8; background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0, 242, 255, 0.05)); border-color: rgba(0, 242, 255, 0.1);">
+          <div class="hero-flex" style="display: flex; gap: 30px; align-items: center;">
+            <img src="assets/images/ins_link_DBasbMSRM3T_3-1.jpg" alt="Charles"
+              style="width: 130px; height: 130px; border-radius: 30px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <div class="hero-info">
+              <h2
+                style="font-size: 2rem; margin-bottom: 5px; background: linear-gradient(90deg, #fff, #8e8e9a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                Charles Kamga Mukam</h2>
+              <p
+                style="color: var(--accent-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; font-size: 0.85rem;">
+                Dév Back-end & Pentester</p>
+              <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 500px;">Expert en
+                conception de solutions sécurisées et performantes. Spécialisé en architecture logicielle et tests
+                d'intrusion.</p>
+            </div>
           </div>
-          <div class="profile-title-block">
-            <h1>Charles Kamga Mukam</h1>
-            <h2>Développeur Web back-end & Pentester</h2>
+        </div>
+
+        <!-- Stack Widget -->
+        <div class="widget stack-widget" style="grid-column: span 4;">
+          <div class="widget-header">
+            <span class="widget-title"><i class="fas fa-microchip"></i> Technologies</span>
+          </div>
+          <div class="skills-mini-grid" style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <div class="skill-pill"
+              style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <i class="devicon-python-plain"></i>
+            </div>
+            <div class="skill-pill"
+              style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <i class="devicon-javascript-plain"></i>
+            </div>
+            <div class="skill-pill"
+              style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <i class="devicon-linux-plain"></i>
+            </div>
+            <div class="skill-pill"
+              style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="skill-pill"
+              style="width: 40px; height: 40px; background: var(--accent-soft); color: var(--accent-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">
+              +10</div>
           </div>
         </div>
-        <div class="status-badge" style="width: fit-content; margin-bottom: 15px;">
-          <span class="pulse"></span>
-          Disponible pour projets
-        </div>
-        <p>Je conçois des expériences numériques modernes et sécurisées. Étudiant en ICT, explorateur de la
-          cybersécurité.</p>
-        <div class="interests-container">
-          <h3>Centres d'intérêt</h3>
-          <ul class="interests-list">
-            <li><i class="fas fa-chess-knight"></i> Joueur d'échecs</li>
-            <li><i class="fas fa-music"></i> Écouter de la musique</li>
-            <li><i class="fas fa-pen-nib"></i> Pseudo écrivain</li>
-          </ul>
-        </div>
-      </div>
-    </article>
 
-    <!-- Stack Card (Moved to top right) -->
-    <a href="skills.html" class="card skills-card" style="--delay: 0.2s">
-      <div class="card-header">
-        <i class="fas fa-microchip"></i>
-        <h3>Stack</h3>
-      </div>
-      <div class="skills-mini-grid">
-        <div class="skill-pill"><i class="devicon-python-plain"></i></div>
-        <div class="skill-pill"><i class="devicon-javascript-plain"></i></div>
-        <div class="skill-pill"><i class="devicon-react-original"></i></div>
-        <div class="skill-pill"><i class="devicon-html5-plain"></i></div>
-        <div class="skill-pill"><i class="devicon-css3-plain"></i></div>
-        <div class="skill-pill"><i class="devicon-linux-plain"></i></div>
-        <div class="skill-pill"><i class="devicon-git-plain"></i></div>
-        <div class="skill-pill"><i class="fas fa-shield-alt"></i></div>
-        <div class="skill-pill count">+5</div>
-      </div>
-    </a>
+        <!-- Projects Widget -->
+        <div class="widget projects-widget" style="grid-column: span 6;">
+          <div class="widget-header">
+            <span class="widget-title"><i class="fas fa-tasks"></i> Recent Work</span>
+            <a href="projects.html" style="font-size: 0.8rem; color: var(--accent-primary); text-decoration: none;">Voir
+              tout</a>
+          </div>
+          <div class="work-list" style="display: flex; flex-direction: column; gap: 15px;">
+            <div class="work-item"
+              style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+              <div>
+                <strong style="display: block; font-size: 0.95rem;">MeetLocal</strong>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">WebRTC Conference App</span>
+              </div>
+              <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+            </div>
+            <div class="work-item"
+              style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+              <div>
+                <strong style="display: block; font-size: 0.95rem;">Dictionnaire Bilingue</strong>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Langage C / Algorithmes</span>
+              </div>
+              <i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+            </div>
+          </div>
+        </div>
 
-    <!-- Projects Link Card -->
-    <a href="projects.html" class="card projects-link-card" style="--delay: 0.4s">
-      <div class="card-content">
-        <div class="icon-box">
-          <i class="fas fa-project-diagram"></i>
+        <!-- Certifications Widget -->
+        <div class="widget certs-widget"
+          style="grid-column: span 3; background: linear-gradient(135deg, rgba(112, 0, 255, 0.05), transparent);">
+          <div class="widget-header">
+            <span class="widget-title"><i class="fas fa-award"></i> Certifs</span>
+          </div>
+          <div class="certs-status" style="text-align: center; padding: 15px 0;">
+            <div
+              style="font-size: 2.5rem; font-weight: 700; color: #fff; text-shadow: 0 0 20px rgba(112, 0, 255, 0.4);">08
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Documents Vérifiés</p>
+          </div>
+          <a href="certifications.html" class="btn secondary"
+            style="width: 100%; padding: 10px; font-size: 0.85rem; justify-content: center; margin-top: 10px; background: rgba(255,255,255,0.02); border-radius: 12px;">Consulter
+            la liste</a>
         </div>
-        <h3>Mes Projets</h3>
-        <p>Découvrez mes réalisations et expériences.</p>
-        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
-      </div>
-    </a>
 
-    <!-- Certifications Link Card -->
-    <a href="certifications.html" class="card certs-link-card" style="--delay: 0.5s">
-      <div class="card-header">
-        <i class="fas fa-award"></i>
-        <h3>Certifs</h3>
-      </div>
-      <div class="certs-badge-container">
-        <div class="cert-item-row">
-          <i class="fas fa-check-circle"></i>
-          <span>Digital Marketing & E-commerce</span>
+        <!-- Quick Connect Widget -->
+        <div class="widget connect-widget" style="grid-column: span 3;">
+          <div class="widget-header">
+            <span class="widget-title"><i class="fas fa-share-alt"></i> Connect</span>
+          </div>
+          <div class="social-icons" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <a href="https://github.com/charles-kamga" target="_blank"
+              style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 10px; text-align: center; color: var(--text-muted);"><i
+                class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/charles-kamga" target="_blank"
+              style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 10px; text-align: center; color: var(--text-muted);"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:contact@charleskamga.me"
+              style="grid-column: span 2; padding: 10px; background: var(--accent-soft); color: var(--accent-primary); border-radius: 10px; text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Envoyer
+              un Mail</a>
+          </div>
         </div>
-        <div class="cert-item-row">
-          <i class="fas fa-check-circle"></i>
-          <span>Google Cloud Fundamentals</span>
-        </div>
-        <div class="cert-item-row">
-          <i class="fas fa-check-circle"></i>
-          <span>Python Essentials 1 & 2</span>
-        </div>
-      </div>
-      <div class="status-indicator">
-        <span class="dot"></span> Vérifié
-      </div>
-    </a>
 
-    <!-- Contact Link Card (Replaces simple contact) -->
-    <div class="card contact-card" style="--delay: 0.6s">
-      <div class="contact-content-left">
-        <div class="card-header">
-          <i class="fas fa-paper-plane"></i>
-          <h3>Me Contacter</h3>
-        </div>
-        <p class="networking-quote">
-          "Seul on va plus vite, <br>ensemble on va plus loin."
-        </p>
-        <a href="contact.html" class="card-footer">
-          <span>Démarrer un projet</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
       </div>
-      <div class="contact-content-right">
-        <div class="skills-mini-grid contact-grid">
-          <a href="https://www.linkedin.com/in/charles-kamga/" class="skill-pill" target="_blank" title="LinkedIn"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/charles_kamga" class="skill-pill" target="_blank" title="X (Twitter)"><i
-              class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://github.com/charles-kamga" class="skill-pill" target="_blank" title="GitHub"><i
-              class="fab fa-github"></i></a>
-          <a href="https://instagram.com/charles_kamga" class="skill-pill" target="_blank" title="Instagram"><i
-              class="fab fa-instagram"></i></a>
-          <a href="mailto:contact@charleskamga.com" class="skill-pill" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://facebook.com/charlesk" class="skill-pill" target="_blank" title="Facebook"><i
-              class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
-    </div>
-
-  </main>
+    </main>
+  </div>
 
   <script src="js/bento.js"></script>
 </body>
