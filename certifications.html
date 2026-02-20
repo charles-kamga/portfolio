@@ -73,8 +73,7 @@
     }
 
     .certification-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent-primary);
+      /* Effects removed by user request */
     }
 
     .certification-header {
@@ -196,6 +195,14 @@
       background: var(--accent-primary);
       color: #000;
     }
+
+    /* Disable hover highlight and violet glow for main widget */
+    .certifications-main-widget:hover {
+      background: rgba(255, 255, 255, 0.02) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+      transform: none !important;
+      /* Optional: also disable the lift effect? User only said surbrillance */
+    }
   </style>
 </head>
 
@@ -227,7 +234,7 @@
       </header>
 
       <div class="dashboard-grid">
-        <div class="widget" style="grid-column: span 12;">
+        <div class="widget certifications-main-widget" style="grid-column: span 12;">
 
           <section class="certifications-section">
             <!-- Grid Container populated by JS -->
@@ -245,4 +252,5 @@
   <script src="js/bento.js"></script>
   <script src="js/certifications.js"></script>
 </body>
+
 </html>

@@ -110,5 +110,35 @@
         ],
         "image": "Computer Networks and Network Security.png",
         "url": "https://www.coursera.org/account/accomplishments/verify/HVCN6U3PB5CA"
+    },
+    {
+        "id": "9",
+        "title": "Database Essentials and Vulnerabilities",
+        "issuer": "IBM",
+        "date": "Feb 20, 2026",
+        "skills": [
+            "SQL Injection",
+            "NoSQL",
+            "Data Security",
+            "Vulnerability Scanning",
+            "Database Administration"
+        ],
+        "image": "Database Essentials and Vulnerabilities.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/64MXV9Y9TTC3"
+    },
+    {
+        "id": "10",
+        "title": "Cybersecurity Architecture",
+        "issuer": "IBM",
+        "date": "Feb 20, 2026",
+        "skills": [
+            "Cybersecurity Architecture",
+            "CIA Triad",
+            "IAM",
+            "Governance",
+            "Risk Management"
+        ],
+        "image": "Cybersecurity Architecture.png",
+        "url": "https://www.coursera.org/account/accomplishments/verify/EBW3CRFP2I8E"
     }
 ]
