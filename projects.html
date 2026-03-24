@@ -72,12 +72,51 @@
       <div class="sidebar-logo">CK.</div>
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-          <li class="nav-item active"><a href="projects.html"><i class="fas fa-project-diagram"></i>
-              <span>Projets</span></a></li>
-          <li class="nav-item"><a href="skills.html"><i class="fas fa-bolt"></i> <span>Arsenal</span></a></li>
-          <li class="nav-item"><a href="certifications.html"><i class="fas fa-award"></i> <span>Certifs</span></a></li>
-          <li class="nav-item"><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+          <li class="nav-item">
+            <a href="index.html">
+              <i class="fas fa-home"></i>
+              <div class="nav-text">
+                <span class="nav-title">Dashboard</span>
+                <span class="nav-desc">Vue d'ensemble</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="projects.html">
+              <i class="fas fa-project-diagram"></i>
+              <div class="nav-text">
+                <span class="nav-title">Réalisations</span>
+                <span class="nav-desc">Études de cas & solutions</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="skills.html">
+              <i class="fas fa-bolt"></i>
+              <div class="nav-text">
+                <span class="nav-title">Expertise</span>
+                <span class="nav-desc">Stack technique & outils</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="certifications.html">
+              <i class="fas fa-award"></i>
+              <div class="nav-text">
+                <span class="nav-title">Accréditations</span>
+                <span class="nav-desc">Validation & conformité</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html">
+              <i class="fas fa-envelope"></i>
+              <div class="nav-text">
+                <span class="nav-title">Réseau</span>
+                <span class="nav-desc">Opportunités & échanges</span>
+              </div>
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -94,21 +133,51 @@
       <div class="dashboard-grid">
         <!-- Contenu des projets (widgets de taille variable) -->
 
+        <!-- DarwinxShare -->
+        <article class="widget project-card" style="grid-column: span 6; --delay: 0.1s">
+          <div class="project-image" style="height: 300px;">
+            <img src="assets/projects/darwinxshare/admin-dashboard.png" alt="DarwinxShare Admin Console">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px;">
+            <div>
+              <h3 style="margin: 0;">DarwinxShare Pro</h3>
+              <span class="tech-tag" style="background: var(--accent-soft); color: var(--accent-primary); border-color: var(--accent-primary);">v1.8.2 Pro</span>
+            </div>
+            <div class="status-badge" style="font-size: 0.7rem;">
+              <span class="pulse"></span> Production Ready
+            </div>
+          </div>
+          <p>Application Desktop hybride pour le partage de fichiers haute performance entre Linux et iOS. Inclut un serveur Flask optimisé pour le streaming Safari (HTTP 206) et une interface multi-thème.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">CustomTkinter</span>
+            <span class="tech-tag">Network Security</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+            <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" class="btn secondary" style="padding: 10px; font-size: 0.8rem; justify-content: center;">
+              <i class="fab fa-github"></i> Source
+            </a>
+            <button class="btn primary" style="padding: 10px; font-size: 0.8rem; justify-content: center;" onclick="alert('Consultez les captures d\'écran pour plus de détails sur l\'interface mobile.')">
+              <i class="fas fa-desktop"></i> Demo App
+            </button>
+          </div>
+        </article>
+
         <!-- MeetLocal -->
-        <article class="widget project-card" style="--delay: 0.1s">
-          <div class="project-image">
+        <article class="widget project-card" style="grid-column: span 6; --delay: 0.2s">
+          <div class="project-image" style="height: 300px;">
             <img src="assets/projects/meetlocal/PageDaceuil.png" alt="MeetLocal">
           </div>
           <h3>MeetLocal</h3>
-          <p>Application de visioconférence temps réel avec WebRTC, partage d'écran et chat sécurisé.</p>
+          <p>Application de visioconférence temps réel avec WebRTC, partage d'écran et chat sécurisé. Idéal pour les collaborations locales sans dépendance cloud.</p>
           <div class="tech-stack">
             <span class="tech-tag">Node.js</span>
             <span class="tech-tag">Socket.IO</span>
             <span class="tech-tag">WebRTC</span>
           </div>
-          <a href="https://github.com/charles-kamga/meetlocal" target="_blank" class="mini-form"
-            style="text-decoration: none; margin-top: 10px;">
-            <button style="width: 100%;">Code Source <i class="fab fa-github"></i></button>
+          <a href="https://github.com/charles-kamga/meetlocal" target="_blank" class="btn secondary" style="margin-top: 15px; justify-content: center;">
+            Code Source <i class="fab fa-github"></i>
           </a>
         </article>
 
