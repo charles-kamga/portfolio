@@ -8,6 +8,10 @@ $(document).ready(function() {
   const $difficulty = $('#difficulty');
   let engine = null;
 
+  // Persistence keys
+  const STORAGE_KEY_FEN = 'chess_game_fen';
+  const STORAGE_KEY_DIFF = 'chess_game_diff';
+
   // Initialize Stockfish with a blob workaround to avoid CORS Worker issues
   function initEngine() {
     try {
@@ -25,16 +29,16 @@ $(document).ready(function() {
               const match = line.match(/bestmove\s([a-h][1-8][a-h][1-8][qrbn]?)/);
               if (match) {
                 const moveStr = match[1];
-                makeMove(moveStr);
-                highlightLastMove(moveStr.substring(0, 2), moveStr.substring(2, 4));
+                executeBotMove(moveStr);
               }
             }
           };
 
           engine.postMessage('uci');
-          updateDifficulty(); // Set initial skill level
+          updateDifficulty(); 
           engine.postMessage('ucinewgame');
-          $status.html('Prêt ! À vous de jouer.');
+          
+          loadSavedGame();
         })
         .catch(err => {
           console.error("Stockfish init failed:", err);
@@ -45,22 +49,50 @@ $(document).ready(function() {
     }
   }
 
+  function saveGameState() {
+    localStorage.setItem(STORAGE_KEY_FEN, game.fen());
+    localStorage.setItem(STORAGE_KEY_DIFF, $difficulty.val());
+  }
+
+  function loadSavedGame() {
+    const savedFen = localStorage.getItem(STORAGE_KEY_FEN);
+    const savedDiff = localStorage.getItem(STORAGE_KEY_DIFF);
+
+    if (savedDiff !== null) {
+      $difficulty.val(savedDiff);
+      updateDifficulty();
+    }
+
+    if (savedFen !== null && game.load(savedFen)) {
+      board.position(savedFen);
+      updateStatus();
+      if (game.turn() === 'b') {
+        window.setTimeout(askEngine, 500);
+      }
+      const history = game.history({ verbose: true });
+      if (history.length > 0) {
+        const last = history[history.length - 1];
+        highlightLastMove(last.from, last.to);
+      }
+    } else {
+      $status.html('Prêt ! À vous de jouer.');
+    }
+  }
+
   function updateDifficulty() {
     if (!engine) return;
     const level = $difficulty.val();
     engine.postMessage(`setoption name Skill Level value ${level}`);
+    saveGameState();
   }
 
   function highlightLastMove(from, to) {
-    // Remove previous highlights
     $('#myBoard .square-55d63').removeClass('highlight-move');
-    
-    // Add current highlights
     $('#myBoard .square-' + from).addClass('highlight-move');
     $('#myBoard .square-' + to).addClass('highlight-move');
   }
 
-  function makeMove(moveStr) {
+  function executeBotMove(moveStr) {
     const move = game.move({
       from: moveStr.substring(0, 2),
       to: moveStr.substring(2, 4),
@@ -70,19 +102,47 @@ $(document).ready(function() {
     if (move === null) return;
 
     board.position(game.fen());
+    highlightLastMove(move.from, move.to);
     updateStatus();
+    saveGameState();
   }
 
   function askEngine() {
     if (game.game_over()) return;
+
+    const level = parseInt($difficulty.val());
+    
+    // INTENTIONAL RANDOMNESS FOR LOW LEVELS
+    // Level 0: 60% chance of random move
+    // Level 5: 20% chance of random move
+    let randomThreshold = 0;
+    if (level === 0) randomThreshold = 0.6;
+    else if (level === 5) randomThreshold = 0.2;
+
+    if (Math.random() < randomThreshold) {
+      const moves = game.moves({ verbose: true });
+      if (moves.length > 0) {
+        const randomMove = moves[Math.floor(Math.random() * moves.length)];
+        executeBotMove(randomMove.from + randomMove.to);
+        return;
+      }
+    }
+
+    // Otherwise, use Stockfish
     engine.postMessage('position fen ' + game.fen());
-    // Depth 10 is usually fast but enough for these levels
-    engine.postMessage('go depth 10');
+    
+    let depth = 10;
+    if (level === 0) depth = 1;
+    else if (level <= 5) depth = 2;
+    else if (level <= 10) depth = 5;
+    else if (level <= 15) depth = 10;
+    else depth = 15;
+    
+    engine.postMessage(`go depth ${depth}`);
   }
 
   function onDragStart(source, piece, position, orientation) {
     if (game.game_over()) return false;
-    // Only white pieces for human
     if (piece.search(/^b/) !== -1) return false;
   }
 
@@ -93,11 +153,11 @@ $(document).ready(function() {
       promotion: 'q'
     });
 
-    // Illegal move
     if (move === null) return 'snapback';
 
     highlightLastMove(source, target);
     updateStatus();
+    saveGameState();
     window.setTimeout(askEngine, 250);
   }
 
@@ -141,7 +201,6 @@ $(document).ready(function() {
     }
   }, 300);
 
-  // Event Listeners
   $difficulty.on('change', function() {
     updateDifficulty();
     $status.html('Difficulté mise à jour. Continuez !');
@@ -152,15 +211,16 @@ $(document).ready(function() {
     board.start();
     updateStatus();
     $('#myBoard .square-55d63').removeClass('highlight-move');
+    localStorage.removeItem(STORAGE_KEY_FEN);
     if (engine) engine.postMessage('ucinewgame');
   });
 
   $('#undoBtn').on('click', function() {
-    game.undo(); // Undo Bot
-    game.undo(); // Undo User
+    game.undo(); 
+    game.undo(); 
     board.position(game.fen());
     updateStatus();
-    // Highlight the previous move before the undo
+    saveGameState();
     const history = game.history({ verbose: true });
     if (history.length > 0) {
       const last = history[history.length - 1];
