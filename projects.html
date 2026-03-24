@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet">
 
   <!-- Icons -->
@@ -20,239 +20,330 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Specific overrides for projects page */
-    .project-card {
-      grid-column: span 4;
+    /* Configuration du Full-Page Scroll */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .dashboard-main {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      padding: 0 !important;
+    }
+
+    .project-snap-section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      justify-content: center;
+      padding: 40px 100px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Intro Section Specific */
+    .intro-section {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .intro-section h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-section p {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .project-image {
       width: 100%;
-      height: 200px;
-      border-radius: 12px;
+      height: 320px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border-color);
+      margin-bottom: 25px;
+      cursor: zoom-in;
     }
 
     .project-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s;
+      transition: opacity 0.5s;
     }
 
-    .project-card:hover .project-image img {
-      transform: scale(1.05);
-    }
-
-    .tech-stack {
+    /* --- HOVER ZOOM CENTRAL AVEC LATENCE ACCRUE --- */
+    .zoom-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 5, 7, 0.92);
+      backdrop-filter: blur(25px);
+      z-index: 5000;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      /* Augmentation de la latence de l'affichage (0.8s) */
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .tech-tag {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
+    .zoom-overlay.active {
+      opacity: 1;
     }
+
+    .zoom-overlay img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 24px;
+      box-shadow: 0 60px 120px rgba(0, 0, 0, 0.9);
+      transform: scale(0.85);
+      /* Transition fluide pour l'image */
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .zoom-overlay.active img {
+      transform: scale(1);
+    }
+
+    /* Pagination Dots */
+    .scroll-pagination {
+      position: fixed;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 2000;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--accent-primary);
+      box-shadow: 0 0 15px var(--accent-primary);
+      transform: scale(1.4);
+    }
+
+    .dashboard-main::-webkit-scrollbar { display: none; }
   </style>
 </head>
 
 <body>
   <div class="app-container">
-    <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <div class="sidebar-logo">CK.</div>
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="index.html">
-              <i class="fas fa-home"></i>
-              <div class="nav-text">
-                <span class="nav-title">Dashboard</span>
-                <span class="nav-desc">Vue d'ensemble</span>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a href="projects.html">
-              <i class="fas fa-project-diagram"></i>
-              <div class="nav-text">
-                <span class="nav-title">Réalisations</span>
-                <span class="nav-desc">Études de cas & solutions</span>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="skills.html">
-              <i class="fas fa-bolt"></i>
-              <div class="nav-text">
-                <span class="nav-title">Expertise</span>
-                <span class="nav-desc">Stack technique & outils</span>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="certifications.html">
-              <i class="fas fa-award"></i>
-              <div class="nav-text">
-                <span class="nav-title">Accréditations</span>
-                <span class="nav-desc">Validation & conformité</span>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="contact.html">
-              <i class="fas fa-envelope"></i>
-              <div class="nav-text">
-                <span class="nav-title">Réseau</span>
-                <span class="nav-desc">Opportunités & échanges</span>
-              </div>
-            </a>
-          </li>
+          <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> <div class="nav-text"><span class="nav-title">Dashboard</span><span class="nav-desc">Vue d'ensemble</span></div></a></li>
+          <li class="nav-item active"><a href="projects.html"><i class="fas fa-project-diagram"></i> <div class="nav-text"><span class="nav-title">Réalisations</span><span class="nav-desc">Études de cas & solutions</span></div></a></li>
+          <li class="nav-item"><a href="skills.html"><i class="fas fa-bolt"></i> <div class="nav-text"><span class="nav-title">Expertise</span><span class="nav-desc">Stack technique & outils</span></div></a></li>
+          <li class="nav-item"><a href="certifications.html"><i class="fas fa-award"></i> <div class="nav-text"><span class="nav-title">Accréditations</span><span class="nav-desc">Validation & conformité</span></div></a></li>
+          <li class="nav-item"><a href="contact.html"><i class="fas fa-envelope"></i> <div class="nav-text"><span class="nav-title">Réseau</span><span class="nav-desc">Opportunités & échanges</span></div></a></li>
         </ul>
       </nav>
     </aside>
 
-    <!-- Main Content Area -->
-    <main class="dashboard-main">
-      <header class="dashboard-header">
-        <div class="welcome-text">
-          <h1>Mes Réalisations</h1>
-          <p>Une collection de mes travaux les plus récents.</p>
+    <div class="zoom-overlay" id="zoom-overlay">
+      <img src="" alt="Aperçu" id="zoom-img">
+    </div>
+
+    <div class="scroll-pagination">
+      <div class="dot active" data-section="0"></div>
+      <div class="dot" data-section="1"></div>
+      <div class="dot" data-section="2"></div>
+      <div class="dot" data-section="3"></div>
+    </div>
+
+    <main class="dashboard-main" id="scroll-container">
+      
+      <!-- SECTION 0 : INTRODUCTION -->
+      <section class="project-snap-section" id="section-0">
+        <div class="intro-section">
+          <h1 class="welcome-text">Strategic Portfolio</h1>
+          <p>Bienvenue dans mon catalogue de solutions. Cette section regroupe mes travaux les plus aboutis, allant de l'architecture backend robuste à l'analyse de sécurité offensive. Chaque projet est une réponse concrète à un défi technologique spécifique.</p>
+          <div style="margin-top: 40px; color: var(--accent-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">
+            Scrollez pour explorer l'arsenal
+            <br>
+            <i class="fas fa-chevron-down" style="margin-top: 15px; font-size: 1.2rem; animation: bounce 2s infinite;"></i>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <div class="dashboard-grid">
-        <!-- Contenu des projets (widgets de taille variable) -->
-
-        <!-- DarwinxShare -->
-        <article class="widget project-card" style="grid-column: span 6; --delay: 0.1s">
-          <div class="project-image" style="height: 300px;">
-            <img src="assets/projects/darwinxshare/admin-dashboard.png" alt="DarwinxShare Admin Console">
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px;">
-            <div>
-              <h3 style="margin: 0;">DarwinxShare Pro</h3>
-              <span class="tech-tag" style="background: var(--accent-soft); color: var(--accent-primary); border-color: var(--accent-primary);">v1.8.2 Pro</span>
+      <!-- SECTION 1 : DarwinxShare & MeetLocal -->
+      <section class="project-snap-section" id="section-1">
+        <div class="dashboard-grid">
+          <article class="widget project-card">
+            <div class="project-image">
+              <!-- Nouvelle Image DarwinxShare -->
+              <img src="assets/projects/darwinxshare/qr-access.png" alt="DarwinxShare Access">
             </div>
-            <div class="status-badge" style="font-size: 0.7rem;">
-              <span class="pulse"></span> Production Ready
+            <h3>DarwinxShare Pro</h3>
+            <p>Partage de fichiers haute performance entre Linux et iOS via Wi-Fi. Optimisé pour le streaming Safari.</p>
+            <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">CustomTkinter</span></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px;">
+              <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" class="btn secondary">Source</a>
+              <a href="https://github.com/charles-kamga/darwinxShare/releases/tag/v1.8.2.1" target="_blank" class="btn primary">Télécharger</a>
             </div>
-          </div>
-          <p>Application Desktop hybride pour le partage de fichiers haute performance entre Linux et iOS. Inclut un serveur Flask optimisé pour le streaming Safari (HTTP 206) et une interface multi-thème.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Flask</span>
-            <span class="tech-tag">CustomTkinter</span>
-            <span class="tech-tag">Network Security</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
-            <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" class="btn secondary" style="padding: 10px; font-size: 0.8rem; justify-content: center;">
-              <i class="fab fa-github"></i> Source
-            </a>
-            <button class="btn primary" style="padding: 10px; font-size: 0.8rem; justify-content: center;" onclick="alert('Consultez les captures d\'écran pour plus de détails sur l\'interface mobile.')">
-              <i class="fas fa-desktop"></i> Demo App
-            </button>
-          </div>
-        </article>
+          </article>
 
-        <!-- MeetLocal -->
-        <article class="widget project-card" style="grid-column: span 6; --delay: 0.2s">
-          <div class="project-image" style="height: 300px;">
-            <img src="assets/projects/meetlocal/PageDaceuil.png" alt="MeetLocal">
-          </div>
-          <h3>MeetLocal</h3>
-          <p>Application de visioconférence temps réel avec WebRTC, partage d'écran et chat sécurisé. Idéal pour les collaborations locales sans dépendance cloud.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Socket.IO</span>
-            <span class="tech-tag">WebRTC</span>
-          </div>
-          <a href="https://github.com/charles-kamga/meetlocal" target="_blank" class="btn secondary" style="margin-top: 15px; justify-content: center;">
-            Code Source <i class="fab fa-github"></i>
-          </a>
-        </article>
+          <article class="widget project-card">
+            <div class="project-image"><img src="assets/projects/meetlocal/PageDaceuil.png" alt="MeetLocal"></div>
+            <h3>MeetLocal</h3>
+            <p>Application de visioconférence temps réel avec WebRTC et partage d'écran sécurisé.</p>
+            <div class="tech-stack"><span class="tech-tag">Node.js</span><span class="tech-tag">Socket.IO</span><span class="tech-tag">WebRTC</span></div>
+            <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
+              <a href="https://github.com/charles-kamga/meetlocal" target="_blank" class="btn secondary">Code Source</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <!-- Dictionnaire C -->
-        <article class="widget project-card" style="--delay: 0.2s">
-          <div class="project-image">
-            <img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Dictionnaire C">
-          </div>
-          <h3>Dictionnaire Bilingue</h3>
-          <p>Implémentation performante en C avec tables de hachage et gestion des collisions.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">C</span>
-            <span class="tech-tag">Algorithmes</span>
-            <span class="tech-tag">Makefile</span>
-          </div>
-          <a href="https://github.com/charles-kamga/dictionnaire-c" target="_blank" class="mini-form"
-            style="text-decoration: none; margin-top: 10px;">
-            <button style="width: 100%;">Code Source <i class="fab fa-github"></i></button>
-          </a>
-        </article>
+      <!-- SECTION 2 : Dictionnaire & Bibliothèque -->
+      <section class="project-snap-section" id="section-2">
+        <div class="dashboard-grid">
+          <article class="widget project-card">
+            <div class="project-image"><img src="assets/projects/Dictionnaire/dictionnaire1.png" alt="Dictionnaire C"></div>
+            <h3>Dictionnaire Bilingue</h3>
+            <p>Implémentation performante en C avec tables de hachage et gestion avancée des collisions.</p>
+            <div class="tech-stack"><span class="tech-tag">C</span><span class="tech-tag">Algorithmes</span><span class="tech-tag">Data Structure</span></div>
+            <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
+              <a href="https://github.com/charles-kamga/dictionnaire-c" target="_blank" class="btn secondary">Code Source</a>
+            </div>
+          </article>
 
-        <!-- Gestion Bibliothèque -->
-        <article class="widget project-card" style="--delay: 0.3s">
-          <div class="project-image">
-            <img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Bibliothèque">
-          </div>
-          <h3>Gestion Bibliothèque</h3>
-          <p>Système complet de gestion d'ouvrages et d'emprunts avec interface d'administration.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">MySQL</span>
-            <span class="tech-tag">MVC</span>
-          </div>
-          <div class="mini-form" style="margin-top: 10px;">
-            <button style="width: 100%;">Détails <i class="fas fa-info-circle"></i></button>
-          </div>
-        </article>
+          <article class="widget project-card">
+            <div class="project-image"><img src="assets/projects/Biliotheque/bibliotheque1.png" alt="Bibliothèque"></div>
+            <h3>Gestion Bibliothèque</h3>
+            <p>Système complet de gestion d'ouvrages et d'emprunts avec interface d'administration MVC.</p>
+            <div class="tech-stack"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">MVC</span></div>
+            <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
+              <a href="https://github.com/charles-kamga/Bibliotheque.git" target="_blank" class="btn secondary">Code Source</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <!-- Charly Vitr -->
-        <article class="widget project-card" style="--delay: 0.4s">
-          <div class="project-image">
-            <img src="assets/projects/Charly_vitr/charly_vitr1.png" alt="Charly Vitr">
-          </div>
-          <h3>Charly Vitr</h3>
-          <p>Application mobile de vitrine commerciale pour présentation de produits.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">React Native</span>
-            <span class="tech-tag">Mobile</span>
-            <span class="tech-tag">UX/UI</span>
-          </div>
-          <div class="mini-form" style="margin-top: 10px;">
-            <button disabled style="width: 100%; opacity: 0.5; cursor: not-allowed;">Privé <i
-                class="fas fa-lock"></i></button>
-          </div>
-        </article>
+      <!-- SECTION 3 : Charly Vitr & Portfolio -->
+      <section class="project-snap-section" id="section-3">
+        <div class="dashboard-grid">
+          <article class="widget project-card">
+            <div class="project-image"><img src="assets/projects/Charly_vitr/charly_vitr1.png" alt="Charly Vitr"></div>
+            <h3>Charly Vitr</h3>
+            <p>Application mobile de vitrine commerciale pour présentation dynamique de produits.</p>
+            <div class="tech-stack"><span class="tech-tag">React Native</span><span class="tech-tag">Mobile</span><span class="tech-tag">UI/UX</span></div>
+            <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
+              <button disabled class="btn secondary" style="opacity: 0.5;">Code Privé</button>
+            </div>
+          </article>
 
-        <!-- Portfolio -->
-        <article class="widget project-card" style="--delay: 0.5s">
-          <div class="project-image">
-            <img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Portfolio">
-          </div>
-          <h3>Portfolio V2</h3>
-          <p>Ce site ! Une refonte complète avec un design Bento Grid moderne et interactif.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS Grid</span>
-            <span class="tech-tag">JS</span>
-          </div>
-        </article>
+          <article class="widget project-card">
+            <div class="project-image"><img src="assets/projects/Portfolio/portfolio-preview.jpg" alt="Portfolio"></div>
+            <h3>Portfolio Strategic V2</h3>
+            <p>Refonte complète avec design système moderne, dashboard d'identité et scroll snapping.</p>
+            <div class="tech-stack"><span class="tech-tag">HTML5/CSS3</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">UX Design</span></div>
+            <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
+              <a href="#" class="btn primary">Projet Actuel</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      </div>
     </main>
   </div>
 
-  <script src="js/bento.js"></script>
+  <script>
+    // --- GESTION DU ZOOM AU SURVOL AVEC DÉLAI D'ATTENTE ---
+    const overlay = document.getElementById('zoom-overlay');
+    const zoomImg = document.getElementById('zoom-img');
+    const projectImages = document.querySelectorAll('.project-image img');
+    let zoomTimeout;
+
+    projectImages.forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        // On attend 1.2 seconde de survol immobile avant d'afficher
+        zoomTimeout = setTimeout(() => {
+          zoomImg.src = img.src;
+          overlay.classList.add('active');
+          img.style.opacity = '0.3';
+        }, 1200); // Délai de latence (1200ms)
+      });
+
+      img.addEventListener('mouseleave', () => {
+        // On annule le déclenchement si la souris sort avant la fin du délai
+        clearTimeout(zoomTimeout);
+        overlay.classList.remove('active');
+        img.style.opacity = '1';
+      });
+    });
+
+    const container = document.getElementById('scroll-container');
+    const dots = document.querySelectorAll('.dot');
+    const sections = document.querySelectorAll('.project-snap-section');
+
+    container.addEventListener('scroll', () => {
+      let current = 0;
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.top >= -100) {
+          current = index;
+        }
+      });
+
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+        if (dot.getAttribute('data-section') == current) {
+          dot.classList.add('active');
+        }
+      });
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const targetId = `section-${dot.getAttribute('data-section')}`;
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 
 </html>

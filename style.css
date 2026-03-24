@@ -165,7 +165,6 @@ body {
 .widget:hover {
   border-color: rgba(255, 255, 255, 0.12);
   background: var(--bg-card-hover);
-  transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
