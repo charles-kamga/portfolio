@@ -7,12 +7,13 @@ $(document).ready(function() {
   const $pgn = $('#pgn');
   const $difficulty = $('#difficulty');
   let engine = null;
+  let engineReady = false;
 
   // Persistence keys
-  const STORAGE_KEY_FEN = 'chess_game_fen';
+  const STORAGE_KEY_PGN = 'chess_game_pgn';
   const STORAGE_KEY_DIFF = 'chess_game_diff';
 
-  // Initialize Stockfish with a blob workaround to avoid CORS Worker issues
+  // --- ENGINE INIT ---
   function initEngine() {
     try {
       const sfUrl = 'https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js';
@@ -28,8 +29,7 @@ $(document).ready(function() {
             if (line.indexOf('bestmove') > -1) {
               const match = line.match(/bestmove\s([a-h][1-8][a-h][1-8][qrbn]?)/);
               if (match) {
-                const moveStr = match[1];
-                executeBotMove(moveStr);
+                executeBotMove(match[1]);
               }
             }
           };
@@ -37,8 +37,12 @@ $(document).ready(function() {
           engine.postMessage('uci');
           updateDifficulty(); 
           engine.postMessage('ucinewgame');
+          engineReady = true;
           
-          loadSavedGame();
+          // If it's bot's turn after engine load, ask it to move
+          if (game.turn() === 'b') {
+            askEngine();
+          }
         })
         .catch(err => {
           console.error("Stockfish init failed:", err);
@@ -49,30 +53,31 @@ $(document).ready(function() {
     }
   }
 
+  // --- PERSISTENCE ---
   function saveGameState() {
-    localStorage.setItem(STORAGE_KEY_FEN, game.fen());
+    localStorage.setItem(STORAGE_KEY_PGN, game.pgn());
     localStorage.setItem(STORAGE_KEY_DIFF, $difficulty.val());
   }
 
   function loadSavedGame() {
-    const savedFen = localStorage.getItem(STORAGE_KEY_FEN);
+    const savedPgn = localStorage.getItem(STORAGE_KEY_PGN);
     const savedDiff = localStorage.getItem(STORAGE_KEY_DIFF);
 
     if (savedDiff !== null) {
       $difficulty.val(savedDiff);
-      updateDifficulty();
     }
 
-    if (savedFen !== null && game.load(savedFen)) {
-      board.position(savedFen);
-      updateStatus();
-      if (game.turn() === 'b') {
-        window.setTimeout(askEngine, 500);
-      }
-      const history = game.history({ verbose: true });
-      if (history.length > 0) {
-        const last = history[history.length - 1];
-        highlightLastMove(last.from, last.to);
+    if (savedPgn !== null) {
+      if (game.load_pgn(savedPgn)) {
+        board.position(game.fen());
+        updateStatus();
+        
+        // Highlight last move from PGN
+        const history = game.history({ verbose: true });
+        if (history.length > 0) {
+          const last = history[history.length - 1];
+          highlightLastMove(last.from, last.to);
+        }
       }
     } else {
       $status.html('Prêt ! À vous de jouer.');
@@ -86,10 +91,13 @@ $(document).ready(function() {
     saveGameState();
   }
 
+  // --- GAME LOGIC ---
   function highlightLastMove(from, to) {
     $('#myBoard .square-55d63').removeClass('highlight-move');
-    $('#myBoard .square-' + from).addClass('highlight-move');
-    $('#myBoard .square-' + to).addClass('highlight-move');
+    if (from && to) {
+      $('#myBoard .square-' + from).addClass('highlight-move');
+      $('#myBoard .square-' + to).addClass('highlight-move');
+    }
   }
 
   function executeBotMove(moveStr) {
@@ -108,13 +116,11 @@ $(document).ready(function() {
   }
 
   function askEngine() {
-    if (game.game_over()) return;
+    if (game.game_over() || !engineReady) return;
 
     const level = parseInt($difficulty.val());
     
-    // INTENTIONAL RANDOMNESS FOR LOW LEVELS
-    // Level 0: 60% chance of random move
-    // Level 5: 20% chance of random move
+    // RANDOMNESS FOR EASY LEVELS
     let randomThreshold = 0;
     if (level === 0) randomThreshold = 0.6;
     else if (level === 5) randomThreshold = 0.2;
@@ -128,7 +134,6 @@ $(document).ready(function() {
       }
     }
 
-    // Otherwise, use Stockfish
     engine.postMessage('position fen ' + game.fen());
     
     let depth = 10;
@@ -167,7 +172,7 @@ $(document).ready(function() {
 
   function updateStatus() {
     let status = '';
-    const moveColor = (game.turn() === 'b') ? 'Noirs (Bot)' : 'Blancs';
+    const moveColor = (game.turn() === 'b') ? 'Noirs (IA)' : 'Blancs';
 
     if (game.in_checkmate()) {
       status = 'MAT ! ' + moveColor + ' a perdu.';
@@ -180,8 +185,13 @@ $(document).ready(function() {
 
     $status.html(status);
     $pgn.html(game.pgn());
+    
+    // Scroll PGN to bottom
+    const pgnContainer = $('.move-history')[0];
+    pgnContainer.scrollTop = pgnContainer.scrollHeight;
   }
 
+  // --- INITIALIZATION ---
   const config = {
     draggable: true,
     position: 'start',
@@ -194,16 +204,17 @@ $(document).ready(function() {
   setTimeout(() => {
     if (typeof Chessboard !== 'undefined') {
       board = Chessboard('myBoard', config);
-      initEngine();
-      updateStatus();
+      loadSavedGame(); // Restore board position and PGN immediately
+      initEngine();    // Then start IA in background
     } else {
-      $status.html('Erreur: Chessboard non chargé');
+      $status.html('Erreur: Librairies non chargées');
     }
   }, 300);
 
+  // --- EVENTS ---
   $difficulty.on('change', function() {
     updateDifficulty();
-    $status.html('Difficulté mise à jour. Continuez !');
+    $status.html('Difficulté mise à jour.');
   });
 
   $('#resetBtn').on('click', function() {
@@ -211,13 +222,13 @@ $(document).ready(function() {
     board.start();
     updateStatus();
     $('#myBoard .square-55d63').removeClass('highlight-move');
-    localStorage.removeItem(STORAGE_KEY_FEN);
+    localStorage.removeItem(STORAGE_KEY_PGN);
     if (engine) engine.postMessage('ucinewgame');
   });
 
   $('#undoBtn').on('click', function() {
-    game.undo(); 
-    game.undo(); 
+    game.undo(); // Undo Bot
+    game.undo(); // Undo User
     board.position(game.fen());
     updateStatus();
     saveGameState();
