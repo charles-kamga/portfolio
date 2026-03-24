@@ -13,6 +13,10 @@ $(document).ready(function() {
   const STORAGE_KEY_PGN = 'chess_game_pgn';
   const STORAGE_KEY_DIFF = 'chess_game_diff';
 
+  // History for navigation
+  let historyFens = [game.fen()];
+  let currentViewIndex = 0;
+
   // --- ENGINE INIT ---
   function initEngine() {
     try {
@@ -39,7 +43,6 @@ $(document).ready(function() {
           engine.postMessage('ucinewgame');
           engineReady = true;
           
-          // If it's bot's turn after engine load, ask it to move
           if (game.turn() === 'b') {
             askEngine();
           }
@@ -69,13 +72,22 @@ $(document).ready(function() {
 
     if (savedPgn !== null) {
       if (game.load_pgn(savedPgn)) {
+        // Rebuild history FENs from PGN
+        const tempGame = new Chess();
+        historyFens = [tempGame.fen()];
+        const history = game.history();
+        for (let i = 0; i < history.length; i++) {
+          tempGame.move(history[i]);
+          historyFens.push(tempGame.fen());
+        }
+        currentViewIndex = historyFens.length - 1;
+
         board.position(game.fen());
         updateStatus();
         
-        // Highlight last move from PGN
-        const history = game.history({ verbose: true });
-        if (history.length > 0) {
-          const last = history[history.length - 1];
+        const historyVerbose = game.history({ verbose: true });
+        if (historyVerbose.length > 0) {
+          const last = historyVerbose[historyVerbose.length - 1];
           highlightLastMove(last.from, last.to);
         }
       }
@@ -109,7 +121,11 @@ $(document).ready(function() {
 
     if (move === null) return;
 
-    board.position(game.fen());
+    const newFen = game.fen();
+    board.position(newFen);
+    historyFens.push(newFen);
+    currentViewIndex = historyFens.length - 1;
+
     highlightLastMove(move.from, move.to);
     updateStatus();
     saveGameState();
@@ -119,8 +135,6 @@ $(document).ready(function() {
     if (game.game_over() || !engineReady) return;
 
     const level = parseInt($difficulty.val());
-    
-    // RANDOMNESS FOR EASY LEVELS
     let randomThreshold = 0;
     if (level === 0) randomThreshold = 0.6;
     else if (level === 5) randomThreshold = 0.2;
@@ -149,6 +163,11 @@ $(document).ready(function() {
   function onDragStart(source, piece, position, orientation) {
     if (game.game_over()) return false;
     if (piece.search(/^b/) !== -1) return false;
+
+    // If viewing history, jump to real time before moving
+    if (currentViewIndex !== historyFens.length - 1) {
+      jumpToMove(historyFens.length - 1);
+    }
   }
 
   function onDrop(source, target) {
@@ -159,6 +178,10 @@ $(document).ready(function() {
     });
 
     if (move === null) return 'snapback';
+
+    const newFen = game.fen();
+    historyFens.push(newFen);
+    currentViewIndex = historyFens.length - 1;
 
     highlightLastMove(source, target);
     updateStatus();
@@ -186,9 +209,25 @@ $(document).ready(function() {
     $status.html(status);
     $pgn.html(game.pgn());
     
-    // Scroll PGN to bottom
     const pgnContainer = $('.move-history')[0];
     pgnContainer.scrollTop = pgnContainer.scrollHeight;
+  }
+
+  function jumpToMove(index) {
+    if (index < 0 || index >= historyFens.length) return;
+    currentViewIndex = index;
+    board.position(historyFens[currentViewIndex]);
+    
+    $('#myBoard .square-55d63').removeClass('highlight-move');
+    
+    // Only highlight if we are at the end
+    if (currentViewIndex === historyFens.length - 1) {
+      const history = game.history({ verbose: true });
+      if (history.length > 0) {
+        const last = history[history.length - 1];
+        highlightLastMove(last.from, last.to);
+      }
+    }
   }
 
   // --- INITIALIZATION ---
@@ -204,8 +243,8 @@ $(document).ready(function() {
   setTimeout(() => {
     if (typeof Chessboard !== 'undefined') {
       board = Chessboard('myBoard', config);
-      loadSavedGame(); // Restore board position and PGN immediately
-      initEngine();    // Then start IA in background
+      loadSavedGame(); 
+      initEngine();    
     } else {
       $status.html('Erreur: Librairies non chargées');
     }
@@ -220,6 +259,8 @@ $(document).ready(function() {
   $('#resetBtn').on('click', function() {
     game.reset();
     board.start();
+    historyFens = [game.fen()];
+    currentViewIndex = 0;
     updateStatus();
     $('#myBoard .square-55d63').removeClass('highlight-move');
     localStorage.removeItem(STORAGE_KEY_PGN);
@@ -227,9 +268,14 @@ $(document).ready(function() {
   });
 
   $('#undoBtn').on('click', function() {
-    game.undo(); // Undo Bot
-    game.undo(); // Undo User
+    game.undo(); 
+    game.undo(); 
     board.position(game.fen());
+    
+    // Truncate history array to match game history
+    historyFens = historyFens.slice(0, game.history().length + 1);
+    currentViewIndex = historyFens.length - 1;
+
     updateStatus();
     saveGameState();
     const history = game.history({ verbose: true });
@@ -240,6 +286,12 @@ $(document).ready(function() {
       $('#myBoard .square-55d63').removeClass('highlight-move');
     }
   });
+
+  // Navigation events
+  $('#firstBtn').on('click', () => jumpToMove(0));
+  $('#prevBtn').on('click', () => jumpToMove(currentViewIndex - 1));
+  $('#nextBtn').on('click', () => jumpToMove(currentViewIndex + 1));
+  $('#lastBtn').on('click', () => jumpToMove(historyFens.length - 1));
 
   $(window).resize(() => { if (board) board.resize(); });
 });
