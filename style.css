@@ -372,3 +372,110 @@ body {
     padding: 40px;
   }
 }
+
+/* Base styles for Bottom Nav (Desktop Default: hidden) */
+@media (min-width: 769px) {
+  .bottom-nav { display: none; }
+}
+
+/* Mobile App Experience */
+@media (max-width: 768px) {
+  /* Disable selection for text outside interactable areas to mimic app feeling */
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .app-container {
+    flex-direction: column;
+  }
+
+  /* Hide Sidebar completely */
+  .sidebar { 
+    display: none; 
+  }
+  
+  /* Reset Main Content stretch, add space for bottom nav */
+  .dashboard-main {
+    margin-left: 0;
+    width: 100vw;
+    max-width: 100%;
+    padding: 15px;
+    padding-bottom: 90px; /* Space for bottom nav */
+    padding-top: 30px;
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  /* Smaller widget padding */
+  .widget { padding: 20px; }
+
+  /* Hide scrollbars for app feel */
+  ::-webkit-scrollbar { display: none; }
+  * { -webkit-overflow-scrolling: touch; }
+
+  /* Welcome text smaller on mobile */
+  .welcome-text h1 { font-size: 2rem; }
+
+  /* Refactor Bento modules to scale nicely */
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .hero-widget {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  /* Bottom Navigation Bar */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(10, 10, 12, 0.85); /* Slightly transparent dark */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-color);
+    z-index: 2000;
+    padding: 0 10px;
+    padding-bottom: env(safe-area-inset-bottom, 0); /* Support dynamic OS safe area */
+  }
+  
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 500;
+    flex: 1;
+    height: 100%;
+    transition: var(--transition);
+    /* Allow selection/click gracefully */
+    user-select: auto;
+    -webkit-user-select: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .bottom-nav-item i {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+  }
+  
+  .bottom-nav-item.active {
+    color: var(--accent-primary);
+  }
+  
+  .bottom-nav-item.active i {
+    transform: translateY(-2px);
+  }
+}
