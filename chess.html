@@ -71,6 +71,11 @@
       outline: none;
     }
 
+    .difficulty-select option {
+      background-color: #1a1a1d;
+      color: #fff;
+    }
+
     .status-value {
       font-weight: 600;
       color: var(--accent-primary);
@@ -146,11 +151,11 @@
           <div class="widget">
             <span class="widget-title"><i class="fas fa-sliders-h"></i> Difficulté</span>
             <select id="difficulty" class="difficulty-select">
-              <option value="0">Novice (Lvl 0)</option>
-              <option value="3" selected>Amateur (Lvl 3 - ~1050 ELO)</option>
-              <option value="8">Intermédiaire (Lvl 8 - ~1500 ELO)</option>
-              <option value="15">Expert (Lvl 15 - ~2200 ELO)</option>
-              <option value="20">Grand Maître (Lvl 20 - ~3000 ELO)</option>
+              <option value="0">Niveau 1 (Novice)</option>
+              <option value="5" selected>Niveau 5 (Apprenti)</option>
+              <option value="10">Niveau 10 (Intermédiaire)</option>
+              <option value="15">Niveau 15 (Expert)</option>
+              <option value="20">Niveau 20 (Maître)</option>
             </select>
           </div>
 
