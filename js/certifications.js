@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
       setupCarouselButtons();
     } catch (error) {
       console.error('Erreur:', error);
-      container.innerHTML = `<p style="color:red; text-align:center;">Impossible de charger les certifications.</p>`;
+      container.innerHTML = `
+        <div style="color:var(--text-muted); text-align:center; padding: 40px; background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); margin: 20px;">
+          <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 15px;"></i>
+          <p>Impossible de charger les accréditations localement.</p>
+          <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Note: Le chargement des données nécessite un serveur web (CORS). Une fois en ligne sur GitHub, vos certifications s'afficheront parfaitement !</p>
+        </div>
+      `;
     }
   }
 
