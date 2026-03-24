@@ -129,9 +129,11 @@
 
     /* Mobile */
     @media (max-width: 1024px) {
+      .dashboard-main { padding: 20px; padding-bottom: 100px; }
       .contact-form-widget, .social-connect-widget { grid-column: span 12; }
       .social-connect-widget { order: -1; flex-direction: row; flex-wrap: wrap; }
       .social-card { flex: 1; min-width: 200px; }
+      .contact-form-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -238,7 +240,7 @@
         <!-- Professional Form -->
         <div class="widget contact-form-widget">
           <form id="contact-form">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="contact-form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
               <div class="form-group">
                 <label>Identity</label>
                 <input type="text" name="name" class="form-control" placeholder="Nom ou Entreprise" required>
