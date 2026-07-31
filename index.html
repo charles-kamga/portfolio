@@ -126,227 +126,151 @@
       </div>
     </aside>
 
-    <!-- Main Dashboard Area -->
+    <!-- Single Screen Viewport Dashboard Area (Non-Scrollable Desktop) -->
     <main class="dashboard-main">
-      
-      <div class="dashboard-layout-v2">
-        
-        <!-- Top Unified Hero Banner -->
-        <section class="hero-banner-unified">
-          <div class="hero-top-row">
-            <picture>
-              <source srcset="assets/images/ins_link_DBasbMSRM3T_3-1.webp" type="image/webp">
-              <img src="assets/images/ins_link_DBasbMSRM3T_3-1.jpg" loading="lazy" alt="Charles Kamga" class="hero-avatar-v2">
-            </picture>
-            <div class="hero-details">
-              <span class="hero-tag">Développeur Fullstack &amp; Cybersécurité</span>
-              <h2>Charles Kamga Mukam</h2>
-              <p class="hero-description">
-                Développeur passionné par l'architecture logicielle (Python, Node.js, C, PHP), l'automatisation et l'IA générative. Certifié IBM Cybersecurity Analyst, membre actif et bénévole engagé dans les communautés tech locales (Python Cameroun, GDG).
-              </p>
-              <div class="hero-actions">
-                <a href="contact.html" class="btn primary"><i class="fas fa-paper-plane"></i> Démarrer un projet</a>
-                <a href="projects.html" class="btn secondary"><i class="fas fa-layer-group"></i> Consulter les réalisations</a>
-              </div>
-            </div>
-          </div>
+      <header class="dashboard-header">
+        <div class="welcome-text">
+          <h1>Strategic Overview</h1>
+          <p>Ingénierie logicielle, Cybersécurité &amp; Engagement communautaire.</p>
+        </div>
+        <div class="header-actions">
+          <a href="contact.html" class="btn primary"><i class="fas fa-paper-plane"></i> Démarrer un projet</a>
+        </div>
+      </header>
 
-          <!-- Inline Highlights Metrics Bar -->
-          <div class="hero-metrics-bar">
-            <div class="metric-pill"><i class="fas fa-code-branch"></i> 6+ Projets Conçus</div>
-            <div class="metric-pill"><i class="fas fa-certificate"></i> Certifié IBM Cybersecurity Analyst</div>
-            <div class="metric-pill"><i class="fas fa-users"></i> Membre Python Cam &amp; GDG</div>
-            <div class="metric-pill"><i class="fas fa-robot"></i> IA &amp; Automatisation</div>
-            <div class="metric-pill"><i class="fas fa-globe"></i> Anglais &amp; Français</div>
+      <div class="dashboard-grid-single-screen">
+        
+        <!-- ROW 1 / COL 1: Hero Widget -->
+        <section class="widget hero-widget" style="grid-column: 1; grid-row: 1; margin: 0; padding: 20px 24px;">
+          <picture>
+            <source srcset="assets/images/ins_link_DBasbMSRM3T_3-1.webp" type="image/webp">
+            <img src="assets/images/ins_link_DBasbMSRM3T_3-1.jpg" loading="lazy" alt="Charles Kamga" class="hero-avatar" style="width: 85px; height: 85px; border-radius: 20px; flex-shrink: 0;">
+          </picture>
+          <div class="hero-info" style="flex: 1;">
+            <span class="hero-tag" style="font-size: 0.78rem; margin-bottom: 4px;">Développeur Fullstack &amp; Cybersécurité</span>
+            <h2 style="font-size: 1.7rem; margin-bottom: 4px;">Charles Kamga Mukam</h2>
+            <p class="hero-description" style="font-size: 0.88rem; line-height: 1.45; max-width: 100%;">
+              Développeur passionné par l'architecture logicielle (Python, Node.js, C, PHP), l'automatisation et l'IA. Certifié IBM Cybersecurity Analyst, membre actif &amp; bénévole (Python Cameroun, GDG).
+            </p>
           </div>
         </section>
 
-        <!-- 2-Column Main Content Grid (8 Cols / 4 Cols) -->
-        <div class="main-content-grid">
-          
-          <!-- LEFT COLUMN (Primary Content - 8 Cols) -->
-          <div class="primary-feed">
-            
-            <!-- Featured Projects (Dense Horizontal Cards) -->
-            <section class="widget">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-rocket"></i> Réalisations Phares</span>
-                <a href="projects.html" style="color: var(--accent-primary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">Tout voir <i class="fas fa-arrow-right"></i></a>
-              </div>
-              
-              <div class="dense-projects-list">
-                <!-- Project 1 -->
-                <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" rel="noopener noreferrer" class="dense-project-card">
-                  <div class="dense-project-thumb">
-                    <picture>
-                      <source srcset="assets/projects/darwinxshare/qr-access.webp" type="image/webp">
-                      <img src="assets/projects/darwinxshare/qr-access.png" loading="lazy" alt="DarwinxShare">
-                    </picture>
-                  </div>
-                  <div class="dense-project-info">
-                    <h4>DarwinxShare Pro</h4>
-                    <p>Moteur de partage de fichiers haute performance Wi-Fi entre Linux et iOS avec streaming Safari.</p>
-                    <div class="tech-stack" style="margin-top: 0;"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">Wi-Fi Stream</span></div>
-                  </div>
-                </a>
-
-                <!-- Project 2 -->
-                <a href="https://github.com/charles-kamga/meetlocal" target="_blank" rel="noopener noreferrer" class="dense-project-card">
-                  <div class="dense-project-thumb">
-                    <picture>
-                      <source srcset="assets/projects/meetlocal/PageDaceuil.webp" type="image/webp">
-                      <img src="assets/projects/meetlocal/PageDaceuil.png" loading="lazy" alt="MeetLocal">
-                    </picture>
-                  </div>
-                  <div class="dense-project-info">
-                    <h4>MeetLocal</h4>
-                    <p>Plateforme de visioconférence WebRTC en temps réel avec partage d'écran sécurisé.</p>
-                    <div class="tech-stack" style="margin-top: 0;"><span class="tech-tag">Node.js</span><span class="tech-tag">WebRTC</span><span class="tech-tag">Socket.IO</span></div>
-                  </div>
-                </a>
-
-                <!-- Project 3 -->
-                <a href="https://github.com/charles-kamga/dictionnaire-c" target="_blank" rel="noopener noreferrer" class="dense-project-card" style="margin-bottom: 0;">
-                  <div class="dense-project-thumb">
-                    <picture>
-                      <source srcset="assets/projects/Dictionnaire/dictionnaire1.webp" type="image/webp">
-                      <img src="assets/projects/Dictionnaire/dictionnaire1.png" loading="lazy" alt="Dictionnaire C">
-                    </picture>
-                  </div>
-                  <div class="dense-project-info">
-                    <h4>Dictionnaire Bilingue C</h4>
-                    <p>Implémentation bas-niveau en C avec tables de hachage et gestion mémoire optimale.</p>
-                    <div class="tech-stack" style="margin-top: 0;"><span class="tech-tag">C</span><span class="tech-tag">Algorithmes</span><span class="tech-tag">Data Structure</span></div>
-                  </div>
-                </a>
-              </div>
-            </section>
-
-            <!-- Technical Stack Overview -->
-            <section class="widget">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-layer-group"></i> Technologies &amp; Domaines</span>
-                <a href="skills.html" style="color: var(--accent-primary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">Détails <i class="fas fa-arrow-right"></i></a>
-              </div>
-              <div class="skills-mini-grid" style="grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px;">
-                <div class="skill-pill"><i class="devicon-python-plain"></i> Python</div>
-                <div class="skill-pill"><i class="devicon-javascript-plain"></i> JavaScript</div>
-                <div class="skill-pill"><i class="devicon-c-plain"></i> C Lang</div>
-                <div class="skill-pill"><i class="devicon-php-plain"></i> PHP</div>
-                <div class="skill-pill"><i class="devicon-linux-plain"></i> Linux Ops</div>
-                <div class="skill-pill"><i class="devicon-docker-plain"></i> Docker</div>
-                <div class="skill-pill"><i class="fas fa-robot"></i> GenAI / IA</div>
-                <div class="skill-pill"><i class="fas fa-shield-alt"></i> Security Audit</div>
-              </div>
-            </section>
-
-            <!-- Community Ecosystem -->
-            <section class="widget">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-satellite-dish"></i> Écosystème &amp; Communautés</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <a href="https://youtube.com/@charltech" target="_blank" rel="noopener noreferrer" class="orbit-item">
-                  <i class="fab fa-youtube" style="color: #ff0000; font-size: 1.5rem;"></i>
-                  <div>
-                    <strong style="display: block; font-size: 0.9rem;">Charltech</strong>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">Créateur &amp; Éducateur</span>
-                  </div>
-                </a>
-                <a href="https://github.com/charles-kamga" target="_blank" rel="noopener noreferrer" class="orbit-item">
-                  <i class="devicon-python-plain" style="color: #3776AB; font-size: 1.5rem;"></i>
-                  <div>
-                    <strong style="display: block; font-size: 0.9rem;">Python Cameroun</strong>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">Membre Actif &amp; Bénévolat</span>
-                  </div>
-                </a>
-                <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" class="orbit-item">
-                  <i class="fab fa-aws" style="color: #FF9900; font-size: 1.5rem;"></i>
-                  <div>
-                    <strong style="display: block; font-size: 0.9rem;">AWS Cloud</strong>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">Écosystème &amp; IA</span>
-                  </div>
-                </a>
-                <a href="https://gdg.community.dev" target="_blank" rel="noopener noreferrer" class="orbit-item">
-                  <i class="fab fa-google" style="color: #4285F4; font-size: 1.5rem;"></i>
-                  <div>
-                    <strong style="display: block; font-size: 0.9rem;">GDG</strong>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">Bénévole &amp; Événements</span>
-                  </div>
-                </a>
-              </div>
-            </section>
-
+        <!-- ROW 1 / COL 2: Strategic Pulse Widget -->
+        <section class="widget pulse-widget" style="grid-column: 2; grid-row: 1; margin: 0; padding: 20px 24px; justify-content: space-between;">
+          <div class="widget-header" style="margin-bottom: 8px;">
+            <span class="widget-title"><i class="fas fa-heartbeat"></i> Philosophie &amp; État d'esprit</span>
           </div>
+          <blockquote style="border-left: 3px solid var(--accent-primary); padding-left: 12px; margin: 4px 0;">
+            <p style="font-size: 0.9rem; font-style: italic; color: var(--text-main); font-weight: 500; line-height: 1.4;">"Comprendre en profondeur les systèmes pour bâtir des solutions fiables et sécurisées."</p>
+          </blockquote>
+          <div class="owl-mode" style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(0, 209, 255, 0.06); border-radius: 12px; border: 1px solid rgba(0, 209, 255, 0.2);">
+            <i class="fas fa-clock" style="color: var(--accent-primary); font-size: 1.2rem;"></i>
+            <div>
+              <strong id="live-time-display" style="display: block; font-size: 0.9rem; color: var(--text-main); font-family: var(--font-heading); font-weight: 700;">--:--:--</strong>
+              <span style="font-size: 0.7rem; color: var(--accent-primary); font-weight: 600;">System Local Time (UTC+1)</span>
+            </div>
+          </div>
+        </section>
 
-          <!-- RIGHT COLUMN (Side Panel - 4 Cols) -->
-          <div class="side-panel">
-            
-            <!-- Featured Credential Highlight -->
-            <section class="widget" style="background: linear-gradient(135deg, rgba(0, 209, 255, 0.06) 0%, rgba(126, 63, 242, 0.06) 100%); border-color: rgba(0, 209, 255, 0.25);">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-award"></i> Diplôme Phare</span>
+        <!-- ROW 2 / COL 1: Community Orbit Widget -->
+        <section class="widget community-widget" style="grid-column: 1; grid-row: 2; margin: 0; padding: 20px 24px;">
+          <div class="widget-header" style="margin-bottom: 12px;">
+            <span class="widget-title"><i class="fas fa-satellite-dish"></i> Écosystème &amp; Communautés</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <a href="https://youtube.com/@charltech" target="_blank" rel="noopener noreferrer" class="orbit-item" style="padding: 10px 14px;">
+              <i class="fab fa-youtube" style="color: #ff0000; font-size: 1.3rem;"></i>
+              <div>
+                <strong style="display: block; font-size: 0.85rem;">Charltech</strong>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Créateur &amp; Éducateur</span>
               </div>
-              <div style="text-align: center; padding: 10px 0;">
-                <i class="fas fa-shield-alt" style="font-size: 2.8rem; color: var(--accent-primary); margin-bottom: 12px;"></i>
-                <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: #fff; margin-bottom: 6px;">IBM Cybersecurity Analyst</h4>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Spécialisation Professionnelle Certifiée (14 cours, 2026)</p>
-                <a href="certifications.html" class="btn secondary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 10px 16px;">
-                  <i class="fas fa-external-link-alt"></i> Voir les accréditations
-                </a>
+            </a>
+            <a href="https://github.com/charles-kamga" target="_blank" rel="noopener noreferrer" class="orbit-item" style="padding: 10px 14px;">
+              <i class="devicon-python-plain" style="color: #3776AB; font-size: 1.3rem;"></i>
+              <div>
+                <strong style="display: block; font-size: 0.85rem;">Python Cameroun</strong>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Membre Actif &amp; Bénévolat</span>
               </div>
-            </section>
+            </a>
+            <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" class="orbit-item" style="padding: 10px 14px;">
+              <i class="fab fa-aws" style="color: #FF9900; font-size: 1.3rem;"></i>
+              <div>
+                <strong style="display: block; font-size: 0.85rem;">AWS Cloud</strong>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Écosystème &amp; IA</span>
+              </div>
+            </a>
+            <a href="https://gdg.community.dev" target="_blank" rel="noopener noreferrer" class="orbit-item" style="padding: 10px 14px;">
+              <i class="fab fa-google" style="color: #4285F4; font-size: 1.3rem;"></i>
+              <div>
+                <strong style="display: block; font-size: 0.85rem;">GDG</strong>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Bénévole &amp; Événements</span>
+              </div>
+            </a>
+          </div>
+        </section>
 
-            <!-- Real-Time System Pulse Widget -->
-            <section class="widget">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-heartbeat"></i> Live System Pulse</span>
-              </div>
-              <div class="owl-mode" style="display: flex; align-items: center; gap: 14px; padding: 14px; background: rgba(0, 209, 255, 0.06); border-radius: 14px; border: 1px solid rgba(0, 209, 255, 0.2);">
-                <i class="fas fa-clock" style="color: var(--accent-primary); font-size: 1.5rem;"></i>
+        <!-- ROW 2 / COL 2: Growth & Leadership Widget -->
+        <section class="widget growth-widget" style="grid-column: 2; grid-row: 2; margin: 0; padding: 20px 24px;">
+          <div class="widget-header" style="margin-bottom: 12px;">
+            <span class="widget-title"><i class="fas fa-seedling"></i> Développement Personnel</span>
+          </div>
+          <div style="display: flex; gap: 14px;">
+            <div class="growth-card" style="padding: 12px;">
+              <h4 style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Lecture &amp; Stratégie</h4>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-book" style="font-size: 1.4rem; color: var(--accent-primary);"></i>
                 <div>
-                  <strong id="live-time-display" style="display: block; font-size: 1rem; color: var(--text-main); font-family: var(--font-heading); font-weight: 700;">--:--:--</strong>
-                  <span style="font-size: 0.75rem; color: var(--accent-primary); font-weight: 600;">System Local Time (UTC+1)</span>
+                  <strong style="display: block; font-size: 0.85rem;">Le Prince</strong>
+                  <span style="font-size: 0.72rem; color: var(--text-muted);">Nicolas Machiavel</span>
                 </div>
               </div>
-            </section>
-
-            <!-- Analytical Pause & Hobbies -->
-            <section class="widget">
-              <div class="widget-header">
-                <span class="widget-title"><i class="fas fa-coffee"></i> Activités Annexes</span>
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 12px;">
-                <div class="pause-item">
-                  <div class="pause-icon">
-                    <i class="fas fa-chess-knight" style="font-size: 1.1rem;"></i>
-                  </div>
-                  <div>
-                    <strong style="display: block; font-size: 0.88rem;">Échecs &amp; Stratégie</strong>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);">Anticipation &amp; tactique</span>
-                  </div>
-                </div>
-                <a href="chess.html" class="btn primary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 10px 16px;">
-                  <i class="fas fa-gamepad"></i> Jouer contre mon IA
-                </a>
-                <div class="pause-item">
-                  <div class="pause-icon">
-                    <i class="fas fa-book" style="font-size: 1.1rem;"></i>
-                  </div>
-                  <div>
-                    <strong style="display: block; font-size: 0.88rem;">Lecture : Le Prince</strong>
-                    <span style="font-size: 0.72rem; color: var(--text-muted);">Nicolas Machiavel</span>
+            </div>
+            <div class="growth-card" style="padding: 12px;">
+              <h4 style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Linguistique</h4>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-language" style="font-size: 1.4rem; color: var(--accent-secondary);"></i>
+                <div style="flex: 1;">
+                  <strong style="display: block; font-size: 0.82rem; margin-bottom: 4px;">Anglais (Pro)</strong>
+                  <div style="height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));"></div>
                   </div>
                 </div>
               </div>
-            </section>
-
+            </div>
           </div>
+        </section>
 
-        </div>
+        <!-- ROW 3 / SPAN 1-2: Analytical Pause Widget -->
+        <section class="widget pause-widget" style="grid-column: 1 / span 2; grid-row: 3; margin: 0; padding: 20px 24px;">
+          <div class="widget-header" style="margin-bottom: 12px;">
+            <span class="widget-title"><i class="fas fa-coffee"></i> Activités Annexes &amp; Détente Stratégique</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center;">
+            <div class="pause-item" style="padding: 10px 14px;">
+              <div class="pause-icon" style="width: 36px; height: 36px;">
+                <i class="fas fa-chess-knight" style="font-size: 1rem;"></i>
+              </div>
+              <div style="flex: 1;">
+                <strong style="display: block; font-size: 0.85rem;">Échecs &amp; Anticipation</strong>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Réfléchir avec stratégie</span>
+              </div>
+              <a href="chess.html" class="btn primary" style="padding: 8px 16px; font-size: 0.8rem;">
+                <i class="fas fa-gamepad"></i> Jouer contre mon IA
+              </a>
+            </div>
+            <div class="pause-item" style="padding: 10px 14px;">
+              <div class="pause-icon" style="width: 36px; height: 36px;">
+                <i class="fas fa-music" style="font-size: 1rem;"></i>
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.85rem;">Musique &amp; Réflexion</strong>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Harmonie, rigueur &amp; équilibre</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </div>
-
     </main>
 
     <!-- Bottom Navigation (Mobile Only) -->

@@ -188,24 +188,30 @@ body {
   }
 }
 
-/* Grid System */
-.dashboard-grid {
+/* Grid System - Single Screen Viewport (100vh Non-Scrollable Desktop) */
+.dashboard-grid-single-screen {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
+  grid-template-columns: 7fr 5fr;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
 }
 
-/* Widgets Base - Glassmorphism & Neon Hover */
+/* Widgets Base - Glassmorphism & Compact Single Screen */
 .widget {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--card-radius);
-  padding: 32px;
+  padding: 20px 24px;
   transition: var(--transition);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .widget:hover {
@@ -443,18 +449,20 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-  .dashboard-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .hero-widget, .stack-widget, .projects-widget, .certs-widget {
-    grid-column: auto;
-    width: 100%;
-  }
+@media (max-width: 1024px) {
   .dashboard-main {
-    padding: 30px;
+    height: auto !important;
+    overflow-y: auto !important;
+    padding: 24px !important;
+  }
+  .dashboard-grid-single-screen {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    height: auto !important;
+  }
+  .widget {
+    height: auto !important;
   }
 }
 
