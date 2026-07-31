@@ -392,11 +392,6 @@ body {
 
 /* Mobile App Experience */
 @media (max-width: 768px) {
-  /* Disable selection for text outside interactable areas to mimic app feeling */
-  body {
-    -webkit-user-select: none;
-    user-select: none;
-  }
   .app-container {
     flex-direction: column;
   }
@@ -494,4 +489,82 @@ body {
   .bottom-nav-item.active i {
     transform: translateY(-2px);
   }
+}
+
+/* Fade-in Animations (used by bento.js IntersectionObserver) */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tech Stack Tags (projects page) */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.tech-tag {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: var(--accent-primary);
+  border: 1px solid rgba(0, 209, 255, 0.15);
+  font-weight: 500;
+}
+
+/* Community Orbit Items (index page) */
+.orbit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.orbit-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Growth Widget Items */
+.growth-card {
+  flex: 1;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+/* Analytical Pause Items */
+.pause-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.pause-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  color: var(--text-main);
 }

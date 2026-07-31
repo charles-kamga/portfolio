@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="assets/certifications/images/${cert.image || 'default.png'}" 
              alt="${cert.title}" 
              class="cert-thumbnail"
-             onerror="this.src='https://via.placeholder.com/400x300?text=Certificat'">
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23666%22 font-family=%22sans-serif%22 font-size=%2216%22>Certificat</text></svg>'">
       </div>
       <div class="cert-content">
         <div class="cert-meta">

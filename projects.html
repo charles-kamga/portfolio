@@ -3,11 +3,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#050507">
   <link rel="manifest" href="manifest.json">
-  <title>Projets | Charles Kamga Mukam | Développeur & Pentester</title>
+  <title>Projets | Charles Kamga Mukam | Développeur &amp; Pentester</title>
   <link rel="icon" type="image/png" href="./assets/images/icone.png">
+
+  <!-- SEO -->
+  <meta name="description" content="Découvrez les projets de Charles Kamga Mukam : DarwinxShare, MeetLocal, Dictionnaire bilingue, et plus.">
+  <link rel="canonical" href="https://charleskamga.me/projects.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Projets | Charles Kamga Mukam">
+  <meta property="og:description" content="Catalogue de réalisations : architecture backend, sécurité offensive, applications mobiles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://charleskamga.me/projects.html">
+  <meta property="og:image" content="https://charleskamga.me/assets/projects/darwinxshare/qr-access.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +28,7 @@
     rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
@@ -168,7 +179,7 @@
 
     .dashboard-main::-webkit-scrollbar { display: none; }
 
-    /* Mobile Adaptations */
+    /* Mobile */
     @media (max-width: 1024px) {
       html, body {
         height: auto !important;
@@ -210,6 +221,11 @@
         height: 220px;
         margin-bottom: 20px;
       }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
   </style>
 </head>
@@ -270,8 +286,8 @@
             <p>Partage de fichiers haute performance entre Linux et iOS via Wi-Fi. Optimisé pour le streaming Safari.</p>
             <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">CustomTkinter</span></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px;">
-              <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" class="btn secondary">Source</a>
-              <a href="https://github.com/charles-kamga/darwinxShare/releases/tag/v1.8.2.1" target="_blank" class="btn primary">Télécharger</a>
+              <a href="https://github.com/charles-kamga/darwinxShare" target="_blank" rel="noopener noreferrer" class="btn secondary">Source</a>
+              <a href="https://github.com/charles-kamga/darwinxShare/releases/tag/v1.8.2.1" target="_blank" rel="noopener noreferrer" class="btn primary">Télécharger</a>
             </div>
           </article>
 
@@ -286,7 +302,7 @@
             <p>Application de visioconférence temps réel avec WebRTC et partage d'écran sécurisé.</p>
             <div class="tech-stack"><span class="tech-tag">Node.js</span><span class="tech-tag">Socket.IO</span><span class="tech-tag">WebRTC</span></div>
             <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
-              <a href="https://github.com/charles-kamga/meetlocal" target="_blank" class="btn secondary">Code Source</a>
+              <a href="https://github.com/charles-kamga/meetlocal" target="_blank" rel="noopener noreferrer" class="btn secondary">Code Source</a>
             </div>
           </article>
         </div>
@@ -306,7 +322,7 @@
             <p>Implémentation performante en C avec tables de hachage et gestion avancée des collisions.</p>
             <div class="tech-stack"><span class="tech-tag">C</span><span class="tech-tag">Algorithmes</span><span class="tech-tag">Data Structure</span></div>
             <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
-              <a href="https://github.com/charles-kamga/dictionnaire-c" target="_blank" class="btn secondary">Code Source</a>
+              <a href="https://github.com/charles-kamga/dictionnaire-c" target="_blank" rel="noopener noreferrer" class="btn secondary">Code Source</a>
             </div>
           </article>
 
@@ -321,7 +337,7 @@
             <p>Système complet de gestion d'ouvrages et d'emprunts avec interface d'administration MVC.</p>
             <div class="tech-stack"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">MVC</span></div>
             <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
-              <a href="https://github.com/charles-kamga/Bibliotheque.git" target="_blank" class="btn secondary">Code Source</a>
+              <a href="https://github.com/charles-kamga/Bibliotheque.git" target="_blank" rel="noopener noreferrer" class="btn secondary">Code Source</a>
             </div>
           </article>
         </div>
@@ -356,7 +372,7 @@
             <p>Refonte complète avec design système moderne, dashboard d'identité et scroll snapping.</p>
             <div class="tech-stack"><span class="tech-tag">HTML5/CSS3</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">UX Design</span></div>
             <div style="display: grid; grid-template-columns: 1fr; margin-top: 25px;">
-              <a href="#" class="btn primary">Projet Actuel</a>
+              <button disabled class="btn primary" style="opacity: 0.6; cursor: default;">Projet Actuel</button>
             </div>
           </article>
         </div>
@@ -398,20 +414,27 @@
 
     projectImages.forEach(img => {
       img.addEventListener('mouseenter', () => {
-        // On attend 1.2 seconde de survol immobile avant d'afficher
         zoomTimeout = setTimeout(() => {
           zoomImg.src = img.src;
           overlay.classList.add('active');
+          overlay.style.pointerEvents = 'auto';
           img.style.opacity = '0.3';
-        }, 1200); // Délai de latence (1200ms)
+        }, 1200);
       });
 
       img.addEventListener('mouseleave', () => {
-        // On annule le déclenchement si la souris sort avant la fin du délai
         clearTimeout(zoomTimeout);
         overlay.classList.remove('active');
+        overlay.style.pointerEvents = 'none';
         img.style.opacity = '1';
       });
+    });
+
+    // Click overlay to close
+    overlay.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      overlay.style.pointerEvents = 'none';
+      projectImages.forEach(img => img.style.opacity = '1');
     });
 
     const container = document.getElementById('scroll-container');
