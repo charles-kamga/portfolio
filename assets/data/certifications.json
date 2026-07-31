@@ -1,102 +1,172 @@
 [
-    {
-        "id": "11",
-        "title": "Penetration Testing, Threat Hunting, and Cryptography",
-        "issuer": "IBM",
-        "date": "Mar 23, 2026",
-        "category": "Cybersecurity",
-        "skills": ["Ethical Hacking", "Threat Hunting", "Cryptography", "Penetration Testing"],
-        "image": "Penetration Testing Threat Hunting and Cryptography.png",
-        "url": "https://coursera.org/verify/TWNU7CJV4YTV"
-    },
-    {
-        "id": "10",
-        "title": "Cybersecurity Architecture",
-        "issuer": "IBM",
-        "date": "Feb 20, 2026",
-        "category": "Cybersecurity",
-        "skills": ["Architecture", "CIA Triad", "Governance", "Risk Management"],
-        "image": "Cybersecurity Architecture.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/EBW3CRFP2I8E"
-    },
-    {
-        "id": "9",
-        "title": "Database Essentials and Vulnerabilities",
-        "issuer": "IBM",
-        "date": "Feb 20, 2026",
-        "category": "Cybersecurity",
-        "skills": ["SQL Injection", "Data Security", "Vulnerability Scanning"],
-        "image": "Database Essentials and Vulnerabilities.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/64MXV9Y9TTC3"
-    },
-    {
-        "id": "1",
-        "title": "Introduction to Cybersecurity Tools & Cyberattacks",
-        "issuer": "IBM",
-        "date": "Oct 8, 2025",
-        "category": "Cybersecurity",
-        "skills": ["Cyberattacks", "Security Tools"],
-        "image": "Introduction to Cybersecurity Tools & Cyberattacks.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/5HBIUROU02DJ"
-    },
-    {
-        "id": "2",
-        "title": "Introduction to Cybersecurity Essentials",
-        "issuer": "IBM",
-        "date": "Nov 7, 2025",
-        "category": "Cybersecurity",
-        "skills": ["System Security", "Cryptography", "Network Security"],
-        "image": "Introduction to Cybersecurity Essentials.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/U06XXN8LJ2S7"
-    },
-    {
-        "id": "8",
-        "title": "Computer Networks and Network Security",
-        "issuer": "IBM",
-        "date": "Dec 27, 2025",
-        "category": "Networks",
-        "skills": ["Wireless Networks", "Network Design", "Information Security"],
-        "image": "Computer Networks and Network Security.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/HVCN6U3PB5CA"
-    },
-    {
-        "id": "7",
-        "title": "IoT Wireless & Cloud Emerging Technologies",
-        "issuer": "Yonsei University",
-        "date": "May 25, 2025",
-        "category": "Networks",
-        "skills": ["Telecommunications", "Network Architecture", "IoT"],
-        "image": "IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/QH4JCLEFWJYA"
-    },
-    {
-        "id": "3",
-        "title": "Operating Systems: Administration and Security",
-        "issuer": "IBM",
-        "date": "Oct 8, 2025",
-        "category": "Systems",
-        "skills": ["Linux", "Operating Systems", "Cloud Computing"],
-        "image": "Operating Systems: Overview, Administration, and Security.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/D2SMPSCH222J"
-    },
-    {
-        "id": "6",
-        "title": "Google Drive",
-        "issuer": "Google Cloud",
-        "date": "Apr 20, 2025",
-        "category": "Productivity",
-        "skills": ["Google Workspace", "Cloud Storage"],
-        "image": "Google Drive.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/L71TA96AXQD4"
-    },
-    {
-        "id": "5",
-        "title": "Time Management for Productivity",
-        "issuer": "UC Irvine",
-        "date": "Apr 19, 2025",
-        "category": "Productivity",
-        "skills": ["Time Management", "Planning", "Productivity"],
-        "image": "Work Smarter, Not Harder: Time Management for Personal & Professional Productivity.png",
-        "url": "https://www.coursera.org/account/accomplishments/verify/XVX67K5SO095"
-    }
+  {
+    "id": "100",
+    "title": "IBM Cybersecurity Analyst Professional Certificate",
+    "issuer": "IBM",
+    "date": "Jul 2, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Penetration Testing", "Threat Hunting", "Incident Response", "Digital Forensics", "Generative AI", "CompTIA Security+ / CYSA+ Prep"],
+    "image": "IBM Cybersecurity Analyst.png",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5"
+  },
+  {
+    "id": "113",
+    "title": "Generative AI: Boost Your Cybersecurity Career",
+    "issuer": "IBM",
+    "date": "Jun 30, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Generative AI", "Cybersecurity Productivity", "Prompt Engineering"],
+    "image": "Generative AI: Boost Your Cybersecurity Career.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "112",
+    "title": "Cybersecurity Assessment: CompTIA Security+ & CYSA+",
+    "issuer": "IBM",
+    "date": "May 31, 2026",
+    "category": "Cybersecurity",
+    "skills": ["CompTIA Security+", "CySA+", "Security Assessment"],
+    "image": "Cybersecurity Assessment: CompTIA Security+ & CYSA+.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "111",
+    "title": "Cybersecurity Case Studies and Capstone Project",
+    "issuer": "IBM",
+    "date": "May 26, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Capstone Project", "Case Studies", "Threat Analysis"],
+    "image": "Cybersecurity Case Studies and Capstone Project.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "110",
+    "title": "Incident Response and Digital Forensics",
+    "issuer": "IBM",
+    "date": "Mar 30, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Incident Response", "Digital Forensics", "Evidence Handling"],
+    "image": "Incident Response and Digital Forensics.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "11",
+    "title": "Penetration Testing, Threat Hunting, and Cryptography",
+    "issuer": "IBM",
+    "date": "Mar 23, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Ethical Hacking", "Threat Hunting", "Cryptography", "Penetration Testing"],
+    "image": "Penetration Testing Threat Hunting and Cryptography.png",
+    "url": "https://coursera.org/verify/TWNU7CJV4YTV"
+  },
+  {
+    "id": "108",
+    "title": "Cybersecurity Compliance Framework, Standards & Regulations",
+    "issuer": "IBM",
+    "date": "Mar 15, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Compliance Frameworks", "NIST", "GDPR", "Standards & Regulations"],
+    "image": "Cybersecurity Compliance Framework, Standards & Regulations.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "10",
+    "title": "Cybersecurity Architecture",
+    "issuer": "IBM",
+    "date": "Feb 19, 2026",
+    "category": "Cybersecurity",
+    "skills": ["Architecture", "CIA Triad", "Governance", "Risk Management"],
+    "image": "Cybersecurity Architecture.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/EBW3CRFP2I8E"
+  },
+  {
+    "id": "9",
+    "title": "Database Essentials and Vulnerabilities",
+    "issuer": "IBM",
+    "date": "Jan 26, 2026",
+    "category": "Cybersecurity",
+    "skills": ["SQL Injection", "Data Security", "Vulnerability Scanning"],
+    "image": "Database Essentials and Vulnerabilities.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/64MXV9Y9TTC3"
+  },
+  {
+    "id": "8",
+    "title": "Computer Networks and Network Security",
+    "issuer": "IBM",
+    "date": "Dec 27, 2025",
+    "category": "Networks",
+    "skills": ["Wireless Networks", "Network Design", "Information Security"],
+    "image": "Computer Networks and Network Security.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/HVCN6U3PB5CA"
+  },
+  {
+    "id": "3",
+    "title": "Operating Systems: Administration and Security",
+    "issuer": "IBM",
+    "date": "Nov 13, 2025",
+    "category": "Systems",
+    "skills": ["Linux", "Operating Systems", "Cloud Computing"],
+    "image": "Operating Systems: Overview, Administration, and Security.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/D2SMPSCH222J"
+  },
+  {
+    "id": "2",
+    "title": "Introduction to Cybersecurity Essentials",
+    "issuer": "IBM",
+    "date": "Nov 7, 2025",
+    "category": "Cybersecurity",
+    "skills": ["System Security", "Cryptography", "Network Security"],
+    "image": "Introduction to Cybersecurity Essentials.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/U06XXN8LJ2S7"
+  },
+  {
+    "id": "1",
+    "title": "Introduction to Cybersecurity Tools & Cyberattacks",
+    "issuer": "IBM",
+    "date": "Oct 8, 2025",
+    "category": "Cybersecurity",
+    "skills": ["Cyberattacks", "Security Tools"],
+    "image": "Introduction to Cybersecurity Tools & Cyberattacks.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/5HBIUROU02DJ"
+  },
+  {
+    "id": "101",
+    "title": "Introduction to Cybersecurity Careers",
+    "issuer": "IBM",
+    "date": "Sep 20, 2025",
+    "category": "Cybersecurity",
+    "skills": ["Cybersecurity Roles", "Career Pathways", "Security Fundamentals"],
+    "image": "Introduction to Cybersecurity Careers.png",
+    "url": "https://coursera.org/verify/23EHCOD97GM5"
+  },
+  {
+    "id": "7",
+    "title": "IoT Wireless & Cloud Emerging Technologies",
+    "issuer": "Yonsei University",
+    "date": "May 25, 2025",
+    "category": "Networks",
+    "skills": ["Telecommunications", "Network Architecture", "IoT"],
+    "image": "IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/QH4JCLEFWJYA"
+  },
+  {
+    "id": "6",
+    "title": "Google Drive",
+    "issuer": "Google Cloud",
+    "date": "Apr 20, 2025",
+    "category": "Productivity",
+    "skills": ["Google Workspace", "Cloud Storage"],
+    "image": "Google Drive.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/L71TA96AXQD4"
+  },
+  {
+    "id": "5",
+    "title": "Time Management for Productivity",
+    "issuer": "UC Irvine",
+    "date": "Apr 19, 2025",
+    "category": "Productivity",
+    "skills": ["Time Management", "Planning", "Productivity"],
+    "image": "Work Smarter, Not Harder: Time Management for Personal & Professional Productivity.png",
+    "url": "https://www.coursera.org/account/accomplishments/verify/XVX67K5SO095"
+  }
 ]

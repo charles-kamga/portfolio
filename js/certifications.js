@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     orderedCategories.forEach(cat => {
       const icon = categoryIcons[cat] || '<i class="fas fa-certificate" style="color: var(--text-muted);"></i>';
       
-      const scrollButtons = cat === 'Cybersecurity' ? `
+      const scrollButtons = categoriesMap[cat].length > 3 ? `
         <div class="carousel-nav">
           <button class="scroll-btn left-btn" aria-label="Scroll Left" data-target="${cat}"><i class="fas fa-chevron-left"></i></button>
           <button class="scroll-btn right-btn" aria-label="Scroll Right" data-target="${cat}"><i class="fas fa-chevron-right"></i></button>
@@ -84,13 +84,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateStr = dateObj.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
     const skillsHtml = cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('');
 
+    const imageName = cert.image || 'default.png';
+    const baseName = imageName.substring(0, imageName.lastIndexOf('.')) || imageName;
+
     return `
     <article class="widget certification-card">
       <div class="cert-image-container">
-        <img src="assets/certifications/images/${cert.image || 'default.png'}" 
-             alt="${cert.title}" 
-             class="cert-thumbnail"
-             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23666%22 font-family=%22sans-serif%22 font-size=%2216%22>Certificat</text></svg>'">
+        <picture>
+          <source srcset="assets/certifications/images/${baseName}.webp" type="image/webp">
+          <img src="assets/certifications/images/${imageName}" 
+               alt="${cert.title}" 
+               class="cert-thumbnail"
+               loading="lazy"
+               onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23111%22 width=%22400%22 height=%22300%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23666%22 font-family=%22sans-serif%22 font-size=%2216%22>Certificat</text></svg>'">
+        </picture>
       </div>
       <div class="cert-content">
         <div class="cert-meta">
@@ -100,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>${cert.title}</h3>
         <div class="skill-tags">${skillsHtml}</div>
         ${cert.url ? `
-        <a href="${cert.url}" class="view-cert-link" target="_blank">
+        <a href="${cert.url}" class="view-cert-link" target="_blank" rel="noopener noreferrer">
           <i class="fas fa-external-link-alt"></i> Vérifier l'accréditation
         </a>` : ''}
       </div>
