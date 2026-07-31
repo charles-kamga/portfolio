@@ -412,29 +412,43 @@
     const projectImages = document.querySelectorAll('.project-image img');
     let zoomTimeout;
 
+    function openZoom(src) {
+      zoomImg.src = src;
+      overlay.classList.add('active');
+      overlay.style.pointerEvents = 'auto';
+    }
+
+    function closeZoom() {
+      overlay.classList.remove('active');
+      overlay.style.pointerEvents = 'none';
+      projectImages.forEach(img => img.style.opacity = '1');
+    }
+
     projectImages.forEach(img => {
+      // Click to zoom instantly
+      img.parentElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openZoom(img.src);
+      });
+
+      // Quick hover preview
       img.addEventListener('mouseenter', () => {
         zoomTimeout = setTimeout(() => {
-          zoomImg.src = img.src;
-          overlay.classList.add('active');
-          overlay.style.pointerEvents = 'auto';
+          openZoom(img.src);
           img.style.opacity = '0.3';
-        }, 1200);
+        }, 250);
       });
 
       img.addEventListener('mouseleave', () => {
         clearTimeout(zoomTimeout);
-        overlay.classList.remove('active');
-        overlay.style.pointerEvents = 'none';
-        img.style.opacity = '1';
+        closeZoom();
       });
     });
 
-    // Click overlay to close
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('active');
-      overlay.style.pointerEvents = 'none';
-      projectImages.forEach(img => img.style.opacity = '1');
+    // Click overlay or press Escape to close
+    overlay.addEventListener('click', closeZoom);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeZoom();
     });
 
     const container = document.getElementById('scroll-container');

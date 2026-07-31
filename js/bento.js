@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Fade-in effect for Widgets
+    // Fade-in effect for Widgets using IntersectionObserver
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, index * 100); // Staggered effect
+                }, index * 80);
             }
         });
     }, observerOptions);
@@ -34,7 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(widget);
     });
 
-    // Special case for smooth scroll on same page
+    // Live System Clock Widget
+    const timeDisplay = document.getElementById('live-time-display');
+    if (timeDisplay) {
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('fr-FR', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            timeDisplay.textContent = timeString + ' (UTC+1)';
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    }
+
+    // Smooth scroll for internal hash links
     const anchorLinks = document.querySelectorAll('.nav-item a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -43,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
-                // Update active state
                 navItems.forEach(i => i.classList.remove('active'));
                 link.parentElement.classList.add('active');
             }
