@@ -14,7 +14,7 @@ tags:
     "Psutil",
   ]
 sourceUrl: "https://github.com/charles-kamga/Skilling-Darwinx-1"
-image: "/assets/projects/darwinxshare/admin-dashboard.webp"
+image: "/assets/projects/darwinx-neighbour/darwinx-neighbour-ui.png"
 badge: "Linux Productivity HUD"
 featured: true
 metrics:
@@ -47,8 +47,12 @@ L'objectif était de bâtir un HUD (Heads-Up Display) de productivité persistan
    - Intégration directe avec le serveur de son moderne Linux (PipeWire) pour capturer instantanément des mémos vocaux compressés à la volée.
    - Intégration d'un générateur de bruits d'ambiance et de concentration utilisant `mpv` en processus léger d'arrière-plan.
 
-4. **Intégration Hyprland Scratchpad** :
-   - Configuration de règles de fenêtrage Wayland (`hyprctl`) et scripts d'appel pour basculer instantanément la fenêtre entre l'état caché et affiché en surimpression sur n'importe quel écran.
+4. **Intégration Hyprland Scratchpad & Épinglage** :
+   - Configuration de règles de fenêtrage Wayland (`hyprctl`) et scripts d'appel pour basculer instantanément la fenêtre entre l'état caché et affiché en surimpression sur n'importe quel écran, avec fonction d'épinglage HUD permanent.
+
+5. **Moteur d'Orchestration Réactif (Routines Combo)** :
+   - Conception d'un ordonnanceur de séquences multi-modules enchaînant automatiquement plusieurs sous-systèmes : démarrage d'un bruit blanc ambiant à volume calibré, création d'une entrée de session dans le scratchpad, synchronisation de cycles Pomodoro de deep work et arrêt programmé des flux sonores.
+   - Moniteur d'exécution en temps réel permettant à l'utilisateur de basculer d'un onglet à l'autre sans jamais interrompre la routine active.
 
 ---
 
