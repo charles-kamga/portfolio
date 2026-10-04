@@ -2,15 +2,21 @@
 :root {
   --bg-dark: #09090b;
   --bg-sidebar: #0d0d11;
-  --bg-card: #121216;
-  --bg-card-hover: #17171d;
+  --bg-card: rgba(18, 18, 24, 0.85);
+  --bg-card-hover: rgba(24, 24, 32, 0.95);
   --bg-card-raised: #1c1c24;
   --border-color: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.04);
-  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-hover: rgba(255, 255, 255, 0.18);
   --border-accent: rgba(56, 189, 248, 0.4);
   --accent-primary: #38bdf8;
   --accent-secondary: #818cf8;
+  --accent-cyan: #06b6d4;
+  --accent-indigo: #818cf8;
+  --accent-violet: #a855f7;
+  --accent-amber: #fbbf24;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
   --accent-subtle: rgba(56, 189, 248, 0.08);
   --accent-success: #10b981;
   --text-main: #f4f4f5;
@@ -24,7 +30,7 @@
     "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:
     "JetBrains Mono", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -51,20 +57,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle background grid pattern */
+/* Atmospheric Aurora Mesh Gradients */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background-image:
     radial-gradient(
-      circle at 50% 0%,
-      rgba(56, 189, 248, 0.04) 0%,
-      transparent 50%
+      ellipse 65% 45% at 15% -5%,
+      rgba(99, 102, 241, 0.16) 0%,
+      transparent 70%
     ),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    radial-gradient(
+      ellipse 55% 40% at 85% 10%,
+      rgba(6, 182, 212, 0.14) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 50% 60%,
+      rgba(16, 185, 129, 0.06) 0%,
+      transparent 70%
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size:
+    100% 100%,
+    100% 100%,
     100% 100%,
     48px 48px,
     48px 48px;
@@ -85,7 +103,7 @@ body::before {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(--accent-indigo);
 }
 
 /* Typography Hierarchy */
@@ -109,9 +127,11 @@ a {
   text-decoration: none;
 }
 
-/* Professional Bento Card Container */
+/* Professional Bento Card Container - Living Glass */
 .bento-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--card-radius);
   position: relative;
@@ -119,7 +139,7 @@ a {
   overflow: hidden;
 }
 
-/* Subtle top hairline highlight */
+/* Vibrant dual-gradient top hairline highlight */
 .bento-card::before {
   content: "";
   position: absolute;
@@ -129,17 +149,21 @@ a {
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(255, 255, 255, 0.12),
-    transparent
+    transparent 0%,
+    rgba(56, 189, 248, 0.35) 30%,
+    rgba(129, 140, 248, 0.35) 70%,
+    transparent 100%
   );
   pointer-events: none;
 }
 
 .bento-card:hover {
-  border-color: var(--border-hover);
+  border-color: rgba(56, 189, 248, 0.3);
   background: var(--bg-card-hover);
   transform: translateY(-2px);
+  box-shadow:
+    0 14px 34px -10px rgba(0, 0, 0, 0.65),
+    0 0 24px -6px rgba(56, 189, 248, 0.14);
 }
 
 /* Buttons - Sharp, Confident, Clean */
@@ -222,8 +246,67 @@ a {
 
 .tech-tag.accent {
   background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.25);
   color: var(--accent-primary);
+}
+
+.tech-tag.accent-amber {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.25);
+  color: #fbbf24;
+}
+
+.tech-tag.accent-emerald {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.tech-tag.accent-purple {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.25);
+  color: #c084fc;
+}
+
+.tech-tag.accent-cyan {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.25);
+  color: #22d3ee;
+}
+
+/* Micro-animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.92);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.9);
+  }
+}
+
+@keyframes terminal-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--accent-primary);
+  vertical-align: middle;
+  margin-left: 4px;
+  animation: terminal-blink 1s step-start infinite;
 }
 
 /* App Layout */

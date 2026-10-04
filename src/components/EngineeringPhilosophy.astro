@@ -11,7 +11,7 @@
   </div>
 
   <div class="pillars-grid">
-    <div class="pillar-item">
+    <div class="pillar-item pillar-amber">
       <div class="pillar-icon">
         <i class="fas fa-bolt" aria-hidden="true"></i>
       </div>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="pillar-item">
+    <div class="pillar-item pillar-purple">
       <div class="pillar-icon">
         <i class="fas fa-shield-halved" aria-hidden="true"></i>
       </div>
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="pillar-item">
+    <div class="pillar-item pillar-emerald">
       <div class="pillar-icon">
         <i class="fas fa-microchip" aria-hidden="true"></i>
       </div>
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="pillar-item">
+    <div class="pillar-item pillar-cyan">
       <div class="pillar-icon">
         <i class="fas fa-cubes" aria-hidden="true"></i>
       </div>
@@ -103,23 +103,61 @@
     transition: var(--transition);
   }
 
-  .pillar-item:hover {
-    border-color: var(--border-hover);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
   .pillar-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    color: var(--accent-primary);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     flex-shrink: 0;
+    transition: var(--transition);
+  }
+
+  /* Pillar Chromatic Personalities */
+  .pillar-amber .pillar-icon {
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+  }
+  .pillar-amber:hover {
+    border-color: rgba(251, 191, 36, 0.35);
+    background: rgba(251, 191, 36, 0.03);
+    box-shadow: 0 4px 20px -4px rgba(251, 191, 36, 0.12);
+  }
+
+  .pillar-purple .pillar-icon {
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #c084fc;
+  }
+  .pillar-purple:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    background: rgba(168, 85, 247, 0.03);
+    box-shadow: 0 4px 20px -4px rgba(168, 85, 247, 0.12);
+  }
+
+  .pillar-emerald .pillar-icon {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+  }
+  .pillar-emerald:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.03);
+    box-shadow: 0 4px 20px -4px rgba(16, 185, 129, 0.12);
+  }
+
+  .pillar-cyan .pillar-icon {
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    color: #22d3ee;
+  }
+  .pillar-cyan:hover {
+    border-color: rgba(6, 182, 212, 0.35);
+    background: rgba(6, 182, 212, 0.03);
+    box-shadow: 0 4px 20px -4px rgba(6, 182, 212, 0.12);
   }
 
   .pillar-content h4 {

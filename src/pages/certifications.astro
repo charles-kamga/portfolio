@@ -142,7 +142,10 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
   .page-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #ffffff 40%, #e0e7ff 75%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .page-desc {
@@ -172,9 +175,10 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
   }
 
   .cat-link:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(56, 189, 248, 0.08);
     color: #ffffff;
-    border-color: var(--border-hover);
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 12px -2px rgba(56, 189, 248, 0.2);
   }
 
   .group-section {

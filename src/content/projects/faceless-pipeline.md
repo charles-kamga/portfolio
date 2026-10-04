@@ -15,7 +15,7 @@ tags:
     "YouTube API",
   ]
 sourceUrl: "https://github.com/charles-kamga/faceless-pipeline"
-image: "/assets/projects/faceless-pipeline/pipeline-preview.jpg"
+image: "/assets/projects/faceless-pipeline/faceless-cli.png"
 badge: "Automated Video Engine"
 featured: true
 metrics:
@@ -83,3 +83,13 @@ L'objectif était de concevoir **Faceless Pipeline** (`faceless-studio`) : un ou
 - **Impact en production réelle** : Utilisation active pour alimenter la chaîne éducative _Curioso Savoir_, générant plus de 5 800 vues et +3 200 % de progression d'audience en 28 jours.
 - Conception d'un pipeline de données déterministe avec gestion rigoureuse des états et de la concurrence sous Linux.
 - Maîtrise avancée des filtres complexes de transcodage multimédia avec FFmpeg.
+
+<div class="project-inline-preview" style="margin-top: 24px; padding: 16px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px;">
+  <p style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-primary); margin-bottom: 8px;">
+    <i class="fas fa-video"></i> LIVRABLE VIDÉO GÉNÉRÉ PAR LE PIPELINE (MODULE M6)
+  </p>
+  <picture>
+    <source srcset="/assets/projects/faceless-pipeline/pipeline-preview.webp" type="image/webp" />
+    <img src="/assets/projects/faceless-pipeline/pipeline-preview.jpg" alt="Miniature YouTube Short générée par Faceless Pipeline" style="max-width: 260px; width: 100%; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1);" loading="lazy" />
+  </picture>
+</div>

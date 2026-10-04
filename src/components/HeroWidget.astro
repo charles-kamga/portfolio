@@ -44,12 +44,18 @@
       </p>
 
       <div class="stack-row tech-stack">
-        <span class="tech-tag accent">Python (FastAPI / Flask)</span>
-        <span class="tech-tag accent">Arch Linux (Hyprland / POSIX)</span>
-        <span class="tech-tag">C (Sockets / O(1) Data Structures)</span>
-        <span class="tech-tag">Node.js (WebRTC / Socket.IO)</span>
-        <span class="tech-tag">AppSec (OWASP / Def. in Depth)</span>
-        <span class="tech-tag">Docker</span>
+        <span class="tech-tag accent-amber">Python (FastAPI / Flask)</span>
+        <span class="tech-tag accent-emerald">
+          Arch Linux (Hyprland / POSIX)
+        </span>
+        <span class="tech-tag accent-cyan">
+          C (Sockets / O(1) Data Structures)
+        </span>
+        <span class="tech-tag accent-purple">Node.js (WebRTC / Socket.IO)</span>
+        <span class="tech-tag accent-amber">
+          AppSec (OWASP / Def. in Depth)
+        </span>
+        <span class="tech-tag accent-cyan">Docker</span>
       </div>
 
       <div class="actions-row">
@@ -115,10 +121,22 @@
   .hero-photo {
     width: 130px;
     height: 130px;
-    border-radius: 10px;
+    border-radius: 12px;
     object-fit: cover;
-    border: 1px solid var(--border-color);
+    border: 2px solid rgba(56, 189, 248, 0.3);
+    box-shadow:
+      0 0 25px -4px rgba(56, 189, 248, 0.25),
+      0 8px 20px -6px rgba(0, 0, 0, 0.5);
     background: #18181f;
+    transition: var(--transition);
+  }
+
+  .hero-photo:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow:
+      0 0 35px -2px rgba(56, 189, 248, 0.4),
+      0 12px 24px -6px rgba(0, 0, 0, 0.6);
+    transform: scale(1.02);
   }
 
   .hero-body {
@@ -147,14 +165,15 @@
     border: 1px solid rgba(34, 197, 94, 0.25);
     padding: 3px 10px;
     border-radius: 6px;
+    box-shadow: 0 0 12px -2px rgba(34, 197, 94, 0.15);
   }
 
   .status-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     background: #4ade80;
     border-radius: 50%;
-    box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+    animation: pulse-glow 2.5s infinite ease-in-out;
   }
 
   .location-label {
@@ -169,18 +188,22 @@
   }
 
   .engineer-name {
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     font-weight: 700;
-    color: #ffffff;
     line-height: 1.2;
     letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 40%, #e0e7ff 75%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .engineer-title {
-    font-size: 0.88rem;
-    color: var(--accent-primary);
+    font-size: 0.92rem;
     font-weight: 500;
     letter-spacing: -0.01em;
+    background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .engineer-summary {
@@ -216,10 +239,30 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    transition: var(--transition);
   }
 
   .comm-entry strong {
     color: var(--text-muted);
+  }
+
+  .comm-entry:hover {
+    color: #ffffff;
+  }
+
+  .comm-entry:hover .fa-python {
+    color: #fbbf24;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  }
+
+  .comm-entry:hover .fa-google {
+    color: #38bdf8;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  }
+
+  .comm-entry:hover .fa-youtube {
+    color: #ef4444;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
   }
 
   .divider {
