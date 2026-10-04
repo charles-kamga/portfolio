@@ -16,88 +16,83 @@ const { title, issuer, date, category, skills, image, url, practicalNote } =
 const webpImage = image.replace(/\.(png|jpg)$/i, ".webp");
 ---
 
-<article class="cert-card glass-card" data-category={category}>
-  <div class="cert-main">
-    <div class="cert-badge-wrapper">
+<article class="cert-card bento-card" data-category={category}>
+  <div class="cert-header">
+    <div class="cert-badge-frame">
       <picture>
         <source srcset={webpImage} type="image/webp" />
         <img
           src={image}
-          alt={`Badge ${title}`}
+          alt={`Badge officiel ${title}`}
           class="cert-badge"
           loading="lazy"
         />
       </picture>
     </div>
 
-    <div class="cert-info">
-      <div class="cert-meta">
-        <span class="cert-issuer">
-          <i class="fas fa-university" aria-hidden="true"></i> {issuer}
-        </span>
-        <span class="cert-date">
-          <i class="far fa-calendar-alt" aria-hidden="true"></i> {date}
-        </span>
+    <div class="cert-title-block">
+      <div class="cert-meta font-mono">
+        <span class="cert-issuer">{issuer}</span>
+        <span class="meta-sep">/</span>
+        <span class="cert-date">{date}</span>
       </div>
-
       <h3 class="cert-title">{title}</h3>
-
-      <div class="cert-skills tech-stack">
-        {skills.map((s) => (
-          <span class="tech-tag">{s}</span>
-        ))}
-      </div>
     </div>
   </div>
 
-  <div class="cert-practical">
-    <div class="practical-label">
-      <i class="fas fa-laptop-code" aria-hidden="true"></i>
-      <span>Mise en pratique réelle :</span>
-    </div>
-    <p class="practical-text">{practicalNote}</p>
+  <div class="cert-skills tech-stack">
+    {skills.map((s) => (
+      <span class="tech-tag">{s}</span>
+    ))}
   </div>
 
-  <div class="cert-footer">
+  <div class="cert-application">
+    <span class="app-label font-mono">
+      <i class="fas fa-terminal" aria-hidden="true"></i> Contexte d'application
+      :
+    </span>
+    <p class="app-note">{practicalNote}</p>
+  </div>
+
+  <div class="cert-actions">
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
       class="btn btn-secondary btn-verify"
     >
-      <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-      <span>Vérifier sur Coursera</span>
+      <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      <span>Vérifier l'accréditation</span>
     </a>
   </div>
 </article>
 
 <style>
   .cert-card {
-    padding: 24px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border: 1px solid var(--border-color);
+    height: 100%;
   }
 
-  .cert-main {
+  .cert-header {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: flex-start;
   }
 
-  .cert-badge-wrapper {
+  .cert-badge-frame {
     flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.03);
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: #0d0d12;
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
-    overflow: hidden;
+    padding: 6px;
   }
 
   .cert-badge {
@@ -106,94 +101,84 @@ const webpImage = image.replace(/\.(png|jpg)$/i, ".webp");
     object-fit: contain;
   }
 
-  .cert-info {
+  .cert-title-block {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
   .cert-meta {
     display: flex;
-    gap: 14px;
-    font-size: 0.78rem;
-    color: var(--text-muted);
+    align-items: center;
+    gap: 8px;
+    font-size: 0.74rem;
+    color: var(--text-dim);
   }
 
   .cert-issuer {
     color: var(--accent-primary);
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    font-weight: 500;
   }
 
-  .cert-date {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+  .meta-sep {
+    color: rgba(255, 255, 255, 0.1);
   }
 
   .cert-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     line-height: 1.35;
     color: #ffffff;
   }
 
   .cert-skills {
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
-  .cert-practical {
-    background: rgba(0, 209, 255, 0.04);
-    border-left: 3px solid var(--accent-primary);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 14px;
+  .cert-application {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 2px solid var(--accent-primary);
+    padding: 10px 12px;
+    border-radius: 0 6px 6px 0;
   }
 
-  .practical-label {
+  .app-label {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.76rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent-primary);
+    letter-spacing: 0.04em;
     margin-bottom: 4px;
   }
 
-  .practical-text {
-    font-size: 0.85rem;
-    color: #c4c4d6;
+  .app-label i {
+    color: var(--accent-primary);
+  }
+
+  .app-note {
+    font-size: 0.82rem;
+    color: #c4c4cb;
     line-height: 1.5;
   }
 
-  .cert-footer {
+  .cert-actions {
     margin-top: auto;
+    padding-top: 6px;
     display: flex;
     justify-content: flex-end;
   }
 
   .btn-verify {
-    font-size: 0.82rem;
-    padding: 8px 16px;
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    min-height: 36px;
   }
 
-  @media (max-width: 600px) {
-    .cert-main {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .cert-meta {
-      justify-content: center;
-    }
-    .cert-skills {
-      justify-content: center;
-    }
-    .cert-footer {
+  @media (max-width: 640px) {
+    .cert-actions {
       justify-content: stretch;
     }
     .btn-verify {

@@ -17,28 +17,28 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 ---
 
 <BaseLayout
-  title={`${project.data.title} | Étude de Cas STAR - Charles Kamga Mukam`}
+  title={`${project.data.title} — Étude d'Ingénierie STAR | Charles Cyrille Kamga Mukam`}
   description={project.data.description}
   image={project.data.image}
   currentPath="/projects"
 >
-  <article class="case-study-page">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <article class="case-study-container">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb font-mono" aria-label="Fil d'Ariane">
       <a href="/">
-        <i class="fas fa-home" aria-hidden="true"></i> Dashboard
+        <i class="fas fa-home" aria-hidden="true"></i> overview
       </a>
       <span class="sep">/</span>
-      <a href="/projects">Réalisations</a>
+      <a href="/projects">projets</a>
       <span class="sep">/</span>
-      <span class="current">{project.data.title}</span>
+      <span class="current">{project.id}</span>
     </nav>
 
-    <!-- Header -->
-    <header class="study-header glass-card">
-      <div class="header-top">
-        <span class="category-badge">{project.data.categoryLabel}</span>
-        <span class="badge-indicator">
+    <!-- Header Section -->
+    <header class="study-header bento-card">
+      <div class="header-meta">
+        <span class="category-tag font-mono">{project.data.categoryLabel}</span>
+        <span class="protocol-badge font-mono">
           <i class="fas fa-terminal" aria-hidden="true"></i>{" "}
           {project.data.badge}
         </span>
@@ -48,11 +48,11 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
       <p class="study-lead">{project.data.description}</p>
 
       {project.data.metrics && project.data.metrics.length > 0 && (
-        <div class="study-metrics">
+        <div class="study-metrics-row">
           {project.data.metrics.map((m) => (
-            <div class="study-metric-item">
-              <span class="metric-label">{m.label}</span>
-              <span class="metric-val">{m.value}</span>
+            <div class="study-metric font-mono">
+              <span class="m-key">{m.label}</span>
+              <span class="m-val">{m.value}</span>
             </div>
           ))}
         </div>
@@ -60,7 +60,7 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 
       <div class="study-tags tech-stack">
         {project.data.tags.map((t) => (
-          <span class="tech-tag highlight">{t}</span>
+          <span class="tech-tag accent">{t}</span>
         ))}
       </div>
 
@@ -73,7 +73,7 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
             class="btn btn-primary"
           >
             <i class="fab fa-github" aria-hidden="true"></i>
-            <span>Examiner le code source</span>
+            <span>Code source GitHub</span>
           </a>
         )}
         {project.data.demoUrl && (
@@ -83,19 +83,19 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
             rel="noopener noreferrer"
             class="btn btn-secondary"
           >
-            <i class="fas fa-download" aria-hidden="true"></i>
-            <span>Release / Démo</span>
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            <span>Release / Téléchargement</span>
           </a>
         )}
         <a href="/contact" class="btn btn-secondary">
-          <i class="fas fa-comment" aria-hidden="true"></i>
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>
           <span>Discuter de l'architecture</span>
         </a>
       </div>
     </header>
 
     <!-- Media Showcase -->
-    <div class="study-media glass-card">
+    <div class="study-media bento-card">
       <picture>
         <source srcset={webpImage} type="image/webp" />
         <img
@@ -108,12 +108,12 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
     </div>
 
     <!-- STAR Markdown Content -->
-    <div class="study-body glass-card">
-      <div class="star-badge-note">
-        <i class="fas fa-file-contract" aria-hidden="true"></i>
+    <div class="study-body bento-card">
+      <div class="star-indicator font-mono">
+        <i class="fas fa-file-code" aria-hidden="true"></i>
         <span>
-          Documenté selon le modèle <strong>STAR</strong> (Situation • Tâche •
-          Action • Résultat &amp; Bilan)
+          MODÈLE STAR : SITUATION · TÂCHE · ACTION · RÉSULTATS &amp; RETOURS
+          D'EXPÉRIENCE
         </span>
       </div>
 
@@ -121,14 +121,14 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
         <Content />
       </div>
 
-      <div class="study-footer-nav">
+      <div class="study-nav-footer">
         <a href="/projects" class="btn btn-secondary">
           <i class="fas fa-arrow-left" aria-hidden="true"></i>
-          <span>Retour au catalogue des projets</span>
+          <span>Retour aux réalisations</span>
         </a>
         <a href="/contact" class="btn btn-primary">
-          <i class="fas fa-paper-plane" aria-hidden="true"></i>
-          <span>Poser une question technique</span>
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span>Échanger sur ce projet</span>
         </a>
       </div>
     </div>
@@ -136,137 +136,126 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 </BaseLayout>
 
 <style>
-  .case-study-page {
+  .case-study-container {
     display: flex;
     flex-direction: column;
-    gap: 28px;
-    max-width: 900px;
+    gap: 24px;
+    max-width: 860px;
     margin: 0 auto;
   }
 
-  /* Breadcrumb */
   .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    gap: 8px;
+    font-size: 0.76rem;
+    color: var(--text-dim);
   }
 
   .breadcrumb a {
     color: var(--text-muted);
-    transition: color 0.2s ease;
   }
 
   .breadcrumb a:hover {
-    color: var(--accent-primary);
+    color: #ffffff;
   }
 
   .breadcrumb .sep {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.1);
   }
 
   .breadcrumb .current {
-    color: var(--text-main);
-    font-weight: 600;
+    color: var(--accent-primary);
   }
 
-  /* Header */
   .study-header {
-    padding: 32px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 28, 0.8) 0%,
-      rgba(10, 10, 18, 0.9) 100%
-    );
   }
 
-  .header-top {
+  .header-meta {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
-  .category-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
+  .category-tag {
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--accent-primary);
-    background: rgba(0, 209, 255, 0.1);
-    border: 1px solid rgba(0, 209, 255, 0.25);
-    padding: 4px 10px;
-    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
   }
 
-  .badge-indicator {
-    font-size: 0.8rem;
-    color: #a5a5b8;
+  .protocol-badge {
+    font-size: 0.74rem;
+    color: var(--text-muted);
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
 
   .study-title {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.2;
+    letter-spacing: -0.03em;
   }
 
   .study-lead {
-    font-size: 1.05rem;
-    color: #c4c4d8;
+    font-size: 0.98rem;
+    color: var(--text-muted);
     line-height: 1.6;
   }
 
-  .study-metrics {
+  .study-metrics-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 14px 18px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 12px 16px;
   }
 
-  .study-metric-item {
+  .study-metric {
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
 
-  .metric-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
+  .m-key {
+    font-size: 0.68rem;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
 
-  .metric-val {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--accent-primary);
+  .m-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f4f4f5;
   }
 
   .study-actions {
     display: flex;
-    gap: 12px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 6px;
     flex-wrap: wrap;
   }
 
-  /* Media */
   .study-media {
     overflow: hidden;
     padding: 0;
-    border-radius: var(--card-radius);
-    max-height: 450px;
-    background: #090910;
+    max-height: 420px;
+    background: #09090b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,105 +264,99 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
   .study-image {
     width: 100%;
     height: 100%;
-    max-height: 450px;
+    max-height: 420px;
     object-fit: contain;
   }
 
-  /* Markdown Content Styling */
   .study-body {
-    padding: 36px;
+    padding: 32px;
   }
 
-  .star-badge-note {
-    display: inline-flex;
+  .star-indicator {
+    display: flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(126, 63, 242, 0.12);
-    border: 1px solid rgba(126, 63, 242, 0.3);
-    border-radius: 10px;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    color: #d1b8ff;
-    margin-bottom: 28px;
-    width: 100%;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
   }
 
   .markdown-prose :global(h2) {
-    font-size: 1.45rem;
-    font-weight: 700;
+    font-size: 1.35rem;
+    font-weight: 600;
     color: #ffffff;
-    margin-top: 32px;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-color);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .markdown-prose :global(h3) {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--accent-primary);
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 18px;
+    margin-bottom: 8px;
   }
 
   .markdown-prose :global(p) {
-    font-size: 0.96rem;
-    color: #c4c4d6;
+    font-size: 0.92rem;
+    color: #d4d4d8;
     line-height: 1.7;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .markdown-prose :global(ul),
   .markdown-prose :global(ol) {
     margin-left: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
   .markdown-prose :global(li) {
-    font-size: 0.94rem;
-    color: #c4c4d6;
+    font-size: 0.9rem;
+    color: #d4d4d8;
     line-height: 1.6;
   }
 
   .markdown-prose :global(strong) {
     color: #ffffff;
+    font-weight: 600;
   }
 
   .markdown-prose :global(code) {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     color: var(--accent-primary);
     padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.88em;
-    font-family: monospace;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-mono);
   }
 
-  .markdown-prose :global(hr) {
-    border: none;
-    border-top: 1px solid var(--border-color);
-    margin: 32px 0;
-  }
-
-  .study-footer-nav {
+  .study-nav-footer {
     display: flex;
     justify-content: space-between;
-    gap: 16px;
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border-color);
+    gap: 12px;
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-subtle);
     flex-wrap: wrap;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .study-title {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
     }
     .study-header,
     .study-body {
-      padding: 20px;
+      padding: 18px;
     }
     .study-actions {
       flex-direction: column;
@@ -381,10 +364,10 @@ const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
     .study-actions .btn {
       width: 100%;
     }
-    .study-footer-nav {
+    .study-nav-footer {
       flex-direction: column;
     }
-    .study-footer-nav .btn {
+    .study-nav-footer .btn {
       width: 100%;
     }
   }

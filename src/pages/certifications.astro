@@ -4,10 +4,17 @@ import CertCard from "../components/CertCard.astro";
 import certifications from "../content/certifications/certifications.json";
 
 const categories = [
-  { key: "all", label: "Toutes les accréditations", icon: "fas fa-border-all" },
-  { key: "Cybersecurity", label: "Cybersécurité", icon: "fas fa-shield-alt" },
-  { key: "Networks", label: "Réseaux", icon: "fas fa-network-wired" },
-  { key: "Systems", label: "Systèmes & Données", icon: "fas fa-server" },
+  {
+    key: "cybersecurity",
+    label: "CYBERSECURITY",
+    icon: "fas fa-shield-halved",
+  },
+  {
+    key: "networks",
+    label: "NETWORKS & TELECOMS",
+    icon: "fas fa-network-wired",
+  },
+  { key: "systems", label: "SYSTEMS & DATA", icon: "fas fa-server" },
 ];
 
 const cyberCerts = certifications.filter((c) => c.category === "Cybersecurity");
@@ -16,42 +23,41 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
 ---
 
 <BaseLayout
-  title="Accréditations & Certifications | Charles Kamga Mukam"
-  description="Accréditations et certifications officielles de Charles Kamga Mukam : IBM Cybersecurity Analyst, Réseaux et Systèmes."
+  title="Accréditations & Certifications — Charles Cyrille Kamga Mukam"
+  description="Cursus professionnels certifiés (IBM, Yonsei) : Cybersécurité, Réseaux et Systèmes sous Linux avec contexte d'application réel."
   currentPath="/certifications"
 >
   <div class="certifications-page">
     <header class="page-header">
-      <div class="header-badge">
+      <div class="section-label">
         <i class="fas fa-certificate" aria-hidden="true"></i>
-        <span>Validation Technique Reconnue</span>
+        <span>Accréditations Officielles &amp; Validations</span>
       </div>
-      <h1 class="page-title">Accréditations &amp; Certifications</h1>
+      <h1 class="page-title">Certifications Techniques</h1>
       <p class="page-desc">
-        Parcours de formation certifié auprès d'institutions mondiales (IBM,
-        Yonsei). Chaque certification est vérifiable en ligne et enrichie d'une
-        note honnête sur sa mise en pratique réelle.
+        Parcours spécialisés délivrés par des institutions de référence (IBM,
+        Yonsei). Chaque accréditation est vérifiable publiquement et
+        s'accompagne de son contexte d'application concrète sur machine réelle.
       </p>
     </header>
 
-    <!-- Quick navigation bar -->
-    <nav class="category-nav" aria-label="Accès rapide aux domaines">
-      {categories.slice(1).map((cat) => (
-        <a href={`#${cat.key.toLowerCase()}`} class="cat-pill">
-          <i class={cat.icon} aria-hidden="true"></i>
-          <span>{cat.label}</span>
+    <!-- Quick Navigation -->
+    <nav class="cat-nav font-mono" aria-label="Accès direct aux domaines">
+      {categories.map((c) => (
+        <a href={`#${c.key}`} class="cat-link">
+          <i class={c.icon} aria-hidden="true"></i>
+          <span>{c.label}</span>
         </a>
       ))}
     </nav>
 
-    <!-- Thematic Groups Overview -->
-    <section class="thematic-group" id="cybersecurity">
-      <div class="group-title-wrapper">
-        <div class="group-badge cyber">
-          <i class="fas fa-shield-alt" aria-hidden="true"></i>
-          <span>Cybersécurité &amp; Défense</span>
+    <!-- Thematic Groups -->
+    <section class="group-section" id="cybersecurity">
+      <div class="group-header">
+        <div class="group-title font-mono">
+          <i class="fas fa-shield-halved" aria-hidden="true"></i>
+          <span>CYBERSECURITY &amp; DEFENSE ({cyberCerts.length})</span>
         </div>
-        <span class="group-count">{cyberCerts.length} certifications</span>
       </div>
 
       <div class="certs-grid">
@@ -70,13 +76,12 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
       </div>
     </section>
 
-    <section class="thematic-group" id="networks">
-      <div class="group-title-wrapper">
-        <div class="group-badge networks">
+    <section class="group-section" id="networks">
+      <div class="group-header">
+        <div class="group-title font-mono">
           <i class="fas fa-network-wired" aria-hidden="true"></i>
-          <span>Réseaux &amp; Télécoms</span>
+          <span>NETWORKS &amp; TELECOMS ({networkCerts.length})</span>
         </div>
-        <span class="group-count">{networkCerts.length} certifications</span>
       </div>
 
       <div class="certs-grid">
@@ -95,13 +100,12 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
       </div>
     </section>
 
-    <section class="thematic-group" id="systems">
-      <div class="group-title-wrapper">
-        <div class="group-badge systems">
+    <section class="group-section" id="systems">
+      <div class="group-header">
+        <div class="group-title font-mono">
           <i class="fas fa-server" aria-hidden="true"></i>
-          <span>Systèmes d'Exploitation &amp; Données</span>
+          <span>SYSTEMS &amp; DATA INTEGRITY ({systemCerts.length})</span>
         </div>
-        <span class="group-count">{systemCerts.length} certifications</span>
       </div>
 
       <div class="certs-grid">
@@ -126,125 +130,92 @@ const systemCerts = certifications.filter((c) => c.category === "Systems");
   .certifications-page {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 36px;
   }
 
   .page-header {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .header-badge {
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-primary);
   }
 
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
   }
 
   .page-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    max-width: 750px;
+    max-width: 720px;
     line-height: 1.6;
   }
 
-  .category-nav {
+  .cat-nav {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
   }
 
-  .cat-pill {
+  .cat-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-color);
     color: var(--text-muted);
-    font-size: 0.86rem;
-    font-weight: 500;
+    font-size: 0.74rem;
     transition: var(--transition);
   }
 
-  .cat-pill:hover {
-    background: rgba(0, 209, 255, 0.1);
-    color: var(--accent-primary);
-    border-color: rgba(0, 209, 255, 0.3);
-    transform: translateY(-2px);
+  .cat-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border-color: var(--border-hover);
   }
 
-  .thematic-group {
+  .group-section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
-  .group-title-wrapper {
+  .group-header {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .group-title {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
+    gap: 8px;
   }
 
-  .group-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  .group-badge.cyber i {
+  .group-title i {
     color: var(--accent-primary);
-  }
-
-  .group-badge.networks i {
-    color: #818cf8;
-  }
-
-  .group-badge.systems i {
-    color: #34d399;
-  }
-
-  .group-count {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 4px 10px;
-    border-radius: 20px;
   }
 
   .certs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+    gap: 18px;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     .certs-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .page-title {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
     }
   }
 </style>

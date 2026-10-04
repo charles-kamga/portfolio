@@ -1,9 +1,9 @@
 ---
 ---
 
-<header class="hero-widget glass-card">
-  <div class="hero-content">
-    <div class="hero-avatar-wrapper">
+<header class="hero-bento bento-card">
+  <div class="hero-main-row">
+    <div class="avatar-block">
       <picture>
         <source srcset="/assets/images/photo.webp" type="image/webp" />
         <img
@@ -11,57 +11,51 @@
           alt="Charles Cyrille Kamga Mukam"
           width="130"
           height="130"
-          class="hero-avatar"
+          class="hero-photo"
           loading="eager"
         />
       </picture>
-      <span
-        class="avatar-status"
-        title="En recherche active d'opportunités"
-      ></span>
     </div>
 
-    <div class="hero-text-block">
-      <div class="hero-meta">
-        <span class="role-badge">Junior Backend Engineer</span>
-        <span class="location-badge">
-          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Yaoundé,
-          Cameroun
+    <div class="hero-body">
+      <div class="status-row">
+        <span class="availability-badge">
+          <span class="status-dot"></span>
+          <span>Disponible · Backend &amp; Ingénierie Systèmes</span>
+        </span>
+        <span class="location-label font-mono">
+          <i class="fas fa-map-pin" aria-hidden="true"></i> Yaoundé, Cameroun ·
+          Remote OK
         </span>
       </div>
 
-      <h1 class="hero-name">Charles Cyrille Kamga Mukam</h1>
-      <p class="hero-tagline">
-        Développeur Backend Junior &amp; Passionné Linux/Sécurité. Bâtisseur
-        d'outils système, de services Web asynchrones et d'applications
-        résilientes.
+      <div class="identity-block">
+        <h1 class="engineer-name">Charles Cyrille Kamga Mukam</h1>
+        <p class="engineer-title font-mono">
+          Backend Software &amp; Systems Engineer
+        </p>
+      </div>
+
+      <p class="engineer-summary">
+        Spécialisé dans le développement de services asynchrones Python haute
+        disponibilité, d'outils système sous Linux et de protocoles réseau
+        locaux sécurisés. Approche guidée par la simplicité architecturale, la
+        résilience et la sécurité par conception.
       </p>
 
-      <div class="hero-stack tech-stack">
-        <span class="tech-tag highlight">
-          <i class="fab fa-python" aria-hidden="true"></i> Python (FastAPI /
-          Flask)
-        </span>
-        <span class="tech-tag">
-          <i class="fab fa-linux" aria-hidden="true"></i> Arch Linux (Hyprland)
-        </span>
-        <span class="tech-tag">
-          <i class="fas fa-microchip" aria-hidden="true"></i> C (POSIX &amp;
-          Sockets)
-        </span>
-        <span class="tech-tag">
-          <i class="fab fa-node-js" aria-hidden="true"></i> Node.js (WebRTC)
-        </span>
-        <span class="tech-tag">
-          <i class="fas fa-shield-halved" aria-hidden="true"></i> OWASP &amp;
-          AppSec
-        </span>
+      <div class="stack-row tech-stack">
+        <span class="tech-tag accent">Python (FastAPI / Flask)</span>
+        <span class="tech-tag accent">Arch Linux (Hyprland / POSIX)</span>
+        <span class="tech-tag">C (Sockets / O(1) Data Structures)</span>
+        <span class="tech-tag">Node.js (WebRTC / Socket.IO)</span>
+        <span class="tech-tag">AppSec (OWASP / Def. in Depth)</span>
+        <span class="tech-tag">Docker</span>
       </div>
 
-      <div class="hero-actions">
+      <div class="actions-row">
         <a href="/projects" class="btn btn-primary">
-          <i class="fas fa-project-diagram" aria-hidden="true"></i>
-          <span>Explorer les projets</span>
+          <i class="fas fa-terminal" aria-hidden="true"></i>
+          <span>Explorer les réalisations</span>
         </a>
         <a href="/certifications" class="btn btn-secondary">
           <i class="fas fa-certificate" aria-hidden="true"></i>
@@ -69,202 +63,203 @@
         </a>
         <a href="/contact" class="btn btn-secondary">
           <i class="fas fa-envelope" aria-hidden="true"></i>
-          <span>Me contacter</span>
+          <span>Contact direct</span>
         </a>
       </div>
     </div>
   </div>
 
-  <div class="hero-community">
-    <div class="community-item">
+  <div class="community-strip">
+    <div class="comm-entry">
       <i class="fab fa-python" aria-hidden="true"></i>
       <span>
         Contributeur <strong>Python Cameroun</strong>
       </span>
     </div>
-    <div class="community-separator">•</div>
-    <div class="community-item">
+    <span class="divider">/</span>
+    <div class="comm-entry">
       <i class="fab fa-google" aria-hidden="true"></i>
       <span>
         Bénévole <strong>GDG (Google Developer Group)</strong>
       </span>
     </div>
-    <div class="community-separator">•</div>
-    <div class="community-item">
+    <span class="divider">/</span>
+    <div class="comm-entry">
       <i class="fab fa-youtube" aria-hidden="true"></i>
       <span>
-        Créateur de la chaîne <strong>Charltech</strong>
+        Chaîne éducative <strong>Charltech</strong>
       </span>
     </div>
   </div>
 </header>
 
 <style>
-  .hero-widget {
+  .hero-bento {
     padding: 32px;
-    margin-bottom: 28px;
-    background: linear-gradient(
-      135deg,
-      rgba(20, 20, 32, 0.75) 0%,
-      rgba(12, 12, 20, 0.85) 100%
-    );
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
   }
 
-  .hero-content {
+  .hero-main-row {
     display: flex;
-    gap: 32px;
+    gap: 28px;
     align-items: flex-start;
   }
 
-  .hero-avatar-wrapper {
-    position: relative;
+  .avatar-block {
     flex-shrink: 0;
   }
 
-  .hero-avatar {
+  .hero-photo {
     width: 130px;
     height: 130px;
-    border-radius: 24px;
+    border-radius: 10px;
     object-fit: cover;
-    border: 2px solid var(--border-glow);
-    box-shadow:
-      0 10px 25px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(0, 209, 255, 0.15);
+    border: 1px solid var(--border-color);
+    background: #18181f;
   }
 
-  .avatar-status {
-    position: absolute;
-    bottom: -4px;
-    right: -4px;
-    width: 18px;
-    height: 18px;
-    background: var(--accent-success);
-    border: 3px solid var(--bg-dark);
-    border-radius: 50%;
-  }
-
-  .hero-text-block {
+  .hero-body {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .hero-meta {
+  .status-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
   }
 
-  .role-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    background: rgba(0, 209, 255, 0.12);
-    color: var(--accent-primary);
-    border: 1px solid rgba(0, 209, 255, 0.25);
-    padding: 4px 12px;
-    border-radius: 8px;
-  }
-
-  .location-badge {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+  .availability-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    padding: 3px 10px;
+    border-radius: 6px;
   }
 
-  .hero-name {
-    font-size: 2.1rem;
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+  }
+
+  .location-label {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+
+  .identity-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .engineer-name {
+    font-size: 1.85rem;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.2;
     letter-spacing: -0.03em;
   }
 
-  .hero-tagline {
-    font-size: 1rem;
-    color: #b5b5c8;
+  .engineer-title {
+    font-size: 0.88rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .engineer-summary {
+    font-size: 0.92rem;
+    color: var(--text-muted);
     line-height: 1.6;
-    max-width: 800px;
+    max-width: 720px;
   }
 
-  .hero-stack {
-    margin-top: 6px;
+  .stack-row {
+    margin-top: 4px;
   }
 
-  .hero-actions {
+  .actions-row {
     display: flex;
-    gap: 12px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 8px;
     flex-wrap: wrap;
   }
 
-  .hero-community {
+  .community-strip {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.82rem;
+    color: var(--text-dim);
     flex-wrap: wrap;
   }
 
-  .community-item {
+  .comm-entry {
     display: inline-flex;
     align-items: center;
     gap: 8px;
   }
 
-  .community-item strong {
-    color: var(--text-main);
+  .comm-entry strong {
+    color: var(--text-muted);
   }
 
-  .community-separator {
-    color: rgba(255, 255, 255, 0.2);
+  .divider {
+    color: rgba(255, 255, 255, 0.15);
   }
 
   @media (max-width: 768px) {
-    .hero-content {
+    .hero-bento {
+      padding: 20px;
+    }
+    .hero-main-row {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 20px;
+      gap: 18px;
     }
-    .hero-avatar {
-      width: 110px;
-      height: 110px;
-    }
-    .hero-meta {
+    .status-row {
       justify-content: center;
     }
-    .hero-name {
-      font-size: 1.6rem;
+    .engineer-name {
+      font-size: 1.5rem;
     }
-    .hero-tagline {
-      font-size: 0.92rem;
+    .engineer-summary {
+      font-size: 0.88rem;
     }
-    .hero-stack {
+    .stack-row {
       justify-content: center;
     }
-    .hero-actions {
+    .actions-row {
       justify-content: center;
       width: 100%;
     }
-    .hero-actions .btn {
+    .actions-row .btn {
       width: 100%;
     }
-    .hero-community {
+    .community-strip {
       justify-content: center;
-      font-size: 0.78rem;
-      gap: 10px;
+      font-size: 0.76rem;
     }
-    .community-separator {
+    .divider {
       display: none;
     }
   }

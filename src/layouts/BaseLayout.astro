@@ -11,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = "Charles Kamga Mukam | Développeur Backend Junior & Passionné Linux/Sécurité",
-  description = "Portfolio transparent de Charles Kamga Mukam. Réalisations concrètes : Moteur de transfert Wi-Fi (Python/Sockets), Pipeline vidéo FastAPI/ONNX, HUD Linux Hyprland, et visioconférence WebRTC.",
+  title = "Charles Cyrille Kamga Mukam — Développeur Backend & Systèmes",
+  description = "Ingénierie logicielle & systèmes sous Linux. Services asynchrones Python (FastAPI/Flask), protocoles réseau, WebRTC et sécurité applicative.",
   image = "/assets/images/photo.webp",
   currentPath = Astro.url.pathname,
 } = Astro.props;
@@ -31,7 +31,7 @@ const canonicalURL = new URL(
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#050507" />
+    <meta name="theme-color" content="#09090b" />
     <link rel="manifest" href="/manifest.json" />
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/assets/images/icone.png" />
@@ -54,11 +54,11 @@ const canonicalURL = new URL(
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter + Space Grotesk + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 

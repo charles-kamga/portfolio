@@ -10,24 +10,24 @@ const navItems = [
     path: "/",
     title: "Dashboard",
     desc: "Vue d'ensemble",
-    icon: "fas fa-home",
+    icon: "fas fa-grip-vertical",
   },
   {
     path: "/projects",
     title: "Réalisations",
     desc: "Études de cas & code",
-    icon: "fas fa-project-diagram",
+    icon: "fas fa-terminal",
   },
   {
     path: "/certifications",
     title: "Accréditations",
-    desc: "IBM & Validation",
+    desc: "Cursus IBM & Réseaux",
     icon: "fas fa-certificate",
   },
   {
     path: "/contact",
     title: "Contact & Réseau",
-    desc: "Échanges & opportunités",
+    desc: "Échanges professionnels",
     icon: "fas fa-paper-plane",
   },
 ];
@@ -41,9 +41,10 @@ const isActive = (path: string) => {
 <aside class="sidebar">
   <div class="sidebar-header">
     <a href="/" class="sidebar-logo">
-      CK.
+      <span class="logo-mark font-mono">CK</span>
+      <span class="logo-dot">.</span>
     </a>
-    <span class="sidebar-role">Junior Backend</span>
+    <span class="sidebar-badge font-mono">dev_arch</span>
   </div>
 
   <nav class="sidebar-nav" aria-label="Navigation principale">
@@ -51,8 +52,12 @@ const isActive = (path: string) => {
       {navItems.map((item) => {
         const active = isActive(item.path);
         return (
-          <li class={`nav-item ${active ? "active" : ""}`}>
-            <a href={item.path} aria-current={active ? "page" : undefined}>
+          <li class="nav-item">
+            <a
+              href={item.path}
+              class={active ? "active" : ""}
+              aria-current={active ? "page" : undefined}
+            >
               <i class={item.icon} aria-hidden="true"></i>
               <div class="nav-text">
                 <span class="nav-title">{item.title}</span>
@@ -68,9 +73,9 @@ const isActive = (path: string) => {
   <div class="sidebar-footer">
     <div class="status-indicator">
       <span class="pulse-dot" aria-hidden="true"></span>
-      <div class="status-text">
-        <span class="status-title">Disponible</span>
-        <span class="status-subtitle">Junior Backend / DevSecOps</span>
+      <div class="status-text font-mono">
+        <span class="status-title">STATUS: ACTIVE</span>
+        <span class="status-subtitle">Open to Work</span>
       </div>
     </div>
 
@@ -110,42 +115,39 @@ const isActive = (path: string) => {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 32px 20px;
+    padding: 28px 16px;
     z-index: 1000;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
   }
 
   .sidebar-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     padding: 0 8px;
   }
 
   .sidebar-logo {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #ffffff 0%, var(--accent-primary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -1px;
-    text-decoration: none;
+    color: #ffffff;
+    letter-spacing: -0.04em;
   }
 
-  .sidebar-role {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 3px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
+  .logo-dot {
+    color: var(--accent-primary);
+  }
+
+  .sidebar-badge {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
   }
 
   .sidebar-nav {
@@ -156,26 +158,25 @@ const isActive = (path: string) => {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
   .nav-item a {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    text-decoration: none;
+    gap: 12px;
+    padding: 10px 14px;
     color: var(--text-muted);
-    border-radius: 14px;
+    border-radius: 8px;
     transition: var(--transition);
     border: 1px solid transparent;
   }
 
   .nav-item a i {
-    font-size: 1.1rem;
-    width: 20px;
+    font-size: 0.95rem;
+    width: 18px;
     text-align: center;
-    color: var(--text-muted);
+    color: var(--text-dim);
     transition: var(--transition);
   }
 
@@ -185,108 +186,81 @@ const isActive = (path: string) => {
   }
 
   .nav-title {
-    font-weight: 600;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-main);
   }
 
   .nav-desc {
-    font-size: 0.72rem;
-    color: #838396;
-    margin-top: 1px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
   }
 
   .nav-item a:hover {
-    background: var(--bg-card-hover);
-    color: var(--text-main);
-    transform: translateX(3px);
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
   }
 
   .nav-item a:hover i {
-    color: var(--accent-primary);
+    color: var(--text-main);
   }
 
-  .nav-item.active a {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 209, 255, 0.12) 0%,
-      rgba(126, 63, 242, 0.1) 100%
-    );
-    color: var(--accent-primary);
-    border-color: rgba(0, 209, 255, 0.25);
-    box-shadow: 0 0 15px rgba(0, 209, 255, 0.1);
+  .nav-item a.active {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-color);
+    color: #ffffff;
   }
 
-  .nav-item.active a i {
+  .nav-item a.active i {
     color: var(--accent-primary);
   }
 
   .sidebar-footer {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
+    gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-subtle);
   }
 
   .status-indicator {
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    padding: 10px 14px;
-    border-radius: 12px;
+    gap: 10px;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    padding: 8px 12px;
+    border-radius: 6px;
   }
 
   .pulse-dot {
-    width: 9px;
-    height: 9px;
+    width: 6px;
+    height: 6px;
     background: var(--accent-success);
     border-radius: 50%;
-    position: relative;
-  }
-
-  .pulse-dot::after {
-    content: "";
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: var(--accent-success);
-    opacity: 0.5;
-    animation: pulse 2s infinite ease-out;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(2.2);
-      opacity: 0;
-    }
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
   }
 
   .status-text {
     display: flex;
     flex-direction: column;
+    font-size: 0.68rem;
   }
 
   .status-title {
-    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: #4ade80;
+    letter-spacing: 0.05em;
   }
 
   .status-subtitle {
-    font-size: 0.7rem;
-    color: #86efac;
+    color: var(--text-dim);
   }
 
   .sidebar-socials {
     display: flex;
-    justify-content: space-around;
-    padding: 6px 0;
+    justify-content: space-between;
+    gap: 8px;
   }
 
   .sidebar-socials a {
@@ -295,18 +269,17 @@ const isActive = (path: string) => {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-dim);
     transition: var(--transition);
   }
 
   .sidebar-socials a:hover {
-    color: var(--accent-primary);
-    border-color: rgba(0, 209, 255, 0.4);
-    background: rgba(0, 209, 255, 0.1);
-    transform: translateY(-2px);
+    color: #ffffff;
+    border-color: var(--border-color);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   @media (max-width: 1024px) {

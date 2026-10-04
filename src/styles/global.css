@@ -1,25 +1,30 @@
-/* Professional Portfolio Design System - Bento Glassmorphism */
+/* High-End Engineering Design System - Minimal Dark & Bento */
 :root {
-  --bg-dark: #050507;
-  --bg-sidebar: #08080c;
-  --bg-card: rgba(18, 18, 26, 0.65);
-  --bg-card-hover: rgba(26, 26, 38, 0.85);
+  --bg-dark: #09090b;
+  --bg-sidebar: #0d0d11;
+  --bg-card: #121216;
+  --bg-card-hover: #17171d;
+  --bg-card-raised: #1c1c24;
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 209, 255, 0.35);
-  --accent-primary: #00d1ff;
-  --accent-secondary: #7e3ff2;
-  --accent-soft: rgba(0, 209, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-accent: rgba(56, 189, 248, 0.4);
+  --accent-primary: #38bdf8;
+  --accent-secondary: #818cf8;
+  --accent-subtle: rgba(56, 189, 248, 0.08);
   --accent-success: #10b981;
-  --accent-warning: #f59e0b;
-  --text-main: #fcfcfd;
-  --text-muted: #9494a3;
-  --sidebar-width: 280px;
-  --card-radius: 20px;
+  --text-main: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --sidebar-width: 270px;
+  --card-radius: 12px;
   --font-main:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-heading:
     "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
-  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-mono:
+    "JetBrains Mono", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -33,58 +38,70 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  color-scheme: dark;
 }
 
 body {
   background: var(--bg-dark);
-  background-image:
-    radial-gradient(
-      circle at 15% 15%,
-      rgba(126, 63, 242, 0.09) 0%,
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 85% 85%,
-      rgba(0, 209, 255, 0.09) 0%,
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(5, 5, 12, 0.85) 0%,
-      transparent 100%
-    );
-  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-main);
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
+/* Subtle background grid pattern */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(56, 189, 248, 0.04) 0%,
+      transparent 50%
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Custom Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(5, 5, 7, 0.6);
+  background: var(--bg-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
+  background: #27272a;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+  background: #3f3f46;
 }
 
-/* Typography Helpers */
+/* Typography Hierarchy */
 h1,
 h2,
 h3,
 h4,
 .font-heading {
   font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 a {
@@ -92,87 +109,120 @@ a {
   text-decoration: none;
 }
 
-/* Common Card & Glassmorphism */
-.glass-card {
+/* Professional Bento Card Container */
+.bento-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--card-radius);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  position: relative;
   transition: var(--transition);
+  overflow: hidden;
 }
 
-.glass-card:hover {
-  border-color: var(--border-glow);
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(0, 209, 255, 0.08);
+/* Subtle top hairline highlight */
+.bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  pointer-events: none;
 }
 
-/* Buttons */
+.bento-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Buttons - Sharp, Confident, Clean */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
   border: 1px solid transparent;
-  min-height: 44px;
-  min-width: 44px;
+  min-height: 40px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, #0099ff 100%);
-  color: #050507;
+  background: #ffffff;
+  color: #09090b;
+  font-weight: 600;
+  border-color: #ffffff;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 20px rgba(0, 209, 255, 0.4);
-  transform: translateY(-2px);
+  background: #e4e4e7;
+  border-color: #e4e4e7;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-main);
-  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-/* Tech Badges / Tags */
+.btn-accent {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.btn-accent:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Minimalist Tech Tags */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .tech-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.76rem;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
-  color: #d1d1db;
-  letter-spacing: 0.01em;
+  color: #d4d4d8;
+  letter-spacing: -0.01em;
 }
 
-.tech-tag.highlight {
-  background: rgba(0, 209, 255, 0.1);
-  border-color: rgba(0, 209, 255, 0.3);
+.tech-tag.accent {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.2);
   color: var(--accent-primary);
 }
 
@@ -180,13 +230,49 @@ a {
 .app-container {
   display: flex;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .main-content {
   flex: 1;
   margin-left: var(--sidebar-width);
-  padding: 40px;
+  padding: 40px 48px;
   max-width: calc(100vw - var(--sidebar-width));
+}
+
+/* Section Header standard */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.section-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-top: 4px;
 }
 
 /* Responsive Rules */
@@ -197,6 +283,6 @@ a {
   .main-content {
     margin-left: 0;
     max-width: 100vw;
-    padding: 24px 20px 90px 20px;
+    padding: 24px 20px 96px 20px;
   }
 }

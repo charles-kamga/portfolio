@@ -6,8 +6,8 @@ interface Props {
 const { currentPath = "/" } = Astro.props;
 
 const navItems = [
-  { path: "/", label: "Accueil", icon: "fas fa-home" },
-  { path: "/projects", label: "Projets", icon: "fas fa-project-diagram" },
+  { path: "/", label: "Overview", icon: "fas fa-grip-vertical" },
+  { path: "/projects", label: "Projets", icon: "fas fa-terminal" },
   { path: "/certifications", label: "Certifs", icon: "fas fa-certificate" },
   { path: "/contact", label: "Contact", icon: "fas fa-paper-plane" },
 ];
@@ -30,7 +30,7 @@ const isActive = (path: string) => {
           aria-label={item.label}
         >
           <i class={item.icon} aria-hidden="true"></i>
-          <span class="mobile-nav-label">{item.label}</span>
+          <span class="mobile-nav-label font-mono">{item.label}</span>
         </a>
       );
     })}
@@ -44,19 +44,19 @@ const isActive = (path: string) => {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(8, 8, 12, 0.92);
+    background: rgba(12, 12, 14, 0.95);
     border-top: 1px solid var(--border-color);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 9999;
-    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+    padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px)) 12px;
   }
 
   .mobile-nav-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 500px;
+    max-width: 480px;
     margin: 0 auto;
   }
 
@@ -66,31 +66,31 @@ const isActive = (path: string) => {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    min-width: 60px;
+    min-width: 64px;
     min-height: 48px;
-    padding: 6px 12px;
-    border-radius: 12px;
-    color: var(--text-muted);
+    padding: 6px 10px;
+    border-radius: 8px;
+    color: var(--text-dim);
     text-decoration: none;
     transition: var(--transition);
   }
 
   .mobile-nav-item i {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .mobile-nav-label {
-    font-size: 0.72rem;
-    font-weight: 500;
+    font-size: 0.68rem;
+    letter-spacing: -0.01em;
   }
 
   .mobile-nav-item.active {
-    color: var(--accent-primary);
-    background: rgba(0, 209, 255, 0.1);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   .mobile-nav-item.active i {
-    transform: translateY(-1px);
+    color: var(--accent-primary);
   }
 
   @media (max-width: 1024px) {

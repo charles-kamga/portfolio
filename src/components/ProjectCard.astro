@@ -27,23 +27,22 @@ const {
   metrics,
 } = Astro.props;
 
-// Compute webp alternative if available
 const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 ---
 
-<article class="project-card glass-card" data-category={category}>
+<article class="project-card bento-card" data-category={category}>
   <div class="card-media">
     <picture>
       <source srcset={webpImage} type="image/webp" />
       <img
         src={image}
-        alt={`Aperçu de ${title}`}
+        alt={`Architecture et interface de ${title}`}
         loading="lazy"
         class="project-img"
       />
     </picture>
     <div class="media-overlay">
-      <span class="media-badge">
+      <span class="media-badge font-mono">
         <i class="fas fa-terminal" aria-hidden="true"></i>
         <span>{badge}</span>
       </span>
@@ -52,7 +51,7 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 
   <div class="card-body">
     <div class="card-meta">
-      <span class="category-pill">{categoryLabel}</span>
+      <span class="category-indicator font-mono">{categoryLabel}</span>
     </div>
 
     <h3 class="card-title">
@@ -62,11 +61,11 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
     <p class="card-desc">{description}</p>
 
     {metrics && metrics.length > 0 && (
-      <div class="card-metrics">
+      <div class="card-metrics-grid">
         {metrics.map((m) => (
-          <div class="metric-item">
-            <span class="metric-label">{m.label}</span>
-            <span class="metric-value">{m.value}</span>
+          <div class="metric-cell font-mono">
+            <span class="metric-key">{m.label}</span>
+            <span class="metric-val">{m.value}</span>
           </div>
         ))}
       </div>
@@ -80,9 +79,9 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
   </div>
 
   <div class="card-footer">
-    <a href={`/projects/${slug}`} class="btn btn-primary btn-star">
+    <a href={`/projects/${slug}`} class="btn btn-secondary btn-star">
       <i class="fas fa-book-open" aria-hidden="true"></i>
-      <span>Étude de cas (STAR)</span>
+      <span>Étude d'ingénierie (STAR)</span>
     </a>
 
     {sourceUrl && (
@@ -90,7 +89,7 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
         href={sourceUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-secondary btn-icon-only"
+        class="btn btn-secondary btn-icon"
         aria-label={`Code source GitHub de ${title}`}
       >
         <i class="fab fa-github" aria-hidden="true"></i>
@@ -102,10 +101,10 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
         href={demoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-secondary btn-icon-only"
-        aria-label={`Téléchargement ou démo de ${title}`}
+        class="btn btn-secondary btn-icon"
+        aria-label={`Release ou démo de ${title}`}
       >
-        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
       </a>
     )}
   </div>
@@ -115,17 +114,14 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
   .project-card {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     height: 100%;
-    padding: 0;
-    border: 1px solid var(--border-color);
   }
 
   .card-media {
     position: relative;
     width: 100%;
-    height: 200px;
-    background: #090910;
+    height: 190px;
+    background: #0d0d12;
     overflow: hidden;
     border-bottom: 1px solid var(--border-color);
   }
@@ -135,13 +131,12 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
     height: 100%;
     object-fit: cover;
     transition:
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      filter 0.4s ease;
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.3s ease;
   }
 
   .project-card:hover .project-img {
-    transform: scale(1.06);
-    filter: brightness(1.05);
+    transform: scale(1.04);
   }
 
   .media-overlay {
@@ -149,58 +144,60 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
     inset: 0;
     background: linear-gradient(
       180deg,
-      transparent 40%,
-      rgba(5, 5, 12, 0.88) 100%
+      transparent 50%,
+      rgba(9, 9, 11, 0.9) 100%
     );
     display: flex;
     align-items: flex-end;
-    padding: 14px;
+    padding: 12px;
   }
 
   .media-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: rgba(0, 209, 255, 0.2);
-    color: #ffffff;
-    border: 1px solid rgba(0, 209, 255, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(9, 9, 11, 0.85);
+    color: #e4e4e7;
+    border: 1px solid var(--border-color);
+  }
+
+  .media-badge i {
+    color: var(--accent-primary);
+    font-size: 0.7rem;
   }
 
   .card-body {
-    padding: 24px;
+    padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   .card-meta {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
-  .category-pill {
+  .category-indicator {
     font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 700;
+    letter-spacing: 0.06em;
     color: var(--accent-primary);
   }
 
   .card-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
     line-height: 1.3;
   }
 
   .card-title a {
     color: #ffffff;
-    transition: color 0.2s ease;
+    transition: color 0.15s ease;
   }
 
   .card-title a:hover {
@@ -209,38 +206,39 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 
   .card-desc {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     line-height: 1.55;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
-  .card-metrics {
+  .card-metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: 8px;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-bottom: 18px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 14px;
   }
 
-  .metric-item {
+  .metric-cell {
     display: flex;
     flex-direction: column;
+    gap: 2px;
   }
 
-  .metric-label {
-    font-size: 0.68rem;
-    color: #8a8a9e;
+  .metric-key {
+    font-size: 0.65rem;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
 
-  .metric-value {
-    font-size: 0.84rem;
+  .metric-val {
+    font-size: 0.78rem;
     font-weight: 600;
-    color: var(--accent-primary);
+    color: #f4f4f5;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -248,33 +246,31 @@ const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
 
   .card-tags {
     margin-top: auto;
-    padding-top: 12px;
+    padding-top: 10px;
   }
 
   .card-footer {
-    padding: 18px 24px;
-    border-top: 1px solid var(--border-color);
-    background: rgba(10, 10, 16, 0.4);
+    padding: 14px 20px;
+    border-top: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.015);
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
   }
 
   .btn-star {
     flex: 1;
-    font-size: 0.85rem;
-    padding: 8px 16px;
+    font-size: 0.82rem;
   }
 
-  .btn-icon-only {
-    width: 44px;
-    height: 44px;
+  .btn-icon {
+    width: 40px;
+    height: 40px;
     padding: 0;
-    font-size: 1.1rem;
     color: var(--text-muted);
   }
 
-  .btn-icon-only:hover {
-    color: var(--text-main);
+  .btn-icon:hover {
+    color: #ffffff;
   }
 </style>

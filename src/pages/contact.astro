@@ -3,154 +3,156 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Contact & Réseau | Charles Kamga Mukam"
-  description="Contactez Charles Kamga Mukam, Développeur Backend Junior & Passionné Linux/Sécurité. Échanges techniques et opportunités professionnelles."
+  title="Contact & Réseau — Charles Cyrille Kamga Mukam"
+  description="Contactez Charles Cyrille Kamga Mukam, Développeur Backend & Systèmes. Échanges techniques, architecture logicielle et opportunités professionnelles."
   currentPath="/contact"
 >
   <div class="contact-page">
     <header class="page-header">
-      <div class="header-badge">
+      <div class="section-label">
         <i class="fas fa-paper-plane" aria-hidden="true"></i>
-        <span>Connexion &amp; Échanges</span>
+        <span>Canaux de Communication Directs</span>
       </div>
-      <h1 class="page-title">Contact &amp; Réseau</h1>
+      <h1 class="page-title">Contact &amp; Échanges Professionnels</h1>
       <p class="page-desc">
-        Disponible pour échanger autour de projets backend, d'architecture
-        logicielle, de sécurité applicative ou d'opportunités professionnelles
-        (CDI, CDD, missions).
+        Disponible pour échanger autour d'opportunités en ingénierie logicielle
+        backend, architectures distribuées, protocoles système sous Linux ou
+        contributions open-source.
       </p>
     </header>
 
-    <div class="contact-grid">
-      <!-- Main Contact Card -->
-      <div class="contact-main-card glass-card">
-        <div class="availability-badge">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Disponible immédiatement pour opportunités techniques</span>
+    <div class="contact-layout">
+      <!-- Main Direct Reach Card -->
+      <div class="contact-primary bento-card">
+        <div class="primary-header">
+          <span class="status-indicator-tag font-mono">
+            <span class="status-pulse"></span>
+            <span>AVAILABLE · BACKEND &amp; SYSTEMS</span>
+          </span>
+          <span class="location-badge font-mono">
+            Yaoundé, Cameroun · Remote OK
+          </span>
         </div>
 
-        <h2 class="card-heading">Démarrons un échange</h2>
-        <p class="card-subtext">
-          Le moyen le plus direct et efficace pour me joindre reste le courriel
-          direct. Je réponds généralement sous 24 à 48 heures ouvrées.
-        </p>
+        <div class="primary-body">
+          <h2 class="contact-h2">Échangeons par e-mail direct</h2>
+          <p class="contact-p">
+            Pour toute proposition de poste (CDI, missions d'ingénierie, projets
+            backend), le courrier électronique reste le canal privilégié avec
+            réponse sous 24 à 48 heures.
+          </p>
 
-        <a href="mailto:charlescyrillekamga@gmail.com" class="email-box">
-          <div class="email-icon">
-            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-          </div>
-          <div class="email-info">
-            <span class="email-label">Email professionnel direct</span>
-            <span class="email-address">charlescyrillekamga@gmail.com</span>
-          </div>
-          <i
-            class="fas fa-external-link-alt email-arrow"
-            aria-hidden="true"
-          ></i>
-        </a>
-
-        <div class="location-info">
-          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-          <span>
-            Localisation : <strong>Yaoundé, Cameroun</strong> (Ouvert au
-            télétravail complet ou hybride)
-          </span>
+          <a
+            href="mailto:charlescyrillekamga@gmail.com"
+            class="direct-email-card"
+          >
+            <div class="email-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="email-details font-mono">
+              <span class="email-hint">PRIMARY_CONTACT</span>
+              <span class="email-val">charlescyrillekamga@gmail.com</span>
+            </div>
+            <i
+              class="fas fa-arrow-up-right-from-square email-action-icon"
+              aria-hidden="true"
+            ></i>
+          </a>
         </div>
       </div>
 
-      <!-- Social & Professional Presence -->
-      <div class="channels-column">
-        <div class="channel-card glass-card">
-          <div class="channel-header">
+      <!-- Professional Networks Column -->
+      <div class="networks-column">
+        <div class="network-card bento-card">
+          <div class="network-header">
             <i class="fab fa-github" aria-hidden="true"></i>
             <div>
               <h3>GitHub</h3>
-              <p>
-                Code source de mes projets, contributions et expérimentations
-              </p>
+              <p>Dépôts publics, implémentations et commits réguliers</p>
             </div>
           </div>
           <a
             href="https://github.com/charles-kamga"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-secondary"
+            class="btn btn-secondary font-mono"
           >
             <span>github.com/charles-kamga</span>
             <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
 
-        <div class="channel-card glass-card">
-          <div class="channel-header">
+        <div class="network-card bento-card">
+          <div class="network-header">
             <i class="fab fa-linkedin" aria-hidden="true"></i>
             <div>
               <h3>LinkedIn</h3>
-              <p>
-                Parcours académique, validations certifiées et réseau
-                professionnel
-              </p>
+              <p>Parcours académique en ICT et validations officielles</p>
             </div>
           </div>
           <a
             href="https://www.linkedin.com/in/charles-kamga-b50a23274"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-secondary"
+            class="btn btn-secondary font-mono"
           >
             <span>charles-kamga</span>
             <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
 
-        <div class="channel-card glass-card">
-          <div class="channel-header">
+        <div class="network-card bento-card">
+          <div class="network-header">
             <i class="fab fa-youtube" aria-hidden="true"></i>
             <div>
-              <h3>Chaîne Charltech</h3>
+              <h3>Charltech (YouTube)</h3>
               <p>
-                Vulgarisation et tutoriels techniques (systèmes, développement,
-                outils)
+                Chaîne de vulgarisation technique, systèmes et développement
               </p>
             </div>
           </div>
-          <div class="channel-note">
-            <span>Partage communautaire &amp; éducation technique</span>
+          <div class="network-tag font-mono">
+            <span>COMMUNITY_EDUCATION</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Community Engagement Card -->
-    <section class="community-section glass-card">
-      <div class="community-title-row">
+    <!-- Community Ecosystem -->
+    <section
+      class="ecosystem-section bento-card"
+      aria-labelledby="ecosystem-title"
+    >
+      <div class="section-label">
         <i class="fas fa-users" aria-hidden="true"></i>
-        <h2>Engagement Communautaire &amp; Écosystème</h2>
+        <span id="ecosystem-title">Écosystème &amp; Engagement Technique</span>
       </div>
-      <div class="community-grid">
-        <div class="comm-box">
-          <div class="comm-icon python">
+
+      <div class="ecosystem-grid">
+        <div class="eco-item">
+          <div class="eco-icon python">
             <i class="fab fa-python" aria-hidden="true"></i>
           </div>
-          <div class="comm-details">
-            <h3>Python Cameroun</h3>
+          <div class="eco-text">
+            <h4>Python Cameroun</h4>
             <p>
               Membre actif et contributeur de la communauté locale des
-              développeurs Python. Échanges réguliers sur les architectures
-              backend et les bonnes pratiques.
+              ingénieurs Python. Veille technique sur l'asynchronisme, les
+              frameworks backend et l'écosystème open-source.
             </p>
           </div>
         </div>
 
-        <div class="comm-box">
-          <div class="comm-icon gdg">
+        <div class="eco-item">
+          <div class="eco-icon gdg">
             <i class="fab fa-google" aria-hidden="true"></i>
           </div>
-          <div class="comm-details">
-            <h3>Google Developer Group (GDG)</h3>
+          <div class="eco-text">
+            <h4>Google Developer Group (GDG)</h4>
             <p>
-              Bénévole engagé lors d'événements technologiques, ateliers
-              pratiques et conférences pour étudiants et jeunes ingénieurs.
+              Bénévole engagé lors des ateliers techniques, meetups et
+              conférences locales pour l'acculturation des étudiants aux
+              standards de l'industrie logicielle.
             </p>
           </div>
         </div>
@@ -163,290 +165,257 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .contact-page {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
   }
 
   .page-header {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .header-badge {
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-primary);
   }
 
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
   }
 
   .page-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    max-width: 750px;
+    max-width: 720px;
     line-height: 1.6;
   }
 
-  .contact-grid {
+  .contact-layout {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 26px;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 20px;
   }
 
-  .contact-main-card {
-    padding: 36px;
+  .contact-primary {
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    border: 1px solid rgba(0, 209, 255, 0.2);
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 28, 0.8) 0%,
-      rgba(10, 10, 18, 0.9) 100%
-    );
+    justify-content: space-between;
+    gap: 20px;
   }
 
-  .availability-badge {
+  .primary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .status-indicator-tag {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 0.82rem;
-    color: #86efac;
-    font-weight: 600;
-    width: fit-content;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    padding: 3px 8px;
+    border-radius: 4px;
   }
 
-  .pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--accent-success);
+  .status-pulse {
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
     border-radius: 50%;
   }
 
-  .card-heading {
-    font-size: 1.6rem;
-    font-weight: 700;
+  .location-badge {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+
+  .primary-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
     color: #ffffff;
   }
 
-  .card-subtext {
-    font-size: 0.94rem;
-    color: #b5b5c8;
+  .contact-p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
     line-height: 1.6;
   }
 
-  .email-box {
+  .direct-email-card {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
-    padding: 16px 20px;
-    border-radius: 14px;
+    padding: 14px 18px;
+    border-radius: 8px;
     transition: var(--transition);
-    text-decoration: none;
-    margin: 8px 0;
+    margin-top: 8px;
   }
 
-  .email-box:hover {
-    background: rgba(0, 209, 255, 0.08);
-    border-color: rgba(0, 209, 255, 0.4);
-    transform: translateY(-2px);
+  .direct-email-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
   }
 
   .email-icon {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--accent-primary);
   }
 
-  .email-info {
+  .email-details {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-  .email-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
+  .email-hint {
+    font-size: 0.65rem;
+    color: var(--text-dim);
     letter-spacing: 0.05em;
   }
 
-  .email-address {
-    font-size: 1rem;
-    font-weight: 600;
+  .email-val {
+    font-size: 0.92rem;
     color: #ffffff;
+    font-weight: 500;
     word-break: break-all;
   }
 
-  .email-arrow {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+  .email-action-icon {
+    font-size: 0.82rem;
+    color: var(--text-dim);
   }
 
-  .location-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .location-info strong {
-    color: var(--text-main);
-  }
-
-  .location-info i {
-    color: var(--accent-primary);
-  }
-
-  /* Channels Column */
-  .channels-column {
+  .networks-column {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
 
-  .channel-card {
-    padding: 22px;
+  .network-card {
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
 
-  .channel-header {
+  .network-header {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     align-items: flex-start;
   }
 
-  .channel-header i {
-    font-size: 1.6rem;
-    color: var(--accent-primary);
+  .network-header i {
+    font-size: 1.3rem;
+    color: var(--text-main);
   }
 
-  .channel-header h3 {
-    font-size: 1.1rem;
+  .network-header h3 {
+    font-size: 0.98rem;
     font-weight: 600;
-    color: #ffffff;
   }
 
-  .channel-header p {
-    font-size: 0.82rem;
+  .network-header p {
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin-top: 2px;
   }
 
-  .channel-note {
-    font-size: 0.8rem;
-    color: #a5a5b8;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+  .network-card .btn {
+    font-size: 0.76rem;
+    padding: 6px 12px;
   }
 
-  /* Community Section */
-  .community-section {
-    padding: 30px;
+  .network-tag {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .ecosystem-section {
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 16px;
   }
 
-  .community-title-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.1rem;
-    color: #ffffff;
-  }
-
-  .community-title-row i {
-    color: var(--accent-primary);
-  }
-
-  .community-grid {
+  .ecosystem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 22px;
-  }
-
-  .comm-box {
-    display: flex;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    padding: 20px;
   }
 
-  .comm-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+  .eco-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .eco-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
   }
 
-  .comm-icon.python {
-    background: rgba(59, 130, 246, 0.15);
-    color: #60a5fa;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+  .eco-icon.python {
+    background: rgba(56, 189, 248, 0.08);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.2);
   }
 
-  .comm-icon.gdg {
-    background: rgba(239, 68, 68, 0.15);
+  .eco-icon.gdg {
+    background: rgba(239, 68, 68, 0.08);
     color: #f87171;
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    border: 1px solid rgba(239, 68, 68, 0.2);
   }
 
-  .comm-details h3 {
-    font-size: 1.05rem;
+  .eco-text h4 {
+    font-size: 0.92rem;
     font-weight: 600;
+    margin-bottom: 4px;
     color: #ffffff;
-    margin-bottom: 6px;
   }
 
-  .comm-details p {
-    font-size: 0.85rem;
-    color: #a5a5b8;
+  .eco-text p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
     line-height: 1.5;
   }
 
-  @media (max-width: 1024px) {
-    .contact-grid {
+  @media (max-width: 900px) {
+    .contact-layout {
       grid-template-columns: 1fr;
     }
-    .community-grid {
+    .ecosystem-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .page-title {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
     }
-    .contact-main-card {
-      padding: 24px;
+    .contact-primary {
+      padding: 20px;
     }
   }
 </style>

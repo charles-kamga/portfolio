@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroWidget from "../components/HeroWidget.astro";
-import TransparencyBanner from "../components/TransparencyBanner.astro";
+import SystemSpecsWidget from "../components/SystemSpecsWidget.astro";
+import EngineeringPhilosophy from "../components/EngineeringPhilosophy.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { getCollection } from "astro:content";
 import certifications from "../content/certifications/certifications.json";
 
 const allProjects = await getCollection("projects");
-// Keep consistent order: DarwinxShare, Video Pipeline, DarwinX Neighbour, MeetLocal
 const order = [
   "darwinxshare",
   "darwinx-video-pipeline",
@@ -25,56 +25,117 @@ const featuredCert =
 ---
 
 <BaseLayout
-  title="Charles Kamga Mukam | Développeur Backend Junior & Passionné Linux/Sécurité"
-  description="Portfolio transparent et authentique de Charles Kamga Mukam : Projets réels Python, Linux, WebRTC et Cybersécurité."
+  title="Charles Cyrille Kamga Mukam — Développeur Backend & Systèmes"
+  description="Ingénierie logicielle & systèmes sous Linux. Services asynchrones Python (FastAPI/Flask), protocoles réseau, WebRTC et sécurité applicative."
   currentPath="/"
 >
-  <div class="dashboard-page">
-    <!-- Hero Section -->
-    <HeroWidget />
-
-    <!-- Authentic Manifesto Banner -->
-    <TransparencyBanner />
-
-    <!-- Metrics Bar -->
-    <section class="metrics-grid" aria-label="Indicateurs clés">
-      <div class="metric-card glass-card">
-        <span class="metric-number">4</span>
-        <span class="metric-desc">Projets réels documentés au modèle STAR</span>
+  <div class="dashboard-container">
+    <!-- Top Bento Section: Hero + Workstation Telemetry -->
+    <section
+      class="bento-row hero-row"
+      aria-label="Présentation et environnement système"
+    >
+      <div class="bento-col-hero">
+        <HeroWidget />
       </div>
-      <div class="metric-card glass-card">
-        <span class="metric-number">8</span>
-        <span class="metric-desc">Certifications techniques vérifiables</span>
-      </div>
-      <div class="metric-card glass-card">
-        <span class="metric-number">Arch</span>
-        <span class="metric-desc">
-          Environnement système quotidien & Hyprland
-        </span>
-      </div>
-      <div class="metric-card glass-card">
-        <span class="metric-number">0%</span>
-        <span class="metric-desc">
-          Prétention — 100% Travail sur machine réelle
-        </span>
+      <div class="bento-col-telemetry">
+        <SystemSpecsWidget />
       </div>
     </section>
 
-    <!-- Featured Projects Grid -->
-    <section class="section-container" aria-labelledby="projects-heading">
+    <!-- Second Bento Section: Engineering Pillars + Verified IBM Credential Spotlight -->
+    <section
+      class="bento-row mid-row"
+      aria-label="Architecture et accréditations majeures"
+    >
+      <div class="bento-col-pillars">
+        <EngineeringPhilosophy />
+      </div>
+
+      <div class="bento-col-spotlight">
+        <div class="cert-spotlight bento-card">
+          <div class="spotlight-header">
+            <div class="section-label">
+              <i class="fas fa-certificate" aria-hidden="true"></i>
+              <span>Accréditation Professionnelle</span>
+            </div>
+            <span class="cert-verified-tag font-mono">
+              <i class="fas fa-check-circle" aria-hidden="true"></i> Verified
+              IBM
+            </span>
+          </div>
+
+          <div class="spotlight-body">
+            <div class="spotlight-badge-container">
+              <picture>
+                <source
+                  srcset="/assets/certifications/images/IBM Cybersecurity Analyst.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/assets/certifications/images/IBM Cybersecurity Analyst.png"
+                  alt="IBM Cybersecurity Analyst"
+                  class="spotlight-cert-badge"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+            <div class="spotlight-text">
+              <h3 class="spotlight-cert-title">{featuredCert.title}</h3>
+              <p class="spotlight-cert-desc">
+                Cursus de spécialisation IBM (8 modules) : analyse de menaces
+                réseau, tests d'intrusion méthodiques, conformité CIA et défense
+                en profondeur.
+              </p>
+            </div>
+          </div>
+
+          <div class="spotlight-meta font-mono">
+            <div class="meta-tag">
+              <span class="meta-key">PRACTICE</span>
+              <span class="meta-value">Arch Linux / Sockets / HTB Labs</span>
+            </div>
+          </div>
+
+          <div class="spotlight-actions">
+            <a
+              href={featuredCert.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <i
+                class="fas fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+              <span>Consulter l'attestation</span>
+            </a>
+            <a href="/certifications" class="btn btn-secondary">
+              <span>Voir les 8 cursus</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Third Section: Synchronized Real Projects Showcase -->
+    <section class="projects-section" aria-labelledby="projects-title">
       <div class="section-header">
         <div>
-          <h2 id="projects-heading" class="section-title">
+          <div class="section-label">
             <i class="fas fa-code-branch" aria-hidden="true"></i>
-            <span>Réalisations &amp; Outils Concrets</span>
+            <span>Production &amp; Ingénierie Réelle</span>
+          </div>
+          <h2 id="projects-title" class="section-title">
+            Réalisations &amp; Projets Systèmes
           </h2>
-          <p class="section-subtitle">
-            Projets développés et testés sur mon poste de travail, avec
-            architecture détaillée et retours d'expérience honnêtes.
+          <p class="section-desc">
+            Applications développées, testées et exécutées sur poste de travail
+            Linux avec analyse d'architecture et étude de cas STAR.
           </p>
         </div>
-        <a href="/projects" class="btn btn-secondary see-all-btn">
-          <span>Voir tout le catalogue</span>
+        <a href="/projects" class="btn btn-secondary">
+          <span>Tous les projets</span>
           <i class="fas fa-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
@@ -97,275 +158,171 @@ const featuredCert =
         ))}
       </div>
     </section>
-
-    <!-- Key Certification Spotlight -->
-    <section class="section-container" aria-labelledby="cert-heading">
-      <div class="section-header">
-        <div>
-          <h2 id="cert-heading" class="section-title">
-            <i class="fas fa-certificate" aria-hidden="true"></i>
-            <span>Accréditation Majeure en Cybersécurité</span>
-          </h2>
-          <p class="section-subtitle">
-            Validation professionnelle approfondie délivrée par IBM (8 cours
-            spécialisés).
-          </p>
-        </div>
-        <a href="/certifications" class="btn btn-secondary see-all-btn">
-          <span>Toutes les accréditations</span>
-          <i class="fas fa-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-
-      <div class="spotlight-card glass-card">
-        <div class="spotlight-media">
-          <picture>
-            <source
-              srcset="/assets/certifications/images/IBM Cybersecurity Analyst.webp"
-              type="image/webp"
-            />
-            <img
-              src="/assets/certifications/images/IBM Cybersecurity Analyst.png"
-              alt="IBM Cybersecurity Analyst Certificate"
-              class="spotlight-img"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-
-        <div class="spotlight-content">
-          <div class="spotlight-badge">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-            <span>Cursus Professionnel Certifié</span>
-          </div>
-          <h3 class="spotlight-title">{featuredCert.title}</h3>
-          <p class="spotlight-desc">
-            Cursus complet couvrant l'analyse de menaces, les tests d'intrusion
-            méthodiques, la réponse aux incidents de sécurité, la
-            criminalistique numérique et la préparation aux standards
-            industriels CompTIA Security+.
-          </p>
-
-          <div class="spotlight-practical">
-            <strong>Mise en pratique réelle :</strong>
-            <span>{featuredCert.practicalNote}</span>
-          </div>
-
-          <div class="spotlight-footer">
-            <a
-              href={featuredCert.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-primary"
-            >
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              <span>Vérifier sur Coursera</span>
-            </a>
-            <a href="/certifications" class="btn btn-secondary">
-              <span>Voir les 8 modules détaillés</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </BaseLayout>
 
 <style>
-  .dashboard-page {
+  .dashboard-container {
     display: flex;
     flex-direction: column;
     gap: 32px;
   }
 
-  /* Metrics Grid */
-  .metrics-grid {
+  .bento-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-bottom: 10px;
+    gap: 20px;
   }
 
-  .metric-card {
-    padding: 22px;
+  /* Row 1: Hero (approx 65%) + Telemetry (approx 35%) */
+  .hero-row {
+    grid-template-columns: 1.8fr 1fr;
+  }
+
+  /* Row 2: Pillars (approx 55%) + Spotlight (approx 45%) */
+  .mid-row {
+    grid-template-columns: 1.25fr 1fr;
+  }
+
+  /* Spotlight Card Specifics */
+  .cert-spotlight {
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    border: 1px solid var(--border-color);
+    justify-content: space-between;
+    height: 100%;
+    gap: 16px;
   }
 
-  .metric-number {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    line-height: 1;
-  }
-
-  .metric-desc {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-  }
-
-  /* Section Styles */
-  .section-container {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-
-  .section-header {
+  .spotlight-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .section-title {
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: #ffffff;
-    display: flex;
     align-items: center;
-    gap: 12px;
   }
 
-  .section-title i {
-    color: var(--accent-primary);
-  }
-
-  .section-subtitle {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-    max-width: 650px;
-  }
-
-  .see-all-btn {
-    font-size: 0.85rem;
-    padding: 8px 16px;
-  }
-
-  /* Projects Grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  /* Spotlight Card */
-  .spotlight-card {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 30px;
-    padding: 28px;
-    align-items: center;
-    border: 1px solid rgba(0, 209, 255, 0.25);
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 28, 0.75) 0%,
-      rgba(10, 10, 18, 0.85) 100%
-    );
-  }
-
-  .spotlight-media {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .spotlight-img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-
-  .spotlight-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .spotlight-badge {
+  .cert-verified-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    font-size: 0.72rem;
     color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 3px 8px;
+    border-radius: 4px;
   }
 
-  .spotlight-title {
-    font-size: 1.45rem;
-    font-weight: 700;
+  .spotlight-body {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .spotlight-badge-container {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+    background: #0d0d12;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    flex-shrink: 0;
+  }
+
+  .spotlight-cert-badge {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .spotlight-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .spotlight-cert-title {
+    font-size: 1.15rem;
+    font-weight: 600;
     color: #ffffff;
     line-height: 1.3;
   }
 
-  .spotlight-desc {
-    font-size: 0.92rem;
-    color: #b5b5c8;
-    line-height: 1.6;
+  .spotlight-cert-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
   }
 
-  .spotlight-practical {
-    background: rgba(0, 209, 255, 0.05);
-    border-left: 3px solid var(--accent-primary);
-    padding: 10px 14px;
-    border-radius: 0 8px 8px 0;
-    font-size: 0.86rem;
-    color: #c8c8dc;
-  }
-
-  .spotlight-practical strong {
-    color: var(--accent-primary);
-  }
-
-  .spotlight-footer {
+  .spotlight-meta {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 8px 12px;
     display: flex;
-    gap: 12px;
-    margin-top: 8px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 0.75rem;
   }
 
-  @media (max-width: 1024px) {
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
+  .meta-key {
+    color: var(--text-dim);
+    margin-right: 8px;
+  }
+
+  .meta-value {
+    color: var(--accent-primary);
+    font-weight: 500;
+  }
+
+  .spotlight-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+  }
+
+  .spotlight-actions .btn {
+    font-size: 0.82rem;
+  }
+
+  /* Projects Section */
+  .projects-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 1200px) {
+    .hero-row {
+      grid-template-columns: 1fr;
     }
+    .mid-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 900px) {
     .projects-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 768px) {
-    .spotlight-card {
-      grid-template-columns: 1fr;
-      text-align: center;
-      gap: 20px;
+  @media (max-width: 640px) {
+    .spotlight-body {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .spotlight-media {
-      max-width: 200px;
-      margin: 0 auto;
+    .spotlight-actions {
+      flex-direction: column;
     }
-    .spotlight-badge {
-      justify-content: center;
-    }
-    .spotlight-footer {
-      justify-content: center;
-    }
-    .metrics-grid {
-      grid-template-columns: 1fr;
+    .spotlight-actions .btn {
+      width: 100%;
     }
   }
 </style>

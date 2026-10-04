@@ -1,0 +1,177 @@
+---
+---
+
+<div class="system-specs bento-card">
+  <div class="specs-header">
+    <div class="header-left">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+      <span class="terminal-title">env://charles-workstation</span>
+    </div>
+    <span class="live-pill">
+      <span class="pulse-dot"></span> Arch Linux x86_64
+    </span>
+  </div>
+
+  <div class="specs-body">
+    <div class="spec-row">
+      <span class="spec-key">KERNEL</span>
+      <span class="spec-val font-mono">Linux 6.x (zen/hardened)</span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">WM / COMP</span>
+      <span class="spec-val font-mono">Hyprland (Wayland)</span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">CORE RUNTIMES</span>
+      <span class="spec-val font-mono">
+        Python 3.12+ · Node.js 22 · C (GCC)
+      </span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">PROTOCOLS</span>
+      <span class="spec-val font-mono">
+        POSIX Sockets · WebRTC · WSS · PipeWire
+      </span>
+    </div>
+    <div class="spec-row">
+      <span class="spec-key">SECURITY TOOLING</span>
+      <span class="spec-val font-mono">
+        Wireshark · OpenSSL · Iptables · Docker
+      </span>
+    </div>
+  </div>
+
+  <div class="specs-footer font-mono">
+    <span class="prompt-symbol">$</span>
+    <span class="cmd-text">uptime --pretty</span>
+    <span class="cmd-output">up daily dev · 0 alerts</span>
+  </div>
+</div>
+
+<style>
+  .system-specs {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .specs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 14px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .terminal-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red {
+    background: #ef4444;
+    opacity: 0.8;
+  }
+  .terminal-dot.yellow {
+    background: #f59e0b;
+    opacity: 0.8;
+  }
+  .terminal-dot.green {
+    background: #10b981;
+    opacity: 0.8;
+  }
+
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-left: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-success);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+
+  .specs-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 0.82rem;
+  }
+
+  .spec-key {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .spec-val {
+    color: #e4e4e7;
+    text-align: right;
+    font-size: 0.8rem;
+  }
+
+  .specs-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-dim);
+  }
+
+  .prompt-symbol {
+    color: var(--accent-primary);
+    font-weight: 700;
+  }
+
+  .cmd-text {
+    color: #a1a1aa;
+  }
+
+  .cmd-output {
+    margin-left: auto;
+    color: #71717a;
+  }
+</style>

@@ -18,49 +18,44 @@ const sortedProjects = [...allProjects].sort((a, b) => {
 ---
 
 <BaseLayout
-  title="Réalisations & Projets | Charles Kamga Mukam"
-  description="Catalogue des réalisations techniques de Charles Kamga Mukam : Wi-Fi transfer, Pipeline média FastAPI, HUD Linux et WebRTC."
+  title="Réalisations & Systèmes — Charles Cyrille Kamga Mukam"
+  description="Catalogue des réalisations techniques : Moteur Wi-Fi direct, Pipeline multimédia FastAPI/ONNX, HUD Linux Hyprland et WebRTC."
   currentPath="/projects"
 >
   <div class="projects-page">
     <header class="page-header">
-      <div class="header-badge">
-        <i class="fas fa-code-branch" aria-hidden="true"></i>
-        <span>Travaux Pratiques & Solutions</span>
+      <div class="section-label">
+        <i class="fas fa-terminal" aria-hidden="true"></i>
+        <span>Codebase &amp; Architecture Réelle</span>
       </div>
-      <h1 class="page-title">Réalisations &amp; Projets</h1>
+      <h1 class="page-title">Réalisations &amp; Projets Systèmes</h1>
       <p class="page-desc">
-        Sélection de réalisations développées sur machine réelle. Chaque projet
-        est documenté selon le modèle STAR avec les défis techniques surmontés
-        et les apprentissages clés.
+        Études de cas d'ingénierie rédigées au format STAR. Analyse de
+        problématiques concrètes, architecture technique, résolution d'incidents
+        et enseignements clés.
       </p>
     </header>
 
-    <!-- Category Filter Bar -->
+    <!-- Clean Filter Bar -->
     <div
-      class="filter-bar"
+      class="filter-bar font-mono"
       role="toolbar"
-      aria-label="Filtrer les projets par catégorie"
+      aria-label="Filtrer les projets"
     >
       <button class="filter-btn active" data-filter="all">
-        <i class="fas fa-border-all" aria-hidden="true"></i>
-        <span>Tous les projets</span>
+        <span>ALL_PROJECTS</span>
       </button>
       <button class="filter-btn" data-filter="sys">
-        <i class="fas fa-network-wired" aria-hidden="true"></i>
-        <span>Systèmes &amp; Réseaux</span>
+        <span>SYSTEMS &amp; NETWORKS</span>
       </button>
       <button class="filter-btn" data-filter="ai">
-        <i class="fas fa-brain" aria-hidden="true"></i>
-        <span>Backend &amp; IA</span>
+        <span>BACKEND &amp; ONNX</span>
       </button>
       <button class="filter-btn" data-filter="desktop">
-        <i class="fas fa-desktop" aria-hidden="true"></i>
-        <span>Outils Desktop Linux</span>
+        <span>LINUX HUD</span>
       </button>
       <button class="filter-btn" data-filter="web">
-        <i class="fas fa-globe" aria-hidden="true"></i>
-        <span>Web &amp; Temps Réel</span>
+        <span>WEBRTC STREAM</span>
       </button>
     </div>
 
@@ -86,7 +81,6 @@ const sortedProjects = [...allProjects].sort((a, b) => {
 </BaseLayout>
 
 <script>
-  // Simple, fast client-side category filtering
   const filterButtons =
     document.querySelectorAll<HTMLButtonElement>(".filter-btn");
   const projectCards = document.querySelectorAll<HTMLElement>(".project-card");
@@ -113,99 +107,77 @@ const sortedProjects = [...allProjects].sort((a, b) => {
   .projects-page {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 28px;
   }
 
   .page-header {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .header-badge {
-    display: inline-flex;
-    align-items: center;
     gap: 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent-primary);
   }
 
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
   }
 
   .page-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    max-width: 750px;
+    max-width: 720px;
     line-height: 1.6;
   }
 
   /* Filter Bar */
   .filter-bar {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
   .filter-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-color);
     color: var(--text-muted);
-    font-size: 0.88rem;
+    font-size: 0.76rem;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
   }
 
   .filter-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-main);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border-color: var(--border-hover);
   }
 
   .filter-btn.active {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 209, 255, 0.15) 0%,
-      rgba(126, 63, 242, 0.12) 100%
-    );
+    background: rgba(255, 255, 255, 0.08);
     color: var(--accent-primary);
-    border-color: rgba(0, 209, 255, 0.35);
-    box-shadow: 0 0 15px rgba(0, 209, 255, 0.15);
-    font-weight: 600;
+    border-color: var(--border-accent);
   }
 
-  /* Grid */
+  /* Projects Grid */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 26px;
+    gap: 20px;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     .projects-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .page-title {
-      font-size: 1.7rem;
-    }
-    .filter-btn {
-      padding: 8px 14px;
-      font-size: 0.82rem;
+      font-size: 1.6rem;
     }
   }
 </style>

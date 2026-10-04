@@ -1,0 +1,143 @@
+---
+---
+
+<div class="engineering-pillars bento-card">
+  <div class="pillars-header">
+    <div class="section-label">
+      <i class="fas fa-layer-group" aria-hidden="true"></i>
+      <span>Piliers d'Ingénierie Logicielle</span>
+    </div>
+    <h3 class="pillars-title">Architecture, Systèmes &amp; Résilience</h3>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar-item">
+      <div class="pillar-icon">
+        <i class="fas fa-bolt" aria-hidden="true"></i>
+      </div>
+      <div class="pillar-content">
+        <h4>Asynchronisme &amp; Sockets</h4>
+        <p>
+          Maîtrise des boucles d'événements (asyncio, Node.js), sockets POSIX
+          non-bloquants et streaming de données chunked haute vitesse.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillar-item">
+      <div class="pillar-icon">
+        <i class="fas fa-shield-halved" aria-hidden="true"></i>
+      </div>
+      <div class="pillar-content">
+        <h4>Security by Design (AppSec)</h4>
+        <p>
+          Défense en profondeur, prévention active de l'OWASP Top 10, requêtes
+          SQL préparées, tokens éphémères et isolation des processus.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillar-item">
+      <div class="pillar-icon">
+        <i class="fas fa-microchip" aria-hidden="true"></i>
+      </div>
+      <div class="pillar-content">
+        <h4>Efficacité &amp; Systèmes Linux</h4>
+        <p>
+          Structures de données à complexité minimale O(1) en C, gestion fine de
+          la mémoire et diagnostic réseau bas niveau sous Linux.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillar-item">
+      <div class="pillar-icon">
+        <i class="fas fa-cubes" aria-hidden="true"></i>
+      </div>
+      <div class="pillar-content">
+        <h4>Modularité &amp; Couplage Faible</h4>
+        <p>
+          Conception d'APIs REST déterministes, séparation des couches métier et
+          orchestration de pipelines multimédia résilients.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .engineering-pillars {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+  }
+
+  .pillars-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pillars-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pillar-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+  }
+
+  .pillar-item:hover {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .pillar-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .pillar-content h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    margin-bottom: 4px;
+  }
+
+  .pillar-content p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
