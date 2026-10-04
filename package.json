@@ -2,6 +2,9 @@
   "name": "portfolio-charles-kamga",
   "version": "2.0.0",
   "description": "Portfolio de Charles Cyrille Kamga Mukam - Junior Backend Engineer & DevSecOps",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
