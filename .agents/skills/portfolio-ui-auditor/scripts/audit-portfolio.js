@@ -27,7 +27,7 @@ const EXPECTED_ROUTES = [
   "index.html",
   "projects/index.html",
   "projects/darwinxshare/index.html",
-  "projects/darwinx-video-pipeline/index.html",
+  "projects/faceless-pipeline/index.html",
   "projects/darwinx-neighbour/index.html",
   "projects/meetlocal/index.html",
   "certifications/index.html",
