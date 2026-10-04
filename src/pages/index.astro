@@ -1,0 +1,371 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroWidget from "../components/HeroWidget.astro";
+import TransparencyBanner from "../components/TransparencyBanner.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+import certifications from "../content/certifications/certifications.json";
+
+const allProjects = await getCollection("projects");
+// Keep consistent order: DarwinxShare, Video Pipeline, DarwinX Neighbour, MeetLocal
+const order = [
+  "darwinxshare",
+  "darwinx-video-pipeline",
+  "darwinx-neighbour",
+  "meetlocal",
+];
+const sortedProjects = [...allProjects].sort((a, b) => {
+  const indexA = order.indexOf(a.id);
+  const indexB = order.indexOf(b.id);
+  return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+});
+
+const featuredCert =
+  certifications.find((c) => c.id === "1") || certifications[0];
+---
+
+<BaseLayout
+  title="Charles Kamga Mukam | Développeur Backend Junior & Passionné Linux/Sécurité"
+  description="Portfolio transparent et authentique de Charles Kamga Mukam : Projets réels Python, Linux, WebRTC et Cybersécurité."
+  currentPath="/"
+>
+  <div class="dashboard-page">
+    <!-- Hero Section -->
+    <HeroWidget />
+
+    <!-- Authentic Manifesto Banner -->
+    <TransparencyBanner />
+
+    <!-- Metrics Bar -->
+    <section class="metrics-grid" aria-label="Indicateurs clés">
+      <div class="metric-card glass-card">
+        <span class="metric-number">4</span>
+        <span class="metric-desc">Projets réels documentés au modèle STAR</span>
+      </div>
+      <div class="metric-card glass-card">
+        <span class="metric-number">8</span>
+        <span class="metric-desc">Certifications techniques vérifiables</span>
+      </div>
+      <div class="metric-card glass-card">
+        <span class="metric-number">Arch</span>
+        <span class="metric-desc">
+          Environnement système quotidien & Hyprland
+        </span>
+      </div>
+      <div class="metric-card glass-card">
+        <span class="metric-number">0%</span>
+        <span class="metric-desc">
+          Prétention — 100% Travail sur machine réelle
+        </span>
+      </div>
+    </section>
+
+    <!-- Featured Projects Grid -->
+    <section class="section-container" aria-labelledby="projects-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="projects-heading" class="section-title">
+            <i class="fas fa-code-branch" aria-hidden="true"></i>
+            <span>Réalisations &amp; Outils Concrets</span>
+          </h2>
+          <p class="section-subtitle">
+            Projets développés et testés sur mon poste de travail, avec
+            architecture détaillée et retours d'expérience honnêtes.
+          </p>
+        </div>
+        <a href="/projects" class="btn btn-secondary see-all-btn">
+          <span>Voir tout le catalogue</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+        {sortedProjects.map((project) => (
+          <ProjectCard
+            slug={project.id}
+            title={project.data.title}
+            description={project.data.description}
+            category={project.data.category}
+            categoryLabel={project.data.categoryLabel}
+            tags={project.data.tags}
+            image={project.data.image}
+            badge={project.data.badge}
+            sourceUrl={project.data.sourceUrl}
+            demoUrl={project.data.demoUrl}
+            metrics={project.data.metrics}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Key Certification Spotlight -->
+    <section class="section-container" aria-labelledby="cert-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="cert-heading" class="section-title">
+            <i class="fas fa-certificate" aria-hidden="true"></i>
+            <span>Accréditation Majeure en Cybersécurité</span>
+          </h2>
+          <p class="section-subtitle">
+            Validation professionnelle approfondie délivrée par IBM (8 cours
+            spécialisés).
+          </p>
+        </div>
+        <a href="/certifications" class="btn btn-secondary see-all-btn">
+          <span>Toutes les accréditations</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="spotlight-card glass-card">
+        <div class="spotlight-media">
+          <picture>
+            <source
+              srcset="/assets/certifications/images/IBM Cybersecurity Analyst.webp"
+              type="image/webp"
+            />
+            <img
+              src="/assets/certifications/images/IBM Cybersecurity Analyst.png"
+              alt="IBM Cybersecurity Analyst Certificate"
+              class="spotlight-img"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+
+        <div class="spotlight-content">
+          <div class="spotlight-badge">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <span>Cursus Professionnel Certifié</span>
+          </div>
+          <h3 class="spotlight-title">{featuredCert.title}</h3>
+          <p class="spotlight-desc">
+            Cursus complet couvrant l'analyse de menaces, les tests d'intrusion
+            méthodiques, la réponse aux incidents de sécurité, la
+            criminalistique numérique et la préparation aux standards
+            industriels CompTIA Security+.
+          </p>
+
+          <div class="spotlight-practical">
+            <strong>Mise en pratique réelle :</strong>
+            <span>{featuredCert.practicalNote}</span>
+          </div>
+
+          <div class="spotlight-footer">
+            <a
+              href={featuredCert.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              <span>Vérifier sur Coursera</span>
+            </a>
+            <a href="/certifications" class="btn btn-secondary">
+              <span>Voir les 8 modules détaillés</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .dashboard-page {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Metrics Grid */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+
+  .metric-card {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+  }
+
+  .metric-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1;
+  }
+
+  .metric-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Section Styles */
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title i {
+    color: var(--accent-primary);
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    max-width: 650px;
+  }
+
+  .see-all-btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Spotlight Card */
+  .spotlight-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    padding: 28px;
+    align-items: center;
+    border: 1px solid rgba(0, 209, 255, 0.25);
+    background: linear-gradient(
+      135deg,
+      rgba(18, 18, 28, 0.75) 0%,
+      rgba(10, 10, 18, 0.85) 100%
+    );
+  }
+
+  .spotlight-media {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .spotlight-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .spotlight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .spotlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+  }
+
+  .spotlight-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+
+  .spotlight-desc {
+    font-size: 0.92rem;
+    color: #b5b5c8;
+    line-height: 1.6;
+  }
+
+  .spotlight-practical {
+    background: rgba(0, 209, 255, 0.05);
+    border-left: 3px solid var(--accent-primary);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.86rem;
+    color: #c8c8dc;
+  }
+
+  .spotlight-practical strong {
+    color: var(--accent-primary);
+  }
+
+  .spotlight-footer {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 1024px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .spotlight-card {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 20px;
+    }
+    .spotlight-media {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    .spotlight-badge {
+      justify-content: center;
+    }
+    .spotlight-footer {
+      justify-content: center;
+    }
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const navItems = [
+  { path: "/", label: "Accueil", icon: "fas fa-home" },
+  { path: "/projects", label: "Projets", icon: "fas fa-project-diagram" },
+  { path: "/certifications", label: "Certifs", icon: "fas fa-certificate" },
+  { path: "/contact", label: "Contact", icon: "fas fa-paper-plane" },
+];
+
+const isActive = (path: string) => {
+  if (path === "/") return currentPath === "/" || currentPath === "";
+  return currentPath.startsWith(path);
+};
+---
+
+<nav class="mobile-nav" aria-label="Navigation mobile">
+  <div class="mobile-nav-container">
+    {navItems.map((item) => {
+      const active = isActive(item.path);
+      return (
+        <a
+          href={item.path}
+          class={`mobile-nav-item ${active ? "active" : ""}`}
+          aria-current={active ? "page" : undefined}
+          aria-label={item.label}
+        >
+          <i class={item.icon} aria-hidden="true"></i>
+          <span class="mobile-nav-label">{item.label}</span>
+        </a>
+      );
+    })}
+  </div>
+</nav>
+
+<style>
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(8, 8, 12, 0.92);
+    border-top: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9999;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+  }
+
+  .mobile-nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 60px;
+    min-height: 48px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .mobile-nav-item i {
+    font-size: 1.15rem;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--accent-primary);
+    background: rgba(0, 209, 255, 0.1);
+  }
+
+  .mobile-nav-item.active i {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 1024px) {
+    .mobile-nav {
+      display: block;
+    }
+  }
+</style>

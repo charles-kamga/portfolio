@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const order = [
+  "darwinxshare",
+  "darwinx-video-pipeline",
+  "darwinx-neighbour",
+  "meetlocal",
+];
+const sortedProjects = [...allProjects].sort((a, b) => {
+  const indexA = order.indexOf(a.id);
+  const indexB = order.indexOf(b.id);
+  return (indexA === -1 ? 99 : indexA) - (indexB === -1 ? 99 : indexB);
+});
+---
+
+<BaseLayout
+  title="Réalisations & Projets | Charles Kamga Mukam"
+  description="Catalogue des réalisations techniques de Charles Kamga Mukam : Wi-Fi transfer, Pipeline média FastAPI, HUD Linux et WebRTC."
+  currentPath="/projects"
+>
+  <div class="projects-page">
+    <header class="page-header">
+      <div class="header-badge">
+        <i class="fas fa-code-branch" aria-hidden="true"></i>
+        <span>Travaux Pratiques & Solutions</span>
+      </div>
+      <h1 class="page-title">Réalisations &amp; Projets</h1>
+      <p class="page-desc">
+        Sélection de réalisations développées sur machine réelle. Chaque projet
+        est documenté selon le modèle STAR avec les défis techniques surmontés
+        et les apprentissages clés.
+      </p>
+    </header>
+
+    <!-- Category Filter Bar -->
+    <div
+      class="filter-bar"
+      role="toolbar"
+      aria-label="Filtrer les projets par catégorie"
+    >
+      <button class="filter-btn active" data-filter="all">
+        <i class="fas fa-border-all" aria-hidden="true"></i>
+        <span>Tous les projets</span>
+      </button>
+      <button class="filter-btn" data-filter="sys">
+        <i class="fas fa-network-wired" aria-hidden="true"></i>
+        <span>Systèmes &amp; Réseaux</span>
+      </button>
+      <button class="filter-btn" data-filter="ai">
+        <i class="fas fa-brain" aria-hidden="true"></i>
+        <span>Backend &amp; IA</span>
+      </button>
+      <button class="filter-btn" data-filter="desktop">
+        <i class="fas fa-desktop" aria-hidden="true"></i>
+        <span>Outils Desktop Linux</span>
+      </button>
+      <button class="filter-btn" data-filter="web">
+        <i class="fas fa-globe" aria-hidden="true"></i>
+        <span>Web &amp; Temps Réel</span>
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projects-grid">
+      {sortedProjects.map((project) => (
+        <ProjectCard
+          slug={project.id}
+          title={project.data.title}
+          description={project.data.description}
+          category={project.data.category}
+          categoryLabel={project.data.categoryLabel}
+          tags={project.data.tags}
+          image={project.data.image}
+          badge={project.data.badge}
+          sourceUrl={project.data.sourceUrl}
+          demoUrl={project.data.demoUrl}
+          metrics={project.data.metrics}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Simple, fast client-side category filtering
+  const filterButtons =
+    document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const projectCards = document.querySelectorAll<HTMLElement>(".project-card");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach((card) => {
+        if (filter === "all" || card.dataset.category === filter) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .projects-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .page-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 750px;
+    line-height: 1.6;
+  }
+
+  /* Filter Bar */
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 209, 255, 0.15) 0%,
+      rgba(126, 63, 242, 0.12) 100%
+    );
+    color: var(--accent-primary);
+    border-color: rgba(0, 209, 255, 0.35);
+    box-shadow: 0 0 15px rgba(0, 209, 255, 0.15);
+    font-weight: 600;
+  }
+
+  /* Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+  }
+
+  @media (max-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 1.7rem;
+    }
+    .filter-btn {
+      padding: 8px 14px;
+      font-size: 0.82rem;
+    }
+  }
+</style>

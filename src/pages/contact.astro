@@ -1,0 +1,452 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact & Réseau | Charles Kamga Mukam"
+  description="Contactez Charles Kamga Mukam, Développeur Backend Junior & Passionné Linux/Sécurité. Échanges techniques et opportunités professionnelles."
+  currentPath="/contact"
+>
+  <div class="contact-page">
+    <header class="page-header">
+      <div class="header-badge">
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+        <span>Connexion &amp; Échanges</span>
+      </div>
+      <h1 class="page-title">Contact &amp; Réseau</h1>
+      <p class="page-desc">
+        Disponible pour échanger autour de projets backend, d'architecture
+        logicielle, de sécurité applicative ou d'opportunités professionnelles
+        (CDI, CDD, missions).
+      </p>
+    </header>
+
+    <div class="contact-grid">
+      <!-- Main Contact Card -->
+      <div class="contact-main-card glass-card">
+        <div class="availability-badge">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span>Disponible immédiatement pour opportunités techniques</span>
+        </div>
+
+        <h2 class="card-heading">Démarrons un échange</h2>
+        <p class="card-subtext">
+          Le moyen le plus direct et efficace pour me joindre reste le courriel
+          direct. Je réponds généralement sous 24 à 48 heures ouvrées.
+        </p>
+
+        <a href="mailto:charlescyrillekamga@gmail.com" class="email-box">
+          <div class="email-icon">
+            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+          </div>
+          <div class="email-info">
+            <span class="email-label">Email professionnel direct</span>
+            <span class="email-address">charlescyrillekamga@gmail.com</span>
+          </div>
+          <i
+            class="fas fa-external-link-alt email-arrow"
+            aria-hidden="true"
+          ></i>
+        </a>
+
+        <div class="location-info">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          <span>
+            Localisation : <strong>Yaoundé, Cameroun</strong> (Ouvert au
+            télétravail complet ou hybride)
+          </span>
+        </div>
+      </div>
+
+      <!-- Social & Professional Presence -->
+      <div class="channels-column">
+        <div class="channel-card glass-card">
+          <div class="channel-header">
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <div>
+              <h3>GitHub</h3>
+              <p>
+                Code source de mes projets, contributions et expérimentations
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://github.com/charles-kamga"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            <span>github.com/charles-kamga</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="channel-card glass-card">
+          <div class="channel-header">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <div>
+              <h3>LinkedIn</h3>
+              <p>
+                Parcours académique, validations certifiées et réseau
+                professionnel
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/charles-kamga-b50a23274"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            <span>charles-kamga</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="channel-card glass-card">
+          <div class="channel-header">
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+            <div>
+              <h3>Chaîne Charltech</h3>
+              <p>
+                Vulgarisation et tutoriels techniques (systèmes, développement,
+                outils)
+              </p>
+            </div>
+          </div>
+          <div class="channel-note">
+            <span>Partage communautaire &amp; éducation technique</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community Engagement Card -->
+    <section class="community-section glass-card">
+      <div class="community-title-row">
+        <i class="fas fa-users" aria-hidden="true"></i>
+        <h2>Engagement Communautaire &amp; Écosystème</h2>
+      </div>
+      <div class="community-grid">
+        <div class="comm-box">
+          <div class="comm-icon python">
+            <i class="fab fa-python" aria-hidden="true"></i>
+          </div>
+          <div class="comm-details">
+            <h3>Python Cameroun</h3>
+            <p>
+              Membre actif et contributeur de la communauté locale des
+              développeurs Python. Échanges réguliers sur les architectures
+              backend et les bonnes pratiques.
+            </p>
+          </div>
+        </div>
+
+        <div class="comm-box">
+          <div class="comm-icon gdg">
+            <i class="fab fa-google" aria-hidden="true"></i>
+          </div>
+          <div class="comm-details">
+            <h3>Google Developer Group (GDG)</h3>
+            <p>
+              Bénévole engagé lors d'événements technologiques, ateliers
+              pratiques et conférences pour étudiants et jeunes ingénieurs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .page-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 750px;
+    line-height: 1.6;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 26px;
+  }
+
+  .contact-main-card {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border: 1px solid rgba(0, 209, 255, 0.2);
+    background: linear-gradient(
+      135deg,
+      rgba(18, 18, 28, 0.8) 0%,
+      rgba(10, 10, 18, 0.9) 100%
+    );
+  }
+
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    color: #86efac;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-success);
+    border-radius: 50%;
+  }
+
+  .card-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .card-subtext {
+    font-size: 0.94rem;
+    color: #b5b5c8;
+    line-height: 1.6;
+  }
+
+  .email-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 16px 20px;
+    border-radius: 14px;
+    transition: var(--transition);
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
+  .email-box:hover {
+    background: rgba(0, 209, 255, 0.08);
+    border-color: rgba(0, 209, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .email-icon {
+    font-size: 1.4rem;
+    color: var(--accent-primary);
+  }
+
+  .email-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .email-address {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    word-break: break-all;
+  }
+
+  .email-arrow {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .location-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .location-info strong {
+    color: var(--text-main);
+  }
+
+  .location-info i {
+    color: var(--accent-primary);
+  }
+
+  /* Channels Column */
+  .channels-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .channel-card {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .channel-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .channel-header i {
+    font-size: 1.6rem;
+    color: var(--accent-primary);
+  }
+
+  .channel-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .channel-header p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .channel-note {
+    font-size: 0.8rem;
+    color: #a5a5b8;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Community Section */
+  .community-section {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .community-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: #ffffff;
+  }
+
+  .community-title-row i {
+    color: var(--accent-primary);
+  }
+
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .comm-box {
+    display: flex;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .comm-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .comm-icon.python {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .comm-icon.gdg {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .comm-details h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+
+  .comm-details p {
+    font-size: 0.85rem;
+    color: #a5a5b8;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .community-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 1.7rem;
+    }
+    .contact-main-card {
+      padding: 24px;
+    }
+  }
+</style>

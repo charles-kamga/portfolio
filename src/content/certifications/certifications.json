@@ -1,0 +1,128 @@
+[
+  {
+    "id": "1",
+    "title": "IBM Cybersecurity Analyst Professional Certificate",
+    "issuer": "IBM",
+    "date": "Jul 2026",
+    "category": "Cybersecurity",
+    "skills": [
+      "Penetration Testing",
+      "Threat Hunting",
+      "Incident Response",
+      "Digital Forensics",
+      "CompTIA Security+ Prep"
+    ],
+    "image": "/assets/certifications/images/IBM Cybersecurity Analyst.webp",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5",
+    "practicalNote": "Validation complète du cursus professionnel IBM (8 modules). Mis en pratique quotidienne par l'administration sécurisée de mon poste Arch Linux et des labs sur Hack The Box."
+  },
+  {
+    "id": "2",
+    "title": "Penetration Testing, Threat Hunting, and Cryptography",
+    "issuer": "IBM",
+    "date": "Mar 2026",
+    "category": "Cybersecurity",
+    "skills": [
+      "Ethical Hacking",
+      "Threat Hunting",
+      "Cryptography",
+      "Penetration Testing"
+    ],
+    "image": "/assets/certifications/images/Penetration Testing Threat Hunting and Cryptography.webp",
+    "url": "https://coursera.org/verify/TWNU7CJV4YTV",
+    "practicalNote": "Étude des vecteurs d'attaque Web et réseau selon le référentiel MITRE ATT&CK. Pratique de labs d'analyse de trafic et de cryptographie symétrique/asymétrique."
+  },
+  {
+    "id": "3",
+    "title": "Cybersecurity Architecture",
+    "issuer": "IBM",
+    "date": "Feb 2026",
+    "category": "Cybersecurity",
+    "skills": ["Architecture", "CIA Triad", "Governance", "Risk Management"],
+    "image": "/assets/certifications/images/Cybersecurity Architecture.webp",
+    "url": "https://www.coursera.org/account/accomplishments/verify/EBW3CRFP2I8E",
+    "practicalNote": "Application des principes de défense en profondeur et du moindre privilège à l'architecture de mes services backend (FastAPI, Node.js)."
+  },
+  {
+    "id": "4",
+    "title": "Computer Networks and Network Security",
+    "issuer": "IBM",
+    "date": "Jan 2026",
+    "category": "Networks",
+    "skills": [
+      "TCP/IP",
+      "DNS Security",
+      "Routing & Switching",
+      "Firewalls",
+      "VPN"
+    ],
+    "image": "/assets/certifications/images/Computer Networks and Network Security.webp",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5",
+    "practicalNote": "Analyse de trames avec Wireshark, routage IP et protocoles de transport. Réinvesti concrètement dans le développement socket de DarwinxShare."
+  },
+  {
+    "id": "5",
+    "title": "Operating Systems: Overview, Administration, and Security",
+    "issuer": "IBM",
+    "date": "Jan 2026",
+    "category": "Systems",
+    "skills": [
+      "Linux OS",
+      "POSIX Administration",
+      "Process Isolation",
+      "System Hardening"
+    ],
+    "image": "/assets/certifications/images/Operating Systems: Overview, Administration, and Security.webp",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5",
+    "practicalNote": "Gestion des processus POSIX, hiérarchie de fichiers Unix et droits d'accès appliqués au quotidien sur mon poste Arch Linux personnel."
+  },
+  {
+    "id": "6",
+    "title": "Database Essentials and Vulnerabilities",
+    "issuer": "IBM",
+    "date": "Dec 2025",
+    "category": "Systems",
+    "skills": [
+      "SQL Injection",
+      "Database Hardening",
+      "Access Controls",
+      "Relational Integrity"
+    ],
+    "image": "/assets/certifications/images/Database Essentials and Vulnerabilities.webp",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5",
+    "practicalNote": "Prévention systématique des injections SQL via requêtes préparées et contrôle rigoureux des privilèges de base de données."
+  },
+  {
+    "id": "7",
+    "title": "Cybersecurity Tools & Cyberattacks",
+    "issuer": "IBM",
+    "date": "Nov 2025",
+    "category": "Cybersecurity",
+    "skills": [
+      "Wireshark",
+      "SIEM",
+      "MITRE ATT&CK",
+      "Attack Vectors",
+      "Incident Triage"
+    ],
+    "image": "/assets/certifications/images/Introduction to Cybersecurity Tools & Cyberattacks.webp",
+    "url": "https://coursera.org/verify/professional-cert/23EHCOD97GM5",
+    "practicalNote": "Apprentissage des outils d'audit défensif, de l'inspection de journaux système (logs) et des signatures d'attaques classiques."
+  },
+  {
+    "id": "8",
+    "title": "IoT Wireless & Cloud Emerging Technologies",
+    "issuer": "Yonsei University",
+    "date": "May 2025",
+    "category": "Networks",
+    "skills": [
+      "Telecommunications",
+      "Network Architecture",
+      "IoT",
+      "Cloud Computing"
+    ],
+    "image": "/assets/certifications/images/IoT (Internet of Things) Wireless & Cloud Computing Emerging Technologies.webp",
+    "url": "https://www.coursera.org/account/accomplishments/verify/QH4JCLEFWJYA",
+    "practicalNote": "Compréhension des topologies réseaux sans fil et des paradigmes de calcul distribué (Cloud, Edge, IoT)."
+  }
+]

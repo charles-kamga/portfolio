@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CertificationEntry",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "issuer",
+    "date",
+    "category",
+    "skills",
+    "image",
+    "url"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 100
+    },
+    "issuer": {
+      "type": "string",
+      "enum": [
+        "IBM",
+        "Google Cloud",
+        "AWS",
+        "Yonsei University",
+        "UC Irvine",
+        "Linux Foundation",
+        "Autre"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [0-9]{1,2}, [0-9]{4}$"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["Cybersecurity", "Networks", "Systems", "Productivity", "Autres"]
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": {
+        "type": "string"
+      }
+    },
+    "image": {
+      "type": "string",
+      "pattern": "^.+\\.(png|jpg|jpeg)$"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,280 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryLabel: string;
+  tags: string[];
+  image: string;
+  badge: string;
+  sourceUrl?: string;
+  demoUrl?: string;
+  metrics?: Array<{ label: string; value: string }>;
+}
+
+const {
+  slug,
+  title,
+  description,
+  category,
+  categoryLabel,
+  tags,
+  image,
+  badge,
+  sourceUrl,
+  demoUrl,
+  metrics,
+} = Astro.props;
+
+// Compute webp alternative if available
+const webpImage = image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+---
+
+<article class="project-card glass-card" data-category={category}>
+  <div class="card-media">
+    <picture>
+      <source srcset={webpImage} type="image/webp" />
+      <img
+        src={image}
+        alt={`Aperçu de ${title}`}
+        loading="lazy"
+        class="project-img"
+      />
+    </picture>
+    <div class="media-overlay">
+      <span class="media-badge">
+        <i class="fas fa-terminal" aria-hidden="true"></i>
+        <span>{badge}</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="category-pill">{categoryLabel}</span>
+    </div>
+
+    <h3 class="card-title">
+      <a href={`/projects/${slug}`}>{title}</a>
+    </h3>
+
+    <p class="card-desc">{description}</p>
+
+    {metrics && metrics.length > 0 && (
+      <div class="card-metrics">
+        {metrics.map((m) => (
+          <div class="metric-item">
+            <span class="metric-label">{m.label}</span>
+            <span class="metric-value">{m.value}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="card-tags tech-stack">
+      {tags.map((t) => (
+        <span class="tech-tag">{t}</span>
+      ))}
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a href={`/projects/${slug}`} class="btn btn-primary btn-star">
+      <i class="fas fa-book-open" aria-hidden="true"></i>
+      <span>Étude de cas (STAR)</span>
+    </a>
+
+    {sourceUrl && (
+      <a
+        href={sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary btn-icon-only"
+        aria-label={`Code source GitHub de ${title}`}
+      >
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+    )}
+
+    {demoUrl && (
+      <a
+        href={demoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary btn-icon-only"
+        aria-label={`Téléchargement ou démo de ${title}`}
+      >
+        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    padding: 0;
+    border: 1px solid var(--border-color);
+  }
+
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #090910;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.4s ease;
+  }
+
+  .project-card:hover .project-img {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+  }
+
+  .media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(5, 5, 12, 0.88) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .media-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 209, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(0, 209, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-meta {
+    margin-bottom: 8px;
+  }
+
+  .category-pill {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .card-title a {
+    color: #ffffff;
+    transition: color 0.2s ease;
+  }
+
+  .card-title a:hover {
+    color: var(--accent-primary);
+  }
+
+  .card-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  .card-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+  }
+
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-label {
+    font-size: 0.68rem;
+    color: #8a8a9e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .metric-value {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-tags {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+
+  .card-footer {
+    padding: 18px 24px;
+    border-top: 1px solid var(--border-color);
+    background: rgba(10, 10, 16, 0.4);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn-star {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .btn-icon-only {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .btn-icon-only:hover {
+    color: var(--text-main);
+  }
+</style>

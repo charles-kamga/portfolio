@@ -1,17 +1,17 @@
 /* Logic with Stockfish.js */
 
-$(document).ready(function() {
+$(document).ready(function () {
   let board = null;
   let game = new Chess();
-  const $status = $('#status');
-  const $pgn = $('#pgn');
-  const $difficulty = $('#difficulty');
+  const $status = $("#status");
+  const $pgn = $("#pgn");
+  const $difficulty = $("#difficulty");
   let engine = null;
   let engineReady = false;
 
   // Persistence keys
-  const STORAGE_KEY_PGN = 'chess_game_pgn';
-  const STORAGE_KEY_DIFF = 'chess_game_diff';
+  const STORAGE_KEY_PGN = "chess_game_pgn";
+  const STORAGE_KEY_DIFF = "chess_game_diff";
 
   // History for navigation
   let historyFens = [game.fen()];
@@ -20,39 +20,42 @@ $(document).ready(function() {
   // --- ENGINE INIT ---
   function initEngine() {
     try {
-      const sfUrl = 'https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js';
-      
+      const sfUrl =
+        "https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js";
+
       fetch(sfUrl)
-        .then(r => r.text())
-        .then(code => {
-          const blob = new Blob([code], { type: 'application/javascript' });
+        .then((r) => r.text())
+        .then((code) => {
+          const blob = new Blob([code], { type: "application/javascript" });
           engine = new Worker(URL.createObjectURL(blob));
-          
-          engine.onmessage = function(e) {
+
+          engine.onmessage = function (e) {
             const line = e.data;
-            if (line.indexOf('bestmove') > -1) {
-              const match = line.match(/bestmove\s([a-h][1-8][a-h][1-8][qrbn]?)/);
+            if (line.indexOf("bestmove") > -1) {
+              const match = line.match(
+                /bestmove\s([a-h][1-8][a-h][1-8][qrbn]?)/,
+              );
               if (match) {
                 executeBotMove(match[1]);
               }
             }
           };
 
-          engine.postMessage('uci');
-          updateDifficulty(); 
-          engine.postMessage('ucinewgame');
+          engine.postMessage("uci");
+          updateDifficulty();
+          engine.postMessage("ucinewgame");
           engineReady = true;
-          
-          if (game.turn() === 'b') {
+
+          if (game.turn() === "b") {
             askEngine();
           }
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Stockfish init failed:", err);
-          $status.html('Erreur moteur (IA indisponible)');
+          $status.html("Erreur moteur (IA indisponible)");
         });
     } catch (e) {
-      $status.html('Erreur système');
+      $status.html("Erreur système");
     }
   }
 
@@ -84,7 +87,7 @@ $(document).ready(function() {
 
         board.position(game.fen());
         updateStatus();
-        
+
         const historyVerbose = game.history({ verbose: true });
         if (historyVerbose.length > 0) {
           const last = historyVerbose[historyVerbose.length - 1];
@@ -92,7 +95,7 @@ $(document).ready(function() {
         }
       }
     } else {
-      $status.html('Prêt ! À vous de jouer.');
+      $status.html("Prêt ! À vous de jouer.");
     }
   }
 
@@ -105,10 +108,10 @@ $(document).ready(function() {
 
   // --- GAME LOGIC ---
   function highlightLastMove(from, to) {
-    $('#myBoard .square-55d63').removeClass('highlight-move');
+    $("#myBoard .square-55d63").removeClass("highlight-move");
     if (from && to) {
-      $('#myBoard .square-' + from).addClass('highlight-move');
-      $('#myBoard .square-' + to).addClass('highlight-move');
+      $("#myBoard .square-" + from).addClass("highlight-move");
+      $("#myBoard .square-" + to).addClass("highlight-move");
     }
   }
 
@@ -116,7 +119,7 @@ $(document).ready(function() {
     const move = game.move({
       from: moveStr.substring(0, 2),
       to: moveStr.substring(2, 4),
-      promotion: 'q'
+      promotion: "q",
     });
 
     if (move === null) return;
@@ -148,15 +151,15 @@ $(document).ready(function() {
       }
     }
 
-    engine.postMessage('position fen ' + game.fen());
-    
+    engine.postMessage("position fen " + game.fen());
+
     let depth = 10;
     if (level === 0) depth = 1;
     else if (level <= 5) depth = 2;
     else if (level <= 10) depth = 5;
     else if (level <= 15) depth = 10;
     else depth = 15;
-    
+
     engine.postMessage(`go depth ${depth}`);
   }
 
@@ -174,10 +177,10 @@ $(document).ready(function() {
     const move = game.move({
       from: source,
       to: target,
-      promotion: 'q'
+      promotion: "q",
     });
 
-    if (move === null) return 'snapback';
+    if (move === null) return "snapback";
 
     const newFen = game.fen();
     historyFens.push(newFen);
@@ -194,22 +197,22 @@ $(document).ready(function() {
   }
 
   function updateStatus() {
-    let status = '';
-    const moveColor = (game.turn() === 'b') ? 'Noirs (IA)' : 'Blancs';
+    let status = "";
+    const moveColor = game.turn() === "b" ? "Noirs (IA)" : "Blancs";
 
     if (game.in_checkmate()) {
-      status = 'MAT ! ' + moveColor + ' a perdu.';
+      status = "MAT ! " + moveColor + " a perdu.";
     } else if (game.in_draw()) {
-      status = 'Match nul.';
+      status = "Match nul.";
     } else {
-      status = 'Trait aux ' + moveColor;
-      if (game.in_check()) status += ' (ÉCHEC)';
+      status = "Trait aux " + moveColor;
+      if (game.in_check()) status += " (ÉCHEC)";
     }
 
     $status.html(status);
     $pgn.html(game.pgn());
-    
-    const pgnContainer = $('.move-history')[0];
+
+    const pgnContainer = $(".move-history")[0];
     pgnContainer.scrollTop = pgnContainer.scrollHeight;
   }
 
@@ -217,9 +220,9 @@ $(document).ready(function() {
     if (index < 0 || index >= historyFens.length) return;
     currentViewIndex = index;
     board.position(historyFens[currentViewIndex]);
-    
-    $('#myBoard .square-55d63').removeClass('highlight-move');
-    
+
+    $("#myBoard .square-55d63").removeClass("highlight-move");
+
     // Only highlight if we are at the end
     if (currentViewIndex === historyFens.length - 1) {
       const history = game.history({ verbose: true });
@@ -233,45 +236,46 @@ $(document).ready(function() {
   // --- INITIALIZATION ---
   const config = {
     draggable: true,
-    position: 'start',
+    position: "start",
     onDragStart: onDragStart,
     onDrop: onDrop,
     onSnapEnd: onSnapEnd,
-    pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
+    pieceTheme:
+      "https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png",
   };
 
   setTimeout(() => {
-    if (typeof Chessboard !== 'undefined') {
-      board = Chessboard('myBoard', config);
-      loadSavedGame(); 
-      initEngine();    
+    if (typeof Chessboard !== "undefined") {
+      board = Chessboard("myBoard", config);
+      loadSavedGame();
+      initEngine();
     } else {
-      $status.html('Erreur: Librairies non chargées');
+      $status.html("Erreur: Librairies non chargées");
     }
   }, 300);
 
   // --- EVENTS ---
-  $difficulty.on('change', function() {
+  $difficulty.on("change", function () {
     updateDifficulty();
-    $status.html('Difficulté mise à jour.');
+    $status.html("Difficulté mise à jour.");
   });
 
-  $('#resetBtn').on('click', function() {
+  $("#resetBtn").on("click", function () {
     game.reset();
     board.start();
     historyFens = [game.fen()];
     currentViewIndex = 0;
     updateStatus();
-    $('#myBoard .square-55d63').removeClass('highlight-move');
+    $("#myBoard .square-55d63").removeClass("highlight-move");
     localStorage.removeItem(STORAGE_KEY_PGN);
-    if (engine) engine.postMessage('ucinewgame');
+    if (engine) engine.postMessage("ucinewgame");
   });
 
-  $('#undoBtn').on('click', function() {
-    game.undo(); 
-    game.undo(); 
+  $("#undoBtn").on("click", function () {
+    game.undo();
+    game.undo();
     board.position(game.fen());
-    
+
     // Truncate history array to match game history
     historyFens = historyFens.slice(0, game.history().length + 1);
     currentViewIndex = historyFens.length - 1;
@@ -283,15 +287,17 @@ $(document).ready(function() {
       const last = history[history.length - 1];
       highlightLastMove(last.from, last.to);
     } else {
-      $('#myBoard .square-55d63').removeClass('highlight-move');
+      $("#myBoard .square-55d63").removeClass("highlight-move");
     }
   });
 
   // Navigation events
-  $('#firstBtn').on('click', () => jumpToMove(0));
-  $('#prevBtn').on('click', () => jumpToMove(currentViewIndex - 1));
-  $('#nextBtn').on('click', () => jumpToMove(currentViewIndex + 1));
-  $('#lastBtn').on('click', () => jumpToMove(historyFens.length - 1));
+  $("#firstBtn").on("click", () => jumpToMove(0));
+  $("#prevBtn").on("click", () => jumpToMove(currentViewIndex - 1));
+  $("#nextBtn").on("click", () => jumpToMove(currentViewIndex + 1));
+  $("#lastBtn").on("click", () => jumpToMove(historyFens.length - 1));
 
-  $(window).resize(() => { if (board) board.resize(); });
+  $(window).resize(() => {
+    if (board) board.resize();
+  });
 });

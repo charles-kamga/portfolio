@@ -12,7 +12,7 @@ set -euo pipefail
 QUALITY=80   # WebP quality (0‑100)
 
 # Directories to scan for images
-IMAGE_DIRS=("assets/images" "assets/projects")
+IMAGE_DIRS=("assets/images" "assets/projects" "assets/certifications/images")
 
 convert_image() {
   local src="$1"
@@ -41,10 +41,10 @@ for dir in "${IMAGE_DIRS[@]}"; do
     case "${img,,}" in
       *.png|*.jpg|*.jpeg)
         if [[ -f "${img%.*}.webp" ]]; then
-          ((skipped++))
+          skipped=$((skipped + 1))
         else
           convert_image "$img"
-          ((count++))
+          count=$((count + 1))
         fi
         ;;
     esac

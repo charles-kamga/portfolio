@@ -1,0 +1,271 @@
+---
+---
+
+<header class="hero-widget glass-card">
+  <div class="hero-content">
+    <div class="hero-avatar-wrapper">
+      <picture>
+        <source srcset="/assets/images/photo.webp" type="image/webp" />
+        <img
+          src="/assets/images/photo.png"
+          alt="Charles Cyrille Kamga Mukam"
+          width="130"
+          height="130"
+          class="hero-avatar"
+          loading="eager"
+        />
+      </picture>
+      <span
+        class="avatar-status"
+        title="En recherche active d'opportunités"
+      ></span>
+    </div>
+
+    <div class="hero-text-block">
+      <div class="hero-meta">
+        <span class="role-badge">Junior Backend Engineer</span>
+        <span class="location-badge">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Yaoundé,
+          Cameroun
+        </span>
+      </div>
+
+      <h1 class="hero-name">Charles Cyrille Kamga Mukam</h1>
+      <p class="hero-tagline">
+        Développeur Backend Junior &amp; Passionné Linux/Sécurité. Bâtisseur
+        d'outils système, de services Web asynchrones et d'applications
+        résilientes.
+      </p>
+
+      <div class="hero-stack tech-stack">
+        <span class="tech-tag highlight">
+          <i class="fab fa-python" aria-hidden="true"></i> Python (FastAPI /
+          Flask)
+        </span>
+        <span class="tech-tag">
+          <i class="fab fa-linux" aria-hidden="true"></i> Arch Linux (Hyprland)
+        </span>
+        <span class="tech-tag">
+          <i class="fas fa-microchip" aria-hidden="true"></i> C (POSIX &amp;
+          Sockets)
+        </span>
+        <span class="tech-tag">
+          <i class="fab fa-node-js" aria-hidden="true"></i> Node.js (WebRTC)
+        </span>
+        <span class="tech-tag">
+          <i class="fas fa-shield-halved" aria-hidden="true"></i> OWASP &amp;
+          AppSec
+        </span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/projects" class="btn btn-primary">
+          <i class="fas fa-project-diagram" aria-hidden="true"></i>
+          <span>Explorer les projets</span>
+        </a>
+        <a href="/certifications" class="btn btn-secondary">
+          <i class="fas fa-certificate" aria-hidden="true"></i>
+          <span>Accréditations IBM</span>
+        </a>
+        <a href="/contact" class="btn btn-secondary">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span>Me contacter</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-community">
+    <div class="community-item">
+      <i class="fab fa-python" aria-hidden="true"></i>
+      <span>
+        Contributeur <strong>Python Cameroun</strong>
+      </span>
+    </div>
+    <div class="community-separator">•</div>
+    <div class="community-item">
+      <i class="fab fa-google" aria-hidden="true"></i>
+      <span>
+        Bénévole <strong>GDG (Google Developer Group)</strong>
+      </span>
+    </div>
+    <div class="community-separator">•</div>
+    <div class="community-item">
+      <i class="fab fa-youtube" aria-hidden="true"></i>
+      <span>
+        Créateur de la chaîne <strong>Charltech</strong>
+      </span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hero-widget {
+    padding: 32px;
+    margin-bottom: 28px;
+    background: linear-gradient(
+      135deg,
+      rgba(20, 20, 32, 0.75) 0%,
+      rgba(12, 12, 20, 0.85) 100%
+    );
+  }
+
+  .hero-content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .hero-avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .hero-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 24px;
+    object-fit: cover;
+    border: 2px solid var(--border-glow);
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 209, 255, 0.15);
+  }
+
+  .avatar-status {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-success);
+    border: 3px solid var(--bg-dark);
+    border-radius: 50%;
+  }
+
+  .hero-text-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .role-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(0, 209, 255, 0.12);
+    color: var(--accent-primary);
+    border: 1px solid rgba(0, 209, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+
+  .location-badge {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-name {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    color: #b5b5c8;
+    line-height: 1.6;
+    max-width: 800px;
+  }
+
+  .hero-stack {
+    margin-top: 6px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-community {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+
+  .community-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .community-item strong {
+    color: var(--text-main);
+  }
+
+  .community-separator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+    .hero-avatar {
+      width: 110px;
+      height: 110px;
+    }
+    .hero-meta {
+      justify-content: center;
+    }
+    .hero-name {
+      font-size: 1.6rem;
+    }
+    .hero-tagline {
+      font-size: 0.92rem;
+    }
+    .hero-stack {
+      justify-content: center;
+    }
+    .hero-actions {
+      justify-content: center;
+      width: 100%;
+    }
+    .hero-actions .btn {
+      width: 100%;
+    }
+    .hero-community {
+      justify-content: center;
+      font-size: 0.78rem;
+      gap: 10px;
+    }
+    .community-separator {
+      display: none;
+    }
+  }
+</style>

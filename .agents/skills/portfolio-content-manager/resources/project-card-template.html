@@ -1,0 +1,68 @@
+<!-- GABARIT DE CARTE PROJET BENTO 2.0 (projects.html) -->
+<!-- Remplacer les champs entre crochets [EXEMPLE] par les valeurs réelles -->
+<article class="project-card" data-category="[sys|web|mobile]">
+  <div>
+    <div class="project-image">
+      <picture>
+        <source
+          srcset="assets/projects/[dossier-projet]/[nom-image].webp"
+          type="image/webp"
+        />
+        <img
+          src="assets/projects/[dossier-projet]/[nom-image].[png|jpg]"
+          width="400"
+          height="225"
+          loading="lazy"
+          alt="Capture d'écran ou schéma du projet [Nom du Projet]"
+        />
+      </picture>
+      <div class="project-image-overlay">
+        <span class="image-badge"
+          ><i class="fas fa-[icone-fa]" aria-hidden="true"></i> [Accroche Courte
+          / Rôle]</span
+        >
+      </div>
+    </div>
+    <h3>[Nom du Projet]</h3>
+    <p>
+      [Description d'ingénierie selon le modèle STAR : problème résolu,
+      architecture technique et métrique d'impact ou benchmark].
+    </p>
+    <div class="tech-stack">
+      <span class="tech-tag">[Tech 1]</span>
+      <span class="tech-tag">[Tech 2]</span>
+      <span class="tech-tag">[Tech 3]</span>
+      <span class="tech-tag">[Métrique : ex. O(1) / Zero-leak]</span>
+    </div>
+  </div>
+  <div class="project-card-footer">
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 15px;
+      "
+    >
+      <a
+        href="[URL_DEPOT_GITHUB]"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn secondary"
+        aria-label="Code source de [Nom du Projet] sur GitHub (nouvel onglet)"
+      >
+        <i class="fab fa-github" aria-hidden="true"></i> Source
+      </a>
+      <a
+        href="[URL_DEMO_OU_RELEASE]"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn primary"
+        aria-label="Accéder à la démo ou release de [Nom du Projet] (nouvel onglet)"
+      >
+        <i class="fas fa-external-link-alt" aria-hidden="true"></i> [Démo |
+        Release]
+      </a>
+    </div>
+  </div>
+</article>

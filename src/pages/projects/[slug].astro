@@ -1,0 +1,391 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const webpImage = project.data.image.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+---
+
+<BaseLayout
+  title={`${project.data.title} | Étude de Cas STAR - Charles Kamga Mukam`}
+  description={project.data.description}
+  image={project.data.image}
+  currentPath="/projects"
+>
+  <article class="case-study-page">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="/">
+        <i class="fas fa-home" aria-hidden="true"></i> Dashboard
+      </a>
+      <span class="sep">/</span>
+      <a href="/projects">Réalisations</a>
+      <span class="sep">/</span>
+      <span class="current">{project.data.title}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="study-header glass-card">
+      <div class="header-top">
+        <span class="category-badge">{project.data.categoryLabel}</span>
+        <span class="badge-indicator">
+          <i class="fas fa-terminal" aria-hidden="true"></i>{" "}
+          {project.data.badge}
+        </span>
+      </div>
+
+      <h1 class="study-title">{project.data.title}</h1>
+      <p class="study-lead">{project.data.description}</p>
+
+      {project.data.metrics && project.data.metrics.length > 0 && (
+        <div class="study-metrics">
+          {project.data.metrics.map((m) => (
+            <div class="study-metric-item">
+              <span class="metric-label">{m.label}</span>
+              <span class="metric-val">{m.value}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div class="study-tags tech-stack">
+        {project.data.tags.map((t) => (
+          <span class="tech-tag highlight">{t}</span>
+        ))}
+      </div>
+
+      <div class="study-actions">
+        {project.data.sourceUrl && (
+          <a
+            href={project.data.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <span>Examiner le code source</span>
+          </a>
+        )}
+        {project.data.demoUrl && (
+          <a
+            href={project.data.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span>Release / Démo</span>
+          </a>
+        )}
+        <a href="/contact" class="btn btn-secondary">
+          <i class="fas fa-comment" aria-hidden="true"></i>
+          <span>Discuter de l'architecture</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Media Showcase -->
+    <div class="study-media glass-card">
+      <picture>
+        <source srcset={webpImage} type="image/webp" />
+        <img
+          src={project.data.image}
+          alt={`Aperçu technique de ${project.data.title}`}
+          class="study-image"
+          loading="eager"
+        />
+      </picture>
+    </div>
+
+    <!-- STAR Markdown Content -->
+    <div class="study-body glass-card">
+      <div class="star-badge-note">
+        <i class="fas fa-file-contract" aria-hidden="true"></i>
+        <span>
+          Documenté selon le modèle <strong>STAR</strong> (Situation • Tâche •
+          Action • Résultat &amp; Bilan)
+        </span>
+      </div>
+
+      <div class="markdown-prose">
+        <Content />
+      </div>
+
+      <div class="study-footer-nav">
+        <a href="/projects" class="btn btn-secondary">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          <span>Retour au catalogue des projets</span>
+        </a>
+        <a href="/contact" class="btn btn-primary">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          <span>Poser une question technique</span>
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--accent-primary);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .breadcrumb .current {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  /* Header */
+  .study-header {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: linear-gradient(
+      135deg,
+      rgba(18, 18, 28, 0.8) 0%,
+      rgba(10, 10, 18, 0.9) 100%
+    );
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-primary);
+    background: rgba(0, 209, 255, 0.1);
+    border: 1px solid rgba(0, 209, 255, 0.25);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .badge-indicator {
+    font-size: 0.8rem;
+    color: #a5a5b8;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .study-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .study-lead {
+    font-size: 1.05rem;
+    color: #c4c4d8;
+    line-height: 1.6;
+  }
+
+  .study-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+
+  .study-metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .metric-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .metric-val {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .study-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Media */
+  .study-media {
+    overflow: hidden;
+    padding: 0;
+    border-radius: var(--card-radius);
+    max-height: 450px;
+    background: #090910;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .study-image {
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+    object-fit: contain;
+  }
+
+  /* Markdown Content Styling */
+  .study-body {
+    padding: 36px;
+  }
+
+  .star-badge-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(126, 63, 242, 0.12);
+    border: 1px solid rgba(126, 63, 242, 0.3);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: #d1b8ff;
+    margin-bottom: 28px;
+    width: 100%;
+  }
+
+  .markdown-prose :global(h2) {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .markdown-prose :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .markdown-prose :global(p) {
+    font-size: 0.96rem;
+    color: #c4c4d6;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .markdown-prose :global(ul),
+  .markdown-prose :global(ol) {
+    margin-left: 20px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .markdown-prose :global(li) {
+    font-size: 0.94rem;
+    color: #c4c4d6;
+    line-height: 1.6;
+  }
+
+  .markdown-prose :global(strong) {
+    color: #ffffff;
+  }
+
+  .markdown-prose :global(code) {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--accent-primary);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.88em;
+    font-family: monospace;
+  }
+
+  .markdown-prose :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 32px 0;
+  }
+
+  .study-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .study-title {
+      font-size: 1.7rem;
+    }
+    .study-header,
+    .study-body {
+      padding: 20px;
+    }
+    .study-actions {
+      flex-direction: column;
+    }
+    .study-actions .btn {
+      width: 100%;
+    }
+    .study-footer-nav {
+      flex-direction: column;
+    }
+    .study-footer-nav .btn {
+      width: 100%;
+    }
+  }
+</style>

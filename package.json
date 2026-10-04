@@ -1,13 +1,26 @@
 {
   "name": "portfolio-charles-kamga",
-  "version": "1.0.0",
-  "description": "Portfolio de Charles Kamga - Développeur Web",
+  "version": "2.0.0",
+  "description": "Portfolio de Charles Cyrille Kamga Mukam - Junior Backend Engineer & DevSecOps",
   "scripts": {
-    "generate:certifications": "node scripts/generate-certifications.js && node scripts/format-html.js",
-    "watch:certifications": "nodemon --watch assets/certifications/data --exec npm run generate:certifications"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "audit": "node .agents/skills/portfolio-ui-auditor/scripts/audit-portfolio.js",
+    "optimize:images": "./optimize_images.sh",
+    "format": "prettier --write \"**/*.{html,css,js,json,astro,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,astro,md}\""
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^1.1.0"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^7.3.5",
+    "typescript": "^6.0.3"
   }
 }
